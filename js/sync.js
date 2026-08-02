@@ -44,7 +44,8 @@ const Sync = {
           this.user = session.user;
           this.status = 'online';
           this._startRealtime();
-          this.loadAll().catch(e => console.error('加载云端数据失败', e));
+          // 先拉取云端，再回传本机数据（保证首次登录把本地数据迁移上云）
+          this.loadAll().then(() => this.pushAll().catch(() => {})).catch(e => console.error('加载云端数据失败', e));
         } else {
           this.user = null;
           this.status = 'offline';
@@ -60,7 +61,8 @@ const Sync = {
           this.user = data.session.user;
           this.status = 'online';
           this._startRealtime();
-          this.loadAll().catch(e => console.error('加载云端数据失败', e));
+          // 先拉取云端，再回传本机数据（保证首次登录把本地数据迁移上云）
+          this.loadAll().then(() => this.pushAll().catch(() => {})).catch(e => console.error('加载云端数据失败', e));
         }
         this._notifyAuth();
         this.updateUI();
