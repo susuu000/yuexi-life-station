@@ -137,15 +137,17 @@ create policy "profiles_owner" on public.profiles
 -- ============================================================
 -- 授权：RLS 只是"行级过滤"，角色还需先有表的基础权限才能访问。
 -- 因创建项目时未开启 "Automatically expose new tables"，这里手动授权。
--- 仅授予 authenticated（已登录用户）；anon（未登录）不需要直接访问。
+-- 同时授予 anon 与 authenticated（Supabase 默认即如此）：
+--   未登录(anon)的 auth.uid() 为 null，RLS 策略会过滤为"空集/不可写"，
+--   因此即便开放 anon 也读不到任何人的数据，安全由 RLS 保证。
 -- ============================================================
-grant usage on schema public to authenticated;
-grant select, insert, update, delete on table public.user_settings    to authenticated;
-grant select, insert, update, delete on table public.user_checkins    to authenticated;
-grant select, insert, update, delete on table public.user_entries     to authenticated;
-grant select, insert, update, delete on table public.user_collections to authenticated;
-grant select, insert, update, delete on table public.profiles         to authenticated;
+grant usage on schema public to anon, authenticated;
+grant select, insert, update, delete on table public.user_settings    to anon, authenticated;
+grant select, insert, update, delete on table public.user_checkins    to anon, authenticated;
+grant select, insert, update, delete on table public.user_entries     to anon, authenticated;
+grant select, insert, update, delete on table public.user_collections to anon, authenticated;
+grant select, insert, update, delete on table public.profiles         to anon, authenticated;
 
--- 图片桶：已登录用户可读/写/删自己的对象
-grant usage on schema storage to authenticated;
-grant select, insert, update, delete on table storage.objects to authenticated;
+-- 图片桶：已登录用户可读/写/删自己的对象；读为公开（供 <img> 直接显示）
+grant usage on schema storage to anon, authenticated;
+grant select, insert, update, delete on table storage.objects to anon, authenticated;
