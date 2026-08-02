@@ -1,0 +1,7 @@
+# 本地项目记忆 / 临时文件（不进仓库）
+.workbuddy/
+reference/
+node_modules/
+.DS_Store
+*.log
+*.local

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="月夕">
+  <meta name="theme-color" content="#2E6F7E">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+  <link rel="apple-touch-icon" href="assets/icon.svg">
+  <title>月夕生活台</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Supabase JS SDK（浏览器全局 supabase） -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    .auth-tabs { display:flex; gap:8px; margin-bottom:16px; }
+    .auth-tab { flex:1; padding:8px 0; border:none; background:transparent; color:var(--text-ink-muted); font-size:15px; cursor:pointer; border-bottom:2px solid transparent; }
+    .auth-tab.active { color:var(--haze-blue); border-bottom-color:var(--haze-blue); font-weight:600; }
+    .auth-form { display:flex; flex-direction:column; gap:12px; }
+    .auth-input { width:100%; padding:11px 12px; border:1px solid var(--border-light); border-radius:10px; font-size:15px; background:var(--bg-card); color:var(--text-ink); box-sizing:border-box; }
+    .auth-input:focus { outline:none; border-color:var(--haze-blue); }
+    .auth-error { color:#C04830; font-size:13px; min-height:18px; }
+    .auth-submit { width:100%; padding:12px; border:none; border-radius:10px; background:var(--haze-blue); color:#fff; font-size:15px; font-weight:600; cursor:pointer; }
+    .auth-submit:disabled { opacity:.6; cursor:default; }
+    .auth-hint { font-size:12px; color:var(--text-ink-muted); line-height:1.5; }
+    .auth-skip { margin-top:4px; background:none; border:none; color:var(--text-ink-muted); font-size:13px; cursor:pointer; text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="app-logo">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <defs>
+              <radialGradient id="bgG" cx="50%" cy="45%" r="65%">
+                <stop offset="0%" stop-color="#3A8A9E"/>
+                <stop offset="100%" stop-color="#2E6F7E"/>
+              </radialGradient>
+              <linearGradient id="mG" x1="20%" y1="15%" x2="80%" y2="85%">
+                <stop offset="0%" stop-color="#F5E6C8"/>
+                <stop offset="40%" stop-color="#E8C547"/>
+                <stop offset="100%" stop-color="#D4A847"/>
+              </linearGradient>
+              <linearGradient id="mS" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2E6F7E" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#1A5060" stop-opacity="0.95"/>
+              </linearGradient>
+            </defs>
+            <rect width="100" height="100" rx="24" fill="url(#bgG)"/>
+            <circle cx="48" cy="50" r="30" fill="url(#mG)"/>
+            <circle cx="60" cy="44" r="27" fill="url(#mS)"/>
+            <circle cx="22" cy="28" r="2.5" fill="#C04830" opacity="0.8"/>
+            <circle cx="78" cy="72" r="2" fill="#D4A847" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="app-title">
+          <h1>月夕</h1>
+          <span>生活台</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" id="sidebarNav"></nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-btn" id="accountBtn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>我的账户</span>
+        </button>
+        <button class="sidebar-btn" id="addSidebarBtn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          <span>添加板块</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </button>
+          <div class="header-date-weather">
+            <div class="current-date" id="currentDate"></div>
+            <div class="current-weather" id="currentWeather"></div>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="sync-status" id="syncStatus">
+            <span class="sync-dot sync-dot-offline"></span>
+            <span class="sync-text">未登录</span>
+          </div>
+          <button class="sync-btn" id="syncBtn" title="同步数据">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-3-6.7L21 8M21 3v5h-5"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-area" id="contentArea"></div>
+
+      <!-- Bottom Navigation -->
+      <nav class="bottom-nav" id="bottomNav">
+        <div class="bottom-nav-item active" data-tab="home" onclick="App.switchTab('home')">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span>首页</span>
+        </div>
+        <div class="bottom-nav-item" data-tab="discover" onclick="App.switchTab('discover')">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8l-4 8-4-4 8-4z"/></svg>
+          <span>发现</span>
+        </div>
+        <div class="bottom-nav-item" data-tab="profile" onclick="App.switchTab('profile')">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>我的</span>
+        </div>
+      </nav>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle"></h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- 登录 / 注册 弹窗 -->
+  <div class="modal-overlay" id="authOverlay" style="display:none;">
+    <div class="modal" id="authModal" style="max-width:380px;">
+      <div class="modal-header">
+        <h3 id="authTitle">登录云端账户</h3>
+        <button class="modal-close" id="authClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="signin" id="tabSignin">登录</button>
+          <button class="auth-tab" data-tab="signup" id="tabSignup">注册</button>
+        </div>
+        <div class="auth-form">
+          <input type="email" id="authEmail" class="auth-input" placeholder="邮箱" autocomplete="email">
+          <input type="password" id="authPassword" class="auth-input" placeholder="密码（至少 6 位）" autocomplete="current-password">
+          <div class="auth-error" id="authError"></div>
+          <button class="auth-submit" id="authSubmit">登录</button>
+          <div class="auth-hint" id="authHint"></div>
+          <button class="auth-skip" id="authSkip">稍后再说（仅本机使用）</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/sync.js"></script>
+  <script src="js/sections.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
