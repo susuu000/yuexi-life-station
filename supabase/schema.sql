@@ -133,3 +133,19 @@ alter table if exists public.profiles enable row level security;
 drop policy if exists "profiles_owner" on public.profiles;
 create policy "profiles_owner" on public.profiles
   for all using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
+
+-- ============================================================
+-- 授权：RLS 只是"行级过滤"，角色还需先有表的基础权限才能访问。
+-- 因创建项目时未开启 "Automatically expose new tables"，这里手动授权。
+-- 仅授予 authenticated（已登录用户）；anon（未登录）不需要直接访问。
+-- ============================================================
+grant usage on schema public to authenticated;
+grant select, insert, update, delete on table public.user_settings    to authenticated;
+grant select, insert, update, delete on table public.user_checkins    to authenticated;
+grant select, insert, update, delete on table public.user_entries     to authenticated;
+grant select, insert, update, delete on table public.user_collections to authenticated;
+grant select, insert, update, delete on table public.profiles         to authenticated;
+
+-- 图片桶：已登录用户可读/写/删自己的对象
+grant usage on schema storage to authenticated;
+grant select, insert, update, delete on table storage.objects to authenticated;
