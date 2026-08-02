@@ -1,10 +1,14 @@
 -- ============================================================
 -- 月夕生活台 · Supabase 数据库结构（规范化拆分）
 -- 在 Supabase 控制台 → SQL Editor 全选执行本文件即可。
--- 对应 src/js/config.js 中的表名 / 桶名。
+-- 对应 js/config.js 中的表名 / 桶名。
+-- 设计为幂等：可反复执行，不会报 "already exists"。
 -- ============================================================
 
 -- 1) 设置表：每个用户一行，存 app 配置 / 个性化 / 侧边栏
+-- 注意：Supabase 不允许直接外键 auth.users，这里只做逻辑归属，
+--       auth.users 删除时数据会 CASCADE 清理。实际上 Supabase
+--       auth.users(id) 是 uuid，可以建外键，此处保留原有外键。
 create table if not exists public.user_settings (
   user_id    uuid primary key references auth.users(id) on delete cascade,
   data       jsonb not null default '{}'::jsonb,
@@ -43,24 +47,47 @@ create table if not exists public.user_collections (
 -- ============================================================
 -- 行级安全（RLS）：仅本人可读写自己的数据
 -- ============================================================
-alter table public.user_settings    enable row level security;
-alter table public.user_checkins    enable row level security;
-alter table public.user_entries     enable row level security;
-alter table public.user_collections enable row level security;
+alter table if exists public.user_settings    enable row level security;
+alter table if exists public.user_checkins    enable row level security;
+alter table if exists public.user_entries     enable row level security;
+alter table if exists public.user_collections enable row level security;
 
 -- 通用策略：user_id == 当前登录用户
+-- 幂等：先 drop 再 create，避免重复执行报错。
+drop policy if exists "settings_owner"   on public.user_settings;
 create policy "settings_owner"   on public.user_settings    for all using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
+
+drop policy if exists "checkins_owner"   on public.user_checkins;
 create policy "checkins_owner"   on public.user_checkins    for all using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
+
+drop policy if exists "entries_owner"    on public.user_entries;
 create policy "entries_owner"    on public.user_entries     for all using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
+
+drop policy if exists "collections_owner" on public.user_collections;
 create policy "collections_owner" on public.user_collections for all using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
 
 -- ============================================================
--- 实时订阅：让多设备秒级互相同步
+-- 实时订阅：让多设备秒级互相同步（幂等地添加表）
 -- ============================================================
-alter publication supabase_realtime add table public.user_settings;
-alter publication supabase_realtime add table public.user_checkins;
-alter publication supabase_realtime add table public.user_entries;
-alter publication supabase_realtime add table public.user_collections;
+do $$
+declare
+  t text;
+begin
+  foreach t in array array['user_settings','user_checkins','user_entries','user_collections'] loop
+    if not exists (
+      select 1
+      from pg_publication_relations pr
+      join pg_class c on c.oid = pr.prrelid
+      join pg_namespace n on n.oid = c.relnamespace
+      join pg_publication p on p.oid = pr.prpubid
+      where n.nspname = 'public'
+        and c.relname = t
+        and p.pubname = 'supabase_realtime'
+    ) then
+      execute format('alter publication supabase_realtime add table public.%I', t);
+    end if;
+  end loop;
+end $$;
 
 -- ============================================================
 -- 图片存储桶：公开桶（UUID 文件名不可枚举），路径 = 用户ID/文件名
@@ -70,15 +97,19 @@ insert into storage.buckets (id, name, public)
 values ('images', 'images', true)
 on conflict (id) do update set public = true;
 
+-- 存储策略同样幂等
+drop policy if exists "images_select_public" on storage.objects;
 create policy "images_select_public"
   on storage.objects for select
   using ( bucket_id = 'images' );
 
+drop policy if exists "images_insert_owner" on storage.objects;
 create policy "images_insert_owner"
   on storage.objects for insert
   with check ( bucket_id = 'images'
     and (storage.foldername(name))[1] = (select auth.uid())::text );
 
+drop policy if exists "images_delete_owner" on storage.objects;
 create policy "images_delete_owner"
   on storage.objects for delete
   using ( bucket_id = 'images'
@@ -92,6 +123,8 @@ create table if not exists public.profiles (
   display_name text,
   created_at   timestamptz not null default now()
 );
-alter table public.profiles enable row level security;
+alter table if exists public.profiles enable row level security;
+
+drop policy if exists "profiles_owner" on public.profiles;
 create policy "profiles_owner" on public.profiles
   for all using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
