@@ -68,25 +68,30 @@ create policy "collections_owner" on public.user_collections for all using (user
 
 -- ============================================================
 -- 实时订阅：让多设备秒级互相同步（幂等地添加表）
+-- 若表已加入 publication，Postgres 会抛 duplicate_object，这里捕获并忽略。
 -- ============================================================
 do $$
-declare
-  t text;
 begin
-  foreach t in array array['user_settings','user_checkins','user_entries','user_collections'] loop
-    if not exists (
-      select 1
-      from pg_publication_relations pr
-      join pg_class c on c.oid = pr.prrelid
-      join pg_namespace n on n.oid = c.relnamespace
-      join pg_publication p on p.oid = pr.prpubid
-      where n.nspname = 'public'
-        and c.relname = t
-        and p.pubname = 'supabase_realtime'
-    ) then
-      execute format('alter publication supabase_realtime add table public.%I', t);
-    end if;
-  end loop;
+  alter publication supabase_realtime add table public.user_settings;
+exception when duplicate_object then null;
+end $$;
+
+do $$
+begin
+  alter publication supabase_realtime add table public.user_checkins;
+exception when duplicate_object then null;
+end $$;
+
+do $$
+begin
+  alter publication supabase_realtime add table public.user_entries;
+exception when duplicate_object then null;
+end $$;
+
+do $$
+begin
+  alter publication supabase_realtime add table public.user_collections;
+exception when duplicate_object then null;
 end $$;
 
 -- ============================================================
