@@ -9,8 +9,8 @@
    RLS（行级安全）保证，所以提交到 GitHub 也没问题。
    ============================================ */
 
-const SUPABASE_URL = 'https://YOUR-PROJECT-REF.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';
+const SUPABASE_URL = 'https://ktdaikwwxoztmijtjalg.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt0ZGFpa3d3eG96dG1panRqYWxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU2Njk0MjIsImV4cCI6MjEwMTI0NTQyMn0.xoUbEbavvDSMlvoWpZnrcogFHlByFmDnXbGsUzfZUoI';
 
 /* 表名 / 存储桶名（需与 supabase/schema.sql 一致） */
 const SB_TABLES = {
