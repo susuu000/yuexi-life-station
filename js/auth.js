@@ -12,10 +12,13 @@
     mode = m || 'signin';
     setMode(mode);
     clearError();
-    overlay.style.display = 'flex';
+    overlay.style.display = '';          // 移除内联样式，让 .show 类生效
+    overlay.classList.add('show');
     setTimeout(() => { const e = $('authEmail'); if (e) e.focus(); }, 50);
   }
-  function closeAuthModal() { overlay.style.display = 'none'; }
+  function closeAuthModal() {
+    overlay.classList.remove('show');
+  }
 
   function setMode(m) {
     mode = m;
