@@ -1988,6 +1988,7 @@ textarea.input-field { resize: vertical; min-height: 80px; }
 }
 .current-weather:hover { background: var(--border-light); }
 .weather-icon { font-size: 13px; }
+.weather-city { font-weight: 600; color: var(--text-ink); }
 
 /* --- Bottom Navigation --- */
 .bottom-nav {

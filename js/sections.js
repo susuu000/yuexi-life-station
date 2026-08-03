@@ -43,7 +43,6 @@ const Sections = {
         { id:'ielts', name:'雅思学习', icon:'📚', color:'var(--haze-blue)',
           subSections: [
             {id:'vocabulary', name:'单词学习', target:'ielts'},
-            {id:'dialogue', name:'英语对话', target:'ielts'},
             {id:'bbc', name:'外刊听力', target:'ielts'},
             {id:'duolingo', name:'多邻国', target:'ielts'}
           ]
@@ -152,7 +151,7 @@ const Sections = {
       const td = Storage.getTodayData(s.id==='ai-study'?'aiStudy':s.id==='self-media'?'selfMedia':s.id==='self-exploration'?'selfExploration':s.id);
 
       if (s.id === 'ielts') {
-        const tasks = ['vocabulary','dialogue','bbc','duolingo'];
+        const tasks = ['vocabulary','bbc','duolingo'];
         total = tasks.length;
         tasks.forEach(k => { if (td[k]?.done) done++; });
       } else if (s.id === 'ai-study') {
@@ -242,7 +241,6 @@ const Sections = {
       const ieltsYest = Storage.getDayData('ielts', yest);
       const ieltsTasks = [
         { key: 'vocabulary', name: '单词学习' },
-        { key: 'dialogue', name: '英语对话' },
         { key: 'bbc', name: '外刊听力' },
         { key: 'duolingo', name: '多邻国打卡' }
       ];
@@ -323,7 +321,6 @@ const Sections = {
 
       const tasks = [
         { key:'vocabulary', name:'单词学习', desc:'跳转墨墨背单词 · 每日15个', url:'https://www.maimemo.com/' },
-        { key:'dialogue', name:'英语对话练习', desc:'跳转豆包英语智能体', url:'https://www.doubao.com/chat/' },
         { key:'bbc', name:'外刊听力', desc:'每日1篇外刊听力精练', url:'' },
         { key:'duolingo', name:'多邻国打卡', desc:'跳转多邻国完成每日打卡', url:'https://www.duolingo.cn/' }
       ];
@@ -401,7 +398,7 @@ const Sections = {
 
     renderHistory(date, idx = 999) {
       const d = Storage.getDayData('ielts', date);
-      const names = {vocabulary:'单词学习',dialogue:'英语对话练习',bbc:'外刊听力',duolingo:'多邻国'};
+      const names = {vocabulary:'单词学习',bbc:'外刊听力',duolingo:'多邻国'};
       const done = Object.keys(names).filter(k => d[k]?.done).length;
       const collapsedCls = idx < 3 ? '' : 'collapsed';
       return `<div class="date-group ${collapsedCls}" data-date="${date}">
@@ -1119,7 +1116,7 @@ const Sections = {
   // ==================== 播客 ====================
   podcast: {
     // 用户关注的播客列表（可编辑）
-    followedPodcasts: ['高能量','文化有限','贤者时间','面基','大内密谈'],
+    followedPodcasts: ['来都来了','不合时宜','文化有限','忽左忽右','东腔西调'],
 
     // 小宇宙热榜前5
     hotList: [
@@ -1171,7 +1168,7 @@ const Sections = {
       return `
         <div class="section-header">
           <div><div class="section-title"><span class="section-title-icon" style="background:#7B3FF2;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg></span>播客</div>
-          <div class="section-subtitle">Apple 播客中国区热榜 · 关注更新</div></div>
+          <div class="section-subtitle">Apple 播客中国区热榜 · 我的关注更新</div></div>
         </div>
 
         <div class="sub-tabs-bar">
@@ -1205,22 +1202,22 @@ const Sections = {
 
     _getFollowTitle(name) {
       const titles = {
-        '高能量': '关于精力管理，这是我试过最有效的方法',
+        '来都来了': '周末闲聊：最近的生活碎片与好物分享',
+        '不合时宜': '当我们在谈论独立女性时，我们在谈什么',
         '文化有限': '读书笔记怎么做？我的三套笔记系统',
-        '贤者时间': '一个人住的第5年：我学会了这些事',
-        '面基': '投资入门：普通人如何构建自己的投资体系',
-        '大内密谈': '周末闲聊：最近看的好书好剧好播客'
+        '忽左忽右': '这周最值得讨论的一个商业现象',
+        '东腔西调': '东西之间：聊聊那些被误解的文化符号'
       };
       return titles[name] || name + ' 最新一期';
     },
 
     _getFollowSummary(name) {
       const summaries = {
-        '高能量': '分享一套实用的精力管理系统，从睡眠优化到注意力管理，帮助你在高强度工作中保持持续高效。',
+        '来都来了': '轻松的生活闲聊节目，主播分享近期的生活观察、好物与有趣见闻，是忙碌一周后的治愈陪伴。',
+        '不合时宜': '围绕性别、职场与社会的深度对谈，嘉宾观点犀利，适合想要拓展认知边界的听众。',
         '文化有限': '主播分享了三套互补的读书笔记系统：卡片笔记法、主题阅读法、费曼输出法，适合不同类型的阅读需求。',
-        '贤者时间': '独居5年的生活感悟，从学会独处到享受孤独，从生活技能到心灵成长，温柔而真实。',
-        '面基': '从资产配置到风险管理的系统讲解，适合投资新手建立正确的投资框架，避免常见陷阱。',
-        '大内密谈': '轻松的周末闲聊节目，主播分享了近期推荐的书、剧和播客，是发现好内容的绝佳渠道。'
+        '忽左忽右': '从商业现象到科技趋势的理性拆解，帮你在信息洪流中建立自己的判断框架。',
+        '东腔西调': '聚焦东西方文化碰撞的访谈节目，温柔又有料，带你看见更广阔的世界。'
       };
       return summaries[name] || '关注播客最新更新内容。';
     },
@@ -1348,7 +1345,6 @@ const Sections = {
     render() {
       const today = Storage.today();
       const td = Storage.getDayData('selfMedia', today);
-      const recos = td.recos || this.sampleRecos;
 
       // 今日灵感：抖音 / 百度 / 头条 / B站 全网热榜（服务端抓取）
       const liveInsp = window.DataSource ? DataSource.list('inspiration') : [];
@@ -1369,8 +1365,22 @@ const Sections = {
 
         <div id="smReco" class="sub-panel">
           <div class="card mb-4">
-            <div class="card-title"><span class="card-title-bar"></span>今日推荐<span class="content-updated">收录至 ${maxDateOf(recos)}</span></div>
-            ${recos.map(r => this.renderRecoCard(r, td)).join('')}
+            <div class="card-title"><span class="card-title-bar"></span>今日推荐 · 全网热榜
+              <button class="btn btn-outline" id="refreshRecoBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshRecoBtn')">刷新</button>
+            </div>
+            ${inspStamp}
+            ${inspList.map((ins,i) => `
+              <div class="inspiration-item">
+                <div class="inspiration-rank">${i+1}</div>
+                <div class="inspiration-content">
+                  <div class="inspiration-title">${ins.title}</div>
+                  <div class="inspiration-source">${ins.source}${ins.heat ? ' · 热度 ' + ins.heat : ''}</div>
+                </div>
+                <div class="item-actions">
+                  <a href="${ins.url}" target="_blank" rel="noopener noreferrer" class="action-btn" aria-label="打开">→</a>
+                  ${actionButtons({section:'selfMedia',title:ins.title,summary:ins.source||'灵感选题',url:ins.url,type:'inspiration'})}
+                </div>
+              </div>`).join('')}
           </div>
         </div>
 
@@ -1397,17 +1407,20 @@ const Sections = {
 
         <div id="smAesthetic" class="sub-panel" style="display:none;">
           <div class="card">
-            <div class="card-title"><span class="card-title-bar" style="background:#7B3FF2;"></span>审美搭建</div>
+            <div class="card-title"><span class="card-title-bar" style="background:#7B3FF2;"></span>审美搭建 · 灵感图鉴
+              <button class="btn btn-outline" id="refreshAeBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshAeBtn')">刷新</button>
+            </div>
+            ${inspStamp}
             <div class="aesthetics-grid">
-              ${this.aesthetics.map(ae => `
-                <div class="aesthetic-card" onclick="App.openExternal('${ae.url}')">
+              ${inspList.map((ins,i) => `
+                <div class="aesthetic-card" onclick="App.openExternal('${ins.url}')">
                   <div class="aesthetic-placeholder">
-                    <div style="font-size:32px;">🎨</div>
-                    <div style="font-size:11px;color:var(--text-ink-muted);margin-top:4px;">点击查看</div>
+                    <div style="font-size:28px;">🎨</div>
+                    <div style="font-size:11px;color:var(--text-ink-muted);margin-top:4px;">#${i+1}</div>
                   </div>
                   <div class="aesthetic-info">
-                    <div class="aesthetic-title">${ae.title}</div>
-                    <div class="aesthetic-desc">${ae.desc}</div>
+                    <div class="aesthetic-title">${ins.title}</div>
+                    <div class="aesthetic-desc">${ins.source}${ins.heat ? ' · 热度 ' + ins.heat : ''}</div>
                   </div>
                 </div>`).join('')}
             </div>
@@ -2315,7 +2328,7 @@ const Sections = {
       const today = Storage.today();
       // 雅思
       const ieltsData = Storage.getDayData('ielts', today);
-      const ieltsDone = ['vocabulary','dialogue','bbc','duolingo'].filter(k => ieltsData[k]?.done).length;
+      const ieltsDone = ['vocabulary','bbc','duolingo'].filter(k => ieltsData[k]?.done).length;
       // AI学习
       const aiData = Storage.getDayData('aiStudy', today);
       const aiDone = Object.keys(aiData.notes||{}).length;
@@ -2333,10 +2346,10 @@ const Sections = {
         const d = new Date(); d.setDate(d.getDate()-i);
         const ds = Storage.formatDate(d);
         const id = Storage.getDayData('ielts', ds);
-        weekDone += ['vocabulary','dialogue','bbc','duolingo'].filter(k => id[k]?.done).length;
+        weekDone += ['vocabulary','bbc','duolingo'].filter(k => id[k]?.done).length;
       }
 
-      return { ieltsDone, ieltsTotal:4, aiDone, podDone, smDone, weekDone };
+      return { ieltsDone, ieltsTotal:3, aiDone, podDone, smDone, weekDone };
     },
 
     renderStats(s) {

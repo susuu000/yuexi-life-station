@@ -365,6 +365,8 @@ const App = {
 
   // 天气 - 基于地理位置自动更新
   _weatherData: null,
+  _weatherCity: '宁波',
+  _weatherLoc: { lat: '29.87', lon: '121.55' }, // 默认：宁波
 
   updateWeather() {
     const weatherEl = document.getElementById('currentWeather');
@@ -372,24 +374,31 @@ const App = {
     weatherEl.innerHTML = '<span class="weather-icon">⏳</span> 获取中...';
     weatherEl.style.cursor = 'pointer';
 
-    if (!navigator.geolocation) {
-      this._fetchWeather('39.90', '116.41', weatherEl);
-      return;
-    }
+    const fallback = () => this._fetchWeather(this._weatherLoc.lat, this._weatherLoc.lon, '宁波', weatherEl);
+
+    if (!navigator.geolocation) { fallback(); return; }
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
         const lat = pos.coords.latitude.toFixed(2);
         const lon = pos.coords.longitude.toFixed(2);
-        await this._fetchWeather(lat, lon, weatherEl);
+        let city = '';
+        try {
+          const r = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=zh`);
+          const g = await r.json();
+          city = g.city || g.locality || g.principalSubdivision || '';
+        } catch (e) {}
+        if (!city) city = '本地';
+        this._weatherCity = city;
+        await this._fetchWeather(lat, lon, city, weatherEl);
       },
-      () => { this._fetchWeather('39.90', '116.41', weatherEl); },
+      () => { fallback(); },
       { timeout: 8000, enableHighAccuracy: false }
     );
   },
 
-  async _fetchWeather(lat, lon, weatherEl) {
+  async _fetchWeather(lat, lon, city, weatherEl) {
     try {
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=7`;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=3`;
       const res = await fetch(url);
       const data = await res.json();
       if (!data || !data.current) throw new Error('no data');
@@ -398,20 +407,20 @@ const App = {
       const code = data.current.weather_code;
       const desc = this._weatherCodeToText(code);
       const icon = this._weatherCodeToIcon(code);
-      weatherEl.innerHTML = `<span class="weather-icon">${icon}</span> ${temp}°${desc}`;
+      weatherEl.innerHTML = `<span class="weather-city">${city}</span> <span class="weather-icon">${icon}</span> ${temp}°${desc}`;
     } catch (e) {
-      this._setFallbackWeather(weatherEl);
+      this._setFallbackWeather(weatherEl, city);
     }
   },
 
-  _setFallbackWeather(weatherEl) {
+  _setFallbackWeather(weatherEl, city) {
     const month = new Date().getMonth() + 1;
     const tempRange = {1:[2,8],2:[4,12],3:[10,18],4:[15,24],5:[20,28],6:[24,32],7:[26,35],8:[26,34],9:[20,28],10:[14,22],11:[8,16],12:[3,10]};
     const range = tempRange[month] || [15,25];
     const temp = Math.floor(Math.random()*(range[1]-range[0])+range[0]);
     const conds = [['☀️','晴'],['⛅','多云'],['☁️','阴'],['🌧️','小雨']];
     const c = conds[Math.floor(Math.random()*conds.length)];
-    weatherEl.innerHTML = `<span class="weather-icon">${c[0]}</span> ${temp}°${c[1]}`;
+    weatherEl.innerHTML = `<span class="weather-city">${city || '宁波'}</span> <span class="weather-icon">${c[0]}</span> ${temp}°${c[1]}`;
   },
 
   _weatherCodeToText(code) {
@@ -437,22 +446,24 @@ const App = {
   },
 
   showWeather() {
+    const city = this._weatherCity || '本地';
     if (this._weatherData && this._weatherData.daily) {
       const days = ['日','一','二','三','四','五','六'];
       const daily = this._weatherData.daily;
       let forecast = '';
-      for (let i = 0; i < daily.time.length; i++) {
+      const n = Math.min(3, daily.time.length);
+      for (let i = 0; i < n; i++) {
         const d = new Date(daily.time[i]);
         const hi = Math.round(daily.temperature_2m_max[i]);
         const lo = Math.round(daily.temperature_2m_min[i]);
         const code = daily.weather_code[i];
         forecast += `<div class="weather-day"><div class="weather-day-name">${i===0?'今天':'星期'+days[d.getDay()]}</div><div class="weather-day-icon">${this._weatherCodeToIcon(code)}</div><div class="weather-day-cond">${this._weatherCodeToText(code)}</div><div class="weather-day-temp">${hi}° / ${lo}°</div></div>`;
       }
-      this.showModal('未来一周天气', `<div class="weather-forecast">${forecast}</div>`);
+      this.showModal(`${city} · 未来3天天气`, `<div class="weather-forecast">${forecast}</div>`);
     } else {
       const days = ['日','一','二','三','四','五','六'];
       let forecast = '';
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 3; i++) {
         const d = new Date(); d.setDate(d.getDate()+i);
         const m = d.getMonth()+1;
         const tr = {1:[2,8],2:[4,12],3:[10,18],4:[15,24],5:[20,28],6:[24,32],7:[26,35],8:[26,34],9:[20,28],10:[14,22],11:[8,16],12:[3,10]}[m]||[15,25];
@@ -462,7 +473,7 @@ const App = {
         const c = cs[Math.floor(Math.random()*cs.length)];
         forecast += `<div class="weather-day"><div class="weather-day-name">${i===0?'今天':'星期'+days[d.getDay()]}</div><div class="weather-day-icon">${c[0]}</div><div class="weather-day-cond">${c[1]}</div><div class="weather-day-temp">${hi}° / ${lo}°</div></div>`;
       }
-      this.showModal('未来一周天气', `<div class="weather-forecast">${forecast}</div>`);
+      this.showModal(`${city} · 未来3天天气`, `<div class="weather-forecast">${forecast}</div>`);
     }
   },
 
@@ -796,12 +807,12 @@ const App = {
     this.closeModal();
   },
 
-  showToast(msg) {
+  showToast(msg, dur = 2500) {
     const t = document.getElementById('toast');
     t.textContent = msg;
     t.classList.add('show');
     clearTimeout(this._toastTimer);
-    this._toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
+    this._toastTimer = setTimeout(() => t.classList.remove('show'), dur);
   },
 
   showModal(title, body) {

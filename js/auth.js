@@ -105,15 +105,18 @@
     if (span) span.textContent = user ? (user.email || '账户') : '我的账户';
   }
 
-  // 启动后若未配置 / 未登录，给出引导；未登录则自动弹窗（留时间恢复会话）
+  // 启动后给出引导；但【绝不自动弹出遮挡式登录框】——
+  // 应用本身以本机存储为首选，未登录也应完全可用（否则会拦截所有点击，导致「点击阅读无反应」等问题）。
+  // 登录仅在用户主动点击「我的账户」或触发同步时才弹出。
   if (!configured) {
     setTimeout(() => {
       if (typeof App !== 'undefined' && App.showToast)
-        App.showToast('未配置 Supabase，当前仅本机使用（见 README）');
+        App.showToast('未配置 Supabase，当前仅本机使用（见 README）', 4000);
     }, 1500);
   } else {
     setTimeout(() => {
-      if (!skipped && !Sync.isOnline()) openAuthModal('signin');
+      if (!skipped && !Sync.isOnline() && typeof App !== 'undefined' && App.showToast)
+        App.showToast('未登录云端 · 点「我的账户」可登录同步（也可仅本机使用）', 4500);
     }, 1800);
   }
 })();

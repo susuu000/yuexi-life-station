@@ -524,10 +524,9 @@ async function main() {
     console.log('已加载上次结果，更新于', prev.updatedAt);
   } catch { console.log('无历史数据，首次抓取'); }
 
-  // 覆盖前端默认关注 + 常见热门播客，前端按 podcaster 名字匹配
+  // 覆盖前端默认关注，前端按 podcaster 名字匹配；保持与前端 followedPodcasts 一致
   const followNames = [
-    '高能量', '文化有限', '贤者时间', '面基', '大内密谈',
-    '硅谷101', '故事FM', '忽左忽右', '商业就是这样', '不合时宜'
+    '来都来了', '不合时宜', '文化有限', '忽左忽右', '东腔西调'
   ];
 
   const [news, ai, stock, podHot, podFollow, sanlian, subs, inspiration, releases] = await Promise.all([
