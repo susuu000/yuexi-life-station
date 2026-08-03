@@ -151,17 +151,36 @@ const Storage = {
     });
   },
 
-  // 渲染后异步加载所有图片占位符
+  // 渲染后懒加载图片：仅当图片进入视口时才从 IndexedDB 取 base64 注入（P-2）
   hydrateImages(container) {
     if (!container) container = document;
     const imgs = container.querySelectorAll('img[data-img-id]');
-    imgs.forEach(async (el) => {
-      const id = el.getAttribute('data-img-id');
-      if (id && id.startsWith('img_')) {
-        const src = await this.loadImage(id);
-        if (src) el.src = src;
-      }
-    });
+    if (!imgs.length) return;
+    // 不支持 IntersectionObserver 时回退为立即加载
+    if (!('IntersectionObserver' in window)) {
+      imgs.forEach(async (el) => {
+        const id = el.getAttribute('data-img-id');
+        if (id && id.startsWith('img_')) {
+          const src = await this.loadImage(id);
+          if (src) el.src = src;
+        }
+      });
+      return;
+    }
+    // 每次重渲染都重建观察器，避免对已移除（detached）节点持续持有引用造成泄漏
+    if (this._imgObserver) this._imgObserver.disconnect();
+    this._imgObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        obs.unobserve(el);
+        const id = el.getAttribute('data-img-id');
+        if (id && id.startsWith('img_')) {
+          this.loadImage(id).then(src => { if (src) el.src = src; });
+        }
+      });
+    }, { root: null, rootMargin: '200px', threshold: 0.01 });
+    imgs.forEach(el => this._imgObserver.observe(el));
   },
 
   // 合并默认值（防止旧数据缺字段）
@@ -205,9 +224,8 @@ const Storage = {
     if (!this.data.reading.checkinColors) this.data.reading.checkinColors = { book: '#2E6F7E', media: '#C04830' };
     if (!this.data.reading.gongzhonghao) this.data.reading.gongzhonghao = { lastUpdate: '', articles: [] };
     if (!this.data.reading.sanlian) this.data.reading.sanlian = { lastUpdate: '', articles: [] };
-    // 移除旧的blogs/sanlian/books/media（已迁移）
+    // 移除真正已迁移的旧字段（blogs/books/media）；sanlian 仍是当前活字段，不可删除
     if (this.data.reading.blogs) delete this.data.reading.blogs;
-    if (this.data.reading.sanlian) delete this.data.reading.sanlian;
     if (this.data.reading.books) {
       // 迁移旧书籍数据到bookMedia
       if (this.data.reading.books.reading && this.data.reading.bookMedia.reading.length === 0) {
@@ -489,12 +507,17 @@ const Storage = {
     return this.data.favorites.some(f => f.title === title);
   },
 
-  // 自动打卡（学习任意板块后触发）
-  autoCheckin() {
+  // 自动打卡（学习任意板块后触发）；source 为触发来源说明（用于 IX-7 打卡明细）
+  autoCheckin(source) {
     const today = this.today();
-    if (!this.data.checkin) this.data.checkin = { records: {}, streak: 0, totalDays: 0 };
-    if (this.data.checkin.records[today]) return false;
+    if (!this.data.checkin) this.data.checkin = { records: {}, streak: 0, totalDays: 0, sources: {} };
+    if (!this.data.checkin.sources) this.data.checkin.sources = {};
+    if (this.data.checkin.records[today]) {
+      if (source) this._logCheckinSource(today, source);
+      return false;
+    }
     this.data.checkin.records[today] = true;
+    if (source) this._logCheckinSource(today, source);
     this.data.checkin.totalDays = Object.keys(this.data.checkin.records).length;
     let streak = 0;
     let d = new Date();
@@ -506,6 +529,14 @@ const Storage = {
     this.data.checkin.streak = streak;
     this.save();
     return true;
+  },
+
+  // 记录今日打卡的触发来源（去重）
+  _logCheckinSource(today, source) {
+    if (!this.data.checkin.sources) this.data.checkin.sources = {};
+    if (!this.data.checkin.sources[today]) this.data.checkin.sources[today] = [];
+    const arr = this.data.checkin.sources[today];
+    if (!arr.includes(source)) arr.push(source);
   },
 
   // 手动打卡

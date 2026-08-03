@@ -21,11 +21,19 @@ function actionButtons(item) {
     </div>`;
 }
 
+// 公共：取一组带 date 字段的对象中最新日期
+function maxDateOf(arr) {
+  if (!arr || !arr.length) return '';
+  const dates = arr.map(x => x && x.date).filter(Boolean).sort();
+  return dates.length ? dates[dates.length - 1] : '';
+}
+
 const Sections = {
 
   // ==================== 首页 ====================
   home: {
     expandedSection: null,
+    checkinDetailOpen: false,
 
     render() {
       const checkedIn = Storage.isCheckedIn();
@@ -80,7 +88,9 @@ const Sections = {
       const mm = String(now.getMinutes()).padStart(2,'0');
       const ss = String(now.getSeconds()).padStart(2,'0');
 
+      const backupTip = (typeof App.getBackupTip === 'function') ? App.getBackupTip() : '';
       return `
+        ${backupTip}
         <div class="home-time-card-v2" id="homeTimeCard" onclick="App.toggleFlipClock()">
           <div class="flip-clock" id="flipClock">
             <div class="flip-digit" id="flipH1">${hh[0]}</div>
@@ -105,11 +115,36 @@ const Sections = {
           <div class="checkin-flame">${ck.streak>=3?'🔥':''}</div>
         </div>
 
+        ${this.renderCheckinDetail()}
+
+        ${this.renderTodayToHandle()}
+
         <div class="home-sections-grid-v2">
           ${sections.map(s => this.renderProgressCardV2(s)).join('')}
           <div id="homeSubSections"></div>
         </div>
       `;
+    },
+
+    renderCheckinDetail() {
+      const ck = Storage.data.checkin || {};
+      const sources = (ck.sources && ck.sources[Storage.today()]) || [];
+      if (!sources.length) return '';
+      return `
+        <div class="checkin-detail">
+          <div class="checkin-detail-toggle" onclick="Sections.home.toggleCheckinDetail()">
+            <span>今日打卡明细（${sources.length}）</span>
+            <svg class="checkin-detail-chevron ${this.checkinDetailOpen?'open':''}" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="checkin-detail-body" style="${this.checkinDetailOpen?'':'display:none;'}">
+            ${sources.map(s => `<div class="checkin-detail-item">${s}</div>`).join('')}
+          </div>
+        </div>`;
+    },
+
+    toggleCheckinDetail() {
+      this.checkinDetailOpen = !this.checkinDetailOpen;
+      App.refresh();
     },
 
     renderProgressCardV2(s) {
@@ -153,6 +188,9 @@ const Sections = {
             <div class="pcv2-icon" style="background:${s.color};">${s.icon}</div>
             <div class="pcv2-name">${s.name}</div>
             <div class="pcv2-count ${isComplete?'done':''}">${done}/${total || '—'}</div>
+            <svg class="pcv2-chevron" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
           <div class="pcv2-bar-wrap">
             <div class="pcv2-bar" style="width:${pct}%;background:${isComplete?'var(--success)':s.color};"></div>
@@ -191,6 +229,88 @@ const Sections = {
       if (this.expandedSection === id) this.expandedSection = null;
       else this.expandedSection = id;
       App.refresh();
+    },
+
+    // ===== F-1：今天要处理（原 F-10 合入）=====
+    getTodayToHandle() {
+      const today = Storage.today();
+      const yest = Storage.yesterday();
+      const items = [];
+
+      // 雅思任务
+      const ieltsToday = Storage.getDayData('ielts', today);
+      const ieltsYest = Storage.getDayData('ielts', yest);
+      const ieltsTasks = [
+        { key: 'vocabulary', name: '单词学习' },
+        { key: 'dialogue', name: '英语对话' },
+        { key: 'bbc', name: '外刊听力' },
+        { key: 'duolingo', name: '多邻国打卡' }
+      ];
+      ieltsTasks.forEach(t => {
+        if (!ieltsToday[t.key]?.done) {
+          items.push({ target: 'ielts', title: `完成雅思·${t.name}` });
+        }
+      });
+
+      // AI 学习笔记
+      const aiToday = Storage.getDayData('aiStudy', today);
+      const aiYest = Storage.getDayData('aiStudy', yest);
+      const aiNews = aiToday.news || (Sections.aiStudy.sampleNews || []);
+      aiNews.forEach(n => {
+        if (!aiToday.notes?.[n.id]) {
+          const title = (n.title || 'AI资讯');
+          const short = title.length > 14 ? title.slice(0, 14) + '…' : title;
+          items.push({ target: 'ai-study', title: `阅读笔记：${short}` });
+        }
+      });
+
+      // 阅读打卡
+      const checkinToday = (Storage.data.reading.checkin && Storage.data.reading.checkin[today]) || [];
+      const checkinYest = (Storage.data.reading.checkin && Storage.data.reading.checkin[yest]) || [];
+      if (!checkinToday.length) {
+        items.push({ target: 'reading', title: '今日书影打卡' });
+      }
+
+      // 自我探索
+      const seToday = Storage.getDayData('selfExploration', today);
+      const seYest = Storage.getDayData('selfExploration', yest);
+      if (!seToday.emotions?.length) {
+        items.push({ target: 'self-exploration', title: '记录今日状态' });
+      }
+      if (!seToday.daily?.length) {
+        items.push({ target: 'self-exploration', title: '写日常记录' });
+      }
+
+      return items;
+    },
+
+    renderTodayToHandle() {
+      const items = this.getTodayToHandle();
+      if (!items.length) {
+        return `
+          <div class="home-todo-card empty">
+            <div class="todo-card-head">
+              <span class="todo-card-bar"></span>
+              <span class="todo-card-title">今天要处理</span>
+            </div>
+            <div class="todo-empty">今日暂无待处理，继续保持</div>
+          </div>`;
+      }
+      const rows = items.map(it => `
+        <div class="todo-item" onclick="App.navigate('${it.target}')">
+          <span class="todo-dot"></span>
+          <span class="todo-text">${it.title}</span>
+          <span class="todo-arrow">→</span>
+        </div>`).join('');
+      return `
+        <div class="home-todo-card">
+          <div class="todo-card-head">
+            <span class="todo-card-bar"></span>
+            <span class="todo-card-title">今天要处理</span>
+            <span class="todo-count">${items.length}</span>
+          </div>
+          ${rows}
+        </div>`;
     }
   },
 
@@ -234,11 +354,19 @@ const Sections = {
                   <div class="journal-words"><span class="journal-label">重点词汇：</span>${journalArticle.words}</div>
                   <div class="journal-listening-tip"><span class="journal-label">听力技巧：</span>${journalArticle.tip}</div>
                   <div class="journal-actions">
-                    <button class="btn btn-primary journal-btn" id="journalPlayBtn" onclick="Sections.ielts.playJournalAudio()">▶ 播放听力</button>
+                    <button class="btn btn-primary journal-btn" id="journalPlayBtn" onclick="Sections.ielts.playJournalAudio()">▶ ${journalArticle.audioUrl ? '原声音频' : 'AI朗读'}</button>
                     <button class="btn btn-outline journal-btn" onclick="Sections.ielts.toggleOriginal()">📄 查看原文</button>
                     <button class="btn btn-outline journal-btn" onclick="Sections.ielts.toggleTranslation()">🌐 点击翻译</button>
                     <a href="${journalArticle.url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline journal-btn">🔗 原文链接</a>
                   </div>
+                  <div class="journal-speed">
+                    <span class="journal-speed-label">语速</span>
+                    <button class="speed-btn" data-rate="0.5" onclick="Sections.ielts.setTtsRate(0.5,this)">0.5x</button>
+                    <button class="speed-btn" data-rate="0.75" onclick="Sections.ielts.setTtsRate(0.75,this)">0.75x</button>
+                    <button class="speed-btn active" data-rate="0.9" onclick="Sections.ielts.setTtsRate(0.9,this)">1x</button>
+                    <button class="speed-btn" data-rate="1.25" onclick="Sections.ielts.setTtsRate(1.25,this)">1.25x</button>
+                  </div>
+                  <div class="journal-audio-tag">${journalArticle.audioUrl ? '🔊 原声音频' : '🤖 AI 朗读（语音合成）'}</div>
                   <div id="journalOriginal" class="journal-original-text" style="display:none;">
                     <div class="journal-label" style="margin-bottom:6px;">英文原文：</div>
                     ${journalArticle.audioText || ''}
@@ -249,7 +377,7 @@ const Sections = {
                   </div>
                   ${actionButtons({section:'ielts',title:journalArticle.title,summary:journalArticle.summary,url:journalArticle.url,type:'journal'})}
                 </div>
-                <textarea class="task-review" placeholder="听力复盘：听懂了多少？哪些词没抓住？" oninput="Sections.ielts.saveReview('bbc',this.value)">${td[t.key]?.review||''}</textarea>
+                <textarea class="task-review" id="rev-bbc" placeholder="听力复盘：听懂了多少？哪些词没抓住？" oninput="Sections.ielts.saveReview('bbc',this.value)">${td[t.key]?.review||''}</textarea>
               </div>
             </div>`;
             }
@@ -262,20 +390,21 @@ const Sections = {
                 <div class="flex gap-2 mt-2">
                   <a href="${t.url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size:11px;padding:4px 10px;">跳转学习 <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
                 </div>
-                <textarea class="task-review" placeholder="复盘：今天学到了什么？" oninput="Sections.ielts.saveReview('${t.key}',this.value)">${td[t.key]?.review||''}</textarea>
+                <textarea class="task-review" id="rev-${t.key}" placeholder="复盘：今天学到了什么？" oninput="Sections.ielts.saveReview('${t.key}',this.value)">${td[t.key]?.review||''}</textarea>
               </div>
             </div>`;
           }).join('')}
         </div>
-        ${hist.length > 0 ? `<div class="card"><div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>历史记录</div>${hist.map(d => this.renderHistory(d)).join('')}</div>` : ''}
+        ${hist.length > 0 ? `<div class="card"><div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>历史记录</div>${hist.map((d, i) => this.renderHistory(d, i)).join('')}</div>` : ''}
       `;
     },
 
-    renderHistory(date) {
+    renderHistory(date, idx = 999) {
       const d = Storage.getDayData('ielts', date);
       const names = {vocabulary:'单词学习',dialogue:'英语对话练习',bbc:'外刊听力',duolingo:'多邻国'};
       const done = Object.keys(names).filter(k => d[k]?.done).length;
-      return `<div class="date-group collapsed" data-date="${date}">
+      const collapsedCls = idx < 3 ? '' : 'collapsed';
+      return `<div class="date-group ${collapsedCls}" data-date="${date}">
         <div class="date-group-header" onclick="Sections.toggleDateGroup(this)"><div class="date-group-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="date-group-toggle"><path d="M6 9l6 6 6-6"/></svg>${date}<span class="date-group-badge">${done}/${Object.keys(names).length}</span></div></div>
         <div class="date-group-body">${Object.entries(names).map(([k,n]) => `<div class="task-item ${d[k]?.done?'task-done':''}" style="margin-bottom:6px;"><div class="task-checkbox ${d[k]?.done?'checked':''}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div><div class="task-content"><div class="task-name">${n}</div>${d[k]?.review?`<div class="task-meta">复盘：${d[k].review}</div>`:''}</div></div>`).join('')}</div></div>`;
     },
@@ -338,36 +467,53 @@ const Sections = {
       return this.journals[dayOfYear % this.journals.length];
     },
 
-    // 外刊听力：播放音频（使用浏览器语音合成）
+    // 外刊听力：语速设置
+    _ttsRate: 0.9,
+    setTtsRate(rate, btn) {
+      this._ttsRate = rate;
+      document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    },
+
+    // 外刊听力：播放音频（优先真实音频 URL，否则浏览器语音合成 TTS）
     playJournalAudio() {
       const article = this.getDailyJournal();
-      if (!article || !article.audioText) { App.showToast('暂无音频内容'); return; }
-      
+      if (!article) { App.showToast('暂无音频内容'); return; }
+      const playBtn = document.getElementById('journalPlayBtn');
+
+      // 真实音频优先
+      if (article.audioUrl) {
+        if (window._journalAudioEl) { window._journalAudioEl.pause(); }
+        const audio = new Audio(article.audioUrl);
+        window._journalAudioEl = audio;
+        audio.play().then(() => {
+          App.showToast('🔊 播放原声音频');
+          if (playBtn) { playBtn.innerHTML = '⏸ 播放中...'; playBtn.onclick = () => { audio.pause(); playBtn.innerHTML = '▶ 原声音频'; playBtn.onclick = () => Sections.ielts.playJournalAudio(); }; }
+        }).catch(() => App.showToast('原声音频播放失败，已切换 AI 朗读'));
+        audio.onended = () => { if (playBtn) { playBtn.innerHTML = '▶ 原声音频'; playBtn.onclick = () => Sections.ielts.playJournalAudio(); } };
+        return;
+      }
+
+      // TTS 兜底
+      if (!article.audioText) { App.showToast('暂无音频内容'); return; }
       if (!('speechSynthesis' in window)) {
         App.showToast('当前浏览器不支持语音播放');
         return;
       }
-      
-      // 停止正在播放的语音
       window.speechSynthesis.cancel();
-      
       const utterance = new SpeechSynthesisUtterance(article.audioText);
       utterance.lang = 'en-US';
-      utterance.rate = 0.9;
+      utterance.rate = this._ttsRate || 0.9;
       utterance.pitch = 1;
-      
-      const playBtn = document.getElementById('journalPlayBtn');
       if (playBtn) {
         playBtn.innerHTML = '⏸ 播放中...';
-        playBtn.onclick = () => { window.speechSynthesis.cancel(); playBtn.innerHTML = '▶ 播放听力'; playBtn.onclick = () => Sections.ielts.playJournalAudio(); };
+        playBtn.onclick = () => { window.speechSynthesis.cancel(); playBtn.innerHTML = '▶ AI朗读'; playBtn.onclick = () => Sections.ielts.playJournalAudio(); };
       }
-      
       utterance.onend = () => {
-        if (playBtn) { playBtn.innerHTML = '▶ 播放听力'; playBtn.onclick = () => Sections.ielts.playJournalAudio(); }
+        if (playBtn) { playBtn.innerHTML = '▶ AI朗读'; playBtn.onclick = () => Sections.ielts.playJournalAudio(); }
       };
-      
       window.speechSynthesis.speak(utterance);
-      App.showToast('🔊 开始播放');
+      App.showToast('🤖 AI 朗读中');
     },
 
     // 外刊听力：显示/隐藏翻译
@@ -400,7 +546,7 @@ const Sections = {
       d[key].done = !d[key].done;
       Storage.save();
       // 完成任务时自动打卡
-      if (d[key].done) App.triggerAutoCheckin();
+      if (d[key].done) App.triggerAutoCheckin('完成雅思学习任务');
       App.refresh();
     },
 
@@ -485,12 +631,12 @@ const Sections = {
       const today = Storage.today();
       const td = Storage.getDayData('aiStudy', today);
       const hist = Storage.getHistoryDates('aiStudy').filter(d => d !== today);
-      // 优先使用动态RSS数据（来自发现板块的AI刷新），回退到静态示例
-      const cachedAI = Storage.data.discover?.ai;
-      const useDynamic = cachedAI && cachedAI.length > 0;
-      const newsList = useDynamic ? cachedAI : (td.news || this.sampleNews);
+      // AI 资讯：真实数据源（量子位 / 36氪，服务端抓取），无数据时回落示例
+      const liveAI = window.DataSource ? DataSource.list('ai') : [];
+      const useDynamic = liveAI.length > 0;
+      const newsList = useDynamic ? liveAI : (td.news || this.sampleNews);
       const kb = this.knowledgeBase;
-      const aiUpdatedAt = Storage.data.discover?.aiUpdatedAt;
+      const aiUpdatedAt = useDynamic && window.DataSource ? DataSource.updatedAt('ai') : '';
 
       return `
         <div class="section-header">
@@ -505,8 +651,8 @@ const Sections = {
 
         <div class="sub-panel" id="aiNewsPanel">
           <div style="display:flex;align-items:center;margin-bottom:8px;">
-            <button class="btn btn-outline" id="refreshAiStudyBtn" style="font-size:11px;padding:2px 10px;" onclick="Sections.aiStudy.refresh()">🔄 刷新资讯</button>
-            ${aiUpdatedAt ? `<span style="font-size:11px;color:var(--text-ink-muted);margin-left:8px;">更新于 ${Sections.discover._formatRelative(aiUpdatedAt)}</span>` : ''}
+            <button class="btn btn-outline" id="refreshAiStudyBtn" style="font-size:11px;padding:2px 10px;" onclick="DataSource.refresh('refreshAiStudyBtn')">刷新资讯</button>
+            ${aiUpdatedAt ? `<span style="font-size:11px;color:var(--text-ink-muted);margin-left:8px;">更新于 ${DataSource.relative(aiUpdatedAt)}</span>` : ''}
           </div>
           <div id="aiNewsList">${newsList.map(n => this.renderNewsCard(n, td, useDynamic)).join('')}</div>
         </div>
@@ -523,22 +669,16 @@ const Sections = {
           </div>
         </div>
 
-        ${hist.length > 0 ? `<div class="card"><div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>历史记录</div>${hist.map(d => this.renderHistory(d)).join('')}</div>` : ''}
+        ${hist.length > 0 ? `<div class="card"><div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>历史记录</div>${hist.map((d, i) => this.renderHistory(d, i)).join('')}</div>` : ''}
       `;
-    },
-
-    switchAiTab(tab, btn) {
-      document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('aiNewsPanel').style.display = tab === 'news' ? '' : 'none';
-      document.getElementById('aiKbPanel').style.display = tab === 'kb' ? '' : 'none';
     },
 
     renderNewsCard(news, td, isSimple) {
       // 简单模式：RSS数据只有 title/url/date/source/summary，无 highlights/oneLiner/resources
+      // noteId / note 提升到函数顶部，完整模式与简单模式共用，避免完整模式引用未定义变量
+      const noteId = news.id || ('rss-' + (news.url || news.title).substring(0, 50));
+      const note = td.notes?.[noteId] || {};
       if (isSimple) {
-        const noteId = news.id || ('rss-' + (news.url || news.title).substring(0, 50));
-        const note = td.notes?.[noteId] || {};
         return `
           <div class="card mb-4">
             <div class="ai-news-header">
@@ -549,7 +689,7 @@ const Sections = {
             ${news.url ? `<a href="${news.url}" target="_blank" rel="noopener noreferrer" class="ai-news-link">📎 原文链接</a>` : ''}
             ${news.summary ? `<div class="ai-news-section"><div class="ai-news-label">📌 摘要</div><div class="ai-news-content">${news.summary}</div></div>` : ''}
             ${note.text ? `<div class="ai-news-section"><div class="ai-news-label">✍️ 我的笔记</div><div class="ai-news-content">${note.text}</div></div>` : ''}
-            <textarea class="task-review mt-3" placeholder="写下你的学习笔记..." oninput="Sections.aiStudy.saveNote('${noteId}',this.value)">${note.text||''}</textarea>
+            <textarea class="task-review mt-3" id="note-${noteId}" placeholder="写下你的学习笔记..." oninput="Sections.aiStudy.saveNote('${noteId}',this.value)">${note.text||''}</textarea>
           </div>`;
       }
       return `
@@ -571,7 +711,7 @@ const Sections = {
               ${news.resources.videos.map(v => `<a href="${v.url}" target="_blank" rel="noopener noreferrer" class="ai-resource-item video"><div class="ai-resource-type">视频</div><div class="ai-resource-name">${v.title}</div><div class="ai-resource-desc">${v.desc}</div></a>`).join('')}
             </div>
           </div>
-          <textarea class="task-review mt-3" placeholder="写下你的学习笔记..." oninput="Sections.aiStudy.saveNote('${news.id}',this.value)">${note.text||''}</textarea>
+          <textarea class="task-review mt-3" id="note-${news.id}" placeholder="写下你的学习笔记..." oninput="Sections.aiStudy.saveNote('${news.id}',this.value)">${note.text||''}</textarea>
         </div>`;
     },
 
@@ -605,27 +745,19 @@ const Sections = {
       d.notes[id].text = val;
       Storage.save();
       // 写笔记时自动打卡
-      if (val && val.trim()) App.triggerAutoCheckin();
+      if (val && val.trim()) App.triggerAutoCheckin('完成学习记录');
     },
 
-    renderHistory(date) {
+    renderHistory(date, idx = 999) {
       const d = Storage.getDayData('aiStudy', date);
       const news = d.news || [];
       const done = news.filter(n => d.notes?.[n.id]).length;
-      return `<div class="date-group collapsed"><div class="date-group-header" onclick="Sections.toggleDateGroup(this)"><div class="date-group-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="date-group-toggle"><path d="M6 9l6 6 6-6"/></svg>${date}<span class="date-group-badge">${done}/${news.length||0}</span></div></div><div class="date-group-body">${news.map(n => `<div class="task-item ${d.notes?.[n.id]?'task-done':''}" style="margin-bottom:6px;"><div class="task-checkbox ${d.notes?.[n.id]?'checked':''}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div><div class="task-content"><div class="task-name">${n.title}</div>${d.notes?.[n.id]?.text?`<div class="task-meta">${d.notes[n.id].text}</div>`:''}</div></div>`).join('')}</div></div>`;
+      const collapsedCls = idx < 3 ? '' : 'collapsed';
+      return `<div class="date-group ${collapsedCls}"><div class="date-group-header" onclick="Sections.toggleDateGroup(this)"><div class="date-group-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="date-group-toggle"><path d="M6 9l6 6 6-6"/></svg>${date}<span class="date-group-badge">${done}/${news.length||0}</span></div></div><div class="date-group-body">${news.map(n => `<div class="task-item ${d.notes?.[n.id]?'task-done':''}" style="margin-bottom:6px;"><div class="task-checkbox ${d.notes?.[n.id]?'checked':''}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div><div class="task-content"><div class="task-name">${n.title}</div>${d.notes?.[n.id]?.text?`<div class="task-meta">${d.notes[n.id].text}</div>`:''}</div></div>`).join('')}</div></div>`;
     },
 
     async refresh() {
-      const btn = document.getElementById('refreshAiStudyBtn');
-      if (btn) { btn.textContent = '⏳ 刷新中'; btn.disabled = true; }
-      App.showToast('正在获取最新 AI 资讯...');
-      try {
-        // 复用发现板块的 AI RSS 刷新逻辑
-        await Sections.discover.refreshAI();
-      } catch(e) {
-        App.showToast('⚠️ 刷新失败: ' + e.message);
-      }
-      if (btn) { btn.textContent = '🔄 刷新资讯'; btn.disabled = false; }
+      if (window.DataSource) await DataSource.refresh('refreshAiStudyBtn');
     }
   },
 
@@ -633,10 +765,18 @@ const Sections = {
   reading: {
     render() {
       const bm = Storage.data.reading.bookMedia;
+
+      // 订阅精选：真实数据（分组），无数据时回落到内置示例
+      const liveSub = window.DataSource ? DataSource.map('subscriptions') : null;
+      const subGroups = (liveSub && Object.keys(liveSub).length) ? liveSub : this.fallbackGroups();
+      const subKeys = Object.keys(subGroups);
+      const subStamp = liveSub && window.DataSource ? DataSource.stamp('subscriptions') : '';
+      const slStamp = (window.DataSource && DataSource.list('sanlian').length) ? DataSource.stamp('sanlian') : '';
+
       return `
         <div class="section-header">
           <div><div class="section-title"><span class="section-title-icon" style="background:var(--earth);"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></span>阅读</div>
-          <div class="section-subtitle">书影 · 打卡 · 公众号 · 三联中读</div></div>
+          <div class="section-subtitle">书影 · 打卡 · 订阅精选 · 三联</div></div>
           <div class="flex gap-2">
             <button class="btn btn-outline" onclick="Sections.reading.addBookMedia('book')">+ 书籍</button>
             <button class="btn btn-outline" onclick="Sections.reading.addBookMedia('media')">+ 影视</button>
@@ -645,7 +785,7 @@ const Sections = {
 
         <div class="sub-tabs-bar">
           <button class="sub-tab active" data-panel="readingBookMedia" onclick="App.bindSubTabs(this)">书影</button>
-          <button class="sub-tab" data-panel="readingGzh" onclick="App.bindSubTabs(this)">公众号精选</button>
+          <button class="sub-tab" data-panel="readingGzh" onclick="App.bindSubTabs(this)">订阅精选</button>
           <button class="sub-tab" data-panel="readingSanlian" onclick="App.bindSubTabs(this)">三联中读</button>
         </div>
 
@@ -658,38 +798,36 @@ const Sections = {
 
           <!-- 书影打卡月历 -->
           <div class="card">
-            <div class="card-title"><span class="card-title-bar" style="background:var(--gold);"></span>书影打卡</div>
+            <div class="card-title"><span class="card-title-bar" style="background:var(--gold);"></span>书影打卡
+              <button class="btn btn-outline checkin-quick-btn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.reading.addCheckinEntry('${Storage.today()}')">今日打卡</button>
+            </div>
             ${this.renderCheckinCalendar()}
           </div>
         </div>
 
         <div class="sub-panel" id="readingGzh" style="display:none;">
           <div class="card">
-            <div class="card-title"><span class="card-title-bar" style="background:var(--red);"></span>公众号精选</div>
-            <div class="gzh-tabs">
-              <button class="gzh-tab active" onclick="Sections.reading.switchGzh('dandu',this)">单读</button>
-              <button class="gzh-tab" onclick="Sections.reading.switchGzh('kyx',this)">KnowYourself</button>
-              <button class="gzh-tab" onclick="Sections.reading.switchGzh('heytea',this)">喜茶</button>
+            <div class="card-title"><span class="card-title-bar" style="background:var(--red);"></span>订阅精选
+              <button class="btn btn-outline" id="refreshSubBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshSubBtn')">刷新</button>
             </div>
-            <div id="gzhContent">${this.renderGzhArticles('dandu')}</div>
+            ${subStamp}
+            <div class="gzh-tabs">
+              ${subKeys.map((k,i) => `<button class="gzh-tab ${i===0?'active':''}" onclick="Sections.reading.switchGzh('${k}',this)">${subGroups[k].label}</button>`).join('')}
+            </div>
+            <div id="gzhContent">${this.renderGzhArticles(subKeys[0])}</div>
           </div>
         </div>
 
         <div class="sub-panel" id="readingSanlian" style="display:none;">
           <div class="card">
-            <div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>三联中读 · 每周精选</div>
+            <div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>三联生活周刊 · 最新
+              <button class="btn btn-outline" id="refreshSlBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshSlBtn')">刷新</button>
+            </div>
+            ${slStamp}
             ${this.renderSanlianArticles()}
           </div>
         </div>
       `;
-    },
-
-    switchReadingTab(tab, btn) {
-      document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('readingBookMedia').style.display = tab === 'bookmedia' ? '' : 'none';
-      document.getElementById('readingGzh').style.display = tab === 'gzh' ? '' : 'none';
-      document.getElementById('readingSanlian').style.display = tab === 'sanlian' ? '' : 'none';
     },
 
     // 三联中读文章
@@ -703,7 +841,9 @@ const Sections = {
     ],
 
     renderSanlianArticles() {
-      return this.sanlianData.map(a => `
+      const live = window.DataSource ? DataSource.list('sanlian') : [];
+      const list = live.length ? live : this.sanlianData;
+      return list.map(a => `
         <div class="gzh-article">
           <div class="gzh-article-header">
             <div>
@@ -825,8 +965,24 @@ const Sections = {
       ]
     },
 
+    /** 无网络时的兜底分组（用原来的示例内容） */
+    fallbackGroups() {
+      return {
+        dandu:   { label: '单读',          items: this.gzhData.dandu   || [] },
+        kyx:     { label: 'KnowYourself', items: this.gzhData.kyx     || [] },
+        heytea:  { label: '喜茶',          items: this.gzhData.heytea  || [] }
+      };
+    },
+
+    _subGroups() {
+      const live = window.DataSource ? DataSource.map('subscriptions') : null;
+      return (live && Object.keys(live).length) ? live : this.fallbackGroups();
+    },
+
     renderGzhArticles(account) {
-      const articles = this.gzhData[account] || [];
+      const g = this._subGroups()[account];
+      const articles = (g && g.items) || [];
+      if (!articles.length) return '<div class="empty-hint">暂无内容，点击右上角刷新试试</div>';
       return articles.map(a => `
         <div class="gzh-article">
           <div class="gzh-article-header">
@@ -989,46 +1145,61 @@ const Sections = {
       const td = Storage.getDayData('podcast', today);
       const hist = Storage.getHistoryDates('podcast').filter(d => d !== today);
 
-      // 根据关注列表生成关注更新
-      const followList = this.followedPodcasts.map((name, i) => ({
-        id: 'pc-follow-' + i,
-        title: this._getFollowTitle(name),
-        podcaster: name,
-        duration: '30-50分',
-        date: '2026-07-27',
-        summary: this._getFollowSummary(name),
-        url: 'https://www.xiaoyuzhoufm.com/search?q=' + encodeURIComponent(name)
-      }));
+      // 热榜：Apple 播客中国区实时榜（服务端抓取），无数据时回落示例
+      const liveHot = window.DataSource ? DataSource.list('podcastHot') : [];
+      const hotList = liveHot.length ? liveHot : this.hotList;
+      const hotStamp = liveHot.length && window.DataSource ? DataSource.stamp('podcastHot') : '';
+
+      // 关注更新：优先用真实抓取到的最新单集，抓不到的给搜索入口
+      const names = this.getFollowed();
+      const live = window.DataSource ? DataSource.list('podcastFollow') : [];
+      const followList = names.map((name, i) => {
+        const hit = live.find(x => x.podcaster === name);
+        if (hit) return hit;
+        return {
+          id: 'pc-follow-' + i,
+          title: name + ' · 最新一期',
+          podcaster: name,
+          duration: '',
+          date: '',
+          summary: '这档播客还没被自动收录，点击下方按钮直接去搜索收听。',
+          url: 'https://www.xiaoyuzhoufm.com/search?q=' + encodeURIComponent(name),
+          placeholder: true
+        };
+      });
 
       return `
         <div class="section-header">
           <div><div class="section-title"><span class="section-title-icon" style="background:#7B3FF2;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg></span>播客</div>
-          <div class="section-subtitle">本周精选 · 小宇宙</div></div>
+          <div class="section-subtitle">Apple 播客中国区热榜 · 关注更新</div></div>
         </div>
 
         <div class="sub-tabs-bar">
-          <button class="sub-tab active" data-panel="podcastHot" onclick="App.bindSubTabs(this)">小宇宙热榜</button>
+          <button class="sub-tab active" data-panel="podcastHot" onclick="App.bindSubTabs(this)">播客热榜</button>
           <button class="sub-tab" data-panel="podcastFollow" onclick="App.bindSubTabs(this)">我的关注</button>
         </div>
 
         <div id="podcastHot" class="sub-panel">
           <div class="card mb-4">
-            <div class="card-title"><span class="card-title-bar" style="background:#7B3FF2;"></span>热榜 Top 5</div>
-            ${this.hotList.map((p,i) => this.renderPodcastCard(p, td, i+1)).join('')}
+            <div class="card-title"><span class="card-title-bar" style="background:#7B3FF2;"></span>热榜 Top ${hotList.length}
+              <button class="btn btn-outline" id="refreshPodBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshPodBtn')">刷新</button>
+            </div>
+            ${hotStamp}
+            ${hotList.map((p,i) => this.renderPodcastCard(p, td, i+1)).join('')}
           </div>
         </div>
 
         <div id="podcastFollow" class="sub-panel" style="display:none;">
           <div class="card mb-4">
             <div class="card-title">
-              <span class="card-title-bar" style="background:var(--gold);"></span>关注更新
+              <span class="card-title-bar" style="background:var(--gold);"></span>关注更新<span class="content-updated">收录至 ${maxDateOf(followList)}</span>
               <button class="btn btn-outline" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="Sections.podcast.editFollowed()">编辑关注</button>
             </div>
             ${followList.map(p => this.renderPodcastCard(p, td)).join('')}
           </div>
         </div>
 
-        ${hist.length > 0 ? `<div class="card"><div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>历史记录</div>${hist.map(d => this.renderHistory(d)).join('')}</div>` : ''}
+        ${hist.length > 0 ? `<div class="card"><div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>历史记录</div>${hist.map((d, i) => this.renderHistory(d, i)).join('')}</div>` : ''}
       `;
     },
 
@@ -1056,27 +1227,40 @@ const Sections = {
 
     renderPodcastCard(p, td, rank) {
       const note = td.notes?.[p.id] || {};
+      const meta = [p.podcaster, p.genre, p.duration, p.date].filter(Boolean).join(' · ');
+      const cover = p.artwork
+        ? `<img class="podcast-cover" src="${p.artwork}" alt="" loading="lazy" referrerpolicy="no-referrer">`
+        : '';
+      const isApple = (p.url || '').includes('podcasts.apple.com');
+      const playText = p.placeholder ? '去小宇宙搜索收听 →' : (isApple ? '在 Apple 播客收听 →' : '收听本期 →');
       return `
         <div class="podcast-item ${note.text?'listened':''}">
           <div class="podcast-header">
-            ${rank ? `<div class="podcast-rank">${rank}</div>` : `<div class="podcast-source">${p.podcaster}</div>`}
+            ${rank ? `<div class="podcast-rank">${rank}</div>` : ''}
+            ${cover}
             <div class="podcast-main">
               <div class="podcast-title">${p.title}</div>
-              <div class="podcast-meta">${p.podcaster} · ${p.duration} · ${p.date}</div>
+              <div class="podcast-meta">${meta}</div>
             </div>
-            ${actionButtons({section:'podcast',title:p.title,summary:p.summary,url:p.url,type:'podcast'})}
+            ${actionButtons({section:'podcast',title:p.title,summary:p.summary||p.title,url:p.url,type:'podcast'})}
           </div>
-          <div class="podcast-summary">${p.summary}</div>
+          ${p.summary ? `<div class="podcast-summary">${p.summary}</div>` : ''}
           <div class="podcast-actions-row">
-            <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="podcast-play-btn">在小宇宙中收听 →</a>
+            <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="podcast-play-btn">${playText}</a>
           </div>
-          ${note.text ? `<div class="podcast-note">📝 ${note.text}</div>` : ''}
-          <input class="podcast-note-input" placeholder="记笔记..." oninput="Sections.podcast.saveNote('${p.id}',this.value)" value="${note.text||''}">
+          ${note.text ? `<div class="podcast-note">${note.text}</div>` : ''}
+          <input class="podcast-note-input" id="pn-${p.id}" placeholder="记笔记..." oninput="Sections.podcast.saveNote('${p.id}',this.value)" value="${note.text||''}">
         </div>`;
     },
 
+    /** 关注列表持久化在本地，跟着账号一起同步 */
+    getFollowed() {
+      const saved = Storage.data.podcastFollowed;
+      return Array.isArray(saved) && saved.length ? saved : this.followedPodcasts;
+    },
+
     editFollowed() {
-      const current = this.followedPodcasts;
+      const current = this.getFollowed();
       App.showModal('编辑关注播客', `
         <div style="font-size:12px;color:var(--text-ink-muted);margin-bottom:8px;">添加或删除关注的播客名称，保存后生效</div>
         <div id="followedList" style="margin-bottom:12px;">
@@ -1106,7 +1290,8 @@ const Sections = {
 
     saveFollowed() {
       const inputs = document.querySelectorAll('#followedList input');
-      this.followedPodcasts = Array.from(inputs).map(i => i.value.trim()).filter(v => v);
+      Storage.data.podcastFollowed = Array.from(inputs).map(i => i.value.trim()).filter(v => v);
+      Storage.save();
       App.closeModal();
       App.showToast('✅ 关注列表已更新');
       App.refresh();
@@ -1118,13 +1303,14 @@ const Sections = {
       if (!d.notes[id]) d.notes[id] = {};
       d.notes[id].text = val;
       Storage.save();
-      if (val && val.trim()) App.triggerAutoCheckin();
+      if (val && val.trim()) App.triggerAutoCheckin('完成学习记录');
     },
 
-    renderHistory(date) {
+    renderHistory(date, idx = 999) {
       const d = Storage.getDayData('podcast', date);
       const list = d.list || [];
-      return `<div class="date-group collapsed"><div class="date-group-header" onclick="Sections.toggleDateGroup(this)"><div class="date-group-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="date-group-toggle"><path d="M6 9l6 6 6-6"/></svg>${date}<span class="date-group-badge">${list.length}篇</span></div></div><div class="date-group-body">${list.map(p => `<div class="podcast-item"><div class="podcast-header"><div class="podcast-main"><div class="podcast-title">${p.title}</div><div class="podcast-meta">${p.podcaster} · ${p.date}</div></div></div><div class="podcast-summary">${p.summary}</div></div>`).join('')}</div></div>`;
+      const collapsedCls = idx < 3 ? '' : 'collapsed';
+      return `<div class="date-group ${collapsedCls}"><div class="date-group-header" onclick="Sections.toggleDateGroup(this)"><div class="date-group-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="date-group-toggle"><path d="M6 9l6 6 6-6"/></svg>${date}<span class="date-group-badge">${list.length}篇</span></div></div><div class="date-group-body">${list.map(p => `<div class="podcast-item"><div class="podcast-header"><div class="podcast-main"><div class="podcast-title">${p.title}</div><div class="podcast-meta">${p.podcaster} · ${p.date}</div></div></div><div class="podcast-summary">${p.summary}</div></div>`).join('')}</div></div>`;
     }
   },
 
@@ -1164,6 +1350,11 @@ const Sections = {
       const td = Storage.getDayData('selfMedia', today);
       const recos = td.recos || this.sampleRecos;
 
+      // 今日灵感：抖音 / 百度 / 头条 / B站 全网热榜（服务端抓取）
+      const liveInsp = window.DataSource ? DataSource.list('inspiration') : [];
+      const inspList = liveInsp.length ? liveInsp : this.inspirations;
+      const inspStamp = liveInsp.length && window.DataSource ? DataSource.stamp('inspiration') : '';
+
       return `
         <div class="section-header">
           <div><div class="section-title"><span class="section-title-icon" style="background:var(--red);"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7zM14 5H3a2 2 0 00-2 2v10a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2z"/></svg></span>自媒体</div>
@@ -1178,24 +1369,27 @@ const Sections = {
 
         <div id="smReco" class="sub-panel">
           <div class="card mb-4">
-            <div class="card-title"><span class="card-title-bar"></span>今日推荐</div>
+            <div class="card-title"><span class="card-title-bar"></span>今日推荐<span class="content-updated">收录至 ${maxDateOf(recos)}</span></div>
             ${recos.map(r => this.renderRecoCard(r, td)).join('')}
           </div>
         </div>
 
         <div id="smInspiration" class="sub-panel" style="display:none;">
           <div class="card mb-4">
-            <div class="card-title"><span class="card-title-bar" style="background:var(--gold);"></span>今日灵感 · 十大选题</div>
-            ${this.inspirations.map((ins,i) => `
+            <div class="card-title"><span class="card-title-bar" style="background:var(--gold);"></span>今日灵感 · 全网热榜
+              <button class="btn btn-outline" id="refreshInspBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshInspBtn')">刷新</button>
+            </div>
+            ${inspStamp}
+            ${inspList.map((ins,i) => `
               <div class="inspiration-item">
                 <div class="inspiration-rank">${i+1}</div>
                 <div class="inspiration-content">
                   <div class="inspiration-title">${ins.title}</div>
-                  <div class="inspiration-source">${ins.source}</div>
+                  <div class="inspiration-source">${ins.source}${ins.heat ? ' · 热度 ' + ins.heat : ''}</div>
                 </div>
                 <div class="item-actions">
-                  <a href="${ins.url}" target="_blank" rel="noopener noreferrer" class="action-btn">→</a>
-                  ${actionButtons({section:'selfMedia',title:ins.title,summary:'灵感选题',url:ins.url,type:'inspiration'})}
+                  <a href="${ins.url}" target="_blank" rel="noopener noreferrer" class="action-btn" aria-label="打开">→</a>
+                  ${actionButtons({section:'selfMedia',title:ins.title,summary:ins.source||'灵感选题',url:ins.url,type:'inspiration'})}
                 </div>
               </div>`).join('')}
           </div>
@@ -1378,32 +1572,69 @@ const Sections = {
 
     // ---- 生理期 ----
     renderPeriodTab(se, today) {
-      const records = se.period.records || [];
+      const records = (se.period.records || []).slice().sort((a,b) => a.date < b.date ? -1 : 1);
+      let prediction = '';
+      if (records.length >= 2) {
+        const diffs = [];
+        for (let i = 1; i < records.length; i++) {
+          const d1 = new Date(records[i-1].date), d2 = new Date(records[i].date);
+          const diff = Math.round((d2 - d1) / 86400000);
+          if (diff > 0) diffs.push(diff);
+        }
+        if (diffs.length > 0) {
+          const avg = Math.round(diffs.reduce((s,v)=>s+v,0) / diffs.length);
+          const last = new Date(records[records.length-1].date);
+          const nexts = [];
+          for (let k = 1; k <= 3; k++) {
+            const d = new Date(last); d.setDate(d.getDate() + avg * k);
+            nexts.push(Storage.formatDate(d));
+          }
+          prediction = `
+            <div class="card mt-4">
+              <div class="card-title"><span class="card-title-bar" style="background:var(--red);"></span>智能预测</div>
+              <div class="se-period-predict">基于 ${diffs.length} 次周期，平均 <b>${avg}</b> 天</div>
+              <div class="se-period-predict-list">
+                ${nexts.map((d,i) => `<div class="se-period-predict-item"><span class="se-period-dot" style="background:var(--red);"></span>预计 ${i===0?'下次':'再'+i+'次'}：<b>${d}</b></div>`).join('')}
+              </div>
+            </div>`;
+        }
+      }
       return `
         <div class="card mb-4">
           <div class="card-title"><span class="card-title-bar" style="background:var(--red);"></span>生理期记录
             <button class="btn btn-outline" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="Sections.selfExploration.recordPeriod()">+ 记录</button>
           </div>
-          ${records.length > 0 ? records.slice().reverse().slice(0, 6).map(r => `<div class="se-period-item"><span class="se-period-dot" style="background:${r.flow==='量多'?'var(--red)':r.flow==='量中'?'var(--gold)':'var(--earth-light)'};"></span><span class="se-period-date">${r.date}</span><span class="se-period-flow">${r.flow}</span></div>`).join('') : '<div class="empty-state"><div class="empty-state-icon">🌸</div><div class="empty-state-text">点击记录生理期</div></div>'}
+          ${records.length > 0
+            ? records.slice().reverse().slice(0, 6).map(r => `<div class="se-period-item"><span class="se-period-dot" style="background:${r.flow==='量多'?'var(--red)':r.flow==='量中'?'var(--gold)':'var(--earth-light)'};"></span><span class="se-period-date">${r.date}</span><span class="se-period-flow">${r.flow}</span></div>`).join('')
+            : '<div class="empty-state"><div class="empty-state-icon">🌸</div><div class="empty-state-text">点击记录生理期</div></div>'}
         </div>
+        ${prediction}
       `;
     },
 
     // ---- 财务 ----
     renderFinanceTab(se, today) {
       const finance = se.finance || [];
-      const todayFinance = finance.filter(f => f.date === today);
       const monthStr = today.slice(0,7);
       const monthFinance = finance.filter(f => f.date.startsWith(monthStr));
-      const monthTotal = monthFinance.reduce((s,f) => s + (f.amount||0), 0);
+      const monthExpense = monthFinance.filter(f => (f.type||'expense') === 'expense').reduce((s,f) => s + (f.amount||0), 0);
+      const monthIncome = monthFinance.filter(f => f.type === 'income').reduce((s,f) => s + (f.amount||0), 0);
+      const monthNet = monthIncome - monthExpense;
 
       return `
         <div class="card mb-4">
-          <div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>本月支出</div>
-          <div class="se-finance-total">¥${monthTotal.toFixed(2)}</div>
-          <button class="btn btn-outline mt-2" style="width:100%;" onclick="Sections.selfExploration.recordFinance()">+ 记录消费</button>
+          <div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>本月收支汇总</div>
+          <div class="se-finance-grid">
+            <div class="se-finance-stat"><div class="se-finance-stat-label">支出</div><div class="se-finance-stat-val expense">¥${monthExpense.toFixed(2)}</div></div>
+            <div class="se-finance-stat"><div class="se-finance-stat-label">收入</div><div class="se-finance-stat-val income">¥${monthIncome.toFixed(2)}</div></div>
+            <div class="se-finance-stat"><div class="se-finance-stat-label">结余</div><div class="se-finance-stat-val ${monthNet>=0?'income':'expense'}">¥${monthNet.toFixed(2)}</div></div>
+          </div>
+          <div class="flex gap-2 mt-3">
+            <button class="btn btn-primary flex-1" onclick="Sections.selfExploration.recordFinance()">+ 记一笔</button>
+            <button class="btn btn-outline" onclick="Sections.selfExploration.exportFinanceCSV()">⬇ CSV</button>
+          </div>
         </div>
-        ${monthFinance.length > 0 ? `<div class="card"><div class="card-title"><span class="card-title-bar"></span>本月明细 (${monthFinance.length})</div>${monthFinance.slice().reverse().map(f => `<div class="se-finance-item"><span class="se-finance-cat">${f.cat}</span><div class="se-finance-info"><div class="se-finance-amount">¥${f.amount.toFixed(2)}</div>${f.note?`<div class="se-finance-note">${f.note}</div>`:''}<div class="se-finance-date">${f.date}</div></div></div>`).join('')}</div>` : ''}
+        ${monthFinance.length > 0 ? `<div class="card"><div class="card-title"><span class="card-title-bar"></span>本月明细 (${monthFinance.length})</div>${monthFinance.slice().reverse().map(f => `<div class="se-finance-item"><span class="se-finance-cat">${f.cat}</span><div class="se-finance-info"><div class="se-finance-amount ${(f.type||'expense')==='income'?'income':'expense'}">${(f.type==='income'?'+':'-')}¥${f.amount.toFixed(2)}</div>${f.note?`<div class="se-finance-note">${f.note}</div>`:''}<div class="se-finance-date">${f.date}</div></div></div>`).join('')}</div>` : ''}
       `;
     },
 
@@ -1430,7 +1661,7 @@ const Sections = {
       else se.self.emotions.push({ date: today, mood });
       Storage.save();
       App.showToast(mood==='happy'?'😊 今天很开心':mood==='neutral'?'😐 平静的一天':'😢 记录下来了');
-      App.triggerAutoCheckin();
+      App.triggerAutoCheckin('完成学习记录');
       App.refresh();
     },
 
@@ -1477,7 +1708,7 @@ const Sections = {
       Storage.save();
       App.closeModal();
       App.showToast('✅ 已记录OOTD');
-      App.triggerAutoCheckin();
+      App.triggerAutoCheckin('完成学习记录');
       App.refresh();
     },
 
@@ -1569,7 +1800,7 @@ const Sections = {
       Storage.save();
       App.closeModal();
       App.showToast('✅ 已记录发型');
-      App.triggerAutoCheckin();
+      App.triggerAutoCheckin('完成学习记录');
       App.refresh();
     },
 
@@ -1592,7 +1823,7 @@ const Sections = {
       Storage.save();
       App.closeModal();
       App.showToast('✅ 已记录体重');
-      App.triggerAutoCheckin();
+      App.triggerAutoCheckin('完成学习记录');
       App.refresh();
     },
 
@@ -1641,7 +1872,7 @@ const Sections = {
       Storage.save();
       App.closeModal();
       App.showToast(`✅ ${icon} ${name}`);
-      App.triggerAutoCheckin();
+      App.triggerAutoCheckin('完成学习记录');
       App.refresh();
     },
 
@@ -1677,7 +1908,7 @@ const Sections = {
       Storage.save();
       App.closeModal();
       App.showToast('✅ 已记录');
-      App.triggerAutoCheckin();
+      App.triggerAutoCheckin('完成学习记录');
       App.refresh();
     },
 
@@ -1706,7 +1937,7 @@ const Sections = {
       Storage.save();
       App.closeModal();
       App.showToast('✅ 技能已记录');
-      App.triggerAutoCheckin();
+      App.triggerAutoCheckin('完成学习记录');
       App.refresh();
     },
 
@@ -1734,14 +1965,20 @@ const Sections = {
     },
 
     recordFinance() {
-      App.showModal('记录消费', `
-        <input class="input-field" id="finAmount" type="number" placeholder="金额 (元)">
+      App.showModal('记一笔', `
+        <div class="fin-type-toggle" id="finTypeToggle">
+          <button type="button" class="fin-type-btn active" data-type="expense" onclick="Sections.selfExploration.setFinType('expense',this)">支出</button>
+          <button type="button" class="fin-type-btn" data-type="income" onclick="Sections.selfExploration.setFinType('income',this)">收入</button>
+        </div>
+        <input class="input-field mt-3" id="finAmount" type="number" placeholder="金额 (元)">
         <select class="input-field mt-3" id="finCat">
           <option value="餐饮">餐饮</option>
           <option value="交通">交通</option>
           <option value="购物">购物</option>
           <option value="娱乐">娱乐</option>
           <option value="居家">居家</option>
+          <option value="工资">工资</option>
+          <option value="理财">理财</option>
           <option value="其他">其他</option>
         </select>
         <input class="input-field mt-3" id="finNote" placeholder="备注（可选）">
@@ -1752,14 +1989,47 @@ const Sections = {
       `);
     },
 
+    setFinType(type, btn) {
+      document.querySelectorAll('#finTypeToggle .fin-type-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      btn._finType = type;
+      const el = document.getElementById('finTypeToggle');
+      if (el) el.dataset.type = type;
+    },
+
     saveFinance() {
       const a = parseFloat(document.getElementById('finAmount').value);
       if (!a || a <= 0) { App.showToast('请输入有效金额'); return; }
-      Storage.data.selfExploration.finance.push({ date: Storage.today(), amount: a, cat: document.getElementById('finCat').value, note: document.getElementById('finNote').value });
+      const tgl = document.getElementById('finTypeToggle');
+      const type = (tgl && tgl.dataset.type === 'income') ? 'income' : 'expense';
+      Storage.data.selfExploration.finance.push({ date: Storage.today(), amount: a, cat: document.getElementById('finCat').value, note: document.getElementById('finNote').value, type });
       Storage.save();
       App.closeModal();
-      App.showToast('✅ 已记录');
+      App.showToast(type === 'income' ? '✅ 已记录收入' : '✅ 已记录支出');
       App.refresh();
+    },
+
+    exportFinanceCSV() {
+      const finance = Storage.data.selfExploration.finance || [];
+      if (finance.length === 0) { App.showToast('暂无财务数据可导出'); return; }
+      const header = ['日期', '类型', '分类', '金额', '备注'];
+      const rows = finance.slice().sort((a,b) => a.date < b.date ? -1 : 1).map(f => [
+        f.date, f.type === 'income' ? '收入' : '支出', f.cat || '', (f.amount||0).toFixed(2), f.note || ''
+      ]);
+      const csv = [header, ...rows].map(r => r.map(c => {
+        const s = String(c).replace(/"/g, '""');
+        return /[",\n]/.test(s) ? '"' + s + '"' : s;
+      }).join(',')).join('\r\n');
+      const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '月夕财务_' + Storage.today() + '.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      App.showToast('✅ CSV 已导出');
     },
 
     addJournal() {
@@ -1787,7 +2057,7 @@ const Sections = {
       Storage.save();
       App.closeModal();
       App.showToast('✅ 手账已保存');
-      App.triggerAutoCheckin();
+      App.triggerAutoCheckin('完成学习记录');
       App.refresh();
     },
 
@@ -1807,138 +2077,17 @@ const Sections = {
 
   // ==================== 发现 ====================
   discover: {
-    // RSS 源配置
-    rssSources: {
-      news: [
-        { name: '中新网', url: 'https://www.chinanews.com.cn/rss/scroll-news.xml' },
-        { name: '人民网', url: 'http://www.people.com.cn/rss/politics.xml' }
-      ],
-      ai: [
-        { name: '量子位', url: 'https://www.qbitai.com/feed' },
-        { name: '36氪', url: 'https://36kr.com/feed' }
-      ],
-      releases: [
-        { name: '豆瓣电影', url: 'https://www.douban.com/feed/review/movie' },
-        { name: 'letterboxd', url: 'https://letterboxd.com/susuu000/rss/' }
-      ]
-    },
+    /* ── 真实数据源 ──────────────────────────────────
+       新闻 / AI / 股市 / 书影 全部来自 data/feeds.json，
+       由 GitHub Actions 在服务端定时抓取（无 CORS 问题）。
+       前端只负责读取 + 兜底，见 js/datasource.js。 */
 
-    // 通过 rss2json 代理获取 RSS（解决 CORS）
-    async fetchRSS(rssUrl) {
-      const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl);
-      const res = await fetch(apiUrl);
-      const data = await res.json();
-      if (data.status !== 'ok' || !data.items) return [];
-      return data.items.map(item => ({
-        title: item.title || '',
-        url: item.link || '',
-        date: item.pubDate ? item.pubDate.split(' ')[0] : '',
-        source: data.feed ? (data.feed.title || '') : '',
-        summary: (item.description || '').replace(/<[^>]+>/g, '').substring(0, 200)
-      }));
-    },
-
-    // 刷新新闻时事
-    async refreshNews() {
-      const btn = document.getElementById('refreshNewsBtn');
-      if (btn) { btn.textContent = '⏳ 刷新中'; btn.disabled = true; }
-      try {
-        let allItems = [];
-        for (const src of this.rssSources.news) {
-          try {
-            const items = await this.fetchRSS(src.url);
-            allItems = allItems.concat(items.slice(0, 8));
-          } catch(e) { console.log(src.name + ' RSS 获取失败:', e.message); }
-        }
-        if (allItems.length > 0) {
-          if (!Storage.data.discover) Storage.data.discover = {};
-          Storage.data.discover.news = allItems.slice(0, 15);
-          Storage.data.discover.newsUpdatedAt = new Date().toISOString();
-          Storage.save();
-          App.showToast('✅ 新闻已更新');
-        } else {
-          App.showToast('⚠️ 暂时无法获取新闻，显示缓存内容');
-        }
-      } catch(e) {
-        App.showToast('⚠️ 刷新失败: ' + e.message);
-      }
-      if (btn) { btn.textContent = '🔄 刷新'; btn.disabled = false; }
-      App.refresh();
-    },
-
-    // 刷新 AI 前沿
-    async refreshAI() {
-      const btn = document.getElementById('refreshAIBtn');
-      if (btn) { btn.textContent = '⏳ 刷新中'; btn.disabled = true; }
-      try {
-        let allItems = [];
-        for (const src of this.rssSources.ai) {
-          try {
-            const items = await this.fetchRSS(src.url);
-            allItems = allItems.concat(items.slice(0, 6));
-          } catch(e) { console.log(src.name + ' RSS 获取失败:', e.message); }
-        }
-        if (allItems.length > 0) {
-          if (!Storage.data.discover) Storage.data.discover = {};
-          Storage.data.discover.ai = allItems.slice(0, 12);
-          Storage.data.discover.aiUpdatedAt = new Date().toISOString();
-          Storage.save();
-          App.showToast('✅ AI资讯已更新');
-        } else {
-          App.showToast('⚠️ 暂时无法获取AI资讯');
-        }
-      } catch(e) {
-        App.showToast('⚠️ 刷新失败: ' + e.message);
-      }
-      if (btn) { btn.textContent = '🔄 刷新'; btn.disabled = false; }
-      App.refresh();
-    },
-
-    // 刷新书影上新
-    async refreshReleases() {
-      const btn = document.getElementById('refreshReleaseBtn');
-      if (btn) { btn.textContent = '⏳ 刷新中'; btn.disabled = true; }
-      try {
-        let allItems = [];
-        for (const src of this.rssSources.releases) {
-          try {
-            const items = await this.fetchRSS(src.url);
-            allItems = allItems.concat(items.slice(0, 6));
-          } catch(e) { console.log(src.name + ' RSS 获取失败:', e.message); }
-        }
-        if (allItems.length > 0) {
-          if (!Storage.data.discover) Storage.data.discover = {};
-          Storage.data.discover.releases = allItems.slice(0, 10);
-          Storage.data.discover.releasesUpdatedAt = new Date().toISOString();
-          Storage.save();
-          App.showToast('✅ 书影已更新');
-        } else {
-          App.showToast('⚠️ 暂时无法获取书影资讯');
-        }
-      } catch(e) {
-        App.showToast('⚠️ 刷新失败: ' + e.message);
-      }
-      if (btn) { btn.textContent = '🔄 刷新'; btn.disabled = false; }
-      App.refresh();
-    },
-
-    // 首次打开自动拉取（每天一次）
-    async autoFetchIfNeeded() {
-      if (!Storage.data.discover) Storage.data.discover = {};
-      const today = Storage.today();
-      const lastFetch = Storage.data.discover.lastAutoFetch || '';
-      if (lastFetch === today) return; // 今天已自动拉取
-      Storage.data.discover.lastAutoFetch = today;
-      // 异步拉取，不阻塞渲染
-      this.refreshNews().catch(()=>{});
-      this.refreshAI().catch(()=>{});
-      this.refreshReleases().catch(()=>{});
+    // 刷新（手动）
+    refreshFeeds(btnId) {
+      if (window.DataSource) DataSource.refresh(btnId);
     },
 
     render() {
-      // 首次打开自动拉取
-      this.autoFetchIfNeeded();
-
       return `
         <div class="section-header">
           <div><div class="section-title"><span class="section-title-icon" style="background:var(--gold);"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8l-4 8-4-4 8-4z"/></svg></span>发现</div>
@@ -1954,28 +2103,28 @@ const Sections = {
 
         <div class="sub-panel" id="discoverNews">
           <div class="card">
-            <div class="card-title"><span class="card-title-bar"></span>新闻时事<button class="btn btn-outline" id="refreshNewsBtn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.discover.refreshNews()">🔄 刷新</button></div>
+            <div class="card-title"><span class="card-title-bar"></span>新闻时事<button class="btn btn-outline" id="refreshNewsBtn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.discover.refreshFeeds('refreshNewsBtn')">刷新</button></div>
             ${this.renderNews()}
           </div>
         </div>
 
         <div class="sub-panel" id="discoverAI" style="display:none;">
           <div class="card">
-            <div class="card-title"><span class="card-title-bar" style="background:var(--haze-blue);"></span>AI前沿<button class="btn btn-outline" id="refreshAIBtn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.discover.refreshAI()">🔄 刷新</button></div>
+            <div class="card-title"><span class="card-title-bar" style="background:var(--haze-blue);"></span>AI前沿<button class="btn btn-outline" id="refreshAIBtn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.discover.refreshFeeds('refreshAIBtn')">刷新</button></div>
             ${this.renderAIFrontier()}
           </div>
         </div>
 
         <div class="sub-panel" id="discoverStock" style="display:none;">
           <div class="card">
-            <div class="card-title"><span class="card-title-bar" style="background:var(--red);"></span>股市信息</div>
+            <div class="card-title"><span class="card-title-bar" style="background:var(--red);"></span>股市信息<button class="btn btn-outline" id="refreshStockBtn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.discover.refreshFeeds('refreshStockBtn')">刷新</button></div>
             ${this.renderStockInfo()}
           </div>
         </div>
 
         <div class="sub-panel" id="discoverRelease" style="display:none;">
           <div class="card">
-            <div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>书影上新<button class="btn btn-outline" id="refreshReleaseBtn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.discover.refreshReleases()">🔄 刷新</button></div>
+            <div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>书影上新<button class="btn btn-outline" id="refreshReleaseBtn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.discover.refreshFeeds('refreshReleaseBtn')">刷新</button></div>
             ${this.renderNewReleases()}
           </div>
         </div>
@@ -2016,11 +2165,11 @@ const Sections = {
     },
 
     renderNews() {
-      // 优先使用云端/缓存的动态数据，回退到静态数据
-      const cached = Storage.data.discover?.news;
-      const newsList = (cached && cached.length > 0) ? cached : this.newsData;
-      const updatedAt = Storage.data.discover?.newsUpdatedAt;
-      return (updatedAt ? `<div style="font-size:11px;color:var(--text-ink-muted);margin-bottom:6px;">更新于 ${this._formatRelative(updatedAt)}</div>` : '') + newsList.map((n,i) => `
+      // 真实数据优先（data/feeds.json），无数据时回落到示例
+      const live = window.DataSource ? DataSource.list('news') : [];
+      const newsList = live.length ? live : this.newsData;
+      const stamp = live.length && window.DataSource ? DataSource.stamp('news') : '';
+      return stamp + newsList.map((n,i) => `
         <div class="news-list-item" onclick="App.openExternal('${n.url}')">
           <div class="news-list-num">${i+1}</div>
           <div class="news-list-content"><div class="news-list-title">${n.title}</div><div class="news-list-source">${n.source} · ${n.date}</div></div>
@@ -2041,11 +2190,10 @@ const Sections = {
     ],
 
     renderAIFrontier() {
-      // 优先使用动态RSS数据，回退到静态数据
-      const cached = Storage.data.discover?.ai;
-      const aiList = (cached && cached.length > 0) ? cached : this.aiFrontierData;
-      const updatedAt = Storage.data.discover?.aiUpdatedAt;
-      return (updatedAt ? `<div style="font-size:11px;color:var(--text-ink-muted);margin-bottom:6px;">更新于 ${this._formatRelative(updatedAt)}</div>` : '') + aiList.map(a => `
+      const live = window.DataSource ? DataSource.list('ai') : [];
+      const aiList = live.length ? live : this.aiFrontierData;
+      const stamp = live.length && window.DataSource ? DataSource.stamp('ai') : '';
+      return stamp + aiList.map(a => `
         <div class="ai-frontier-item">
           <div class="ai-frontier-header">
             <div class="ai-frontier-title">${a.title}</div>
@@ -2065,16 +2213,21 @@ const Sections = {
     ],
 
     renderStockInfo() {
+      const live = window.DataSource ? DataSource.list('stock') : [];
+      const list = live.length ? live : this.stockData;
+      const stamp = live.length && window.DataSource
+        ? `<div class="ds-stamp" style="text-align:center;">行情更新于 ${DataSource.relative(DataSource.updatedAt('stock'))}${DataSource.isStale('stock') ? '（源暂不可用，显示上次结果）' : ''}</div>`
+        : '<div class="ds-stamp" style="text-align:center;">示例数据 · 联网后自动更新</div>';
       return `
         <div class="stock-grid">
-          ${this.stockData.map(s => `
+          ${list.map(s => `
             <div class="stock-card ${s.up?'up':'down'}">
               <div class="stock-name">${s.name}</div>
               <div class="stock-price">${s.price}</div>
-              <div class="stock-change ${s.up?'up':'down'}">${s.up?'🔴':'🟢'} ${s.change}</div>
+              <div class="stock-change ${s.up?'up':'down'}">${s.up?'▲':'▼'} ${s.change}</div>
             </div>`).join('')}
         </div>
-        <div style="text-align:center;padding:10px;color:var(--text-ink-muted);font-size:12px;">数据更新于 2026-07-27 15:00</div>
+        ${stamp}
         <a href="https://finance.eastmoney.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline mt-2" style="width:100%;">查看更多行情</a>
       `;
     },
@@ -2087,11 +2240,10 @@ const Sections = {
     ],
 
     renderNewReleases() {
-      // 优先使用动态RSS数据，回退到静态数据
-      const cached = Storage.data.discover?.releases;
-      const relList = (cached && cached.length > 0) ? cached : this.newReleasesData;
-      const updatedAt = Storage.data.discover?.releasesUpdatedAt;
-      return (updatedAt ? `<div style="font-size:11px;color:var(--text-ink-muted);margin-bottom:6px;">更新于 ${this._formatRelative(updatedAt)}</div>` : '') + relList.map(r => `
+      const live = window.DataSource ? DataSource.list('releases') : [];
+      const relList = live.length ? live : this.newReleasesData;
+      const stamp = live.length && window.DataSource ? DataSource.stamp('releases') : '';
+      return stamp + relList.map(r => `
         <div class="release-item">
           <div class="release-type ${r.type||'book'}">${r.type==='media'||r.type==='movie'?'🎬影视':r.type==='book'?'📖新书':'📰资讯'}</div>
           <div class="release-content">

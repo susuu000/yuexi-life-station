@@ -1,11 +1,14 @@
 /* 月夕生活台 - 轻量 Service Worker（PWA 可安装 + 离线兜底）
-   策略：同源资源"网络优先"，离线时回退缓存；跨域（如 Supabase CDN）缓存优先。
-   发版后如需强制刷新缓存，请修改下面的 CACHE 版本号。 */
-const CACHE = 'yuexi-v1';
+   策略：
+     - 同源静态资源（html/css/js/图片/字体/音频）→ Cache-First，离线秒开、不白屏
+     - 跨域资源（Supabase SDK / CDN）→ 缓存优先，失败再走网络
+     - 其余同源请求 → 网络优先，失败回退缓存
+   发版后如需强制刷新缓存，请递增下面的 CACHE 版本号（如 yuexi-v2 → yuexi-v3）。 */
+const CACHE = 'yuexi-v3';
 const PRECACHE = [
   './', './index.html', './manifest.json',
   './css/style.css',
-  './js/config.js', './js/storage.js', './js/sync.js', './js/sections.js', './js/app.js', './js/auth.js',
+  './js/config.js', './js/storage.js', './js/sync.js', './js/sections.js', './js/app.js', './js/auth.js', './js/datasource.js',
   './assets/icon.svg'
 ];
 
@@ -27,19 +30,50 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(req.url);
   const sameOrigin = url.origin === self.location.origin;
 
-  if (sameOrigin) {
+  // 静态资源（html/css/js/图片/字体/音频等）→ 缓存优先，离线秒开、不白屏
+  const isStatic = /\.(?:html?|css|js|mjs|svg|png|jpe?g|gif|webp|ico|woff2?|ttf|eot|mp3|wav|ogg|json)$/i.test(url.pathname);
+
+  // 实时数据（data/feeds.json 等）→ 网络优先，保证 Actions 更新后能立即生效；离线则回退缓存
+  if (sameOrigin && /\/data\//.test(url.pathname)) {
     e.respondWith(
       fetch(req).then((res) => {
         if (res && res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); }
         return res;
       }).catch(() => caches.match(req))
     );
-  } else {
-    e.respondWith(
-      caches.match(req).then((cached) => cached || fetch(req).then((res) => {
-        if (res && res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); }
-        return res;
-      }))
-    );
+    return;
   }
+
+  if (sameOrigin && isStatic) {
+    e.respondWith(
+      caches.match(req).then((cached) =>
+        cached || fetch(req).then((res) => {
+          if (res && res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); }
+          return res;
+        }).catch(() => cached)
+      )
+    );
+    return;
+  }
+
+  // 跨域资源（Supabase SDK / CDN 等）→ 缓存优先，失败再走网络
+  if (!sameOrigin) {
+    e.respondWith(
+      caches.match(req).then((cached) =>
+        cached || fetch(req).then((res) => {
+          if (res && res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); }
+          return res;
+        })
+      )
+    );
+    return;
+  }
+
+  // 其余同源请求（如将来新增的同源 API）→ 网络优先，失败回退缓存
+  e.respondWith(
+    fetch(req).then((res) => {
+      if (res && res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); }
+      return res;
+    }).catch(() => caches.match(req))
+  );
 });

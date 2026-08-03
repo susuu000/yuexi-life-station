@@ -6,6 +6,13 @@ const App = {
   currentTab: 'home', // home / discover / profile
   currentSection: 'home',
   clockTimer: null,
+  // 性能优化（P-1）：refresh 防抖调度状态
+  refreshTimer: null,
+  refreshSnapshot: null,
+  // 翻页时钟缓存（P-3）
+  flipEls: null,
+  lastClockMinute: '',
+  clockVisibilityBound: false,
   touchStartX: 0,
   touchStartY: 0,
   touchStartTime: 0,
@@ -44,6 +51,8 @@ const App = {
       this.registerSW();
       Storage.pushNav('home');
       this.switchTab('home');
+      // 真实数据源：先用缓存渲染，拿到最新结果后自动刷新一次
+      if (window.DataSource) DataSource.boot().catch(() => {});
     } catch(e) {
       console.error('Init error:', e);
       try {
@@ -87,7 +96,7 @@ const App = {
     const nav = document.getElementById('sidebarNav');
     const items = Storage.data.settings.sidebar;
     nav.innerHTML = items.map(item => `
-      <div class="nav-item ${item.id === this.currentSection ? 'active' : ''}" onclick="App.navigate('${item.id}')">
+      <div class="nav-item ${item.id === this.currentSection ? 'active' : ''}" data-section="${item.id}" onclick="App.navigate('${item.id}')">
         <span class="nav-icon">${this.icons[item.icon] || this.icons.default}</span>
         <span class="nav-label">${item.name}</span>
         ${item.custom ? `<button class="nav-delete" onclick="event.stopPropagation(); App.removeSidebar('${item.id}')">
@@ -140,7 +149,7 @@ const App = {
     Storage.pushNav(sectionId);
 
     document.querySelectorAll('.nav-item').forEach(el => {
-      el.classList.toggle('active', el.getAttribute('onclick') === `App.navigate('${sectionId}')`);
+      el.classList.toggle('active', el.dataset.section === sectionId);
     });
 
     const content = document.getElementById('contentArea');
@@ -189,6 +198,30 @@ const App = {
   },
 
   refresh() {
+    // 性能优化（P-1）：防抖合并同一时隙内的多次 refresh 调用，
+    // 避免 sync 实时推送 / 连续操作触发的全量 innerHTML 重渲染卡顿。
+    const content = document.getElementById('contentArea');
+    // 每次调用都刷新焦点/滚动快照（最新一次为准），渲染时用它恢复（IX-2/IX-3）
+    const active = document.activeElement;
+    let focusId = null, selStart = 0, selEnd = 0;
+    if (active && (active.tagName === 'TEXTAREA' || active.tagName === 'INPUT')) {
+      focusId = active.id;
+      try { selStart = active.selectionStart; selEnd = active.selectionEnd; } catch (e) {}
+    }
+    this.refreshSnapshot = {
+      focusId, selStart, selEnd,
+      scrollTop: content ? content.scrollTop : 0
+    };
+    // 已调度则直接返回，等待合并后的那次渲染
+    if (this.refreshTimer) return;
+    this.refreshTimer = setTimeout(() => {
+      this.refreshTimer = null;
+      this._doRefresh(this.refreshSnapshot);
+    }, 80);
+  },
+
+  _doRefresh(snap) {
+    const content = document.getElementById('contentArea');
     if (this.currentTab === 'home' && this.currentSection === 'home') {
       this.switchTab('home');
     } else if (this.currentTab === 'home') {
@@ -196,8 +229,53 @@ const App = {
     } else {
       this.switchTab(this.currentTab);
     }
-    // 渲染完成后异步加载 IndexedDB 中的图片
+
+    // 恢复滚动位置，避免刷新后跳到顶部（IX-2 体验优化）
+    if (content) content.scrollTop = snap.scrollTop;
+    // 恢复输入框焦点与光标
+    if (snap.focusId) {
+      const el = document.getElementById(snap.focusId);
+      if (el) {
+        el.focus();
+        try { el.setSelectionRange(snap.selStart, snap.selEnd); } catch (e) {}
+      }
+    }
+    // 首页时钟 DOM 已被重建，下次 tick 重新缓存元素引用（P-3）
+    this.flipEls = null;
+    // 渲染完成后异步加载 IndexedDB 中的图片（P-2 懒加载在 hydrateImages 内部处理）
     setTimeout(() => Storage.hydrateImages(), 50);
+  },
+
+  // 数据量统计（用于 F-3 备份提醒）
+  getDataCount() {
+    const d = Storage.data;
+    let c = 0;
+    ['ielts', 'aiStudy', 'podcast', 'selfMedia', 'selfExploration'].forEach(k => { c += Object.keys(d[k] || {}).length; });
+    if (d.reading && d.reading.checkin) c += Object.values(d.reading.checkin).reduce((s, a) => s + ((a && a.length) || 0), 0);
+    c += (d.favorites || []).length;
+    if (d.discover && d.discover.notes) c += Object.keys(d.discover.notes).length;
+    return c;
+  },
+
+  // F-3：备份提醒横幅（累计 30 条时温和提示）
+  getBackupTip() {
+    if (Storage.data.settings && Storage.data.settings.backupTipDismissed) return '';
+    const count = this.getDataCount();
+    if (count < 30) return '';
+    return `
+      <div class="backup-tip" id="backupTip">
+        <span class="backup-tip-text">数据已积累 ${count} 条，建议导出备份以防丢失</span>
+        <button class="backup-tip-btn" onclick="App.dismissBackupTip(false)">去备份</button>
+        <button class="backup-tip-close" onclick="App.dismissBackupTip(true)">×</button>
+      </div>`;
+  },
+
+  dismissBackupTip(silent) {
+    if (!Storage.data.settings) Storage.data.settings = {};
+    Storage.data.settings.backupTipDismissed = true;
+    Storage.save();
+    if (silent) { this.refresh(); return; }
+    this.navigate('settings');
   },
 
   // 日期
@@ -217,9 +295,23 @@ const App = {
 
   startHomeClock() {
     this._flipClockExpanded = false;
+    this.flipEls = null;            // 时钟 DOM 重建，清空缓存引用
+    this.lastClockMinute = '';
     this.updateFlipClock();
     if (this._clockTimer) clearInterval(this._clockTimer);
     this._clockTimer = setInterval(() => this.updateFlipClock(), 1000);
+    // 后台标签页时暂停计时，节省资源（P-3）
+    if (!this.clockVisibilityBound) {
+      this.clockVisibilityBound = true;
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (this._clockTimer) { clearInterval(this._clockTimer); this._clockTimer = null; }
+        } else if (!this._clockTimer) {
+          this.updateFlipClock();
+          this._clockTimer = setInterval(() => this.updateFlipClock(), 1000);
+        }
+      });
+    }
   },
 
   toggleFlipClock() {
@@ -233,18 +325,34 @@ const App = {
     const hh = String(now.getHours()).padStart(2,'0');
     const mm = String(now.getMinutes()).padStart(2,'0');
     const ss = String(now.getSeconds()).padStart(2,'0');
-    this._setFlipDigit('flipH1', hh[0]);
-    this._setFlipDigit('flipH2', hh[1]);
-    this._setFlipDigit('flipM1', mm[0]);
-    this._setFlipDigit('flipM2', mm[1]);
+    // 折叠态（秒数不显示）下，分钟不变则完全不碰 DOM（P-3：每秒 → 每分钟）
+    if (!this._flipClockExpanded) {
+      const key = hh + mm;
+      if (key === this.lastClockMinute) return;
+      this.lastClockMinute = key;
+    }
+    // 缓存元素引用，避免每秒重复 getElementById（P-3）
+    if (!this.flipEls) {
+      this.flipEls = {
+        h1: document.getElementById('flipH1'),
+        h2: document.getElementById('flipH2'),
+        m1: document.getElementById('flipM1'),
+        m2: document.getElementById('flipM2'),
+        s1: document.getElementById('flipS1'),
+        s2: document.getElementById('flipS2')
+      };
+    }
+    this._setFlipDigit(this.flipEls.h1, hh[0]);
+    this._setFlipDigit(this.flipEls.h2, hh[1]);
+    this._setFlipDigit(this.flipEls.m1, mm[0]);
+    this._setFlipDigit(this.flipEls.m2, mm[1]);
     if (this._flipClockExpanded) {
-      this._setFlipDigit('flipS1', ss[0]);
-      this._setFlipDigit('flipS2', ss[1]);
+      this._setFlipDigit(this.flipEls.s1, ss[0]);
+      this._setFlipDigit(this.flipEls.s2, ss[1]);
     }
   },
 
-  _setFlipDigit(id, val) {
-    const el = document.getElementById(id);
+  _setFlipDigit(el, val) {
     if (!el || el.textContent === val) return;
     el.classList.add('flip-anim');
     el.textContent = val;
@@ -366,6 +474,26 @@ const App = {
     if (this._openingExternal) return;
     this._openingExternal = true;
     setTimeout(() => { this._openingExternal = false; }, 800);
+
+    // 应用内确认弹窗：避免误触直接跳出 PWA / 离开当前页面
+    const display = url.length > 60 ? url.slice(0, 57) + '…' : url;
+    this._pendingExternalUrl = url;
+    this.showModal('打开外部链接', `
+      <p class="ext-confirm-tip">即将在浏览器中打开以下外部链接：</p>
+      <p class="ext-confirm-url">${display}</p>
+      <div class="ext-confirm-actions">
+        <button class="btn btn-outline" onclick="App.closeModal()">取消</button>
+        <button class="btn btn-primary" onclick="App._confirmOpenExternal()">继续打开</button>
+      </div>
+    `);
+  },
+
+  // 用户在确认弹窗中点击"继续打开"后执行真实跳转（跳转逻辑与平台适配逻辑保持原样）
+  _confirmOpenExternal() {
+    const url = this._pendingExternalUrl;
+    this._pendingExternalUrl = null;
+    this.closeModal();
+    if (!url) return;
 
     var ua = navigator.userAgent;
     var isIOS = /iP(hone|ad|od)/.test(ua);
@@ -533,14 +661,14 @@ const App = {
       const dt = Date.now() - this.touchStartTime;
       const winW = window.innerWidth;
 
-      // 水平滑动为主
-      if (Math.abs(dx) > 60 && Math.abs(dy) < 80 && dt < 500) {
+      // 水平滑动为主（IX-5：放宽阈值，更易触发）
+      if (Math.abs(dx) > 50 && Math.abs(dy) < 80 && dt < 500) {
         // 从左边缘向右滑 → 返回上一级
-        if (this.touchStartX < 40 && dx > 60) {
+        if (this.touchStartX < 60 && dx > 50) {
           this.goBack();
         }
         // 从右边缘向左滑 → 前进（回到首页）
-        else if (this.touchStartX > winW - 40 && dx < -60) {
+        else if (this.touchStartX > winW - 60 && dx < -50) {
           this.switchTab('home');
         }
       }
@@ -602,9 +730,9 @@ const App = {
     this.showToast('已删除');
   },
 
-  // 自动打卡（学习任意板块后触发）
-  triggerAutoCheckin() {
-    if (Storage.autoCheckin()) {
+  // 自动打卡（学习任意板块后触发）；source 为触发来源说明（用于 IX-7 打卡明细）
+  triggerAutoCheckin(source) {
+    if (Storage.autoCheckin(source)) {
       this.showToast('✅ 学习已记录，自动打卡成功');
     }
   },
@@ -694,6 +822,59 @@ const App = {
     a.click();
     URL.revokeObjectURL(url);
     this.showToast('✅ 数据已导出');
+  },
+
+  // 全局搜索：跨板块搜索笔记与记录
+  openGlobalSearch() {
+    this.showModal('🔍 全局搜索', `
+      <input class="input-field" id="globalSearchInput" placeholder="搜索财务、手账、日常、收藏、书影、笔记..." oninput="App.runGlobalSearch(this.value)" autofocus>
+      <div id="globalSearchResults" class="search-results"></div>
+    `);
+    setTimeout(() => { const el = document.getElementById('globalSearchInput'); if (el) el.focus(); }, 50);
+  },
+
+  runGlobalSearch(q) {
+    const box = document.getElementById('globalSearchResults');
+    if (!box) return;
+    q = (q || '').trim().toLowerCase();
+    if (!q) { box.innerHTML = '<div class="search-empty">输入关键词开始搜索</div>'; return; }
+    const D = Storage.data || {};
+    const se = D.selfExploration || {};
+    const results = [];
+
+    const push = (title, sub, target) => {
+      const t = String(title || '');
+      const s = String(sub || '');
+      if (t.toLowerCase().includes(q) || s.toLowerCase().includes(q)) {
+        results.push({ title: t, sub: s, target });
+      }
+    };
+
+    // 财务
+    (se.finance || []).forEach(f => push(`${(f.type==='income'?'收入':'支出')} ¥${f.amount} · ${f.cat||''}`, f.note || f.date, 'selfExploration'));
+    // 手账
+    (se.journal?.entries || []).forEach(e => push(e.title || '', (e.content||'').slice(0,40), 'selfExploration'));
+    // 日常记录
+    (se.daily || []).forEach(d => push(d.name || '', (d.text||'').slice(0,40), 'selfExploration'));
+    // 心情
+    (se.self?.emotions || []).forEach(e => push('心情：' + (e.mood||''), e.date, 'selfExploration'));
+    // 收藏
+    (D.favorites || []).forEach(f => push(f.title || '', (f.summary||'').slice(0,40), 'profile'));
+    // 书影
+    const bm = D.reading?.bookMedia || {};
+    [...(bm.reading||[]), ...(bm.watching||[]), ...(bm.planned||[]), ...(bm.completed||[])].forEach(b => push(b.title || '', (b.author||''), 'reading'));
+    // 雅思笔记
+    Object.values(D.ielts || {}).forEach(day => { const notes = day.notes || {}; Object.values(notes).forEach(n => push(n.title || '雅思笔记', (n.text||'').slice(0,40), 'ielts')); });
+    // AI学习笔记
+    Object.values(D.aiStudy || {}).forEach(day => { const notes = day.notes || {}; Object.values(notes).forEach(n => push(n.title || 'AI笔记', (n.text||'').slice(0,40), 'aiStudy')); });
+    // 播客笔记
+    Object.values(D.podcast || {}).forEach(day => { const notes = day.notes || {}; Object.values(notes).forEach(n => push(n.title || '播客笔记', (n.text||'').slice(0,40), 'podcast')); });
+
+    if (results.length === 0) { box.innerHTML = '<div class="search-empty">未找到匹配「' + q + '」的记录</div>'; return; }
+    box.innerHTML = results.slice(0, 30).map(r => `<div class="search-result-item" onclick="App.closeModal();App.navigate('${r.target}')">
+      <div class="search-result-title">${r.title}</div>
+      ${r.sub ? `<div class="search-result-sub">${r.sub}</div>` : ''}
+    </div>`).join('');
   }
 };
 

@@ -70,6 +70,12 @@ const Sync = {
     } catch (e) {
       console.warn('Supabase 初始化失败，本地模式运行：', e.message);
     }
+    // 网络在线/离线状态变化时刷新同步状态栏（仅绑定一次）
+    if (!this._netBound) {
+      this._netBound = true;
+      window.addEventListener('online', () => this.updateUI());
+      window.addEventListener('offline', () => this.updateUI());
+    }
     this.updateUI();
   },
 
@@ -109,6 +115,7 @@ const Sync = {
   async loadAll() {
     if (!this.isOnline()) return false;
     const uid = this.user.id;
+    this._mergeHappened = false;
     try {
       // 设置
       const { data: sRow } = await this.client
@@ -133,11 +140,27 @@ const Sync = {
         eRows.forEach(r => applyEntry(r.section, r.entry_date, r.payload));
       }
 
-      // 集合
+      // 集合（字段级 / 数组并集合并，避免整条覆盖导致其他设备修改丢失）
       const { data: colRows } = await this.client
         .from(SB_TABLES.collections).select('collection_key,items').eq('user_id', uid);
-      if (colRows) {
-        colRows.forEach(r => setByPath(Storage.data, COLLECTION_PATH[r.collection_key] || [], r.items));
+      if (colRows && colRows.length) {
+        const localHadData = Object.keys(Storage.data).length > 0;
+        colRows.forEach(r => {
+          const path = COLLECTION_PATH[r.collection_key] || [];
+          const remote = r.items;
+          if (isListCollection(r.collection_key)) {
+            const before = getByPath(Storage.data, path);
+            const merged = mergeArrayById(before, remote);
+            if (before && JSON.stringify(before) !== JSON.stringify(merged)) this._mergeHappened = true;
+            setByPath(Storage.data, path, merged);
+          } else {
+            const before = getByPath(Storage.data, path) || {};
+            const merged = deepMerge(before, remote);
+            if (Object.keys(before).length) this._mergeHappened = true;
+            setByPath(Storage.data, path, merged);
+          }
+        });
+        if (localHadData && this._mergeHappened) this._maybeMergeToast();
       }
 
       Storage.mergeDefaults();
@@ -271,6 +294,16 @@ const Sync = {
     return pub.publicUrl;
   },
 
+  /* ---------- 合并提示（节流，避免初始化同步时刷屏） ---------- */
+  _maybeMergeToast() {
+    const now = Date.now();
+    if (this._lastMergeToast && now - this._lastMergeToast < 3000) return;
+    this._lastMergeToast = now;
+    if (typeof App !== 'undefined' && App.showToast) {
+      App.showToast('已从云端合并其他设备的更新');
+    }
+  },
+
   /* ---------- UI ---------- */
   updateUI() {
     const el = document.getElementById('syncStatus');
@@ -279,6 +312,15 @@ const Sync = {
     const text = el.querySelector('.sync-text');
     if (!dot || !text) return;
     dot.className = 'sync-dot';
+
+    // 网络离线时优先提示（无论是否已登录 Supabase），让用户知道当前处于离线模式
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      dot.classList.add('sync-dot-offline');
+      text.textContent = '离线模式 · 数据存本地';
+      el.style.background = 'var(--border-light)';
+      return;
+    }
+
     switch (this.status) {
       case 'online':
         dot.classList.add('sync-dot-online');
@@ -329,7 +371,14 @@ const Sync = {
       } else if (kind === 'entries' && row.section && row.entry_date) {
         applyEntry(row.section, row.entry_date, row.payload);
       } else if (kind === 'collections' && row.collection_key) {
-        setByPath(Storage.data, COLLECTION_PATH[row.collection_key] || [], row.items);
+        const path = COLLECTION_PATH[row.collection_key] || [];
+        if (isListCollection(row.collection_key)) {
+          const before = getByPath(Storage.data, path);
+          setByPath(Storage.data, path, mergeArrayById(before, row.items));
+        } else {
+          const before = getByPath(Storage.data, path) || {};
+          setByPath(Storage.data, path, deepMerge(before, row.items));
+        }
       }
       Storage.mergeDefaults();
       Storage._saveNow();
@@ -350,14 +399,36 @@ const Sync = {
 const ENTRY_SECTIONS = ['ielts', 'aiStudy', 'podcast', 'selfMedia', 'discover'];
 
 function applyEntry(section, date, payload) {
+  if (!payload || typeof payload !== 'object') return;
   if (section === 'reading_checkin') {
     Storage.data.reading = Storage.data.reading || {};
     Storage.data.reading.checkin = Storage.data.reading.checkin || {};
-    Storage.data.reading.checkin[date] = payload;
+    // 字段级合并：只覆盖远端有的字段，本地其他字段保留，避免整条丢失
+    Storage.data.reading.checkin[date] = deepMerge(Storage.data.reading.checkin[date] || {}, payload);
   } else if (ENTRY_SECTIONS.includes(section)) {
     Storage.data[section] = Storage.data[section] || {};
-    Storage.data[section][date] = payload;
+    Storage.data[section][date] = deepMerge(Storage.data[section][date] || {}, payload);
   }
+}
+
+/* 数组按 id 合并（用于集合类数据：收藏/书影/OOTD 等）。
+   - 无 id 的项按内容去重，保留并集（两台设备各加的不同项都会保留）
+   - 同 id 冲突时，取 updated_at 较新者；都没有时间戳则远端优先 */
+function mergeArrayById(localArr, remoteArr) {
+  if (!Array.isArray(localArr)) return Array.isArray(remoteArr) ? remoteArr.slice() : [];
+  if (!Array.isArray(remoteArr)) return localArr.slice();
+  const keyOf = it => (it && it.id != null) ? ('id:' + it.id) : ('json:' + JSON.stringify(it));
+  const map = new Map();
+  localArr.forEach(it => map.set(keyOf(it), it));
+  remoteArr.forEach(it => {
+    const k = keyOf(it);
+    const existing = map.get(k);
+    if (!existing) { map.set(k, it); return; }
+    const lt = existing.updated_at ? new Date(existing.updated_at).getTime() : 0;
+    const rt = it.updated_at ? new Date(it.updated_at).getTime() : 0;
+    if (rt > lt) map.set(k, it);
+  });
+  return Array.from(map.values());
 }
 
 /* 集合：collection_key -> 在 Storage.data 中的路径（数组） */
