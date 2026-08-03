@@ -935,6 +935,25 @@ textarea.input-field { resize: vertical; min-height: 80px; }
 .period-day.period { background: var(--red); color: #fff; }
 .period-day.predicted { background: rgba(192,72,48,0.2); color: var(--red); }
 .period-day.today { border: 2px solid var(--gold); font-weight: 600; }
+.period-day.empty { background: transparent; cursor: default; }
+.period-grid .period-day { width: 100%; height: auto; aspect-ratio: 1 / 1; cursor: pointer; }
+.period-grid .period-day.empty { cursor: default; }
+.period-calendar { margin-top: 4px; }
+.period-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 6px; }
+.period-dow { text-align: center; font-size: 11px; color: var(--text-ink-muted); }
+.period-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.period-nav { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.period-nav-btn { padding: 2px 10px; font-size: 15px; line-height: 1; min-width: 30px; }
+.period-month-label { font-size: 13px; font-weight: 600; min-width: 62px; text-align: center; }
+.period-legend { display: flex; gap: 16px; margin-top: 10px; font-size: 12px; color: var(--text-ink-muted); }
+.period-legend > span { display: flex; align-items: center; gap: 6px; }
+.period-chip { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* 自媒体 · 摄影灵感分组 */
+.insp-group { margin-bottom: 12px; }
+.insp-group:last-child { margin-bottom: 0; }
+.insp-group-title { font-size: 13px; font-weight: 600; color: var(--text-ink); margin-bottom: 6px; padding-left: 8px; border-left: 3px solid var(--red); }
+.aesthetic-img { width: 100%; height: 110px; object-fit: cover; display: block; }
 
 /* --- Toast --- */
 .toast {

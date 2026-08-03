@@ -1118,23 +1118,23 @@ const Sections = {
     // 用户关注的播客列表（可编辑）
     followedPodcasts: ['来都来了','不合时宜','文化有限','忽左忽右','东腔西调'],
 
-    // 小宇宙热榜前5
+    // 示例热榜（仅服务端 Apple 中国区抓取失败时的兜底，链接跳转到 Apple 播客中国区搜索）
     hotList: [
       { id:'pc-001', title:'聊聊2026下半年的AI趋势：从GPT-5到具身智能', podcaster:'硅谷101', duration:'58分', date:'2026-07-27',
         summary:'主播邀请AI领域投资人深度对谈，从GPT-5 Turbo发布聊到具身智能赛道，分析下半年最值得关注的三个AI方向：多模态Agent、AI硬件、垂直行业模型。',
-        url:'https://www.xiaoyuzhoufm.com/search?q=' + encodeURIComponent('硅谷101') },
+        url:'https://podcasts.apple.com/cn/search?term=' + encodeURIComponent('硅谷101') },
       { id:'pc-002', title:'我做自媒体三年赚了多少？全网最真实分享', podcaster:'半佛仙人', duration:'42分', date:'2026-07-27',
         summary:'半佛仙人首次公开自媒体收入结构和运营策略，从内容选题到变现路径全面拆解，对想做自媒体的人极具参考价值。',
-        url:'https://www.xiaoyuzhoufm.com/search?q=' + encodeURIComponent('半佛仙人') },
+        url:'https://podcasts.apple.com/cn/search?term=' + encodeURIComponent('半佛仙人') },
       { id:'pc-003', title:'35岁被裁后，我开了一家年入百万的小店', podcaster:'故事FM', duration:'36分', date:'2026-07-26',
         summary:'一位前互联网大厂员工分享被裁后创业的真实经历，从选址到经营，从心理调适到财务规划，故事真实动人。',
-        url:'https://www.xiaoyuzhoufm.com/search?q=' + encodeURIComponent('故事FM') },
+        url:'https://podcasts.apple.com/cn/search?term=' + encodeURIComponent('故事FM') },
       { id:'pc-004', title:'为什么年轻人开始流行"数字游民"？', podcaster:'忽左忽右', duration:'48分', date:'2026-07-26',
         summary:'探讨数字游民生活方式的兴起原因，从远程办公普及到价值观变迁，分析了这种生活方式的利弊和适合人群。',
-        url:'https://www.xiaoyuzhoufm.com/search?q=' + encodeURIComponent('忽左忽右') },
+        url:'https://podcasts.apple.com/cn/search?term=' + encodeURIComponent('忽左忽右') },
       { id:'pc-005', title:'2026年中国消费趋势报告：5个值得关注的变化', podcaster:'商业就是这样', duration:'32分', date:'2026-07-26',
         summary:'基于最新消费数据，分析2026年中国消费市场的五大趋势：理性消费回归、国货持续崛起、体验经济升温、银发经济爆发、情绪价值定价。',
-        url:'https://www.xiaoyuzhoufm.com/search?q=' + encodeURIComponent('商业就是这样') }
+        url:'https://podcasts.apple.com/cn/search?term=' + encodeURIComponent('商业就是这样') }
     ],
 
     render() {
@@ -1152,15 +1152,20 @@ const Sections = {
       const live = window.DataSource ? DataSource.list('podcastFollow') : [];
       const followList = names.map((name, i) => {
         const hit = live.find(x => x.podcaster === name);
-        if (hit) return hit;
+        if (hit) {
+          const u = (hit.url || '').includes('podcasts.apple.com')
+            ? hit.url
+            : ('https://podcasts.apple.com/cn/search?term=' + encodeURIComponent(name));
+          return { ...hit, url: u };
+        }
         return {
           id: 'pc-follow-' + i,
           title: name + ' · 最新一期',
           podcaster: name,
           duration: '',
           date: '',
-          summary: '这档播客还没被自动收录，点击下方按钮直接去搜索收听。',
-          url: 'https://www.xiaoyuzhoufm.com/search?q=' + encodeURIComponent(name),
+          summary: '这档播客还没被自动收录，点击下方按钮直接去 Apple 播客搜索收听。',
+          url: 'https://podcasts.apple.com/cn/search?term=' + encodeURIComponent(name),
           placeholder: true
         };
       });
@@ -1229,7 +1234,7 @@ const Sections = {
         ? `<img class="podcast-cover" src="${p.artwork}" alt="" loading="lazy" referrerpolicy="no-referrer">`
         : '';
       const isApple = (p.url || '').includes('podcasts.apple.com');
-      const playText = p.placeholder ? '去小宇宙搜索收听 →' : (isApple ? '在 Apple 播客收听 →' : '收听本期 →');
+      const playText = p.placeholder ? '在 Apple 播客搜索收听 →' : (isApple ? '在 Apple 播客收听 →' : '收听本期 →');
       return `
         <div class="podcast-item ${note.text?'listened':''}">
           <div class="podcast-header">
@@ -1322,39 +1327,49 @@ const Sections = {
         summary:'单灯布光教程，从灯位角度到色温控制，手把手教你用最简单的设备拍出电影级画面。附完整布光示意图。' }
     ],
 
-    inspirations: [
-      { id:'in-001', title:'夏日清凉感穿搭：白T+牛仔裤的10种穿法', source:'小红书热榜', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('夏日穿搭') },
-      { id:'in-002', title:'一个人在咖啡馆拍照的9个姿势', source:'小红书热榜', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('咖啡馆拍照姿势') },
-      { id:'in-003', title:'15秒短视频脚本模板：开箱测评类', source:'抖音热门', url:'https://www.douyin.com/search/' + encodeURIComponent('开箱测评脚本') },
-      { id:'in-004', title:'如何拍出高级感美食照片？附修图参数', source:'小红书热榜', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('美食摄影技巧') },
-      { id:'in-005', title:'vlog选题灵感：记录普通人的一天', source:'抖音热门', url:'https://www.douyin.com/search/' + encodeURIComponent('vlog选题') },
-      { id:'in-006', title:'夏日饮品测评脚本：从拍摄到剪辑全流程', source:'小红书热榜', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('饮品测评') },
-      { id:'in-007', title:'居家拍照背景布置方案：小空间也能出大片', source:'小红书热榜', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('居家拍照布置') },
-      { id:'in-008', title:'情侣合照创意pose：自然不尴尬的拍摄技巧', source:'抖音热门', url:'https://www.douyin.com/search/' + encodeURIComponent('情侣合照') },
-      { id:'in-009', title:'旅行vlog如何拍出电影感？构图+调色全攻略', source:'小红书热榜', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('旅行vlog电影感') },
-      { id:'in-010', title:'30秒教你用手机拍出虚化背景人像', source:'抖音热门', url:'https://www.douyin.com/search/' + encodeURIComponent('手机虚化人像') }
-    ],
-
-    aesthetics: [
-      { id:'ae-001', title:'极简日系人像', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('日系人像'), desc:'干净的光影、克制的色调，日系人像的美学精髓' },
-      { id:'ae-002', title:'胶片质感街拍', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('胶片街拍'), desc:'胶片色彩与街头光影的完美结合' },
-      { id:'ae-003', title:'电影感美食布光', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('电影感美食'), desc:'暗调美食摄影的高级感营造' },
-      { id:'ae-004', title:'自然光人像合集', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('自然光人像'), desc:'不同时段自然光的人像效果对比' }
+    samplePhotography: [
+      { id:'ph-001', title:'阴天也能拍出质感人像？5个自然光技巧', category:'portrait', categoryLabel:'人像摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('阴天人像摄影') },
+      { id:'ph-002', title:'只用一盏灯拍出电影感人像｜附完整布光图', category:'portrait', categoryLabel:'人像摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('电影感人像布光') },
+      { id:'ph-003', title:'周末去哪拍？城市周边的绝美风光机位清单', category:'landscape', categoryLabel:'景观摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('风光摄影机位') },
+      { id:'ph-004', title:'如何拍出有层次感的山水？前景中景远景构图', category:'landscape', categoryLabel:'景观摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('山水风光构图') },
+      { id:'ph-005', title:'扫街新手必看：街头摄影的7个构图思路', category:'street', categoryLabel:'街拍摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('街头摄影构图') },
+      { id:'ph-006', title:'雨天街拍怎么拍出电影氛围感', category:'street', categoryLabel:'街拍摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('雨天街拍') },
+      { id:'ph-007', title:'第一次拍胶片该怎么选胶卷？保姆级指南', category:'film', categoryLabel:'胶片摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('胶片相机选卷') },
+      { id:'ph-008', title:'胶片色彩调色思路：从扫描到成片', category:'film', categoryLabel:'胶片摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('胶片调色') },
+      { id:'ph-009', title:'手机也能拍出高级感美食？布光与摆盘', category:'food', categoryLabel:'美食摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('美食摄影布光') },
+      { id:'ph-010', title:'暗调美食摄影的布光与道具搭配', category:'food', categoryLabel:'美食摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('暗调美食摄影') },
+      { id:'ph-011', title:'城市夜景怎么拍才不糊？三脚架与参数', category:'night', categoryLabel:'夜景摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('城市夜景拍摄') },
+      { id:'ph-012', title:'极简建筑摄影：线条与几何的克制表达', category:'architecture', categoryLabel:'建筑摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('极简建筑摄影') },
+      { id:'ph-013', title:'在家怎么拍好动的宝宝？自然光抓拍', category:'child', categoryLabel:'儿童摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('儿童摄影抓拍') },
+      { id:'ph-014', title:'旅行vlog如何拍出电影感？构图+调色全攻略', category:'travel', categoryLabel:'旅行摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('旅行摄影电影感') },
+      { id:'ph-015', title:'黑白摄影的魅力：学会用光线讲故事', category:'mono', categoryLabel:'黑白摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('黑白摄影') },
+      { id:'ph-016', title:'怎么拍出自家猫主子的高冷大片', category:'pet', categoryLabel:'宠物摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('宠物摄影') }
     ],
 
     render() {
       const today = Storage.today();
       const td = Storage.getDayData('selfMedia', today);
 
-      // 今日灵感：抖音 / 百度 / 头条 / B站 全网热榜（服务端抓取）
-      const liveInsp = window.DataSource ? DataSource.list('inspiration') : [];
-      const inspList = liveInsp.length ? liveInsp : this.inspirations;
-      const inspStamp = liveInsp.length && window.DataSource ? DataSource.stamp('inspiration') : '';
+      // 摄影内容：服务端抓取 Reddit 摄影社区实时热帖，失败回落到示例
+      const livePhoto = window.DataSource ? DataSource.list('photography') : [];
+      const photoList = livePhoto.length ? livePhoto : this.samplePhotography;
+      const photoStamp = livePhoto.length && window.DataSource ? DataSource.stamp('photography') : '';
+
+      const catEmoji = { portrait:'📷', landscape:'🏞️', street:'🚶', film:'🎞️', food:'🍜', night:'🌃', architecture:'🏛️', child:'🧒', travel:'✈️', mono:'⚫', pet:'🐱', general:'📸' };
+
+      // 今日灵感：按分类分组展示
+      const groups = {};
+      photoList.forEach(it => { (groups[it.categoryLabel] = groups[it.categoryLabel] || []).push(it); });
+      const groupHtml = Object.entries(groups).map(([cat, items]) => `
+        <div class="insp-group">
+          <div class="insp-group-title">${cat} <span style="font-size:11px;color:var(--text-ink-muted);margin-left:4px;">${items.length}</span></div>
+          ${items.map((ins,i) => this.renderPhotoRow(ins, i)).join('')}
+        </div>`).join('');
 
       return `
         <div class="section-header">
           <div><div class="section-title"><span class="section-title-icon" style="background:var(--red);"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7zM14 5H3a2 2 0 00-2 2v10a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2z"/></svg></span>自媒体</div>
-          <div class="section-subtitle">推荐 · 灵感 · 审美</div></div>
+          <div class="section-subtitle">摄影灵感 · 推荐 · 审美</div></div>
         </div>
 
         <div class="sub-tabs-bar">
@@ -1365,62 +1380,38 @@ const Sections = {
 
         <div id="smReco" class="sub-panel">
           <div class="card mb-4">
-            <div class="card-title"><span class="card-title-bar"></span>今日推荐 · 全网热榜
+            <div class="card-title"><span class="card-title-bar"></span>摄影推荐 · 精选
               <button class="btn btn-outline" id="refreshRecoBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshRecoBtn')">刷新</button>
             </div>
-            ${inspStamp}
-            ${inspList.map((ins,i) => `
-              <div class="inspiration-item">
-                <div class="inspiration-rank">${i+1}</div>
-                <div class="inspiration-content">
-                  <div class="inspiration-title">${ins.title}</div>
-                  <div class="inspiration-source">${ins.source}${ins.heat ? ' · 热度 ' + ins.heat : ''}</div>
-                </div>
-                <div class="item-actions">
-                  <a href="${ins.url}" target="_blank" rel="noopener noreferrer" class="action-btn" aria-label="打开">→</a>
-                  ${actionButtons({section:'selfMedia',title:ins.title,summary:ins.source||'灵感选题',url:ins.url,type:'inspiration'})}
-                </div>
-              </div>`).join('')}
+            ${photoStamp}
+            ${photoList.map((ins,i) => this.renderPhotoRow(ins, i)).join('')}
           </div>
         </div>
 
         <div id="smInspiration" class="sub-panel" style="display:none;">
           <div class="card mb-4">
-            <div class="card-title"><span class="card-title-bar" style="background:var(--gold);"></span>今日灵感 · 全网热榜
+            <div class="card-title"><span class="card-title-bar" style="background:var(--gold);"></span>摄影灵感 · 分类
               <button class="btn btn-outline" id="refreshInspBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshInspBtn')">刷新</button>
             </div>
-            ${inspStamp}
-            ${inspList.map((ins,i) => `
-              <div class="inspiration-item">
-                <div class="inspiration-rank">${i+1}</div>
-                <div class="inspiration-content">
-                  <div class="inspiration-title">${ins.title}</div>
-                  <div class="inspiration-source">${ins.source}${ins.heat ? ' · 热度 ' + ins.heat : ''}</div>
-                </div>
-                <div class="item-actions">
-                  <a href="${ins.url}" target="_blank" rel="noopener noreferrer" class="action-btn" aria-label="打开">→</a>
-                  ${actionButtons({section:'selfMedia',title:ins.title,summary:ins.source||'灵感选题',url:ins.url,type:'inspiration'})}
-                </div>
-              </div>`).join('')}
+            ${photoStamp}
+            ${groupHtml}
           </div>
         </div>
 
         <div id="smAesthetic" class="sub-panel" style="display:none;">
           <div class="card">
-            <div class="card-title"><span class="card-title-bar" style="background:#7B3FF2;"></span>审美搭建 · 灵感图鉴
+            <div class="card-title"><span class="card-title-bar" style="background:#7B3FF2;"></span>审美搭建 · 图鉴
               <button class="btn btn-outline" id="refreshAeBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshAeBtn')">刷新</button>
             </div>
-            ${inspStamp}
+            ${photoStamp}
             <div class="aesthetics-grid">
-              ${inspList.map((ins,i) => `
+              ${photoList.map(ins => `
                 <div class="aesthetic-card" onclick="App.openExternal('${ins.url}')">
-                  <div class="aesthetic-placeholder">
-                    <div style="font-size:28px;">🎨</div>
-                    <div style="font-size:11px;color:var(--text-ink-muted);margin-top:4px;">#${i+1}</div>
-                  </div>
+                  ${ins.thumb ? `<img class="aesthetic-img" src="${ins.thumb}" alt="" loading="lazy" referrerpolicy="no-referrer">`
+                    : `<div class="aesthetic-placeholder"><div style="font-size:30px;">${catEmoji[ins.category]||'📸'}</div></div>`}
                   <div class="aesthetic-info">
                     <div class="aesthetic-title">${ins.title}</div>
-                    <div class="aesthetic-desc">${ins.source}${ins.heat ? ' · 热度 ' + ins.heat : ''}</div>
+                    <div class="aesthetic-desc">${ins.categoryLabel}${ins.heat ? ' · ' + ins.heat : ''}</div>
                   </div>
                 </div>`).join('')}
             </div>
@@ -1429,19 +1420,18 @@ const Sections = {
       `;
     },
 
-    renderRecoCard(r, td) {
-      const note = td.notes?.[r.id] || {};
+    renderPhotoRow(ins, i) {
       return `
-        <div class="reco-item">
-          <div class="reco-header">
-            <div class="reco-platform">${r.platform}</div>
-            <div class="reco-date">${r.date}</div>
-            ${actionButtons({section:'selfMedia',title:r.title,summary:r.summary,url:r.url,type:'reco'})}
+        <div class="inspiration-item">
+          <div class="inspiration-rank">${i+1}</div>
+          <div class="inspiration-content">
+            <div class="inspiration-title">${ins.title}</div>
+            <div class="inspiration-source">${ins.categoryLabel}${ins.source ? ' · ' + ins.source : ''}${ins.heat ? ' · 热度 ' + ins.heat : ''}</div>
           </div>
-          <div class="reco-title">${r.title}</div>
-          <div class="reco-summary">${r.summary}</div>
-          <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="reco-link">查看原内容 →</a>
-          ${note.text ? `<div class="reco-note">📝 ${note.text}</div>` : ''}
+          <div class="item-actions">
+            <a href="${ins.url}" target="_blank" rel="noopener noreferrer" class="action-btn" aria-label="打开">→</a>
+            ${actionButtons({section:'selfMedia',title:ins.title,summary:ins.categoryLabel||'摄影灵感',url:ins.url,type:'inspiration'})}
+          </div>
         </div>`;
     }
   },
@@ -1451,6 +1441,7 @@ const Sections = {
     render() {
       const today = Storage.today();
       const se = Storage.data.selfExploration;
+      this._periodMonth = today.slice(0,7);
 
       return `
         <div class="section-header">
@@ -1586,7 +1577,10 @@ const Sections = {
     // ---- 生理期 ----
     renderPeriodTab(se, today) {
       const records = (se.period.records || []).slice().sort((a,b) => a.date < b.date ? -1 : 1);
-      let prediction = '';
+      const recSet = new Set(records.map(r => r.date));
+
+      // 基于历史周期推算未来 3 次
+      let predicted = [];
       if (records.length >= 2) {
         const diffs = [];
         for (let i = 1; i < records.length; i++) {
@@ -1597,32 +1591,85 @@ const Sections = {
         if (diffs.length > 0) {
           const avg = Math.round(diffs.reduce((s,v)=>s+v,0) / diffs.length);
           const last = new Date(records[records.length-1].date);
-          const nexts = [];
           for (let k = 1; k <= 3; k++) {
             const d = new Date(last); d.setDate(d.getDate() + avg * k);
-            nexts.push(Storage.formatDate(d));
+            predicted.push(Storage.formatDate(d));
           }
-          prediction = `
-            <div class="card mt-4">
-              <div class="card-title"><span class="card-title-bar" style="background:var(--red);"></span>智能预测</div>
-              <div class="se-period-predict">基于 ${diffs.length} 次周期，平均 <b>${avg}</b> 天</div>
-              <div class="se-period-predict-list">
-                ${nexts.map((d,i) => `<div class="se-period-predict-item"><span class="se-period-dot" style="background:var(--red);"></span>预计 ${i===0?'下次':'再'+i+'次'}：<b>${d}</b></div>`).join('')}
-              </div>
-            </div>`;
         }
       }
+      const predSet = new Set(predicted);
+
+      const calendar = this.renderPeriodCalendar(today, recSet, predSet);
+
+      const predictionCard = predicted.length ? `
+        <div class="card mt-4">
+          <div class="card-title"><span class="card-title-bar" style="background:var(--red);"></span>智能预测</div>
+          <div class="se-period-predict">基于 ${records.length} 次记录推算</div>
+          <div class="se-period-predict-list">
+            ${predicted.map((d,i) => `<div class="se-period-predict-item"><span class="se-period-dot" style="background:var(--red);"></span>预计 ${i===0?'下次':'再'+i+'次'}：<b>${d}</b></div>`).join('')}
+          </div>
+        </div>` : '';
+
       return `
+        ${calendar}
         <div class="card mb-4">
           <div class="card-title"><span class="card-title-bar" style="background:var(--red);"></span>生理期记录
             <button class="btn btn-outline" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="Sections.selfExploration.recordPeriod()">+ 记录</button>
           </div>
           ${records.length > 0
             ? records.slice().reverse().slice(0, 6).map(r => `<div class="se-period-item"><span class="se-period-dot" style="background:${r.flow==='量多'?'var(--red)':r.flow==='量中'?'var(--gold)':'var(--earth-light)'};"></span><span class="se-period-date">${r.date}</span><span class="se-period-flow">${r.flow}</span></div>`).join('')
-            : '<div class="empty-state"><div class="empty-state-icon">🌸</div><div class="empty-state-text">点击记录生理期</div></div>'}
+            : '<div class="empty-state"><div class="empty-state-icon">🌸</div><div class="empty-state-text">点击日历日期或「+记录」添加</div></div>'}
         </div>
-        ${prediction}
+        ${predictionCard}
       `;
+    },
+
+    renderPeriodCalendar(today, recSet, predSet) {
+      const viewMonth = this._periodMonth || today.slice(0,7);
+      const [vy, vm] = viewMonth.split('-').map(Number);
+      const first = new Date(vy, vm-1, 1);
+      const startDow = (first.getDay() + 6) % 7; // 周一为每周起始
+      const daysInMonth = new Date(vy, vm, 0).getDate();
+      const cells = [];
+      for (let i = 0; i < startDow; i++) cells.push('<div class="period-day empty"></div>');
+      for (let d = 1; d <= daysInMonth; d++) {
+        const ds = `${vy}-${String(vm).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const cls = ['period-day'];
+        if (recSet.has(ds)) cls.push('period');
+        else if (predSet.has(ds)) cls.push('predicted');
+        if (ds === today) cls.push('today');
+        cells.push(`<div class="${cls.join(' ')}" onclick="Sections.selfExploration.recordPeriod('${ds}')">${d}</div>`);
+      }
+      const weekHdr = ['一','二','三','四','五','六','日'].map(w => `<div class="period-dow">${w}</div>`).join('');
+      return `
+        <div class="card mb-4">
+          <div class="card-title"><span class="card-title-bar" style="background:var(--red);"></span>生理期月历
+            <div class="period-nav">
+              <button class="btn btn-outline period-nav-btn" onclick="Sections.selfExploration.changePeriodMonth(-1)">‹</button>
+              <span class="period-month-label">${vy}年${vm}月</span>
+              <button class="btn btn-outline period-nav-btn" onclick="Sections.selfExploration.changePeriodMonth(1)">›</button>
+            </div>
+          </div>
+          <div class="period-calendar">
+            <div class="period-weekdays">${weekHdr}</div>
+            <div class="period-grid">${cells.join('')}</div>
+          </div>
+          <div class="period-legend">
+            <span><span class="period-day period period-chip"></span>已记录</span>
+            <span><span class="period-day predicted period-chip"></span>预测</span>
+          </div>
+        </div>`;
+    },
+
+    changePeriodMonth(delta) {
+      const cur = this._periodMonth || Storage.today().slice(0,7);
+      let [y, m] = cur.split('-').map(Number);
+      m += delta;
+      if (m < 1) { m = 12; y--; }
+      if (m > 12) { m = 1; y++; }
+      this._periodMonth = `${y}-${String(m).padStart(2,'0')}`;
+      const panel = document.getElementById('sePeriod');
+      if (panel) panel.innerHTML = this.renderPeriodTab(Storage.data.selfExploration, Storage.today());
     },
 
     // ---- 财务 ----
@@ -1954,9 +2001,9 @@ const Sections = {
       App.refresh();
     },
 
-    recordPeriod() {
+    recordPeriod(date) {
       App.showModal('记录生理期', `
-        <input class="input-field" id="periodDate" type="date" value="${Storage.today()}">
+        <input class="input-field" id="periodDate" type="date" value="${date || Storage.today()}">
         <select class="input-field mt-3" id="periodFlow">
           <option value="量少">量少</option>
           <option value="量中">量中</option>

@@ -268,7 +268,7 @@ async function fetchPodcastHot() {
       artwork: p.artworkUrl100 || '',
       genre: (p.genres || []).map((g) => g.name).filter((n) => n !== '播客').join(' / '),
       date: (j.feed?.updated || '').slice(0, 10) || today(),
-      url: p.url || ('https://www.xiaoyuzhoufm.com/search?q=' + encodeURIComponent(p.name)),
+      url: p.url || ('https://podcasts.apple.com/cn/search?term=' + encodeURIComponent(p.name)),
       summary: `${p.artistName || ''}${p.genres?.length ? ' · ' + p.genres.map(g => g.name).filter(n => n !== '播客').join('/') : ''} · Apple 播客中国区排名第 ${i + 1}`
     }));
   });
@@ -299,7 +299,7 @@ async function fetchPodcastFollow(names) {
         duration: '',
         date: latest?.date || (hit.releaseDate || '').slice(0, 10) || today(),
         summary: clip(latest?.summary || hit.collectionName || '', 150),
-        url: latest?.url || hit.collectionViewUrl || ('https://www.xiaoyuzhoufm.com/search?q=' + encodeURIComponent(name))
+        url: latest?.url || hit.collectionViewUrl || ('https://podcasts.apple.com/cn/search?term=' + encodeURIComponent(name))
       }];
     });
     if (r) out.push(...r);
@@ -512,6 +512,35 @@ async function fetchReleases() {
   return dedupe(out).slice(0, 14);
 }
 
+/** 摄影内容：Reddit 摄影社区实时热帖，按分类映射为人像/风光/街拍等 */
+async function fetchPhotography() {
+  const subs = [
+    ['portraits', '人像摄影'],
+    ['landscapephotography', '景观摄影'],
+    ['streetphotography', '街拍摄影'],
+    ['photography', '摄影综合'],
+    ['FilmPhotography', '胶片摄影'],
+    ['foodphotography', '美食摄影']
+  ];
+  const out = [];
+  const results = await Promise.all(subs.map(([sub, label]) => task('photography:r/' + sub, async () => {
+    const j = JSON.parse(await httpGet(`https://www.reddit.com/r/${sub}/hot.json?limit=8&t=week`, { ua: UA_BROWSER }));
+    const posts = (j.data?.children || []).map(c => c.data).filter(p => p && p.title);
+    return posts.map(p => ({
+      id: 'ph-' + (p.id || (sub + p.title)),
+      title: clip(p.title, 140),
+      url: 'https://www.reddit.com' + (p.permalink || ''),
+      source: 'r/' + sub,
+      category: sub,
+      categoryLabel: label,
+      heat: p.score ? (p.score / 1000).toFixed(1) + 'k' : '',
+      thumb: (p.thumbnail && /^https?:/.test(p.thumbnail)) ? p.thumbnail : ''
+    }));
+  })));
+  results.forEach(r => { if (r && r.length) out.push(...r); });
+  return dedupe(out, x => x.title).slice(0, 24);
+}
+
 /* ============ 主流程 ============ */
 
 async function main() {
@@ -529,10 +558,10 @@ async function main() {
     '来都来了', '不合时宜', '文化有限', '忽左忽右', '东腔西调'
   ];
 
-  const [news, ai, stock, podHot, podFollow, sanlian, subs, inspiration, releases] = await Promise.all([
+  const [news, ai, stock, podHot, podFollow, sanlian, subs, inspiration, releases, photography] = await Promise.all([
     fetchNews(), fetchAI(), fetchStock(), fetchPodcastHot(),
     fetchPodcastFollow(followNames), fetchSanlian(), fetchSubscriptions(),
-    fetchInspiration(), fetchReleases()
+    fetchInspiration(), fetchReleases(), fetchPhotography()
   ]);
 
   const now = new Date().toISOString();
@@ -555,6 +584,7 @@ async function main() {
     subscriptions: keep(subs && Object.keys(subs).length ? subs : null, 'subscriptions'),
     inspiration: keep(inspiration, 'inspiration'),
     releases: keep(releases, 'releases'),
+    photography: keep(photography, 'photography'),
     report
   };
 
