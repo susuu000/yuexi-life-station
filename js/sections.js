@@ -2187,8 +2187,33 @@ const Sections = {
       if (window.DataSource) DataSource.refresh(btnId);
     },
 
+    // 打开板块时后台拉取最新 data/feeds.json：仅当服务端数据比内存中的更新时才原地重绘，
+    // 这样点开「发现」即显示最新内容，无需再手动点刷新。
+    _autoRefresh() {
+      if (!window.DataSource) return;
+      const before = (DataSource.raw && DataSource.raw.updatedAt) || '';
+      DataSource.load(true).then(() => {
+        const after = (DataSource.raw && DataSource.raw.updatedAt) || '';
+        if (after && after !== before) this._repaint();
+      }).catch(() => {});
+    },
+
+    // 把四个子面板的内容原地重绘为最新数据（不重载整页、不重置已选子标签）
+    _repaint() {
+      const map = {
+        discoverNewsBody: () => this.renderNews(),
+        discoverAIBody: () => this.renderAIFrontier(),
+        discoverStockBody: () => this.renderStockInfo(),
+        discoverReleaseBody: () => this.renderNewReleases(),
+      };
+      Object.keys(map).forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = map[id]();
+      });
+    },
+
     render() {
-      return `
+      const html = `
         <div class="section-header">
           <div><div class="section-title"><span class="section-title-icon" style="background:var(--gold);"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8l-4 8-4-4 8-4z"/></svg></span>发现</div>
           <div class="section-subtitle">探索更广阔的世界</div></div>
@@ -2204,31 +2229,34 @@ const Sections = {
         <div class="sub-panel" id="discoverNews">
           <div class="card">
             <div class="card-title"><span class="card-title-bar"></span>新闻时事<button class="btn btn-outline" id="refreshNewsBtn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.discover.refreshFeeds('refreshNewsBtn')">刷新</button></div>
-            ${this.renderNews()}
+            <div id="discoverNewsBody">${this.renderNews()}</div>
           </div>
         </div>
 
         <div class="sub-panel" id="discoverAI" style="display:none;">
           <div class="card">
             <div class="card-title"><span class="card-title-bar" style="background:var(--haze-blue);"></span>AI前沿<button class="btn btn-outline" id="refreshAIBtn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.discover.refreshFeeds('refreshAIBtn')">刷新</button></div>
-            ${this.renderAIFrontier()}
+            <div id="discoverAIBody">${this.renderAIFrontier()}</div>
           </div>
         </div>
 
         <div class="sub-panel" id="discoverStock" style="display:none;">
           <div class="card">
             <div class="card-title"><span class="card-title-bar" style="background:var(--red);"></span>股市信息<button class="btn btn-outline" id="refreshStockBtn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.discover.refreshFeeds('refreshStockBtn')">刷新</button></div>
-            ${this.renderStockInfo()}
+            <div id="discoverStockBody">${this.renderStockInfo()}</div>
           </div>
         </div>
 
         <div class="sub-panel" id="discoverRelease" style="display:none;">
           <div class="card">
             <div class="card-title"><span class="card-title-bar" style="background:var(--earth);"></span>书影上新<button class="btn btn-outline" id="refreshReleaseBtn" style="font-size:11px;padding:2px 10px;margin-left:auto;" onclick="Sections.discover.refreshFeeds('refreshReleaseBtn')">刷新</button></div>
-            ${this.renderNewReleases()}
+            <div id="discoverReleaseBody">${this.renderNewReleases()}</div>
           </div>
         </div>
       `;
+      // 打开「发现」时后台拉取最新 data/feeds.json；若服务端数据已更新，原地重绘四个子面板（无需手动刷新）
+      if (window.DataSource) setTimeout(() => this._autoRefresh(), 0);
+      return html;
     },
 
     newsData: [
