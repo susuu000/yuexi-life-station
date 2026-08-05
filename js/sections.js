@@ -116,8 +116,6 @@ const Sections = {
 
         ${this.renderCheckinDetail()}
 
-        ${this.renderTodayToHandle()}
-
         <div class="home-sections-grid-v2">
           ${sections.map(s => this.renderProgressCardV2(s)).join('')}
           <div id="homeSubSections"></div>
@@ -1318,58 +1316,83 @@ const Sections = {
 
   // ==================== 自媒体 ====================
   selfMedia: {
+    // —— 今日推荐：跨平台编辑精选，值得看 / 追 / 关注（更新于 2026-08-05）——
     sampleRecos: [
-      { id:'sm-001', title:'阴天拍人像？这5个光线技巧让画面更有质感', platform:'小红书', date:'2026-07-27',
-        url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('阴天人像摄影'),
-        summary:'详细讲解阴天环境下的人像拍摄技巧，包括利用自然散射光、反光板补光、后期调色方案。适合户外人像摄影爱好者。' },
-      { id:'sm-002', title:'只用一盏灯拍出电影感人像｜附完整布光图', platform:'小红书', date:'2026-07-27',
-        url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('电影感人像布光'),
-        summary:'单灯布光教程，从灯位角度到色温控制，手把手教你用最简单的设备拍出电影级画面。附完整布光示意图。' }
+      { id:'reco-01', title:'Grok 4.5 免费开放，官方推荐用 Build 工具链调用', platform:'X / xAI', date:'2026-08-05',
+        url:'https://aihot.virxact.com/items/cmsflglsq04k6rochfekqziad',
+        summary:'Elon Musk 宣布 Grok 4.5 可免费体验，最佳实践是通过 Build 命令行工具链调用。做自媒体的可直接拿它做选题脑暴、脚本生成与多语言字幕。' },
+      { id:'reco-02', title:'字节 Seed 发布 SeedRealtime：音视频全双工大模型', platform:'字节 Seed', date:'2026-08-04',
+        url:'https://aihot.virxact.com/items/cmsfkn6cf03ciroch6tfynepy',
+        summary:'统一架构原生融合音频/视频/文本，实现"边看边听边说"的实时交互，已在豆包全量上线。做口播/直播类内容的，值得关注它的实时反应能力。' },
+      { id:'reco-03', title:'Qwen-Image-3.0-Pro 上线 Qwen Cloud', platform:'通义千问', date:'2026-08-05',
+        url:'https://aihot.virxact.com/items/cmsficgoy000nrochjow7i1yx',
+        summary:'图像生成能力再升级，适合做封面、海报、分镜垫图。配合"统一调色体系"趋势，可做个人视觉风格预设。' },
+      { id:'reco-04', title:'开源「活人感写作.skill」：写出没有 AI 味的文字', platform:'公众号 · 数字生命卡兹克', date:'2026-08-05',
+        url:'https://aihot.virxact.com/items/cmsff72yv1q6nro2etf4cmbuj',
+        summary:'2026 观众反感 AI 同质化表达，这篇开源技能专门对抗"AI 味"。写文案/脚本前先看，能保住你的真实语气。' },
+      { id:'reco-05', title:'OpenRouter 上线 FLUX 3 Video 统一多模态模型', platform:'OpenRouter', date:'2026-08-04',
+        url:'https://aihot.virxact.com/items/cmseyrhcj1bgmro2ed47t5b0k',
+        summary:'图生视频/文生视频统一模型，做短视频垫片、转场、产品展示都很顺手。关注它的授权与商用条款。' },
+      { id:'reco-06', title:'抖音热议：AI 生成的作品算艺术吗', platform:'抖音热榜', date:'2026-08-02',
+        url:'https://neodrop.ai/post/t87LppPBsq3',
+        summary:'热榜话题 #AI生成的作品算艺术吗#。做内容别只跟风生成，建立自己的审美标准（见"审美搭建"）才是差异化关键。' },
+      { id:'reco-07', title:'Colorwalk 色彩漫步爆火：一个月 4.6 亿曝光', platform:'小红书', date:'2026-08',
+        url:'https://m.toutiao.com/article/7627359777621836323/',
+        summary:'选定一种颜色出门"遛自己"，拍下所有呼应色。0 成本散步玩法，极适合做系列化日常 vlog 与九宫格。' },
+      { id:'reco-08', title:'OPPO × 小红书 2026 影像趋势报告', platform:'小红书', date:'2026-08',
+        url:'https://dy.163.com/article/KH7P1O6F0511D2LM.html',
+        summary:'9 大移动影像趋势：胶片/生活感/氛围感人像、0.5x 广角自拍、live 照片、城市旅拍、色彩一致性。年度选题风向标。' }
     ],
 
-    samplePhotography: [
-      { id:'ph-001', title:'阴天也能拍出质感人像？5个自然光技巧', category:'portrait', categoryLabel:'人像摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('阴天人像摄影') },
-      { id:'ph-002', title:'只用一盏灯拍出电影感人像｜附完整布光图', category:'portrait', categoryLabel:'人像摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('电影感人像布光') },
-      { id:'ph-003', title:'周末去哪拍？城市周边的绝美风光机位清单', category:'landscape', categoryLabel:'景观摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('风光摄影机位') },
-      { id:'ph-004', title:'如何拍出有层次感的山水？前景中景远景构图', category:'landscape', categoryLabel:'景观摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('山水风光构图') },
-      { id:'ph-005', title:'扫街新手必看：街头摄影的7个构图思路', category:'street', categoryLabel:'街拍摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('街头摄影构图') },
-      { id:'ph-006', title:'雨天街拍怎么拍出电影氛围感', category:'street', categoryLabel:'街拍摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('雨天街拍') },
-      { id:'ph-007', title:'第一次拍胶片该怎么选胶卷？保姆级指南', category:'film', categoryLabel:'胶片摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('胶片相机选卷') },
-      { id:'ph-008', title:'胶片色彩调色思路：从扫描到成片', category:'film', categoryLabel:'胶片摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('胶片调色') },
-      { id:'ph-009', title:'手机也能拍出高级感美食？布光与摆盘', category:'food', categoryLabel:'美食摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('美食摄影布光') },
-      { id:'ph-010', title:'暗调美食摄影的布光与道具搭配', category:'food', categoryLabel:'美食摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('暗调美食摄影') },
-      { id:'ph-011', title:'城市夜景怎么拍才不糊？三脚架与参数', category:'night', categoryLabel:'夜景摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('城市夜景拍摄') },
-      { id:'ph-012', title:'极简建筑摄影：线条与几何的克制表达', category:'architecture', categoryLabel:'建筑摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('极简建筑摄影') },
-      { id:'ph-013', title:'在家怎么拍好动的宝宝？自然光抓拍', category:'child', categoryLabel:'儿童摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('儿童摄影抓拍') },
-      { id:'ph-014', title:'旅行vlog如何拍出电影感？构图+调色全攻略', category:'travel', categoryLabel:'旅行摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('旅行摄影电影感') },
-      { id:'ph-015', title:'黑白摄影的魅力：学会用光线讲故事', category:'mono', categoryLabel:'黑白摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('黑白摄影') },
-      { id:'ph-016', title:'怎么拍出自家猫主子的高冷大片', category:'pet', categoryLabel:'宠物摄影', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('宠物摄影') }
+    // —— 今日灵感：按题材分类的拍摄 / 创作火花（2026 趋势）——
+    sampleInspiration: [
+      { id:'ins-01', title:'阴天也能拍出质感人像 · 5 个自然光技巧', category:'portrait', categoryLabel:'人像·氛围', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('阴天人像摄影'), tip:'阴天漫射光拍花通透；黄金时刻拍人像皮肤发光' },
+      { id:'ins-02', title:'只用一盏灯拍出电影感人像 · 附布光图', category:'portrait', categoryLabel:'人像·电影感', source:'小红书', url:'https://www.xiaohongshu.com/search_result?keyword=' + encodeURIComponent('电影感人像布光'), tip:'灯位角度+色温控制，最简设备出大片' },
+      { id:'ins-03', title:'生活感人像：捕捉不摆拍的真实情绪', category:'life', categoryLabel:'生活感', source:'OPPO×小红书趋势', url:'https://dy.163.com/article/KH7P1O6F0511D2LM.html', tip:'聚会/旅行/街头的自然反应，替代刻意打卡' },
+      { id:'ins-04', title:'微观宇宙：水滴里的梦幻世界', category:'micro', categoryLabel:'微观', source:'摄影爆款指南', url:'https://www.toutiao.com/article/7597399997927162411/', tip:'手机微距镜+露珠做透镜，九宫格"一花一世界"' },
+      { id:'ins-05', title:'建筑几何：城市里的抽象美学', category:'architecture', categoryLabel:'建筑几何', source:'摄影爆款指南', url:'https://www.toutiao.com/article/7597399997927162411/', tip:'楼梯/幕墙/重复窗，长焦压空间，莫兰迪色系成系列' },
+      { id:'ins-06', title:'光影涂鸦：用光线作画的魔法', category:'light', categoryLabel:'光影', source:'摄影爆款指南', url:'https://www.toutiao.com/article/7597399997927162411/', tip:'三脚架+M档10-30s，手电/仙女棒夜空"绘制"' },
+      { id:'ins-07', title:'旧物故事：有温度的情感摄影', category:'object', categoryLabel:'旧物', source:'摄影爆款指南', url:'https://www.toutiao.com/article/7597399997927162411/', tip:'旧木板+台灯侧光+大光圈，一句短文案戳共鸣' },
+      { id:'ins-08', title:'城市旅拍：街头即旅拍场景', category:'street', categoryLabel:'街头/旅拍', source:'OPPO×小红书趋势', url:'https://dy.163.com/article/KH7P1O6F0511D2LM.html', tip:'人景合一构图，城市街头成为新旅拍地' },
+      { id:'ins-09', title:'Colorwalk 色彩漫步：选一色遛自己', category:'color', categoryLabel:'色彩漫步', source:'小红书', url:'https://m.toutiao.com/article/7627359777621836323/', tip:'选粉/绿/黄一色，拼九宫格"春日色彩地图"' },
+      { id:'ins-10', title:'电影感调色：青橙分离 + 宽画幅', category:'cinematic', categoryLabel:'电影感', source:'2026摄影趋势', url:'https://yingshilv.cn/sheyingjiqiao/dianyinggan2026.html', tip:'阴影偏青蓝、高光偏暖橙，留白 + 2.35:1 宽幅' },
+      { id:'ins-11', title:'黄金时刻：日出后/日落前 1 小时', category:'light', categoryLabel:'光线', source:'小红书', url:'https://m.toutiao.com/article/7627359777621836323/', tip:'上午 9-11、下午 4-6 柔光；侧逆光让花瓣透光' },
+      { id:'ins-12', title:'胶片质感：颗粒/漏光/暖调偏移', category:'film', categoryLabel:'胶片', source:'2026摄影趋势', url:'https://www.toutiao.com/article/7598354224740614683/', tip:'对抗 AI 同质化，人像/纪实回归真实温度' },
+      { id:'ins-13', title:'耗时三年拍下古诗词里的中国', category:'travel', categoryLabel:'诗意旅行', source:'抖音热榜', url:'https://neodrop.ai/post/t87LppPBsq3', tip:'诗句+实景+地点三栏图，附拍摄季节与原诗' },
+      { id:'ins-14', title:'我拍到了海鸥雨 · 慢动作拆解瞬间', category:'travel', categoryLabel:'自然', source:'抖音热榜', url:'https://neodrop.ai/post/t87LppPBsq3', tip:'慢动作拆解"海鸥雨"瞬间，配现场声音' }
+    ],
+
+    // —— 审美搭建：可长期沉淀的审美框架与参考 ——
+    sampleAesthetic: [
+      { id:'aes-01', title:'胶片质感体系', tag:'质感', desc:'颗粒感 + 轻微漏光 + 暖调偏移 + 暗角，对抗 AI 同质化', how:'人像/纪实里保留色调偏移与颗粒，回归真实温度', url:'https://www.toutiao.com/article/7598354224740614683/' },
+      { id:'aes-02', title:'电影感调色公式', tag:'调色', desc:'阴影偏青蓝、高光偏暖橙的微妙色彩分离；宽画幅 2.35:1；大量留白', how:'前期就设计"一图一故事"，别全靠后期拯救', url:'https://yingshilv.cn/sheyingjiqiao/dianyinggan2026.html' },
+      { id:'aes-03', title:'统一色彩预设', tag:'体系', desc:'建立个人/品牌专属色彩预设，跨照片/视频/实况统一呈现', how:'固定 2-3 个 LUT，强化跨平台视觉识别度', url:'https://dy.163.com/article/KH7P1O6F0511D2LM.html' },
+      { id:'aes-04', title:'真实美学 · 反精致', tag:'态度', desc:'保留皮肤纹理、拒绝过度磨皮；拥抱凌乱美学与不完美', how:'抓拍聚会/旅行/街头的自然反应，替代刻意打卡', url:'https://blog.bigbigwork.com/archives/202512161' },
+      { id:'aes-05', title:'截图文化 / 数字原生', tag:'表达', desc:'把时间戳、聊天气泡、UI 元素作为完整视觉语言', how:'保留数字噪点，传递即时性与网络真实感', url:'https://blog.bigbigwork.com/archives/202512161' },
+      { id:'aes-06', title:'色彩情绪档案', tag:'色彩', desc:'黄绿调怀旧（如 Noémi Ottilia Szabo）、冰蓝时刻、松弛高级感', how:'高光往暖黄拉、阴影往青绿压、降对比出故事感', url:'https://www.toutiao.com/article/7638855358169825834' },
+      { id:'aes-07', title:'构图法则库', tag:'构图', desc:'三分+引导线、荷兰角、前景框架、对称留白', how:'街头前景加模糊路人制造"偷窥电影镜头"感', url:'https://yingshilv.cn/sheyingjiqiao/dianyinggan2026.html' },
+      { id:'aes-08', title:'光线档案', tag:'光线', desc:'黄金时刻、阴天漫射、窗边柔光、霓虹夜景', how:'等光线落在人物身上的最佳角度，让光替你叙事', url:'https://www.toutiao.com/article/7638855358169825834' }
     ],
 
     render() {
-      const today = Storage.today();
-      const td = Storage.getDayData('selfMedia', today);
+      const self = this;
+      const pick = (k, fb) => { const l = (window.DataSource ? (DataSource.list(k) || []) : []); return l.length ? l : fb; };
+      const recoList = pick('selfmedia_reco', self.sampleRecos);
+      const inspList = pick('selfmedia_insp', self.sampleInspiration);
+      const aesList  = pick('selfmedia_aes', self.sampleAesthetic);
 
-      // 摄影内容：服务端抓取 Reddit 摄影社区实时热帖，失败回落到示例
-      const livePhoto = window.DataSource ? DataSource.list('photography') : [];
-      const photoList = livePhoto.length ? livePhoto : this.samplePhotography;
-      const photoStamp = livePhoto.length && window.DataSource ? DataSource.stamp('photography') : '';
-
-      const catEmoji = { portrait:'📷', landscape:'🏞️', street:'🚶', film:'🎞️', food:'🍜', night:'🌃', architecture:'🏛️', child:'🧒', travel:'✈️', mono:'⚫', pet:'🐱', general:'📸' };
-
-      // 今日灵感：按分类分组展示
       const groups = {};
-      photoList.forEach(it => { (groups[it.categoryLabel] = groups[it.categoryLabel] || []).push(it); });
+      inspList.forEach(it => { (groups[it.categoryLabel] = groups[it.categoryLabel] || []).push(it); });
       const groupHtml = Object.entries(groups).map(([cat, items]) => `
         <div class="insp-group">
           <div class="insp-group-title">${cat} <span style="font-size:11px;color:var(--text-ink-muted);margin-left:4px;">${items.length}</span></div>
-          ${items.map((ins,i) => this.renderPhotoRow(ins, i)).join('')}
+          ${items.map((ins,i) => self.renderInspRow(ins, i)).join('')}
         </div>`).join('');
 
       return `
         <div class="section-header">
           <div><div class="section-title"><span class="section-title-icon" style="background:var(--red);"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7zM14 5H3a2 2 0 00-2 2v10a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2z"/></svg></span>自媒体</div>
-          <div class="section-subtitle">摄影灵感 · 推荐 · 审美</div></div>
+          <div class="section-subtitle">今日推荐 · 灵感 · 审美搭建（各有所重）</div></div>
         </div>
 
         <div class="sub-tabs-bar">
@@ -1380,38 +1403,37 @@ const Sections = {
 
         <div id="smReco" class="sub-panel">
           <div class="card mb-4">
-            <div class="card-title"><span class="card-title-bar"></span>摄影推荐 · 精选
+            <div class="card-title"><span class="card-title-bar"></span>今日推荐 · 编辑精选
               <button class="btn btn-outline" id="refreshRecoBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshRecoBtn')">刷新</button>
             </div>
-            ${photoStamp}
-            ${photoList.map((ins,i) => this.renderPhotoRow(ins, i)).join('')}
+            <div class="card-hint">跨平台值得看 / 追 / 关注 · 更新于 2026-08-05</div>
+            ${recoList.map((r,i) => self.renderRecoRow(r, i)).join('')}
           </div>
         </div>
 
         <div id="smInspiration" class="sub-panel" style="display:none;">
           <div class="card mb-4">
-            <div class="card-title"><span class="card-title-bar" style="background:var(--gold);"></span>摄影灵感 · 分类
+            <div class="card-title"><span class="card-title-bar" style="background:var(--gold);"></span>今日灵感 · 分类火花
               <button class="btn btn-outline" id="refreshInspBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshInspBtn')">刷新</button>
             </div>
-            ${photoStamp}
+            <div class="card-hint">按题材分类的拍摄 / 创作灵感 · 2026 趋势</div>
             ${groupHtml}
           </div>
         </div>
 
         <div id="smAesthetic" class="sub-panel" style="display:none;">
           <div class="card">
-            <div class="card-title"><span class="card-title-bar" style="background:#7B3FF2;"></span>审美搭建 · 图鉴
+            <div class="card-title"><span class="card-title-bar" style="background:#7B3FF2;"></span>审美搭建 · 体系图鉴
               <button class="btn btn-outline" id="refreshAeBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshAeBtn')">刷新</button>
             </div>
-            ${photoStamp}
+            <div class="card-hint">可长期沉淀的审美框架与参考</div>
             <div class="aesthetics-grid">
-              ${photoList.map(ins => `
-                <div class="aesthetic-card" onclick="App.openExternal('${ins.url}')">
-                  ${ins.thumb ? `<img class="aesthetic-img" src="${ins.thumb}" alt="" loading="lazy" referrerpolicy="no-referrer">`
-                    : `<div class="aesthetic-placeholder"><div style="font-size:30px;">${catEmoji[ins.category]||'📸'}</div></div>`}
+              ${aesList.map(a => `
+                <div class="aesthetic-card" onclick="App.openExternal('${a.url}')">
                   <div class="aesthetic-info">
-                    <div class="aesthetic-title">${ins.title}</div>
-                    <div class="aesthetic-desc">${ins.categoryLabel}${ins.heat ? ' · ' + ins.heat : ''}</div>
+                    <div class="aesthetic-title">${a.title} <span class="aesthetic-tag">${a.tag}</span></div>
+                    <div class="aesthetic-desc">${a.desc}</div>
+                    <div class="aesthetic-how">▸ ${a.how}</div>
                   </div>
                 </div>`).join('')}
             </div>
@@ -1420,13 +1442,30 @@ const Sections = {
       `;
     },
 
-    renderPhotoRow(ins, i) {
+    renderRecoRow(r, i) {
+      return `
+        <div class="inspiration-item">
+          <div class="inspiration-rank">${i+1}</div>
+          <div class="inspiration-content">
+            <div class="inspiration-title">${r.title}</div>
+            <div class="inspiration-source">${r.platform}${r.date ? ' · ' + r.date : ''}</div>
+            ${r.summary ? `<div class="inspiration-summary">${r.summary}</div>` : ''}
+          </div>
+          <div class="item-actions">
+            <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="action-btn" aria-label="打开">→</a>
+            ${actionButtons({section:'selfMedia',title:r.title,summary:r.summary||r.platform,url:r.url,type:'article'})}
+          </div>
+        </div>`;
+    },
+
+    renderInspRow(ins, i) {
       return `
         <div class="inspiration-item">
           <div class="inspiration-rank">${i+1}</div>
           <div class="inspiration-content">
             <div class="inspiration-title">${ins.title}</div>
-            <div class="inspiration-source">${ins.categoryLabel}${ins.source ? ' · ' + ins.source : ''}${ins.heat ? ' · 热度 ' + ins.heat : ''}</div>
+            <div class="inspiration-source">${ins.categoryLabel}${ins.source ? ' · ' + ins.source : ''}</div>
+            ${ins.tip ? `<div class="inspiration-summary">💡 ${ins.tip}</div>` : ''}
           </div>
           <div class="item-actions">
             <a href="${ins.url}" target="_blank" rel="noopener noreferrer" class="action-btn" aria-label="打开">→</a>
@@ -1435,6 +1474,7 @@ const Sections = {
         </div>`;
     }
   },
+
 
   // ==================== 自我探索 ====================
   selfExploration: {
