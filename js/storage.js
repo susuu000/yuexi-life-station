@@ -47,6 +47,8 @@ const Storage = {
     },
     // 导航历史（用于滑动返回）
     navHistory: [],
+    // 首页「快速记录」速记条目：[{ id, text, date, ts }]
+    quickNotes: [],
     // 收藏系统
     favorites: [],
     ielts: {},
@@ -246,6 +248,7 @@ const Storage = {
     if (!this.data.discover) this.data.discover = {};
     if (!this.data.profile) this.data.profile = {};
     if (!this.data.checkin) this.data.checkin = { records: {}, streak: 0, totalDays: 0 };
+    if (!Array.isArray(this.data.quickNotes)) this.data.quickNotes = [];
     if (!this.data.favorites) this.data.favorites = [];
     if (!this.data.weather) this.data.weather = { location: '', lastUpdate: '', data: null };
     if (!this.data.horoscope) this.data.horoscope = d.horoscope;
@@ -539,12 +542,24 @@ const Storage = {
     if (!arr.includes(source)) arr.push(source);
   },
 
-  // 手动打卡
-  checkin() {
+  /**
+   * 手动打卡。
+   * @param {string} [source] 打卡来源说明，用于首页「今日打卡明细」；缺省为「手动打卡」。
+   * @returns {boolean} true = 本次新建了打卡记录；false = 今日已打过卡（不重复计数）。
+   */
+  checkin(source) {
     const today = this.today();
-    if (!this.data.checkin) this.data.checkin = { records: {}, streak: 0, totalDays: 0 };
-    if (this.data.checkin.records[today]) return false; // 今日已打卡
+    if (!this.data.checkin) this.data.checkin = { records: {}, streak: 0, totalDays: 0, sources: {} };
+    if (!this.data.checkin.sources) this.data.checkin.sources = {};
+    const label = source || '手动打卡';
+    if (this.data.checkin.records[today]) {
+      // 今日已打卡：只补记来源，绝不重复累加 totalDays / streak
+      this._logCheckinSource(today, label);
+      this.save();
+      return false;
+    }
     this.data.checkin.records[today] = true;
+    this._logCheckinSource(today, label);
     this.data.checkin.totalDays = Object.keys(this.data.checkin.records).length;
     // 计算连续天数
     let streak = 0;
@@ -566,6 +581,55 @@ const Storage = {
   // 检查今日是否已打卡
   isCheckedIn() {
     return this.data.checkin && this.data.checkin.records && this.data.checkin.records[this.today()];
+  },
+
+  /* ---------- 首页「快速记录」速记 ---------- */
+
+  /**
+   * 保存一条速记。空白内容不落库。
+   * @param {string} text 速记正文
+   * @returns {object|null} 新建的条目；内容为空时返回 null
+   */
+  saveQuickNote(text) {
+    const body = (text || '').trim();
+    if (!body) return null;
+    if (!Array.isArray(this.data.quickNotes)) this.data.quickNotes = [];
+    const note = {
+      id: 'qn_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8),
+      text: body,
+      date: this.today(),
+      ts: Date.now()
+    };
+    this.data.quickNotes.unshift(note);
+    // 只保留最近 200 条，避免 localStorage 无限膨胀
+    if (this.data.quickNotes.length > 200) this.data.quickNotes.length = 200;
+    this.save();
+    return note;
+  },
+
+  /**
+   * 读取速记列表。
+   * @param {string} [dateStr] 传日期（YYYY-MM-DD）则只返回当天的；缺省返回全部
+   * @returns {Array<object>} 按时间倒序
+   */
+  getQuickNotes(dateStr) {
+    const all = Array.isArray(this.data.quickNotes) ? this.data.quickNotes : [];
+    const list = dateStr ? all.filter(n => n && n.date === dateStr) : all.slice();
+    return list.sort((a, b) => (b.ts || 0) - (a.ts || 0));
+  },
+
+  /**
+   * 删除一条速记。
+   * @param {string} id 条目 id
+   * @returns {boolean} 是否删掉了内容
+   */
+  deleteQuickNote(id) {
+    if (!Array.isArray(this.data.quickNotes)) return false;
+    const before = this.data.quickNotes.length;
+    this.data.quickNotes = this.data.quickNotes.filter(n => n && n.id !== id);
+    const changed = this.data.quickNotes.length !== before;
+    if (changed) this.save();
+    return changed;
   },
 
   exportData() {
