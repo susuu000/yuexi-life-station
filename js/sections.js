@@ -109,12 +109,18 @@ const Sections = {
           <div class="checkin-icon">${checkedIn?'✅':'📋'}</div>
           <div class="checkin-info">
             <div class="checkin-streak">${ck.streak}天连续 · 累计打卡${ck.totalDays}天</div>
-            <div class="checkin-status">${checkedIn?'今日已自动打卡':'学习任意板块后将自动打卡'}</div>
+            <div class="checkin-status">${checkedIn?'今日已打卡':'学习任意板块会自动打卡，也可直接手动打卡'}</div>
           </div>
+          <button type="button" id="homeCheckinBtn" class="home-checkin-btn ${checkedIn?'done':''}"
+                  ${checkedIn?'disabled':''} onclick="App.manualCheckin()">
+            ${checkedIn?'今日已打卡 ✓':'一键打卡'}
+          </button>
           <div class="checkin-flame">${ck.streak>=3?'🔥':''}</div>
         </div>
 
         ${this.renderCheckinDetail()}
+
+        ${this.renderTodayFocus()}
 
         <div class="home-sections-grid-v2">
           ${sections.map(s => this.renderProgressCardV2(s)).join('')}
@@ -142,6 +148,57 @@ const Sections = {
     toggleCheckinDetail() {
       this.checkinDetailOpen = !this.checkinDetailOpen;
       App.refresh();
+    },
+
+    /**
+     * 「今日聚焦 / 快速记录」卡片。
+     * 上半部分汇总今日打卡状态与各板块完成度，下半部分是速记输入。
+     */
+    renderTodayFocus() {
+      const today = Storage.today();
+      const checkedIn = !!Storage.isCheckedIn();
+      const ck = Storage.data.checkin || { streak: 0, totalDays: 0 };
+      const notes = Storage.getQuickNotes(today);
+      const allCount = Storage.getQuickNotes().length;
+
+      const focusText = checkedIn
+        ? `已打卡 · 连续 ${ck.streak} 天`
+        : '今日还没有打卡';
+      const focusIcon = checkedIn ? '🎯' : '🌱';
+
+      const noteItems = notes.length
+        ? notes.map(n => `
+            <div class="quick-note-item">
+              <div class="quick-note-text">${App.escapeHtml(n.text)}</div>
+              <div class="quick-note-meta">
+                <span>${App.formatClock(n.ts)}</span>
+                <button type="button" class="quick-note-del" title="删除这条速记"
+                        onclick="App.deleteQuickNote('${n.id}')">删除</button>
+              </div>
+            </div>`).join('')
+        : '<div class="quick-note-empty">今天还没有速记，随手记一句吧。</div>';
+
+      return `
+        <div class="card mb-4 today-focus-card">
+          <div class="card-title"><span class="card-title-bar"></span>今日聚焦</div>
+          <div class="focus-status ${checkedIn?'done':''}">
+            <span class="focus-icon">${focusIcon}</span>
+            <span class="focus-text">${focusText}</span>
+            <span class="focus-sub">累计 ${ck.totalDays} 天 · 速记 ${allCount} 条</span>
+          </div>
+
+          <div class="card-title" style="margin-top:14px;"><span class="card-title-bar" style="background:var(--gold);"></span>快速记录</div>
+          <div class="card-hint">想到什么随手记下来，保存在本机并随备份一起导出。</div>
+          <textarea id="quickNoteInput" class="quick-note-input" rows="3"
+                    placeholder="记一句话…（Ctrl / ⌘ + Enter 保存）"
+                    oninput="App.autoGrowQuickNote(this)"
+                    onkeydown="App.quickNoteKeydown(event)"></textarea>
+          <div class="quick-note-actions">
+            <button type="button" class="btn btn-primary" onclick="App.saveQuickNote()">保存速记</button>
+          </div>
+
+          <div class="quick-note-list">${noteItems}</div>
+        </div>`;
     },
 
     renderProgressCardV2(s) {
@@ -1316,7 +1373,7 @@ const Sections = {
 
   // ==================== 自媒体 ====================
   selfMedia: {
-    // —— 今日推荐：跨平台编辑精选，值得看 / 追 / 关注（更新于 2026-08-05）——
+    // —— 今日推荐：跨平台编辑精选，值得看 / 追 / 关注（内置示例内容，界面按当前日期标注）——
     sampleRecos: [
       { id:'reco-01', title:'Grok 4.5 免费开放，官方推荐用 Build 工具链调用', platform:'X / xAI', date:'2026-08-05',
         url:'https://aihot.virxact.com/items/cmsflglsq04k6rochfekqziad',
@@ -1377,12 +1434,37 @@ const Sections = {
     render() {
       const self = this;
       const pick = (k, fb) => { const l = (window.DataSource ? (DataSource.list(k) || []) : []); return l.length ? l : fb; };
+
+      // 今日推荐 / 审美搭建：目前还没有实时源，继续用内置示例内容（界面上会标注「示例内容」）
       const recoList = pick('selfmedia_reco', self.sampleRecos);
-      const inspList = pick('selfmedia_insp', self.sampleInspiration);
       const aesList  = pick('selfmedia_aes', self.sampleAesthetic);
 
+      // 今日灵感：feeds.json 中对应的实时数据 key 为 inspiration
+      const rawInsp = (window.DataSource ? (DataSource.list('inspiration') || []) : []);
+      const inspIsLive = rawInsp.length > 0;
+      const inspList = inspIsLive ? rawInsp.map((it, idx) => {
+        // 实时条目结构为 {title, source, heat, url}，补齐渲染所需字段
+        const label = it.categoryLabel || it.source || '热门';
+        return {
+          id: it.id || ('ins-live-' + idx),
+          title: it.title || '',
+          category: it.category || 'hot',
+          categoryLabel: label,
+          source: (it.source && it.source !== label) ? it.source : '',
+          url: it.url || '',
+          tip: it.tip || (it.heat ? ('热度 ' + it.heat) : '')
+        };
+      }) : self.sampleInspiration;
+
+      const todayStr = new Date().toLocaleDateString('zh-CN');
+      const recoIsLive = (window.DataSource ? (DataSource.list('selfmedia_reco') || []).length > 0 : false);
+      const recoHint = recoIsLive ? ('更新于 ' + todayStr) : ('示例内容 · ' + todayStr);
+      const inspHint = inspIsLive
+        ? ('实时热点 · 更新于 ' + (window.DataSource ? (DataSource.relative(DataSource.updatedAt('inspiration')) || todayStr) : todayStr))
+        : ('示例内容 · ' + todayStr);
+
       const groups = {};
-      inspList.forEach(it => { (groups[it.categoryLabel] = groups[it.categoryLabel] || []).push(it); });
+      inspList.forEach(it => { const g = it.categoryLabel || '其他'; (groups[g] = groups[g] || []).push(it); });
       const groupHtml = Object.entries(groups).map(([cat, items]) => `
         <div class="insp-group">
           <div class="insp-group-title">${cat} <span style="font-size:11px;color:var(--text-ink-muted);margin-left:4px;">${items.length}</span></div>
@@ -1404,9 +1486,9 @@ const Sections = {
         <div id="smReco" class="sub-panel">
           <div class="card mb-4">
             <div class="card-title"><span class="card-title-bar"></span>今日推荐 · 编辑精选
-              <button class="btn btn-outline" id="refreshRecoBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshRecoBtn')">刷新</button>
+              <button class="btn btn-outline" id="refreshRecoBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshRecoBtn','selfmedia_reco')">刷新</button>
             </div>
-            <div class="card-hint">跨平台值得看 / 追 / 关注 · 更新于 2026-08-05</div>
+            <div class="card-hint">跨平台值得看 / 追 / 关注 · ${recoHint}</div>
             ${recoList.map((r,i) => self.renderRecoRow(r, i)).join('')}
           </div>
         </div>
@@ -1414,9 +1496,9 @@ const Sections = {
         <div id="smInspiration" class="sub-panel" style="display:none;">
           <div class="card mb-4">
             <div class="card-title"><span class="card-title-bar" style="background:var(--gold);"></span>今日灵感 · 分类火花
-              <button class="btn btn-outline" id="refreshInspBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshInspBtn')">刷新</button>
+              <button class="btn btn-outline" id="refreshInspBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshInspBtn','inspiration')">刷新</button>
             </div>
-            <div class="card-hint">按题材分类的拍摄 / 创作灵感 · 2026 趋势</div>
+            <div class="card-hint">按题材分类的拍摄 / 创作灵感 · ${inspHint}</div>
             ${groupHtml}
           </div>
         </div>
@@ -1424,9 +1506,9 @@ const Sections = {
         <div id="smAesthetic" class="sub-panel" style="display:none;">
           <div class="card">
             <div class="card-title"><span class="card-title-bar" style="background:#7B3FF2;"></span>审美搭建 · 体系图鉴
-              <button class="btn btn-outline" id="refreshAeBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshAeBtn')">刷新</button>
+              <button class="btn btn-outline" id="refreshAeBtn" style="font-size:11px;padding:2px 8px;margin-left:auto;" onclick="DataSource.refresh('refreshAeBtn','selfmedia_aes')">刷新</button>
             </div>
-            <div class="card-hint">可长期沉淀的审美框架与参考</div>
+            <div class="card-hint">可长期沉淀的审美框架与参考 · 示例内容</div>
             <div class="aesthetics-grid">
               ${aesList.map(a => `
                 <div class="aesthetic-card" onclick="App.openExternal('${a.url}')">
@@ -1459,17 +1541,18 @@ const Sections = {
     },
 
     renderInspRow(ins, i) {
+      const label = ins.categoryLabel || '';
       return `
         <div class="inspiration-item">
           <div class="inspiration-rank">${i+1}</div>
           <div class="inspiration-content">
-            <div class="inspiration-title">${ins.title}</div>
-            <div class="inspiration-source">${ins.categoryLabel}${ins.source ? ' · ' + ins.source : ''}</div>
+            <div class="inspiration-title">${ins.title || ''}</div>
+            <div class="inspiration-source">${label}${ins.source ? (label ? ' · ' : '') + ins.source : ''}</div>
             ${ins.tip ? `<div class="inspiration-summary">💡 ${ins.tip}</div>` : ''}
           </div>
           <div class="item-actions">
-            <a href="${ins.url}" target="_blank" rel="noopener noreferrer" class="action-btn" aria-label="打开">→</a>
-            ${actionButtons({section:'selfMedia',title:ins.title,summary:ins.categoryLabel||'摄影灵感',url:ins.url,type:'inspiration'})}
+            <a href="${ins.url || '#'}" target="_blank" rel="noopener noreferrer" class="action-btn" aria-label="打开">→</a>
+            ${actionButtons({section:'selfMedia',title:ins.title||'',summary:label||'摄影灵感',url:ins.url||'',type:'inspiration'})}
           </div>
         </div>`;
     }
@@ -2544,6 +2627,27 @@ const Sections = {
             <option value="large" ${p.fontSize==='large'?'selected':''}>大</option>
           </select>
         </div>
+
+        <div class="settings-group mt-3">
+          <div class="settings-row"><span class="settings-label">底部标签（最多 5 个）</span></div>
+          <div id="tabConfigList">${App.tabCfgRender()}</div>
+          <div class="settings-row mt-2">
+            <button type="button" class="btn btn-primary" onclick="App.applyTabConfig()">保存底部标签</button>
+            <button type="button" class="btn btn-outline" onclick="App.resetTabConfig()">恢复默认</button>
+          </div>
+          <div class="card-hint">勾选固定在底部栏的板块，用 ↑↓ 调整顺序；「首页」默认固定。单手即可直达高频板块。</div>
+        </div>
+
+        <div class="settings-group mt-3">
+          <div class="settings-row"><span class="settings-label">提醒（Web Push）</span>
+            <span id="pushStatusText">${App.getPushStatus() ? '已开启' : '未开启'}</span>
+          </div>
+          <div class="settings-row">
+            <button type="button" class="btn btn-primary" onclick="App.enablePush()">开启提醒</button>
+            <button type="button" class="btn btn-outline" onclick="App.disablePush()">关闭</button>
+          </div>
+          <div class="card-hint">iOS 16.4+ 需先把「月夕」添加到主屏幕。真正推送需在服务端（Supabase Edge Function / Cloudflare Worker）配置发送端，参见 js/app.js 中 enablePush 的 TODO 注释。</div>
+        </div>
       `);
     },
 
@@ -2587,3 +2691,7 @@ const Sections = {
   // ==================== 公共方法 ====================
   toggleDateGroup(el) { el.parentElement.classList.toggle('collapsed'); }
 };
+
+/* 同 app.js：顶层 const 不会挂到 window 上，
+   index.html 里的 `window.Sections && ...` 守卫需要这个显式赋值。 */
+window.Sections = Sections;
