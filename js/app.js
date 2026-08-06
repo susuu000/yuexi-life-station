@@ -16,6 +16,8 @@ const App = {
   touchStartX: 0,
   touchStartY: 0,
   touchStartTime: 0,
+  // B-2：iOS「添加到主屏幕」引导只提示一次的本地标记
+  A2HS_KEY: 'yuexi_a2hs_dismissed',
 
   icons: {
     home: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>',
@@ -27,6 +29,21 @@ const App = {
     explore: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>',
     default: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
   },
+
+  // 底部标签可配置注册表（#15）：id -> { name, icon(对应 this.icons 的键) }
+  TAB_REGISTRY: {
+    'home': { name: '首页', icon: 'home' },
+    'discover': { name: '发现', icon: 'explore' },
+    'profile': { name: '我的', icon: 'default' },
+    'ielts': { name: '雅思', icon: 'ielts' },
+    'ai-study': { name: 'AI', icon: 'ai' },
+    'reading': { name: '阅读', icon: 'reading' },
+    'podcast': { name: '播客', icon: 'podcast' },
+    'self-media': { name: '自媒体', icon: 'media' },
+    'self-exploration': { name: '探索', icon: 'default' }
+  },
+  // Web Push 客户端脚手架（#19）：VAPID 公钥占位，部署前需替换为真实公钥
+  VAPID_PUBLIC_KEY: 'B__REPLACE_WITH_YOUR_VAPID_PUBLIC_KEY__',
 
   holidays: {
     '2026-01-01': '元旦', '2026-02-16': '除夕', '2026-02-17': '春节', '2026-02-18': '春节', '2026-02-19': '春节',
@@ -44,13 +61,16 @@ const App = {
       Sync.init();
       this.updateAppTitle();
       this.renderSidebar();
+      this.renderBottomNav();
       this.updateDate();
       this.updateWeather();
       this.bindEvents();
       this.applyPersonalization();
       this.registerSW();
+      this.maybeShowInstallGuide();
       Storage.pushNav('home');
       this.switchTab('home');
+      this.handleSharedPayload();
       // 真实数据源：先用缓存渲染，拿到最新结果后自动刷新一次
       if (window.DataSource) DataSource.boot().catch(() => {});
     } catch(e) {
@@ -62,10 +82,159 @@ const App = {
     }
   },
 
+  /**
+   * 注册 Service Worker，并接管「有新版本」的提示流程。
+   *
+   * sw.js 采用缓存优先，离线冷启动不白屏；代价是新代码不会自动生效。
+   * 因此这里必须给出可用的更新入口：新 SW 进入 waiting 后弹出横幅，
+   * 用户点击 -> 通知它 skipWaiting -> controllerchange -> reload 拿到新代码。
+   */
   async registerSW() {
-    if ('serviceWorker' in navigator) {
-      try { await navigator.serviceWorker.register('./sw.js'); } catch (e) {}
+    if (!('serviceWorker' in navigator)) return;
+    // 记录注册前是否已有 SW 接管页面：首次安装时为 false，命中更新时为 true
+    let hadController = !!navigator.serviceWorker.controller;
+    try {
+      const reg = await navigator.serviceWorker.register('./sw.js');
+
+      // 页面加载时就已经有等待中的新版本
+      if (reg.waiting && navigator.serviceWorker.controller) this.showUpdateBanner(reg.waiting);
+
+      // 之后发现的新版本
+      reg.addEventListener('updatefound', () => {
+        const sw = reg.installing;
+        if (!sw) return;
+        sw.addEventListener('statechange', () => {
+          // 有 controller 才说明是「更新」而非首次安装，首次安装不该打扰用户
+          if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+            this.showUpdateBanner(sw);
+          }
+        });
+      });
+
+      // 新 SW 接管后刷新一次；加锁避免循环刷新
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!hadController) return;          // 首次安装不强制刷新
+        if (this._swReloading) return;
+        this._swReloading = true;
+        window.location.reload();
+      });
+
+      // 回到前台时主动查一次更新
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') reg.update().catch(() => {});
+      });
+    } catch (e) {
+      console.warn('[月夕] Service Worker 注册失败：', e && e.message);
     }
+  },
+
+  /** 展示「新版本已就绪」横幅 */
+  showUpdateBanner(worker) {
+    if (this._updateBannerShown) return;
+    this._updateBannerShown = true;
+    this._waitingWorker = worker || null;
+
+    let bar = document.getElementById('updateBanner');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'updateBanner';
+      bar.className = 'update-banner';
+      bar.innerHTML =
+        '<span class="update-banner-text">新版本已就绪，点击刷新</span>' +
+        '<button type="button" class="update-banner-btn" id="updateBannerBtn">刷新</button>' +
+        '<button type="button" class="update-banner-close" id="updateBannerClose" aria-label="稍后再说">×</button>';
+      document.body.appendChild(bar);
+      document.getElementById('updateBannerBtn').addEventListener('click', () => this.applyUpdate());
+      document.getElementById('updateBannerClose').addEventListener('click', () => {
+        bar.classList.remove('show');
+        // 关掉只是本次不打扰，下次进入仍会提示，不会把用户永久困在旧缓存上
+        this._updateBannerShown = false;
+      });
+    }
+    // 触发过渡动画
+    requestAnimationFrame(() => bar.classList.add('show'));
+  },
+
+  /** 应用更新：让等待中的 SW 立刻接管；拿不到 SW 时直接硬刷新兜底 */
+  applyUpdate() {
+    const w = this._waitingWorker;
+    if (w && typeof w.postMessage === 'function') {
+      w.postMessage({ type: 'SKIP_WAITING' });
+      // 万一 controllerchange 没来（例如 SW 状态异常），兜底强制刷新
+      setTimeout(() => { if (!this._swReloading) { this._swReloading = true; window.location.reload(); } }, 1500);
+      return;
+    }
+    this._swReloading = true;
+    window.location.reload();
+  },
+
+  /* ---------- iOS 添加到主屏幕引导 ---------- */
+
+  /** 是否为「iOS Safari 且尚未安装到主屏幕」 */
+  _isIosSafariNotInstalled() {
+    const ua = navigator.userAgent || '';
+    const plat = navigator.platform || ua;
+    const isIos = /iPhone|iPad|iPod/.test(plat) ||
+      // iPadOS 13+ 默认伪装成 Mac，用触摸点数区分
+      (/Macintosh/.test(ua) && typeof document !== 'undefined' && navigator.maxTouchPoints > 1);
+    if (!isIos) return false;
+    if (navigator.standalone) return false;                    // 已从主屏幕启动
+    if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) return false;
+    if (/CriOS|FxiOS|EdgiOS|OPiOS/.test(ua)) return false;     // 第三方浏览器没有「添加到主屏幕」
+    return true;
+  },
+
+  /** 首次在 iOS Safari 打开时，引导「分享 → 添加到主屏幕」（只提示一次） */
+  maybeShowInstallGuide() {
+    try {
+      if (localStorage.getItem(this.A2HS_KEY) === '1') return;
+      if (!this._isIosSafariNotInstalled()) return;
+      // 让首屏先渲染完再提示，避免和初始化抢主线程
+      setTimeout(() => this.showInstallGuide(), 1200);
+    } catch (e) {}
+  },
+
+  showInstallGuide() {
+    const shareIcon =
+      '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" ' +
+      'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M12 15V3"/><path d="M8 7l4-4 4 4"/>' +
+      '<path d="M4 13v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg>';
+    const plusIcon =
+      '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" ' +
+      'stroke-width="1.8" stroke-linecap="round" aria-hidden="true">' +
+      '<rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/></svg>';
+
+    this.showModal('添加到主屏幕', `
+      <div class="a2hs-guide">
+        <p class="a2hs-lead">把「月夕生活台」添加到主屏幕，可全屏运行、离线打开，体验和原生 App 一致。</p>
+        <div class="a2hs-step">
+          <span class="a2hs-num">1</span>
+          <span class="a2hs-ico">${shareIcon}</span>
+          <span class="a2hs-txt">点击 Safari 底部工具栏的<b>「分享」</b>按钮</span>
+        </div>
+        <div class="a2hs-step">
+          <span class="a2hs-num">2</span>
+          <span class="a2hs-ico">${plusIcon}</span>
+          <span class="a2hs-txt">在菜单中向下滑动，选择<b>「添加到主屏幕」</b></span>
+        </div>
+        <div class="a2hs-step">
+          <span class="a2hs-num">3</span>
+          <span class="a2hs-ico">✅</span>
+          <span class="a2hs-txt">右上角点<b>「添加」</b>，回到桌面即可看到图标</span>
+        </div>
+        <div class="a2hs-actions">
+          <button type="button" class="btn btn-outline" onclick="App.dismissInstallGuide()">不再提示</button>
+          <button type="button" class="btn btn-primary" onclick="App.closeModal()">知道了</button>
+        </div>
+      </div>
+    `);
+  },
+
+  /** 「不再提示」：写入标记，之后不再弹出 */
+  dismissInstallGuide() {
+    try { localStorage.setItem(this.A2HS_KEY, '1'); } catch (e) {}
+    this.closeModal();
   },
 
   applyPersonalization() {
@@ -134,6 +303,7 @@ const App = {
       content.innerHTML = Sections.profile.render();
       content.scrollTop = 0;
     }
+    this.syncHeaderBack();
     this.closeSidebar();
     setTimeout(() => Storage.hydrateImages(), 50);
   },
@@ -141,9 +311,14 @@ const App = {
   // 侧边栏导航
   navigate(sectionId) {
     this.currentTab = 'home';
-    document.querySelectorAll('.bottom-nav-item').forEach(el => {
-      el.classList.toggle('active', el.dataset.tab === 'home');
+    const bnItems = document.querySelectorAll('.bottom-nav-item');
+    let bnMatch = false;
+    bnItems.forEach(el => {
+      const on = el.dataset.tab === sectionId;
+      if (on) bnMatch = true;
+      el.classList.toggle('active', on);
     });
+    if (!bnMatch) bnItems.forEach(el => el.classList.toggle('active', el.dataset.tab === 'home'));
 
     this.currentSection = sectionId;
     Storage.pushNav(sectionId);
@@ -178,6 +353,7 @@ const App = {
         <textarea class="input-field mt-3" placeholder="开始记录..." oninput="App.saveCustomSection('${sectionId}', this.value)">${Storage.getDayData(sectionId, Storage.today()).text || ''}</textarea></div>
       `;
     }
+    this.syncHeaderBack();
     this.closeSidebar();
     setTimeout(() => Storage.hydrateImages(), 50);
   },
@@ -208,8 +384,10 @@ const App = {
       focusId = active.id;
       try { selStart = active.selectionStart; selEnd = active.selectionEnd; } catch (e) {}
     }
+    const qn = document.getElementById('quickNoteInput');
     this.refreshSnapshot = {
       focusId, selStart, selEnd,
+      quickNoteDraft: qn ? qn.value : '',
       scrollTop: content ? content.scrollTop : 0
     };
     // 已调度则直接返回，等待合并后的那次渲染
@@ -232,6 +410,11 @@ const App = {
 
     // 恢复滚动位置，避免刷新后跳到顶部（IX-2 体验优化）
     if (content) content.scrollTop = snap.scrollTop;
+    // 恢复未保存的快速记录草稿，避免刷新后丢失（DEFECT #2 修复）
+    if (snap.quickNoteDraft) {
+      const qnEl = document.getElementById('quickNoteInput');
+      if (qnEl) qnEl.value = snap.quickNoteDraft;
+    }
     // 恢复输入框焦点与光标
     if (snap.focusId) {
       const el = document.getElementById(snap.focusId);
@@ -367,6 +550,7 @@ const App = {
   _weatherData: null,
   _weatherCity: '宁波',
   _weatherLoc: { lat: '29.87', lon: '121.55' }, // 默认：宁波
+  _weatherFailed: false, // 真实天气拉取失败时为 true：此时只显示降级提示，绝不编造数据
 
   updateWeather() {
     const weatherEl = document.getElementById('currentWeather');
@@ -403,6 +587,7 @@ const App = {
       const data = await res.json();
       if (!data || !data.current) throw new Error('no data');
       this._weatherData = data;
+      this._weatherFailed = false;
       const temp = Math.round(data.current.temperature_2m);
       const code = data.current.weather_code;
       const desc = this._weatherCodeToText(code);
@@ -413,14 +598,18 @@ const App = {
     }
   },
 
+  /**
+   * 天气拉取失败时的降级展示。
+   * 明确告知「暂不可用」并提供重试入口，绝不用随机数编造温度与天气状况。
+   */
   _setFallbackWeather(weatherEl, city) {
-    const month = new Date().getMonth() + 1;
-    const tempRange = {1:[2,8],2:[4,12],3:[10,18],4:[15,24],5:[20,28],6:[24,32],7:[26,35],8:[26,34],9:[20,28],10:[14,22],11:[8,16],12:[3,10]};
-    const range = tempRange[month] || [15,25];
-    const temp = Math.floor(Math.random()*(range[1]-range[0])+range[0]);
-    const conds = [['☀️','晴'],['⛅','多云'],['☁️','阴'],['🌧️','小雨']];
-    const c = conds[Math.floor(Math.random()*conds.length)];
-    weatherEl.innerHTML = `<span class="weather-city">${city || '宁波'}</span> <span class="weather-icon">${c[0]}</span> ${temp}°${c[1]}`;
+    if (!weatherEl) return;
+    this._weatherData = null;
+    this._weatherFailed = true;
+    const name = city || this._weatherCity || '';
+    weatherEl.style.cursor = 'pointer';
+    weatherEl.setAttribute('title', '天气数据获取失败，点击重试');
+    weatherEl.innerHTML = `${name ? `<span class="weather-city">${name}</span> ` : ''}<span class="weather-icon">⚠️</span> 天气暂不可用 · 点击重试`;
   },
 
   _weatherCodeToText(code) {
@@ -461,20 +650,24 @@ const App = {
       }
       this.showModal(`${city} · 未来3天天气`, `<div class="weather-forecast">${forecast}</div>`);
     } else {
-      const days = ['日','一','二','三','四','五','六'];
-      let forecast = '';
-      for (let i = 0; i < 3; i++) {
-        const d = new Date(); d.setDate(d.getDate()+i);
-        const m = d.getMonth()+1;
-        const tr = {1:[2,8],2:[4,12],3:[10,18],4:[15,24],5:[20,28],6:[24,32],7:[26,35],8:[26,34],9:[20,28],10:[14,22],11:[8,16],12:[3,10]}[m]||[15,25];
-        const hi = Math.floor(Math.random()*6+tr[1]);
-        const lo = Math.floor(Math.random()*4+tr[0]);
-        const cs = [['☀️','晴'],['⛅','多云'],['☁️','阴'],['🌧️','小雨'],['🌤️','晴间多云']];
-        const c = cs[Math.floor(Math.random()*cs.length)];
-        forecast += `<div class="weather-day"><div class="weather-day-name">${i===0?'今天':'星期'+days[d.getDay()]}</div><div class="weather-day-icon">${c[0]}</div><div class="weather-day-cond">${c[1]}</div><div class="weather-day-temp">${hi}° / ${lo}°</div></div>`;
-      }
-      this.showModal(`${city} · 未来3天天气`, `<div class="weather-forecast">${forecast}</div>`);
+      // 没有真实数据时不编造预报，给出明确的降级说明与重试按钮
+      this.showModal('天气暂不可用', `
+        <div style="padding:8px 0;color:var(--text-ink-muted);line-height:1.7;">
+          <div style="font-size:32px;text-align:center;margin-bottom:8px;">⚠️</div>
+          <div style="text-align:center;">暂时无法获取${city ? ' ' + city + ' ' : ''}的实时天气。</div>
+          <div style="text-align:center;font-size:12px;margin-top:4px;">可能是网络不通，或未授权定位权限。</div>
+        </div>
+        <div class="modal-actions" style="margin-top:12px;">
+          <button class="btn btn-primary" onclick="App.retryWeather()">重新获取</button>
+        </div>
+      `);
     }
+  },
+
+  /** 关闭弹窗并重新拉取天气（供降级态的「重新获取」按钮调用） */
+  retryWeather() {
+    this.closeModal();
+    this.updateWeather();
   },
 
   // 外部链接打开（兼容 iOS / PWA）
@@ -610,7 +803,13 @@ const App = {
     if (dateEl) dateEl.addEventListener('click', () => this.showCalendar());
 
     const weatherEl = document.getElementById('currentWeather');
-    if (weatherEl) weatherEl.addEventListener('click', () => this.showWeather());
+    if (weatherEl) {
+      weatherEl.addEventListener('click', () => {
+        // 降级态（天气拉取失败）时点击 = 重试；正常态点击 = 查看未来 3 天
+        if (this._weatherFailed) this.updateWeather();
+        else this.showWeather();
+      });
+    }
 
     const logoEl = document.querySelector('.sidebar-header');
     if (logoEl) {
@@ -748,6 +947,72 @@ const App = {
     }
   },
 
+  /**
+   * 首页「一键打卡」。不依赖任何板块任务，直接记录今日打卡。
+   * Storage.checkin() 内部按日期去重，同日重复点击不会重复计数。
+   */
+  manualCheckin() {
+    const created = Storage.checkin('一键打卡');
+    this.showToast(created ? '✅ 打卡成功' : '今日已打卡，无需重复');
+    this.refresh();
+  },
+
+  /* ---------- 首页「快速记录」 ---------- */
+
+  /** HTML 转义，避免速记内容里的尖括号破坏 innerHTML 结构 */
+  escapeHtml(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  },
+
+  /** 时间戳 -> HH:MM */
+  formatClock(ts) {
+    const d = new Date(ts || Date.now());
+    if (isNaN(d.getTime())) return '';
+    return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+  },
+
+  /** 输入时自适应高度，避免长文本需要内部滚动 */
+  autoGrowQuickNote(el) {
+    if (!el) return;
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 240) + 'px';
+  },
+
+  /** Ctrl/⌘ + Enter 快捷保存 */
+  quickNoteKeydown(e) {
+    if (!e) return;
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+      e.preventDefault();
+      this.saveQuickNote();
+    }
+  },
+
+  /** 保存速记；保存后只重渲染当前页，输入框随之清空 */
+  saveQuickNote() {
+    const el = document.getElementById('quickNoteInput');
+    if (!el) return;
+    const text = (el.value || '').trim();
+    if (!text) { this.showToast('请先输入内容'); return; }
+    const note = Storage.saveQuickNote(text);
+    if (!note) { this.showToast('请先输入内容'); return; }
+    el.value = '';
+    this.showToast('✅ 已保存速记');
+    this.refresh();
+  },
+
+  /** 删除一条速记 */
+  deleteQuickNote(id) {
+    if (Storage.deleteQuickNote(id)) {
+      this.showToast('已删除');
+      this.refresh();
+    }
+  },
+
   // 收藏
   toggleFavorite(item) {
     if (Storage.isFavorited(item.title)) {
@@ -815,24 +1080,76 @@ const App = {
     this._toastTimer = setTimeout(() => t.classList.remove('show'), dur);
   },
 
+  /** 弹窗打开时锁定页面滚动，避免 iOS 上背景「穿透滚动」 */
+  lockBodyScroll() {
+    document.body.style.overflow = 'hidden';
+  },
+
+  /** 恢复页面滚动（仅当没有任何弹窗处于打开状态时） */
+  unlockBodyScroll() {
+    const anyOpen = !!document.querySelector('.modal-overlay.show');
+    if (!anyOpen) document.body.style.overflow = '';
+  },
+
   showModal(title, body) {
     document.getElementById('modalTitle').textContent = title;
     document.getElementById('modalBody').innerHTML = body;
     document.getElementById('modalOverlay').classList.add('show');
+    this.lockBodyScroll();
   },
 
-  closeModal() { document.getElementById('modalOverlay').classList.remove('show'); },
+  closeModal() {
+    document.getElementById('modalOverlay').classList.remove('show');
+    this.unlockBodyScroll();
+  },
 
-  exportData() {
-    const data = Storage.exportData();
-    const blob = new Blob([data], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `yuexi-backup-${Storage.today()}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-    this.showToast('✅ 数据已导出');
+  /**
+   * 导出备份。
+   * iOS Safari（尤其是「添加到主屏幕」的 PWA）里 <a download> 基本不可用，
+   * 因此优先走 Web Share API 分享文件，其次退回剪贴板。
+   */
+  async exportData() {
+    const json = Storage.exportData();
+    const fileName = `yuexi-backup-${Storage.today()}.json`;
+
+    // 1) Web Share API（iOS 可存到「文件」App / 发给自己）
+    try {
+      if (typeof File === 'function' && navigator.share && navigator.canShare) {
+        const file = new File([json], fileName, { type: 'application/json' });
+        if (navigator.canShare({ files: [file] })) {
+          await navigator.share({ files: [file], title: '月夕生活台备份' });
+          this.showToast('✅ 数据已导出');
+          return;
+        }
+      }
+    } catch (e) {
+      // 用户主动取消分享面板时不再继续兜底，也不报错
+      if (e && e.name === 'AbortError') return;
+    }
+
+    // 2) 剪贴板兜底
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(json);
+        window.alert('本设备不支持直接保存文件，备份内容已复制到剪贴板。\n请粘贴到「备忘录」或任意文本文件中保存。');
+        this.showToast('✅ 备份已复制到剪贴板');
+        return;
+      }
+    } catch (e) {}
+
+    // 3) 桌面浏览器：传统下载
+    try {
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      a.click();
+      URL.revokeObjectURL(url);
+      this.showToast('✅ 数据已导出');
+    } catch (e) {
+      window.alert('导出失败，请手动复制备份内容：\n\n' + json.slice(0, 2000));
+    }
   },
 
   // 全局搜索：跨板块搜索笔记与记录
@@ -886,8 +1203,225 @@ const App = {
       <div class="search-result-title">${r.title}</div>
       ${r.sub ? `<div class="search-result-sub">${r.sub}</div>` : ''}
     </div>`).join('');
+  },
+
+  /* ============ batch-3 #17：返回按钮生命周期 hook（替代被移除的内联猴子补丁） ============ */
+  syncHeaderBack() {
+    const btn = document.getElementById('headerBackBtn');
+    if (!btn) return;
+    const show = this.currentTab === 'home' && this.currentSection !== 'home';
+    btn.classList.toggle('visible', !!show);
+  },
+
+  /* ============ batch-3 #15：底部标签自定义 ============ */
+  getTabConfig() {
+    try {
+      const raw = localStorage.getItem('yuexi.tabs');
+      if (raw) {
+        const arr = JSON.parse(raw);
+        if (Array.isArray(arr)) {
+          const valid = arr.filter(id => this.TAB_REGISTRY[id]);
+          if (valid.length) return valid;
+        }
+      }
+    } catch (e) {}
+    return ['home', 'discover', 'profile'];
+  },
+
+  saveTabConfig(ids) {
+    const clean = (ids || []).filter(id => this.TAB_REGISTRY[id]);
+    if (!clean.length) clean.push('home');
+    if (!clean.includes('home')) clean.unshift('home');
+    try { localStorage.setItem('yuexi.tabs', JSON.stringify(clean)); } catch (e) {}
+    this.renderBottomNav();
+    this.showToast('✅ 底部标签已更新');
+  },
+
+  renderBottomNav() {
+    const nav = document.getElementById('bottomNav');
+    if (!nav) return;
+    const cfg = this.getTabConfig();
+    nav.innerHTML = cfg.map(id => {
+      const t = this.TAB_REGISTRY[id];
+      if (!t) return '';
+      const ico = this.icons[t.icon] || this.icons.default;
+      const fn = (id === 'home' || id === 'discover' || id === 'profile')
+        ? `App.switchTab('${id}')`
+        : `App.navigate('${id}')`;
+      const isTop = (id === 'home' || id === 'discover' || id === 'profile');
+      const active = (isTop && this.currentTab === id) || (!isTop && this.currentSection === id) ? ' active' : '';
+      return `<div class="bottom-nav-item${active}" data-tab="${id}" onclick="${fn}">
+        ${ico}<span>${t.name}</span>
+      </div>`;
+    }).join('');
+  },
+
+  tabCfgRender() {
+    if (!this._tabCfgDraft) this._tabCfgDraft = this.getTabConfig().slice();
+    const draft = this._tabCfgDraft;
+    const registryIds = Object.keys(this.TAB_REGISTRY);
+    const ordered = draft.slice();
+    registryIds.forEach(id => { if (!ordered.includes(id)) ordered.push(id); });
+    return ordered.map(id => {
+      const t = this.TAB_REGISTRY[id];
+      const on = draft.includes(id);
+      return `<div class="tab-cfg-item" data-id="${id}">
+        <input type="checkbox" ${on ? 'checked' : ''} onchange="App._toggleTabCfg('${id}', this.checked)">
+        <span class="tab-cfg-name">${t.name}${id === 'home' ? '（固定）' : ''}</span>
+        <button type="button" class="tab-cfg-mv" onclick="App._moveTabCfg('${id}', -1)">↑</button>
+        <button type="button" class="tab-cfg-mv" onclick="App._moveTabCfg('${id}', 1)">↓</button>
+      </div>`;
+    }).join('');
+  },
+
+  _toggleTabCfg(id, on) {
+    if (!this._tabCfgDraft) this._tabCfgDraft = this.getTabConfig().slice();
+    if (id === 'home') return;
+    const i = this._tabCfgDraft.indexOf(id);
+    if (on && i < 0) this._tabCfgDraft.push(id);
+    if (!on && i >= 0) this._tabCfgDraft.splice(i, 1);
+    const list = document.getElementById('tabConfigList');
+    if (list) list.innerHTML = this.tabCfgRender();
+  },
+
+  _moveTabCfg(id, dir) {
+    if (!this._tabCfgDraft) this._tabCfgDraft = this.getTabConfig().slice();
+    const a = this._tabCfgDraft;
+    const i = a.indexOf(id);
+    if (i < 0) return;
+    const j = i + dir;
+    if (j < 0 || j >= a.length) return;
+    const tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    const list = document.getElementById('tabConfigList');
+    if (list) list.innerHTML = this.tabCfgRender();
+  },
+
+  applyTabConfig() {
+    const draft = (this._tabCfgDraft || this.getTabConfig().slice()).filter(id => this.TAB_REGISTRY[id]);
+    if (!draft.includes('home')) draft.unshift('home');
+    if (draft.length > 5) { this.showToast('底部标签最多 5 个'); return; }
+    this.saveTabConfig(draft);
+    this._tabCfgDraft = null;
+    this.closeModal();
+    this.switchTab(this.currentTab);
+  },
+
+  resetTabConfig() {
+    this._tabCfgDraft = ['home', 'discover', 'profile'];
+    const list = document.getElementById('tabConfigList');
+    if (list) list.innerHTML = this.tabCfgRender();
+  },
+
+  /* ============ batch-3 #16：分享入站 ============ */
+  handleSharedPayload() {
+    try {
+      const q = new URLSearchParams(location.search);
+      if (!q.has('share')) return;
+      const text = (q.get('text') || '').trim();
+      const url = (q.get('url') || '').trim();
+      const title = (q.get('title') || '').trim();
+      let content = text || title || '';
+      if (url && content.indexOf(url) < 0) content = (content ? content + '\n' : '') + url;
+      if (history.replaceState) history.replaceState(null, '', location.pathname);
+      if (!content) return;
+      this._pendingShare = content;
+      this.showShareInbound(content);
+    } catch (e) {}
+  },
+
+  showShareInbound(content) {
+    App.showModal('从分享保存', `
+      <p class="card-hint">以下内容通过系统分享进入，可存入「今日聚焦 · 快速记录」。</p>
+      <div class="share-inbound-text">${App.escapeHtml(content)}</div>
+      <div class="quick-note-actions mt-3">
+        <button type="button" class="btn btn-primary" onclick="App.saveSharedAsNote()">保存到速记</button>
+        <button type="button" class="btn btn-outline" onclick="App.closeModal()">忽略</button>
+      </div>
+    `);
+  },
+
+  saveSharedAsNote() {
+    const c = this._pendingShare;
+    if (!c) { this.closeModal(); return; }
+    Storage.saveQuickNote(c);
+    this._pendingShare = null;
+    this.closeModal();
+    if (this.currentTab === 'home') this.refresh();
+    this.showToast('✅ 已保存到速记');
+  },
+
+  /* ============ batch-3 #19：Web Push 客户端脚手架 ============ */
+  isPushSupported() {
+    return ('serviceWorker' in navigator) && ('PushManager' in window) && ('Notification' in window);
+  },
+
+  isInstalledPWA() {
+    return (navigator.standalone === true) ||
+      (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+  },
+
+  async enablePush() {
+    try {
+      if (!this.isPushSupported()) { this.showToast('当前浏览器不支持 Web Push'); return; }
+      if (!this.isInstalledPWA()) {
+        this.showToast('请先把「月夕」添加到主屏幕，再开启提醒');
+        this.maybeShowInstallGuide();
+        return;
+      }
+      if (this.VAPID_PUBLIC_KEY.indexOf('REPLACE') >= 0) {
+        this.showToast('请先在 js/app.js 配置 VAPID_PUBLIC_KEY 再开启');
+        return;
+      }
+      const reg = await navigator.serviceWorker.ready;
+      let sub = await reg.pushManager.getSubscription();
+      if (!sub) {
+        sub = await reg.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: this.VAPID_PUBLIC_KEY
+        });
+      }
+      try { localStorage.setItem('yuexi.pushSub', JSON.stringify(sub)); } catch (e) {}
+      /* TODO(发送端)：将 sub 发到服务端（Supabase Edge Function / Cloudflare Worker）才能真正推送。
+         最小发送端伪代码（Node/Edge）：
+           const webpush = require('web-push');
+           webpush.setVapidDetails('mailto:you@example.com', VAPID_PUBLIC, VAPID_PRIVATE);
+           await webpush.sendNotification(sub, JSON.stringify({ title:'月夕生活台', body:'今日还没打卡哦', url:'./' })); */
+      this.showToast('✅ 已订阅推送（需配置发送端才会真正送达）');
+      this.refreshSettingsPush();
+    } catch (e) {
+      console.error('enablePush failed:', e);
+      if (e && e.name === 'NotAllowedError') this.showToast('已拒绝推送授权');
+      else this.showToast('开启提醒失败：' + (e && e.message ? e.message : e));
+    }
+  },
+
+  async disablePush() {
+    try {
+      const reg = await navigator.serviceWorker.ready;
+      const sub = await reg.pushManager.getSubscription();
+      if (sub) await sub.unsubscribe();
+      try { localStorage.removeItem('yuexi.pushSub'); } catch (e) {}
+      this.showToast('已关闭提醒');
+      this.refreshSettingsPush();
+    } catch (e) {
+      this.showToast('关闭提醒失败');
+    }
+  },
+
+  getPushStatus() {
+    try { return !!localStorage.getItem('yuexi.pushSub'); } catch (e) { return false; }
+  },
+
+  refreshSettingsPush() {
+    const el = document.getElementById('pushStatusText');
+    if (el) el.textContent = this.getPushStatus() ? '已开启' : '未开启';
   }
 };
+
+/* 顶层 const 只进 global declarative record，不会成为 window 的属性。
+   datasource.js / index.html 里的 `window.App && ...` 守卫依赖这个显式挂载，
+   缺了它那些分支会恒为假（写法与 datasource.js 末尾的 window.DataSource 保持一致）。 */
+window.App = App;
 
 document.addEventListener('DOMContentLoaded', () => App.init());
 setInterval(() => {
