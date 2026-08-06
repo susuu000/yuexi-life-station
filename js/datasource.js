@@ -92,6 +92,25 @@ const DataSource = {
     return !!(n && n.stale);
   },
 
+  /**
+   * 是否真的拿到了内容。
+   * 传 key 时只看该板块；不传时只要任意一个板块有数据即算有。
+   * 用于避免「明明没有任何新内容，却提示已更新到最新数据」。
+   */
+  hasData(key) {
+    if (!this.raw) return false;
+    if (key) {
+      const n = this.node(key);
+      if (!n || !n.data) return false;
+      return Array.isArray(n.data) ? n.data.length > 0 : Object.keys(n.data).length > 0;
+    }
+    return Object.keys(this.raw).some(k => {
+      const n = this.raw[k];
+      if (!n || typeof n !== 'object' || !n.data) return false;
+      return Array.isArray(n.data) ? n.data.length > 0 : Object.keys(n.data).length > 0;
+    });
+  },
+
   /** 相对时间：刚刚 / 12 分钟前 / 3 小时前 */
   relative(iso) {
     if (!iso) return '';
@@ -119,8 +138,12 @@ const DataSource = {
     return `<div class="ds-stamp">更新于 ${this.relative(at)}${stale}</div>`;
   },
 
-  /** 手动刷新：重新拉取并重渲染当前页 */
-  async refresh(btnId) {
+  /**
+   * 手动刷新：重新拉取并重渲染当前页。
+   * @param {string} btnId 触发按钮 id（用于 loading 态）
+   * @param {string} [key] 该按钮对应的数据源 key；传了就只针对这个板块判断有没有内容
+   */
+  async refresh(btnId, key) {
     const btn = btnId && document.getElementById(btnId);
     const oldHtml = btn ? btn.innerHTML : '';
     if (btn) { btn.innerHTML = '刷新中…'; btn.disabled = true; }
@@ -128,7 +151,14 @@ const DataSource = {
     if (btn) { btn.innerHTML = oldHtml; btn.disabled = false; }
     if (window.App && App.refresh) App.refresh();
     if (window.App && App.showToast) {
-      App.showToast(this.raw ? '已更新到最新数据' : '暂时无法连接数据源，显示本地缓存');
+      if (!this.raw) {
+        App.showToast('暂时无法连接数据源，显示本地缓存');
+      } else if (!this.hasData(key)) {
+        // 拉到了 JSON 但该板块没有任何条目：不能谎称「已更新到最新数据」
+        App.showToast('暂无更新');
+      } else {
+        App.showToast('已更新到最新数据');
+      }
     }
   },
 
