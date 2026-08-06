@@ -14,10 +14,12 @@
     clearError();
     overlay.style.display = '';          // 移除内联样式，让 .show 类生效
     overlay.classList.add('show');
+    if (typeof App !== 'undefined' && App.lockBodyScroll) App.lockBodyScroll();
     setTimeout(() => { const e = $('authEmail'); if (e) e.focus(); }, 50);
   }
   function closeAuthModal() {
     overlay.classList.remove('show');
+    if (typeof App !== 'undefined' && App.unlockBodyScroll) App.unlockBodyScroll();
   }
 
   function setMode(m) {
