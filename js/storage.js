@@ -221,8 +221,18 @@ const Storage = {
     if (!this.data.ielts) this.data.ielts = {};
     if (!this.data.aiStudy) this.data.aiStudy = {};
     if (!this.data.reading) this.data.reading = JSON.parse(JSON.stringify(d.reading));
-    if (!this.data.reading.bookMedia) this.data.reading.bookMedia = { reading: [], watching: [], planned: [], completed: [] };
-    if (!this.data.reading.checkin) this.data.reading.checkin = {};
+    // 规范化 bookMedia：空对象 {} 也是 truthy，单独的 !bookMedia 判断会漏掉它，
+    // 导致首页访问 .reading.length / 阅读页 .reading.map 抛错白屏（核心缺陷修复）
+    const bm = this.data.reading.bookMedia;
+    if (!bm || typeof bm !== 'object') {
+      this.data.reading.bookMedia = { reading: [], watching: [], planned: [], completed: [] };
+    } else {
+      if (!Array.isArray(bm.reading)) bm.reading = [];
+      if (!Array.isArray(bm.watching)) bm.watching = [];
+      if (!Array.isArray(bm.planned)) bm.planned = [];
+      if (!Array.isArray(bm.completed)) bm.completed = [];
+    }
+    if (!this.data.reading.checkin || typeof this.data.reading.checkin !== 'object') this.data.reading.checkin = {};
     if (!this.data.reading.checkinColors) this.data.reading.checkinColors = { book: '#2E6F7E', media: '#C04830' };
     if (!this.data.reading.gongzhonghao) this.data.reading.gongzhonghao = { lastUpdate: '', articles: [] };
     if (!this.data.reading.sanlian) this.data.reading.sanlian = { lastUpdate: '', articles: [] };

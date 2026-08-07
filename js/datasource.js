@@ -23,6 +23,24 @@ const DataSource = {
   loading: null,
   lastError: null,
 
+  /** 转义字符串，防止外部 RSS / 资讯标题注入 HTML（P0-3） */
+  _escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  },
+  /** 递归转义对象 / 数组中的所有字符串值（feed 标题、摘要、URL 等） */
+  _sanitize(v) {
+    if (typeof v === 'string') return this._escapeHtml(v);
+    if (Array.isArray(v)) return v.map(x => this._sanitize(x));
+    if (v && typeof v === 'object') {
+      const o = {};
+      for (const k of Object.keys(v)) o[k] = this._sanitize(v[k]);
+      return o;
+    }
+    return v;
+  },
+
   /** 载入数据；force=true 时绕过浏览器缓存重新拉取 */
   async load(force = false) {
     if (this.raw && !force) return this.raw;
@@ -36,10 +54,10 @@ const DataSource = {
         if (res.ok) {
           const json = await res.json();
           if (json && json.updatedAt) {
-            this.raw = json;
+            this.raw = this._sanitize(json);
             this.lastError = null;
-            try { localStorage.setItem(this.LS_KEY, JSON.stringify(json)); } catch (e) {}
-            return json;
+            try { localStorage.setItem(this.LS_KEY, JSON.stringify(this.raw)); } catch (e) {}
+            return this.raw;
           }
         }
         this.lastError = 'HTTP ' + res.status;
@@ -47,12 +65,12 @@ const DataSource = {
         this.lastError = e.message;
       }
 
-      // 2) 本地缓存兜底
+      // 2) 本地缓存兜底（同样转义，避免旧缓存携带未转义内容）
       try {
         const cached = localStorage.getItem(this.LS_KEY);
         if (cached) {
-          this.raw = JSON.parse(cached);
-          return this.raw;
+          try { this.raw = this._sanitize(JSON.parse(cached)); } catch (e) { this.raw = null; }
+          if (this.raw) return this.raw;
         }
       } catch (e) {}
 
@@ -167,10 +185,10 @@ const DataSource = {
    * 这样冷启动不会白屏等待网络。
    */
   async boot() {
-    // 先同步吃本地缓存，让首屏就能出真实内容
+    // 先同步吃本地缓存，让首屏就能出真实内容（转义后再用，防止未转义内容先渲染）
     try {
       const cached = localStorage.getItem(this.LS_KEY);
-      if (cached) this.raw = JSON.parse(cached);
+      if (cached) { try { this.raw = this._sanitize(JSON.parse(cached)); } catch (e) { this.raw = null; } }
     } catch (e) {}
 
     const before = this.raw && this.raw.updatedAt;

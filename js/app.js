@@ -310,6 +310,11 @@ const App = {
 
   // 侧边栏导航
   navigate(sectionId) {
+    // 底部主导航 Tab 直接走 switchTab，保持底部高亮与返回栈一致（P0-1 / 搜索结果路由）
+    if (sectionId === 'home' || sectionId === 'discover' || sectionId === 'profile') {
+      this.switchTab(sectionId);
+      return;
+    }
     this.currentTab = 'home';
     const bnItems = document.querySelectorAll('.bottom-nav-item');
     let bnMatch = false;
@@ -332,7 +337,9 @@ const App = {
     const sectionMap = {
       'home': 'home', 'ielts': 'ielts', 'ai-study': 'aiStudy', 'reading': 'reading',
       'podcast': 'podcast', 'self-media': 'selfMedia', 'self-exploration': 'selfExploration',
-      'settings': 'settings'
+      'settings': 'settings',
+      // 搜索结果兼容别名（驼峰写法），避免落入「自定义板块」白页并写库污染云端
+      'aiStudy': 'aiStudy', 'selfExploration': 'selfExploration'
     };
 
     const sectionKey = sectionMap[sectionId];
@@ -839,7 +846,7 @@ const App = {
       }
     }, true);
 
-    // 边缘滑动返回/前进
+    // 左侧边缘右滑返回（替代顶部返回按钮）
     this.bindEdgeSwipe();
 
     // 兜底保存：APP 切后台或关闭时立即保存（防止 500ms 防抖导致数据丢失）
@@ -852,40 +859,40 @@ const App = {
     window.addEventListener('beforeunload', () => { Storage.flushSave(); });
   },
 
-  // 边缘滑动
+  // 任务 5：左侧边缘右滑返回（替代顶部返回按钮）。
+  // Pointer 事件同时覆盖触摸与鼠标，触控兜底用 touch 事件，
+  // 保证移动端灵敏、桌面预览也可用鼠标拖动验证。
   bindEdgeSwipe() {
-    const content = document.getElementById('contentArea');
-    if (!content) return;
-
-    content.addEventListener('touchstart', (e) => {
-      const touch = e.touches[0];
-      this.touchStartX = touch.clientX;
-      this.touchStartY = touch.clientY;
-      this.touchStartTime = Date.now();
+    const EDGE = 36;      // 仅识别距左边缘 ≤36px 的起手
+    const THRESH = 60;    // 右滑超过 60px 才触发返回
+    const HEADER_H = 64;  // 头部区域不触发，避免与菜单按钮冲突
+    let sx = 0, sy = 0, st = 0, ok = false;
+    const onDown = (x, y) => { if (x <= EDGE && y > HEADER_H) { sx = x; sy = y; st = Date.now(); ok = true; } };
+    const onUp = (x, y) => {
+      if (!ok) return; ok = false;
+      const dx = x - sx, dy = y - sy, dt = Date.now() - st;
+      if (dx > THRESH && Math.abs(dy) < Math.abs(dx) && dt < 1200) {
+        if (this.currentTab === 'home' && this.currentSection !== 'home') this.goBack();
+      }
+    };
+    document.addEventListener('pointerdown', e => onDown(e.clientX, e.clientY), { passive: true });
+    document.addEventListener('pointerup', e => onUp(e.clientX, e.clientY), { passive: true });
+    // 触摸兜底（部分浏览器 pointer 事件异常时）
+    let tsx = 0, tsy = 0, tst = 0, tok = false;
+    document.addEventListener('touchstart', e => {
+      const t = e.touches[0];
+      if (t.clientX <= EDGE && t.clientY > HEADER_H) { tsx = t.clientX; tsy = t.clientY; tst = Date.now(); tok = true; }
     }, { passive: true });
-
-    content.addEventListener('touchend', (e) => {
-      const touch = e.changedTouches[0];
-      const dx = touch.clientX - this.touchStartX;
-      const dy = touch.clientY - this.touchStartY;
-      const dt = Date.now() - this.touchStartTime;
-      const winW = window.innerWidth;
-
-      // 水平滑动为主（IX-5：放宽阈值，更易触发）
-      if (Math.abs(dx) > 50 && Math.abs(dy) < 80 && dt < 500) {
-        // 从左边缘向右滑 → 返回上一级
-        if (this.touchStartX < 60 && dx > 50) {
-          this.goBack();
-        }
-        // 从右边缘向左滑 → 前进（回到首页）
-        else if (this.touchStartX > winW - 60 && dx < -50) {
-          this.switchTab('home');
-        }
+    document.addEventListener('touchend', e => {
+      if (!tok) return; tok = false;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - tsx, dy = t.clientY - tsy, dt = Date.now() - tst;
+      if (dx > THRESH && Math.abs(dy) < Math.abs(dx) && dt < 1200) {
+        if (this.currentTab === 'home' && this.currentSection !== 'home') this.goBack();
       }
     }, { passive: true });
   },
 
-  // 统一分栏绑定（支持所有板块的sub-tab）
   bindSubTabs(clickedBtn) {
     if (clickedBtn) {
       // 找到同一个 tabs-bar 中的所有 tab
@@ -1179,13 +1186,13 @@ const App = {
     };
 
     // 财务
-    (se.finance || []).forEach(f => push(`${(f.type==='income'?'收入':'支出')} ¥${f.amount} · ${f.cat||''}`, f.note || f.date, 'selfExploration'));
+    (se.finance || []).forEach(f => push(`${(f.type==='income'?'收入':'支出')} ¥${f.amount} · ${f.cat||''}`, f.note || f.date, 'self-exploration'));
     // 手账
-    (se.journal?.entries || []).forEach(e => push(e.title || '', (e.content||'').slice(0,40), 'selfExploration'));
+    (se.journal?.entries || []).forEach(e => push(e.title || '', (e.content||'').slice(0,40), 'self-exploration'));
     // 日常记录
-    (se.daily || []).forEach(d => push(d.name || '', (d.text||'').slice(0,40), 'selfExploration'));
+    (se.daily || []).forEach(d => push(d.name || '', (d.text||'').slice(0,40), 'self-exploration'));
     // 心情
-    (se.self?.emotions || []).forEach(e => push('心情：' + (e.mood||''), e.date, 'selfExploration'));
+    (se.self?.emotions || []).forEach(e => push('心情：' + (e.mood||''), e.date, 'self-exploration'));
     // 收藏
     (D.favorites || []).forEach(f => push(f.title || '', (f.summary||'').slice(0,40), 'profile'));
     // 书影
@@ -1194,14 +1201,14 @@ const App = {
     // 雅思笔记
     Object.values(D.ielts || {}).forEach(day => { const notes = day.notes || {}; Object.values(notes).forEach(n => push(n.title || '雅思笔记', (n.text||'').slice(0,40), 'ielts')); });
     // AI学习笔记
-    Object.values(D.aiStudy || {}).forEach(day => { const notes = day.notes || {}; Object.values(notes).forEach(n => push(n.title || 'AI笔记', (n.text||'').slice(0,40), 'aiStudy')); });
+    Object.values(D.aiStudy || {}).forEach(day => { const notes = day.notes || {}; Object.values(notes).forEach(n => push(n.title || 'AI笔记', (n.text||'').slice(0,40), 'ai-study')); });
     // 播客笔记
     Object.values(D.podcast || {}).forEach(day => { const notes = day.notes || {}; Object.values(notes).forEach(n => push(n.title || '播客笔记', (n.text||'').slice(0,40), 'podcast')); });
 
-    if (results.length === 0) { box.innerHTML = '<div class="search-empty">未找到匹配「' + q + '」的记录</div>'; return; }
+    if (results.length === 0) { box.innerHTML = '<div class="search-empty">未找到匹配「' + App.escapeHtml(q) + '」的记录</div>'; return; }
     box.innerHTML = results.slice(0, 30).map(r => `<div class="search-result-item" onclick="App.closeModal();App.navigate('${r.target}')">
-      <div class="search-result-title">${r.title}</div>
-      ${r.sub ? `<div class="search-result-sub">${r.sub}</div>` : ''}
+      <div class="search-result-title">${App.escapeHtml(r.title)}</div>
+      ${r.sub ? `<div class="search-result-sub">${App.escapeHtml(r.sub)}</div>` : ''}
     </div>`).join('');
   },
 
