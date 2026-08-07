@@ -214,8 +214,8 @@ const Sections = {
         total = news.length;
         news.forEach(n => { if (td.notes?.[n.id]) done++; });
       } else if (s.id === 'reading') {
-        const bm = Storage.data.reading.bookMedia;
-        total = bm.reading.length + bm.watching.length;
+        const bm = (Storage.data.reading && Storage.data.reading.bookMedia) || {};
+        total = (bm.reading ? bm.reading.length : 0) + (bm.watching ? bm.watching.length : 0);
         done = 0;
       } else if (s.id === 'podcast') {
         const list = td.list || Sections.podcast.hotList || [];
@@ -816,7 +816,7 @@ const Sections = {
   // ==================== 阅读（书影+打卡+公众号+三联中读） ====================
   reading: {
     render() {
-      const bm = Storage.data.reading.bookMedia;
+      const bm = (Storage.data.reading && Storage.data.reading.bookMedia) || { reading: [], watching: [], planned: [], completed: [] };
 
       // 订阅精选：真实数据（分组），无数据时回落到内置示例
       const liveSub = window.DataSource ? DataSource.map('subscriptions') : null;
