@@ -2,11 +2,85 @@
    sections.js - 全部功能板块
    ============================================ */
 
+/* ============ F6：外部数据渲染前的统一转义工具 ============
+   订阅源 / RSS 抓来的 title、summary、url 属于不可信输入，
+   直接拼进 innerHTML 或内联 onclick 会造成 XSS（被污染的源即可在 PWA 内执行任意 JS）。 */
+
+/** 文本注入 HTML（元素内容 / 普通属性值）时使用 */
+function escapeHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+/**
+ * 值要注入到内联 onclick 的 JS 单引号字符串里时使用。
+ *
+ * 该位置有两层解析：HTML 属性先被解码，结果再当 JS 源码执行。
+ * 所以不能直接用 escapeHtml —— 它把 ' 变成 &#39;，解码后又还原成 '，
+ * 依旧会截断 JS 字符串（书名带单引号点击失效就是这么来的）。
+ * 正确顺序：先做 JS 字面量转义，再做 HTML 属性转义。
+ */
+function escapeJsAttr(s) {
+  return String(s == null ? '' : s)
+    // 1) JS 字符串字面量层
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/\r/g, '\\r')
+    .replace(/\n/g, '\\n')
+    // 2) HTML 属性层（& 必须最先，避免二次转义）
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+/** 只放行 http/https，拦截 javascript: / data: 等可执行协议 */
+function safeUrl(u) {
+  const s = String(u == null ? '' : u).trim();
+  return /^https?:\/\//i.test(s) ? s : '';
+}
+
+/** 供 href 使用：非法链接退化为 '#'，不产生可点击的脚本协议 */
+function safeHref(u) {
+  return escapeHtml(safeUrl(u) || '#');
+}
+
+/**
+ * 外部 feed 列表的条目级兜底。
+ *
+ * DataSource.list() 只保证「顶层是数组」，不校验元素；元素直接来自
+ * RSS 派生的 feeds.json。一旦混入 null / 字符串，渲染里的 a.title 就会抛
+ * TypeError，导致**整个板块**渲染失败（虽被 app.js 的 try/catch 兜住不白屏，
+ * 但该板块内容会停留在上一次结果）。这里把坏条目单独丢掉，坏一条只少一条。
+ */
+function safeList(arr) {
+  return Array.isArray(arr) ? arr.filter(x => x && typeof x === 'object') : [];
+}
+
+/**
+ * 阶段二「删除墓碑」的渲染侧过滤。
+ *
+ * 跨设备传播删除时，被删条目不能直接从数组里抹掉——那样另一台设备上的旧副本
+ * 会在下次同步时把它当成「本机缺失的数据」又推回来（删了又活）。所以删除改为
+ * 原地打标 { ..., _deleted:true, _deletedAt }，由渲染层统一按标志隐藏。
+ *
+ * 在 safeList 的坏条目过滤之上叠加墓碑过滤；safeList 已保证元素是非空对象，
+ * 故这里可直接读 _deleted。
+ */
+function liveList(arr) {
+  return safeList(arr).filter(x => !x._deleted);
+}
+
 // 公共：操作按钮（选择复制+复制+收藏）
 function actionButtons(item) {
   const isFav = Storage.isFavorited(item.title);
-  const summary = (item.summary || item.title || '').replace(/'/g, "\\'").replace(/\n/g, '\\n');
-  const title = (item.title || '').replace(/'/g, "\\'");
+  // 以下值全部注入到内联 onclick 的 JS 字符串里，必须走 escapeJsAttr（F6）
+  const summary = escapeJsAttr(item.summary || item.title || '');
+  const title = escapeJsAttr(item.title || '');
+  const url = escapeJsAttr(safeUrl(item.url));
+  const section = escapeJsAttr(item.section || '');
+  const type = escapeJsAttr(item.type || '');
   return `
     <div class="item-actions">
       <button class="action-btn" onclick="event.stopPropagation();App.copyTextSelect('${summary}','${title}')" title="选择复制">
@@ -15,7 +89,7 @@ function actionButtons(item) {
       <button class="action-btn" onclick="event.stopPropagation();App.copyText('${summary}','${title}')" title="复制全文">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
       </button>
-      <button class="action-btn ${isFav?'favorited':''}" onclick="event.stopPropagation();App.toggleFavorite({title:'${title}',summary:'${summary}',url:'${item.url||''}',section:'${item.section||''}',type:'${item.type||''}'})" title="收藏">
+      <button class="action-btn ${isFav?'favorited':''}" onclick="event.stopPropagation();App.toggleFavorite({title:'${title}',summary:'${summary}',url:'${url}',section:'${section}',type:'${type}'})" title="收藏">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="${isFav?'currentColor':'none'}" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
       </button>
     </div>`;
@@ -158,8 +232,8 @@ const Sections = {
       const today = Storage.today();
       const checkedIn = !!Storage.isCheckedIn();
       const ck = Storage.data.checkin || { streak: 0, totalDays: 0 };
-      const notes = Storage.getQuickNotes(today);
-      const allCount = Storage.getQuickNotes().length;
+      const notes = liveList(Storage.getQuickNotes(today));
+      const allCount = liveList(Storage.getQuickNotes()).length;
 
       const focusText = checkedIn
         ? `已打卡 · 连续 ${ck.streak} 天`
@@ -893,40 +967,46 @@ const Sections = {
     ],
 
     renderSanlianArticles() {
-      const live = window.DataSource ? DataSource.list('sanlian') : [];
+      const live = safeList(window.DataSource ? DataSource.list('sanlian') : []);
       const list = live.length ? live : this.sanlianData;
+      // F6：三联条目可能来自实时抓取，统一转义
       return list.map(a => `
         <div class="gzh-article">
           <div class="gzh-article-header">
             <div>
-              <div class="gzh-article-title">${a.title}</div>
-              <div class="gzh-article-meta">${a.source} · ${a.date}</div>
+              <div class="gzh-article-title">${escapeHtml(a.title)}</div>
+              <div class="gzh-article-meta">${escapeHtml(a.source)} · ${escapeHtml(a.date)}</div>
             </div>
             ${actionButtons({section:'reading',title:a.title,summary:a.summary,url:a.url,type:'sanlian'})}
           </div>
-          <div class="gzh-article-summary">${a.summary}</div>
-          <a href="${a.url}" target="_blank" rel="noopener noreferrer" class="gzh-article-link">阅读全文 →</a>
+          <div class="gzh-article-summary">${escapeHtml(a.summary)}</div>
+          <a href="${safeHref(a.url)}" target="_blank" rel="noopener noreferrer" class="gzh-article-link">阅读全文 →</a>
         </div>`).join('');
     },
 
     renderBookMediaList(bm) {
+      // 本函数曾是 P0 崩溃点：sync.js 把 bookMedia 夷平成 [] 后，bm.reading 为
+      // undefined，bm.reading.map 直接抛 TypeError，整个阅读/首页板块白屏。
+      // backend-fix 已在 mergeDefaults 里保证这 4 条子列表恒为数组，但渲染仍可能
+      // 在 mergeDefaults 之前或 realtime 回调中途被触发，故保留条目级兜底。
+      bm = bm || {};
       const all = [
-        ...bm.reading.map(b => ({...b, _type:'book', _status:'在读'})),
-        ...bm.watching.map(m => ({...m, _type:'media', _status:'在看'})),
-        ...bm.planned.map(p => ({...p, _type:p.type||'book', _status:'计划'})),
-        ...bm.completed.map(c => ({...c, _type:c.type||'book', _status:'已完成'}))
+        ...liveList(bm.reading).map(b => ({...b, _type:'book', _status:'在读'})),
+        ...liveList(bm.watching).map(m => ({...m, _type:'media', _status:'在看'})),
+        ...liveList(bm.planned).map(p => ({...p, _type:p.type||'book', _status:'计划'})),
+        ...liveList(bm.completed).map(c => ({...c, _type:c.type||'book', _status:'已完成'}))
       ];
       if (all.length === 0) return '<div class="empty-state"><div class="empty-state-icon">📚</div><div class="empty-state-text">还没有添加书籍或影视，点击右上角添加</div></div>';
       return all.map(item => `
-        <div class="book-media-item" onclick="Sections.reading.showDetail('${item._type}','${item.title}')">
+        <div class="book-media-item" onclick="Sections.reading.showDetail('${escapeJsAttr(item._type)}','${escapeJsAttr(item.title)}')">
           <div class="bm-cover" style="background:${item._type==='book'?'var(--haze-blue)':'var(--red)'};">
-            ${item.cover ? `<img src="${item.cover}" alt="">` : `<span>${item._type==='book'?'📖':'🎬'}</span>`}
+            ${item.cover ? `<img src="${escapeHtml(item.cover)}" alt="">` : `<span>${item._type==='book'?'📖':'🎬'}</span>`}
           </div>
           <div class="bm-info">
-            <div class="bm-title">${item.title}</div>
+            <div class="bm-title">${escapeHtml(item.title)}</div>
             <div class="bm-meta">${item._type==='book'?'书籍':'影视'} · ${item._status}</div>
-            ${item.author ? `<div class="bm-sub">${item._type==='book'?'作者':'导演'}：${item.author}</div>` : ''}
-            ${item.summary ? `<div class="bm-summary">${item.summary.slice(0,60)}...</div>` : ''}
+            ${item.author ? `<div class="bm-sub">${item._type==='book'?'作者':'导演'}：${escapeHtml(item.author)}</div>` : ''}
+            ${item.summary ? `<div class="bm-summary">${escapeHtml(String(item.summary).slice(0,60))}...</div>` : ''}
           </div>
           <span class="bm-status-badge" style="background:${item._status==='已完成'?'var(--success)':item._status==='计划'?'var(--gold)':'var(--haze-blue)'};">${item._status}</span>
         </div>`).join('');
@@ -1033,19 +1113,20 @@ const Sections = {
 
     renderGzhArticles(account) {
       const g = this._subGroups()[account];
-      const articles = (g && g.items) || [];
+      const articles = safeList(g && g.items);
       if (!articles.length) return '<div class="empty-hint">暂无内容，点击右上角刷新试试</div>';
+      // F6：订阅源为外部 RSS，标题/摘要/链接均不可信，全部转义后再拼接
       return articles.map(a => `
         <div class="gzh-article">
           <div class="gzh-article-header">
             <div>
-              <div class="gzh-article-title">${a.title}</div>
-              <div class="gzh-article-meta">${a.source} · ${a.date}</div>
+              <div class="gzh-article-title">${escapeHtml(a.title)}</div>
+              <div class="gzh-article-meta">${escapeHtml(a.source)} · ${escapeHtml(a.date)}</div>
             </div>
             ${actionButtons({section:'reading',title:a.title,summary:a.summary,url:a.url,type:'article'})}
           </div>
-          <div class="gzh-article-summary">${a.summary}</div>
-          <a href="${a.url}" target="_blank" rel="noopener noreferrer" class="gzh-article-link">阅读全文 →</a>
+          <div class="gzh-article-summary">${escapeHtml(a.summary)}</div>
+          <a href="${safeHref(a.url)}" target="_blank" rel="noopener noreferrer" class="gzh-article-link">阅读全文 →</a>
         </div>`).join('');
     },
 
@@ -1609,7 +1690,7 @@ const Sections = {
 
     // ---- 今日状态 ----
     renderSelfTab(se, today) {
-      const mood = se.self.emotions?.find(e=>e.date===today)?.mood;
+      const mood = liveList(se.self.emotions).find(e=>e.date===today)?.mood;
       const ootdList = se.self.appearance.ootd || [];
       const hairList = se.self.appearance.hair || [];
       const weightList = se.self.appearance.weight || [];
@@ -1653,7 +1734,8 @@ const Sections = {
 
     // ---- 日常记录 ----
     renderDailyTab(se, today) {
-      const dailyList = se.daily || [];
+      // 墓碑过滤放在源头：下面的今日列表与历史列表都从 dailyList 派生
+      const dailyList = liveList(se.daily);
       const todayList = dailyList.filter(d => d.date === today);
       const dailyTypes = [
         {icon:'🎉',name:'出门玩'},
@@ -1699,7 +1781,9 @@ const Sections = {
 
     // ---- 生理期 ----
     renderPeriodTab(se, today) {
-      const records = (se.period.records || []).slice().sort((a,b) => a.date < b.date ? -1 : 1);
+      // 墓碑过滤放在源头：记录列表、日历高亮、以及下面的周期推算都依赖 records，
+      // 已删除的日期若混进来会把平均周期算歪
+      const records = liveList(se.period.records).sort((a,b) => a.date < b.date ? -1 : 1);
       const recSet = new Set(records.map(r => r.date));
 
       // 基于历史周期推算未来 3 次
@@ -1797,7 +1881,9 @@ const Sections = {
 
     // ---- 财务 ----
     renderFinanceTab(se, today) {
-      const finance = se.finance || [];
+      // 墓碑过滤放在源头：本月汇总金额与明细列表都从 finance 派生，
+      // 漏过滤会让已删掉的账目继续计入支出/收入合计
+      const finance = liveList(se.finance);
       const monthStr = today.slice(0,7);
       const monthFinance = finance.filter(f => f.date.startsWith(monthStr));
       const monthExpense = monthFinance.filter(f => (f.type||'expense') === 'expense').reduce((s,f) => s + (f.amount||0), 0);
@@ -1823,7 +1909,7 @@ const Sections = {
 
     // ---- 手账 ----
     renderJournalTab(se, today) {
-      const entries = se.journal.entries || [];
+      const entries = liveList(se.journal.entries);
       return `
         <div class="card mb-4">
           <div class="card-title"><span class="card-title-bar" style="background:var(--haze-blue);"></span>手账
@@ -1839,9 +1925,10 @@ const Sections = {
       const se = Storage.data.selfExploration;
       if (!se.self.emotions) se.self.emotions = [];
       const today = Storage.today();
-      const idx = se.self.emotions.findIndex(e => e.date === today);
+      // 跳过已删除的墓碑记录，避免把心情写进一条被删除的条目里
+      const idx = se.self.emotions.findIndex(e => e.date === today && !e._deleted);
       if (idx >= 0) se.self.emotions[idx].mood = mood;
-      else se.self.emotions.push({ date: today, mood });
+      else se.self.emotions.push({ id: 'emo-' + Date.now(), date: today, mood });
       Storage.save();
       App.showToast(mood==='happy'?'😊 今天很开心':mood==='neutral'?'😐 平静的一天':'😢 记录下来了');
       App.triggerAutoCheckin('完成学习记录');
@@ -2193,7 +2280,8 @@ const Sections = {
     },
 
     exportFinanceCSV() {
-      const finance = Storage.data.selfExploration.finance || [];
+      // 过滤墓碑：已删除的财务条目不应出现在导出文件里
+      const finance = Storage.livingList('selfExploration.finance');
       if (finance.length === 0) { App.showToast('暂无财务数据可导出'); return; }
       const header = ['日期', '类型', '分类', '金额', '备注'];
       const rows = finance.slice().sort((a,b) => a.date < b.date ? -1 : 1).map(f => [
@@ -2377,13 +2465,14 @@ const Sections = {
 
     renderNews() {
       // 真实数据优先（data/feeds.json），无数据时回落到示例
-      const live = window.DataSource ? DataSource.list('news') : [];
+      const live = safeList(window.DataSource ? DataSource.list('news') : []);
       const newsList = live.length ? live : this.newsData;
       const stamp = live.length && window.DataSource ? DataSource.stamp('news') : '';
+      // F6：新闻来自外部聚合源，onclick 里的 url 走 JS 属性转义 + 协议白名单
       return stamp + newsList.map((n,i) => `
-        <div class="news-list-item" onclick="App.openExternal('${n.url}')">
+        <div class="news-list-item" onclick="App.openExternal('${escapeJsAttr(safeUrl(n.url))}')">
           <div class="news-list-num">${i+1}</div>
-          <div class="news-list-content"><div class="news-list-title">${n.title}</div><div class="news-list-source">${n.source} · ${n.date}</div></div>
+          <div class="news-list-content"><div class="news-list-title">${escapeHtml(n.title)}</div><div class="news-list-source">${escapeHtml(n.source)} · ${escapeHtml(n.date)}</div></div>
           ${actionButtons({section:'discover',title:n.title,summary:n.title,url:n.url,type:'news'})}
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--text-ink-muted)" stroke-width="2" style="flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
         </div>`).join('');
@@ -2401,18 +2490,19 @@ const Sections = {
     ],
 
     renderAIFrontier() {
-      const live = window.DataSource ? DataSource.list('ai') : [];
+      const live = safeList(window.DataSource ? DataSource.list('ai') : []);
       const aiList = live.length ? live : this.aiFrontierData;
       const stamp = live.length && window.DataSource ? DataSource.stamp('ai') : '';
+      // F6：AI 前沿来自外部聚合源，统一转义
       return stamp + aiList.map(a => `
         <div class="ai-frontier-item">
           <div class="ai-frontier-header">
-            <div class="ai-frontier-title">${a.title}</div>
+            <div class="ai-frontier-title">${escapeHtml(a.title)}</div>
             ${actionButtons({section:'discover',title:a.title,summary:a.summary||a.title,url:a.url,type:'ai'})}
           </div>
-          <div class="ai-frontier-meta">${a.source || ''} ${a.date ? '· ' + a.date : ''}</div>
-          ${a.summary ? `<div class="ai-frontier-summary">${a.summary}</div>` : ''}
-          <a href="${a.url}" target="_blank" rel="noopener noreferrer" class="ai-frontier-link">查看详情 →</a>
+          <div class="ai-frontier-meta">${escapeHtml(a.source || '')} ${a.date ? '· ' + escapeHtml(a.date) : ''}</div>
+          ${a.summary ? `<div class="ai-frontier-summary">${escapeHtml(a.summary)}</div>` : ''}
+          <a href="${safeHref(a.url)}" target="_blank" rel="noopener noreferrer" class="ai-frontier-link">查看详情 →</a>
         </div>`).join('');
     },
 
@@ -2451,17 +2541,17 @@ const Sections = {
     ],
 
     renderNewReleases() {
-      const live = window.DataSource ? DataSource.list('releases') : [];
+      const live = safeList(window.DataSource ? DataSource.list('releases') : []);
       const relList = live.length ? live : this.newReleasesData;
       const stamp = live.length && window.DataSource ? DataSource.stamp('releases') : '';
       return stamp + relList.map(r => `
         <div class="release-item">
           <div class="release-type ${r.type||'book'}">${r.type==='media'||r.type==='movie'?'🎬影视':r.type==='book'?'📖新书':'📰资讯'}</div>
           <div class="release-content">
-            <div class="release-title">${r.title}</div>
-            <div class="release-date">${r.date || ''}</div>
-            ${r.desc||r.summary ? `<div class="release-desc">${r.desc||r.summary}</div>` : ''}
-            <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="release-link">了解更多 →</a>
+            <div class="release-title">${escapeHtml(r.title)}</div>
+            <div class="release-date">${escapeHtml(r.date || '')}</div>
+            ${r.desc||r.summary ? `<div class="release-desc">${escapeHtml(r.desc||r.summary)}</div>` : ''}
+            <a href="${safeHref(r.url)}" target="_blank" rel="noopener noreferrer" class="release-link">了解更多 →</a>
           </div>
           ${actionButtons({section:'discover',title:r.title,summary:r.desc||r.summary||r.title,url:r.url,type:'release'})}
         </div>`).join('');
@@ -2472,7 +2562,7 @@ const Sections = {
   profile: {
     render() {
       const ck = Storage.data.checkin || {streak:0,totalDays:0};
-      const favs = Storage.data.favorites || [];
+      const favs = liveList(Storage.data.favorites);
       const settings = Storage.data.settings;
 
       // 统计

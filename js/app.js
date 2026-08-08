@@ -16,6 +16,12 @@ const App = {
   touchStartX: 0,
   touchStartY: 0,
   touchStartTime: 0,
+  // P2-5：hash 路由内部标志。写 hash 前置 true、写完复位，
+  // 供 hashchange 监听区分「自己写的」和「用户前进/后退触发的」，避免回环重渲染。
+  _fromHash: false,
+  // P0-2：init() 是否已跑完。Supabase SDK 改为 async 后可能比 init() 先就绪，
+  // onSupabaseReady() 靠这个标志判断该不该自己补建连接（否则会和 init() 里的 Sync.init() 撞车）。
+  _inited: false,
   // B-2：iOS「添加到主屏幕」引导只提示一次的本地标记
   A2HS_KEY: 'yuexi_a2hs_dismissed',
 
@@ -59,6 +65,9 @@ const App = {
     try {
       Storage.init();
       Sync.init();
+      // P0-2：标志的语义是「Sync.init() 已尝试过」，故紧跟其后置位。
+      // 放在 init() 末尾的话，中途任何一步抛错都会让晚到的 SDK 再也接不上云端。
+      this._inited = true;
       this.updateAppTitle();
       this.renderSidebar();
       this.renderBottomNav();
@@ -68,11 +77,22 @@ const App = {
       this.applyPersonalization();
       this.registerSW();
       this.maybeShowInstallGuide();
+      // 'home' 始终压栈作为返回栈根节点，深链进入子板块时 goBack() 才有地方可回
       Storage.pushNav('home');
-      this.switchTab('home');
+      // P2-5：优先按 URL hash 还原现场（刷新 / PWA 冷启动 / 深链分享落地），
+      // 无 hash 或 hash 非法时才回落首页，保持原有行为不变。
+      const target = this._hashToSection(location.hash);
+      if (!target || target === 'home' || target === 'discover' || target === 'profile') {
+        this.switchTab(target || 'home');
+      } else {
+        this.navigate(target);
+      }
       this.handleSharedPayload();
       // 真实数据源：先用缓存渲染，拿到最新结果后自动刷新一次
       if (window.DataSource) DataSource.boot().catch(() => {});
+      // P0-2：SDK 若在 init() 之前就已 async 加载完成，那次 onload 回调会因 App 未就绪而空转，
+      // 这里补一次判定，保证「SDK 早到」和「SDK 晚到」两条路径都能建立云端连接。
+      if (window.__supabaseReady) this.onSupabaseReady();
     } catch(e) {
       console.error('Init error:', e);
       try {
@@ -80,6 +100,61 @@ const App = {
         if (content) content.innerHTML = '<div class="card" style="padding:20px;text-align:center;color:var(--text-ink-muted);">加载遇到问题，请下拉刷新重试</div>';
       } catch(e2) {}
     }
+  },
+
+  /**
+   * P0-2 配套钩子：由 index.html 里 Supabase SDK 的 <script async onload> 回调。
+   *
+   * 改 async 之后 SDK 不再保证先于 App.init() 执行，Sync.init() 很可能在「SDK 未加载」
+   * 分支里降级成了本地模式。没有这个补建逻辑，SDK 晚到时用户会永远停在未登录状态，
+   * 等于用白屏换掉了云同步——所以 async 和本方法必须成对存在。
+   */
+  onSupabaseReady() {
+    try {
+      if (!this._inited) return;                                  // init() 还没跑，交给它自己初始化即可
+      if (!window.Sync) return;
+      if (Sync.client) return;                                    // 已建过连接；重复 init 会产生第二个 client 和重复的实时订阅
+      if (typeof supabase === 'undefined' || !supabase.createClient) return;
+      Sync.init();
+    } catch (e) {
+      console.warn('[月夕] Supabase 就绪后补建连接失败：', e && e.message);
+    }
+  },
+
+  /* ---------- P2-5：hash 路由 ---------- */
+
+  /**
+   * 把 location.hash 解析为 sectionId：'#/home' -> 'home'、'#/reading' -> 'reading'。
+   * 无 hash、格式不是 '#/xxx'、或指向一个并不存在的板块时返回 null（脏 hash 不该渲染出空白页）。
+   */
+  _hashToSection(hash) {
+    try {
+      const h = String(hash || '').trim();
+      if (!h) return null;
+      const m = h.match(/^#\/([A-Za-z0-9_-]+)\/?$/);
+      if (!m) return null;
+      const id = m[1];
+      if (id === 'home' || id === 'discover' || id === 'profile' || id === 'settings') return id;
+      // 其余（含用户自定义板块）必须在侧边栏配置里真实存在
+      const list = (Storage.data && Storage.data.settings && Storage.data.settings.sidebar) || [];
+      return list.some(s => s && s.id === id) ? id : null;
+    } catch (e) {
+      return null;
+    }
+  },
+
+  /**
+   * 把当前板块写进 hash。用 replaceState 而非直接赋值 location.hash：
+   * 后者会往浏览器历史里塞一条记录，连点几个板块后用户要按很多次后退才能离开。
+   * _fromHash 在写入期间置位，供 hashchange 监听识别并跳过自身触发的变更。
+   */
+  _writeHash(id) {
+    if (!id) return;
+    this._fromHash = true;
+    try {
+      history.replaceState(null, '', '#/' + id);
+    } catch (e) {}
+    this._fromHash = false;
   },
 
   /**
@@ -277,31 +352,40 @@ const App = {
 
   // 底部Tab切换
   switchTab(tab) {
+    this._writeHash(tab);  // P2-5：先落 hash，后面 render 抛错也不影响刷新后能回到这个板块
     this.currentTab = tab;
     document.querySelectorAll('.bottom-nav-item').forEach(el => {
       el.classList.toggle('active', el.dataset.tab === tab);
     });
 
     const content = document.getElementById('contentArea');
-    if (tab === 'home') {
-      // 无论之前在哪个板块，点击底部首页都直接显示首页
-      this.currentSection = 'home';
-      Storage.pushNav('home');
-      this.renderSidebar();
-      content.innerHTML = Sections.home.render();
-      content.scrollTop = 0;
-      this.startHomeClock();
-    } else if (tab === 'discover') {
-      this.currentSection = 'discover';
-      Storage.pushNav('discover');
-      content.innerHTML = Sections.discover.render();
-      content.scrollTop = 0;
-      this.bindSubTabs(null);
-    } else if (tab === 'profile') {
-      this.currentSection = 'profile';
-      Storage.pushNav('profile');
-      content.innerHTML = Sections.profile.render();
-      content.scrollTop = 0;
+    // F5：render() 抛错（例如数据被夷平后 bm.reading.map 不是函数）不得中断导航流程。
+    // 一次调用只会命中一个分支，因此这里的单个 try/catch 等价于给三处 render 各包一层；
+    // catch 只记录日志、不抛出，保证下面的 syncHeaderBack()/closeSidebar() 一定执行，
+    // 否则会表现为「点了没反应、侧边栏收不起来」。
+    try {
+      if (tab === 'home') {
+        // 无论之前在哪个板块，点击底部首页都直接显示首页
+        this.currentSection = 'home';
+        Storage.pushNav('home');
+        this.renderSidebar();
+        content.innerHTML = Sections.home.render();
+        content.scrollTop = 0;
+        this.startHomeClock();
+      } else if (tab === 'discover') {
+        this.currentSection = 'discover';
+        Storage.pushNav('discover');
+        content.innerHTML = Sections.discover.render();
+        content.scrollTop = 0;
+        this.bindSubTabs(null);
+      } else if (tab === 'profile') {
+        this.currentSection = 'profile';
+        Storage.pushNav('profile');
+        content.innerHTML = Sections.profile.render();
+        content.scrollTop = 0;
+      }
+    } catch (e) {
+      console.error('[switchTab] render failed:', tab, e);
     }
     this.syncHeaderBack();
     this.closeSidebar();
@@ -310,6 +394,7 @@ const App = {
 
   // 侧边栏导航
   navigate(sectionId) {
+    this._writeHash(sectionId);  // P2-5：同 switchTab，渲染前先固化位置
     this.currentTab = 'home';
     const bnItems = document.querySelectorAll('.bottom-nav-item');
     let bnMatch = false;
@@ -336,22 +421,28 @@ const App = {
     };
 
     const sectionKey = sectionMap[sectionId];
-    if (sectionKey && Sections[sectionKey]) {
-      content.innerHTML = Sections[sectionKey].render();
-      content.scrollTop = 0;
-      // 绑定板块内分栏
-      if (sectionKey === 'discover') this.bindSubTabs(null);
-      if (sectionKey === 'aiStudy') this.bindSubTabs(null);
-      if (sectionKey === 'reading') this.bindSubTabs(null);
-      if (sectionKey === 'podcast') this.bindSubTabs(null);
-      if (sectionKey === 'selfMedia') this.bindSubTabs(null);
-      if (sectionKey === 'selfExploration') this.bindSubTabs(null);
-    } else {
-      content.innerHTML = `
-        <div class="section-header"><div class="section-title">${item ? item.name : '板块'}</div></div>
-        <div class="card"><div class="empty-state"><div class="empty-state-icon">🌟</div><div class="empty-state-text">这是自定义板块，你可以在此自由记录</div></div>
-        <textarea class="input-field mt-3" placeholder="开始记录..." oninput="App.saveCustomSection('${sectionId}', this.value)">${Storage.getDayData(sectionId, Storage.today()).text || ''}</textarea></div>
-      `;
+    // F5：render() 抛错不得中断导航流程。catch 只记录日志、不抛出，
+    // 保证 try 块之后的 syncHeaderBack()/closeSidebar() 一定执行（侧边栏必定收起）。
+    try {
+      if (sectionKey && Sections[sectionKey]) {
+        content.innerHTML = Sections[sectionKey].render();
+        content.scrollTop = 0;
+        // 绑定板块内分栏
+        if (sectionKey === 'discover') this.bindSubTabs(null);
+        if (sectionKey === 'aiStudy') this.bindSubTabs(null);
+        if (sectionKey === 'reading') this.bindSubTabs(null);
+        if (sectionKey === 'podcast') this.bindSubTabs(null);
+        if (sectionKey === 'selfMedia') this.bindSubTabs(null);
+        if (sectionKey === 'selfExploration') this.bindSubTabs(null);
+      } else {
+        content.innerHTML = `
+          <div class="section-header"><div class="section-title">${item ? item.name : '板块'}</div></div>
+          <div class="card"><div class="empty-state"><div class="empty-state-icon">🌟</div><div class="empty-state-text">这是自定义板块，你可以在此自由记录</div></div>
+          <textarea class="input-field mt-3" placeholder="开始记录..." oninput="App.saveCustomSection('${sectionId}', this.value)">${Storage.getDayData(sectionId, Storage.today()).text || ''}</textarea></div>
+        `;
+      }
+    } catch (e) {
+      console.error('[navigate] render failed:', sectionId, e);
     }
     this.syncHeaderBack();
     this.closeSidebar();
@@ -399,34 +490,40 @@ const App = {
   },
 
   _doRefresh(snap) {
-    const content = document.getElementById('contentArea');
-    if (this.currentTab === 'home' && this.currentSection === 'home') {
-      this.switchTab('home');
-    } else if (this.currentTab === 'home') {
-      this.navigate(this.currentSection);
-    } else {
-      this.switchTab(this.currentTab);
-    }
-
-    // 恢复滚动位置，避免刷新后跳到顶部（IX-2 体验优化）
-    if (content) content.scrollTop = snap.scrollTop;
-    // 恢复未保存的快速记录草稿，避免刷新后丢失（DEFECT #2 修复）
-    if (snap.quickNoteDraft) {
-      const qnEl = document.getElementById('quickNoteInput');
-      if (qnEl) qnEl.value = snap.quickNoteDraft;
-    }
-    // 恢复输入框焦点与光标
-    if (snap.focusId) {
-      const el = document.getElementById(snap.focusId);
-      if (el) {
-        el.focus();
-        try { el.setSelectionRange(snap.selStart, snap.selEnd); } catch (e) {}
+    // F5：refresh 是 setTimeout 里的异步回调，抛错无人接住会直接冒泡成未捕获异常，
+    // 上层看到的就是「刷新后白屏 / 状态卡死」。整体包一层，catch 只记录日志。
+    try {
+      const content = document.getElementById('contentArea');
+      if (this.currentTab === 'home' && this.currentSection === 'home') {
+        this.switchTab('home');
+      } else if (this.currentTab === 'home') {
+        this.navigate(this.currentSection);
+      } else {
+        this.switchTab(this.currentTab);
       }
+
+      // 恢复滚动位置，避免刷新后跳到顶部（IX-2 体验优化）
+      if (content) content.scrollTop = snap.scrollTop;
+      // 恢复未保存的快速记录草稿，避免刷新后丢失（DEFECT #2 修复）
+      if (snap.quickNoteDraft) {
+        const qnEl = document.getElementById('quickNoteInput');
+        if (qnEl) qnEl.value = snap.quickNoteDraft;
+      }
+      // 恢复输入框焦点与光标
+      if (snap.focusId) {
+        const el = document.getElementById(snap.focusId);
+        if (el) {
+          el.focus();
+          try { el.setSelectionRange(snap.selStart, snap.selEnd); } catch (e) {}
+        }
+      }
+      // 首页时钟 DOM 已被重建，下次 tick 重新缓存元素引用（P-3）
+      this.flipEls = null;
+      // 渲染完成后异步加载 IndexedDB 中的图片（P-2 懒加载在 hydrateImages 内部处理）
+      setTimeout(() => Storage.hydrateImages(), 50);
+    } catch (e) {
+      console.error('[_doRefresh] failed:', e);
     }
-    // 首页时钟 DOM 已被重建，下次 tick 重新缓存元素引用（P-3）
-    this.flipEls = null;
-    // 渲染完成后异步加载 IndexedDB 中的图片（P-2 懒加载在 hydrateImages 内部处理）
-    setTimeout(() => Storage.hydrateImages(), 50);
   },
 
   // 数据量统计（用于 F-3 备份提醒）
@@ -850,6 +947,18 @@ const App = {
     });
     window.addEventListener('pagehide', () => { Storage.flushSave(); });
     window.addEventListener('beforeunload', () => { Storage.flushSave(); });
+
+    // P2-5：响应浏览器前进/后退与手工改 hash。
+    // _fromHash 为真说明这次变更是 _writeHash() 自己写的，直接忽略以免回环重渲染。
+    // 注意这里刻意不碰 Storage.pushNav/popNav——那是应用内返回栈，hash 只管刷新与深链。
+    window.addEventListener('hashchange', () => {
+      if (this._fromHash) return;
+      const s = this._hashToSection(location.hash);
+      if (!s) return;
+      if (s === this.currentSection) return;   // 已经在目标板块，省掉一次全量 innerHTML 重渲染
+      if (s === 'home' || s === 'discover' || s === 'profile') this.switchTab(s);
+      else this.navigate(s);
+    });
   },
 
   // 边缘滑动

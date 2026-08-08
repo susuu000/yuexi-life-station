@@ -19,7 +19,11 @@
   <!-- Supabase JS SDK（浏览器全局 supabase）。
        C-3 安全加固：锁定到精确版本 @2.112.0，并附带 sha384 SRI 校验 + 跨域匿名请求；
        若 CDN 不可达或 SRI 校验失败，直接降级为本地只读模式（不内置 vendor 副本，避免触发 GitHub Pages 构建限制）。 -->
-  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.0" integrity="sha384-De+l/Df7qym5QBDVocD3+gW1S7IjR3epf+6KbRDjB3FCCzM/LqVTwqckT6FhFar8" crossorigin="anonymous" onerror="console.warn('[月夕] Supabase SDK CDN 加载失败，已切换为本地只读模式')"></script>
+  <!-- P0-2：必须用 async 而非 defer。defer 会把该脚本纳入 DOMContentLoaded 的等待队列，
+       一旦 CDN 请求挂起（连接建立但不返回），DOMContentLoaded 永不触发 → App.init() 永不执行 → 白屏。
+       async 完全脱离 DOMContentLoaded，App.init() 总能先跑起来（无 SDK 时以本地模式运行），
+       SDK 真正就绪后再通过 onload 回调 App.onSupabaseReady() 补建云端连接。 -->
+  <script async src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.0" integrity="sha384-De+l/Df7qym5QBDVocD3+gW1S7IjR3epf+6KbRDjB3FCCzM/LqVTwqckT6FhFar8" crossorigin="anonymous" onload="window.__supabaseReady=true; if(window.App&&window.App.onSupabaseReady)window.App.onSupabaseReady();" onerror="console.warn('[月夕] Supabase SDK CDN 加载失败，已切换为本地只读模式')"></script>
   <style>
     .auth-tabs { display:flex; gap:8px; margin-bottom:16px; }
     .auth-tab { flex:1; padding:8px 0; border:none; background:transparent; color:var(--text-ink-muted); font-size:15px; cursor:pointer; border-bottom:2px solid transparent; }

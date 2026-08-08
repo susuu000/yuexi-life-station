@@ -2,6 +2,9 @@
    storage.js - 数据存储与自动保存
    ============================================ */
 
+/* 纯对象判定（数组不算）。用于把被同步层夷平成 [] 的对象集合自愈回正确形状。 */
+const isObjShape = v => v && typeof v === 'object' && !Array.isArray(v);
+
 const Storage = {
   DB_KEY: 'yuexi_life_data_v3',
   BACKUP_KEY: 'yuexi_life_data_v3_backup',
@@ -220,38 +223,70 @@ const Storage = {
     if (!this.data.sync) this.data.sync = d.sync;
     if (!this.data.ielts) this.data.ielts = {};
     if (!this.data.aiStudy) this.data.aiStudy = {};
-    if (!this.data.reading) this.data.reading = JSON.parse(JSON.stringify(d.reading));
-    if (!this.data.reading.bookMedia) this.data.reading.bookMedia = { reading: [], watching: [], planned: [], completed: [] };
+    if (!isObjShape(this.data.reading)) this.data.reading = JSON.parse(JSON.stringify(d.reading));
+    // 自愈：被旧版 sync 的 mergeArrayById 夷平成 [] 的对象集合，恢复为正确形状。
+    // 必须用 isObjShape 而非 !x —— [] 是 truthy，旧写法对被夷平的数据完全失效。
+    if (!isObjShape(this.data.reading.bookMedia)) this.data.reading.bookMedia = { reading: [], watching: [], planned: [], completed: [] };
     if (!this.data.reading.checkin) this.data.reading.checkin = {};
     if (!this.data.reading.checkinColors) this.data.reading.checkinColors = { book: '#2E6F7E', media: '#C04830' };
-    if (!this.data.reading.gongzhonghao) this.data.reading.gongzhonghao = { lastUpdate: '', articles: [] };
-    if (!this.data.reading.sanlian) this.data.reading.sanlian = { lastUpdate: '', articles: [] };
+    if (!isObjShape(this.data.reading.gongzhonghao)) this.data.reading.gongzhonghao = { lastUpdate: '', articles: [] };
+    // sanlian 同为夷平受害者：原写法 if(!x) 对 [] 无效（[] 是 truthy），必须用 isObjShape
+    if (!isObjShape(this.data.reading.sanlian)) this.data.reading.sanlian = { lastUpdate: '', articles: [] };
+    // 两者的 articles 子列表必须是数组，避免将来 .articles.map(...) 复现同类 P0
+    if (!Array.isArray(this.data.reading.gongzhonghao.articles)) this.data.reading.gongzhonghao.articles = [];
+    if (!Array.isArray(this.data.reading.sanlian.articles)) this.data.reading.sanlian.articles = [];
     // 移除真正已迁移的旧字段（blogs/books/media）；sanlian 仍是当前活字段，不可删除
     if (this.data.reading.blogs) delete this.data.reading.blogs;
     if (this.data.reading.books) {
       // 迁移旧书籍数据到bookMedia
-      if (this.data.reading.books.reading && this.data.reading.bookMedia.reading.length === 0) {
+      // 安全访问：bookMedia.reading 可能缺失，旧写法一旦抛错就跳过下面的 delete，
+      // 导致 books 永远留存、每次 mergeDefaults 都在同一行抛错（永久楔死）。
+      if (this.data.reading.books.reading && (this.data.reading.bookMedia.reading || []).length === 0) {
         this.data.reading.bookMedia.reading = this.data.reading.books.reading;
       }
       delete this.data.reading.books;
     }
     if (this.data.reading.media) {
-      if (this.data.reading.media.watching && this.data.reading.bookMedia.watching.length === 0) {
+      if (this.data.reading.media.watching && (this.data.reading.bookMedia.watching || []).length === 0) {
         this.data.reading.bookMedia.watching = this.data.reading.media.watching;
       }
       delete this.data.reading.media;
     }
+    // bookMedia 的四条子列表必须是数组：sections.js 直接 bm.reading.map(...)，缺一即崩
+    ['reading', 'watching', 'planned', 'completed'].forEach(k => {
+      if (!Array.isArray(this.data.reading.bookMedia[k])) this.data.reading.bookMedia[k] = [];
+    });
 
     if (!this.data.podcast) this.data.podcast = {};
     if (!this.data.selfMedia) this.data.selfMedia = {};
-    if (!this.data.selfExploration) this.data.selfExploration = JSON.parse(JSON.stringify(d.selfExploration));
+    if (!isObjShape(this.data.selfExploration)) this.data.selfExploration = JSON.parse(JSON.stringify(d.selfExploration));
+    // 自愈：period / journal 是对象集合，被夷平成 [] 后 sections.js 读 .records/.entries 会抛错
+    if (!isObjShape(this.data.selfExploration.period)) this.data.selfExploration.period = { records: [], predictions: [] };
+    if (!isObjShape(this.data.selfExploration.journal)) this.data.selfExploration.journal = { entries: [], reminders: [] };
+    // period / journal 的子列表也必须是数组：sections.js 直接读 .records / .entries
+    ['records', 'predictions'].forEach(k => {
+      if (!Array.isArray(this.data.selfExploration.period[k])) this.data.selfExploration.period[k] = [];
+    });
+    ['entries', 'reminders'].forEach(k => {
+      if (!Array.isArray(this.data.selfExploration.journal[k])) this.data.selfExploration.journal[k] = [];
+    });
+    // 与之对称：daily / finance 是数组集合，被写成对象同样会崩渲染
+    if (!Array.isArray(this.data.selfExploration.daily)) this.data.selfExploration.daily = [];
+    if (!Array.isArray(this.data.selfExploration.finance)) this.data.selfExploration.finance = [];
+    if (!isObjShape(this.data.selfExploration.self)) this.data.selfExploration.self = JSON.parse(JSON.stringify(d.selfExploration.self));
+    if (!isObjShape(this.data.selfExploration.self.appearance)) this.data.selfExploration.self.appearance = { ootd: [], clothes: [], hair: [], weight: [] };
+    if (!Array.isArray(this.data.selfExploration.self.emotions)) this.data.selfExploration.self.emotions = [];
+    if (!Array.isArray(this.data.selfExploration.self.skills)) this.data.selfExploration.self.skills = [];
+    ['ootd', 'clothes', 'hair', 'weight'].forEach(k => {
+      if (!Array.isArray(this.data.selfExploration.self.appearance[k])) this.data.selfExploration.self.appearance[k] = [];
+    });
     if (!this.data.discover) this.data.discover = {};
-    if (!this.data.profile) this.data.profile = {};
+    if (!isObjShape(this.data.profile)) this.data.profile = {};
     if (!this.data.checkin) this.data.checkin = { records: {}, streak: 0, totalDays: 0 };
     if (!Array.isArray(this.data.quickNotes)) this.data.quickNotes = [];
-    if (!this.data.favorites) this.data.favorites = [];
-    if (!this.data.weather) this.data.weather = { location: '', lastUpdate: '', data: null };
-    if (!this.data.horoscope) this.data.horoscope = d.horoscope;
+    if (!Array.isArray(this.data.favorites)) this.data.favorites = [];
+    if (!isObjShape(this.data.weather)) this.data.weather = { location: '', lastUpdate: '', data: null };
+    if (!isObjShape(this.data.horoscope)) this.data.horoscope = JSON.parse(JSON.stringify(d.horoscope));
     if (this.data.news) delete this.data.news; // 已迁移到discover
   },
 
@@ -264,7 +299,11 @@ const Storage = {
         const oldRaw = localStorage.getItem('yuexi_life_data');
         if (oldRaw) {
           const oldData = JSON.parse(oldRaw);
-          localStorage.setItem(this.DB_KEY, JSON.stringify(oldData));
+          // 迁移写入单独兜底：配额不足时不应让整个 load() 掉进 catch 走「备份恢复」路径，
+          // 那会把一次可用的旧数据迁移误判成数据损坏。写不进去也照样把数据交给上层用。
+          try { localStorage.setItem(this.DB_KEY, JSON.stringify(oldData)); } catch (eMig) {
+            console.warn('旧数据迁移写入失败（可能配额不足），仅在内存中使用:', eMig);
+          }
           return oldData;
         }
         return null;
@@ -431,6 +470,57 @@ const Storage = {
     return obj;
   },
 
+  /* ---------- 软删除（删除墓碑）----------
+     为什么不能直接 splice：本地把某项从数组里摘掉后，pushAll 上传的是「摘掉后的数组」，
+     而云端合并走的是 mergeArrayById 的**并集**语义 —— 另一台设备（或云端旧副本）里
+     仍存在的那一项会在下次 loadAll 时原样并回来，表现为「删了又自己长出来」。
+     所以删除必须留下痕迹：把成员标记成 { ..., _deleted: true, _deletedAt: <ms> } 并保留在数组中，
+     让墓碑本身作为「删除事件」被同步出去，其它设备合并时据此淘汰活数据。
+     渲染层必须按 _deleted 过滤（见 getQuickNotes / getFavorites / isFavorited）。
+     ⚠️ 墓碑不做自动回收：一旦清掉，尚未同步的设备会把老数据重新并回来。
+        对个人应用而言墓碑体积可忽略（每条仅多两个字段）。 */
+
+  /**
+   * 将数组集合中匹配 id 的成员标记为已删除（软删除）。
+   * @param {string} path Storage.data 内的点路径，如 'favorites'、'quickNotes'、'reading.bookMedia.reading'
+   * @param {string|number} id 目标成员的 id
+   * @returns {boolean} 是否有成员被本次标记（已经是墓碑的不重复计入）
+   */
+  softDelete(path, id) {
+    const keys = String(path || '').split('.');
+    let arr = this.data;
+    for (const k of keys) {
+      if (!arr || typeof arr !== 'object') return false;
+      arr = arr[k];
+    }
+    if (!Array.isArray(arr)) return false;
+    let changed = false;
+    for (const it of arr) {
+      if (it && it.id != null && String(it.id) === String(id) && !it._deleted) {
+        it._deleted = true;
+        it._deletedAt = Date.now();
+        changed = true;
+      }
+    }
+    if (changed) this.save();
+    return changed;
+  },
+
+  /**
+   * 过滤掉墓碑，返回可渲染的成员列表。渲染层统一用它，避免各处漏判 _deleted。
+   * @param {string} path Storage.data 内的点路径
+   * @returns {Array<object>} 活数据（原对象引用，可直接改后 save）
+   */
+  livingList(path) {
+    const keys = String(path || '').split('.');
+    let arr = this.data;
+    for (const k of keys) {
+      if (!arr || typeof arr !== 'object') return [];
+      arr = arr[k];
+    }
+    return Array.isArray(arr) ? arr.filter(it => it && !it._deleted) : [];
+  },
+
   // 图片压缩后转 base64（Canvas 压缩，max 800px / quality 0.5）
   imageToBase64(file, callback) {
     const maxSize = 800;
@@ -497,17 +587,24 @@ const Storage = {
     return fav;
   },
 
-  // 移除收藏
+  // 移除收藏（软删除：留下墓碑，让删除能同步到其它设备，见 softDelete 注释）
   removeFavorite(id) {
-    if (!this.data.favorites) return;
-    this.data.favorites = this.data.favorites.filter(f => f.id !== id);
-    this.save();
+    return this.softDelete('favorites', id);
   },
 
-  // 检查是否已收藏
+  // 可渲染的收藏列表（已剔除墓碑）——渲染/计数/搜索都应走它，不要直接读 Storage.data.favorites
+  getFavorites() {
+    return this.livingList('favorites');
+  },
+
+  // 按标题找一条「未删除」的收藏（供取消收藏时定位 id 用）
+  findFavoriteByTitle(title) {
+    return this.getFavorites().find(f => f.title === title) || null;
+  },
+
+  // 检查是否已收藏（墓碑不算已收藏，否则取消收藏后星标还亮着）
   isFavorited(title) {
-    if (!this.data.favorites) return false;
-    return this.data.favorites.some(f => f.title === title);
+    return this.getFavorites().some(f => f.title === title);
   },
 
   // 自动打卡（学习任意板块后触发）；source 为触发来源说明（用于 IX-7 打卡明细）
@@ -601,8 +698,14 @@ const Storage = {
       ts: Date.now()
     };
     this.data.quickNotes.unshift(note);
-    // 只保留最近 200 条，避免 localStorage 无限膨胀
-    if (this.data.quickNotes.length > 200) this.data.quickNotes.length = 200;
+    // 只保留最近 200 条「活」速记，避免 localStorage 无限膨胀。
+    // 注意：截断必须跳过墓碑 —— 旧写法 length = 200 会连带把队尾的墓碑削掉，
+    // 删除事件随之丢失，其它设备下次同步又会把已删速记并回来。
+    const live = this.data.quickNotes.filter(n => n && !n._deleted);
+    if (live.length > 200) {
+      const keep = new Set(live.slice(0, 200).map(n => n.id));
+      this.data.quickNotes = this.data.quickNotes.filter(n => n && (n._deleted || keep.has(n.id)));
+    }
     this.save();
     return note;
   },
@@ -613,8 +716,9 @@ const Storage = {
    * @returns {Array<object>} 按时间倒序
    */
   getQuickNotes(dateStr) {
-    const all = Array.isArray(this.data.quickNotes) ? this.data.quickNotes : [];
-    const list = dateStr ? all.filter(n => n && n.date === dateStr) : all.slice();
+    // 墓碑（_deleted）只用于同步删除事件，不参与渲染，这里统一过滤掉
+    const all = this.livingList('quickNotes');
+    const list = dateStr ? all.filter(n => n && n.date === dateStr) : all;
     return list.sort((a, b) => (b.ts || 0) - (a.ts || 0));
   },
 
@@ -624,12 +728,8 @@ const Storage = {
    * @returns {boolean} 是否删掉了内容
    */
   deleteQuickNote(id) {
-    if (!Array.isArray(this.data.quickNotes)) return false;
-    const before = this.data.quickNotes.length;
-    this.data.quickNotes = this.data.quickNotes.filter(n => n && n.id !== id);
-    const changed = this.data.quickNotes.length !== before;
-    if (changed) this.save();
-    return changed;
+    // 软删除：留下墓碑，让删除能同步到其它设备（见 softDelete 注释）
+    return this.softDelete('quickNotes', id);
   },
 
   exportData() {

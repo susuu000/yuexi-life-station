@@ -4,6 +4,18 @@
     因此 app.js / storage.js 无需改动即可工作）
    ============================================ */
 
+/* 登录/恢复会话后是否自动把本机数据回传云端。
+   置 false 可在云端数据可疑时"只拉不推"，避免本地损坏形状污染云端备份。
+   当前云端 17 集合形状实测正确，保持 true。 */
+const SYNC_AUTO_PUSH = true;
+
+/* 图片桶是否为私有桶。
+   false（默认，当前线上行为）：images 桶 public，读图走 getPublicUrl，URL 永久有效。
+   true：images 桶已在 Supabase 后台设为 private，读图必须走 createSignedUrl 签名 URL（1 小时有效）。
+   ⚠️ 这两者必须与 Supabase 后台 storage.buckets.public 的实际值保持一致，否则图片全挂。
+      切换步骤见 supabase/rls-hardening.sql 第 (c) 节，且历史 public URL 会立即失效。 */
+const SB_BUCKET_PRIVATE = false;
+
 const Sync = {
   client: null,
   user: null,
@@ -24,7 +36,9 @@ const Sync = {
     this._deviceId = localStorage.getItem('yuexi_device_id');
     if (!this._deviceId) {
       this._deviceId = 'dev_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
-      localStorage.setItem('yuexi_device_id', this._deviceId);
+      // 配额写满 / Safari 无痕模式下 setItem 会抛 QuotaExceededError，
+      // 未捕获会直接打断 Sync.init()，整个云同步不可用。设备 ID 只是辅助信息，写不进去就退化成会话级。
+      try { localStorage.setItem('yuexi_device_id', this._deviceId); } catch (e) {}
     }
 
     try {
@@ -45,7 +59,7 @@ const Sync = {
           this.status = 'online';
           this._startRealtime();
           // 先拉取云端，再回传本机数据（保证首次登录把本地数据迁移上云）
-          this.loadAll().then(() => this.pushAll().catch(() => {})).catch(e => console.error('加载云端数据失败', e));
+          this.loadAll().then(() => { if (SYNC_AUTO_PUSH) return this.pushAll().catch(() => {}); }).catch(e => console.error('加载云端数据失败', e));
         } else {
           this.user = null;
           this.status = 'offline';
@@ -62,7 +76,7 @@ const Sync = {
           this.status = 'online';
           this._startRealtime();
           // 先拉取云端，再回传本机数据（保证首次登录把本地数据迁移上云）
-          this.loadAll().then(() => this.pushAll().catch(() => {})).catch(e => console.error('加载云端数据失败', e));
+          this.loadAll().then(() => { if (SYNC_AUTO_PUSH) return this.pushAll().catch(() => {}); }).catch(e => console.error('加载云端数据失败', e));
         }
         this._notifyAuth();
         this.updateUI();
@@ -150,12 +164,17 @@ const Sync = {
           const remote = r.items;
           if (isListCollection(r.collection_key)) {
             const before = getByPath(Storage.data, path);
-            const merged = mergeArrayById(before, remote);
+            const merged = mergeArrayById(before, remote, r.collection_key);
             if (before && JSON.stringify(before) !== JSON.stringify(merged)) this._mergeHappened = true;
             setByPath(Storage.data, path, merged);
           } else {
+            const shape = COLLECTION_SHAPE[r.collection_key];
             const before = getByPath(Storage.data, path) || {};
-            const merged = deepMerge(before, remote);
+            // 含 lists 的容器集合（bookMedia/period/journal）走并集，避免子列表被远端整体替换；
+            // 纯对象集合（profile/weather/horoscope）保持递归 deepMerge。
+            const merged = (shape && shape.lists && shape.lists.length)
+              ? mergeContainer(before, remote, shape.lists)
+              : deepMerge(before, remote);
             if (Object.keys(before).length) this._mergeHappened = true;
             setByPath(Storage.data, path, merged);
           }
@@ -294,6 +313,27 @@ const Sync = {
     return pub.publicUrl;
   },
 
+  /* ---------- 读取图片 URL（public / private 桶通吃） ----------
+     脚手架：SB_BUCKET_PRIVATE=false 时行为与现状完全一致（getPublicUrl），
+     置 true 后自动改用 1 小时有效的签名 URL。
+     ⚠️ 签名 URL 会过期，不能把它当持久值写进 Storage.data —— 应在渲染时现取。
+     @param {string} path 桶内对象路径，如 '<uid>/1712345678_ab12cd.jpg'
+     @returns {Promise<string>} 可直接放进 img.src 的 URL；取不到时返回 '' */
+  async getImageUrl(path) {
+    if (!path || !this.client) return '';
+    try {
+      if (SB_BUCKET_PRIVATE) {
+        const { data } = await this.client.storage.from(SB_BUCKET).createSignedUrl(path, 3600);
+        return (data && data.signedUrl) || '';
+      }
+      const { data } = this.client.storage.from(SB_BUCKET).getPublicUrl(path);
+      return (data && data.publicUrl) || '';
+    } catch (e) {
+      console.warn('获取图片 URL 失败', e);
+      return '';
+    }
+  },
+
   /* ---------- 合并提示（节流，避免初始化同步时刷屏） ---------- */
   _maybeMergeToast() {
     const now = Date.now();
@@ -374,10 +414,14 @@ const Sync = {
         const path = COLLECTION_PATH[row.collection_key] || [];
         if (isListCollection(row.collection_key)) {
           const before = getByPath(Storage.data, path);
-          setByPath(Storage.data, path, mergeArrayById(before, row.items));
+          setByPath(Storage.data, path, mergeArrayById(before, row.items, row.collection_key));
         } else {
+          const shape = COLLECTION_SHAPE[row.collection_key];
           const before = getByPath(Storage.data, path) || {};
-          setByPath(Storage.data, path, deepMerge(before, row.items));
+          const merged = (shape && shape.lists && shape.lists.length)
+            ? mergeContainer(before, row.items, shape.lists)
+            : deepMerge(before, row.items);
+          setByPath(Storage.data, path, merged);
         }
       }
       Storage.mergeDefaults();
@@ -411,10 +455,80 @@ function applyEntry(section, date, payload) {
   }
 }
 
+/* 集合形状单一可信源：分类 / pushAll 兜底 / 本地自愈 / 容器合并 四处统一推导。
+   ⚠️ 这里的 key 必须与下方 COLLECTION_PATH 的 key 逐字一致，否则该集合会被当成"未知"
+      而走错分支。历史上 isListCollection 用黑名单判定，把 4 个对象集合误判为数组，
+      mergeArrayById 两侧都不是数组时静默返回 []，把对象夷平导致渲染层 TypeError。 */
+const COLLECTION_SHAPE = {
+  // ---- 数组集合（9）----
+  'favorites':                 { kind: 'array' },
+  'se.emotions':               { kind: 'array' },
+  'se.skills':                 { kind: 'array' },
+  'se.appearance.ootd':        { kind: 'array' },
+  'se.appearance.clothes':     { kind: 'array' },
+  'se.appearance.hair':        { kind: 'array' },
+  'se.appearance.weight':      { kind: 'array' },
+  'se.daily':                  { kind: 'array' },
+  'se.finance':                { kind: 'array' },
+  // ---- 对象集合（8），lists 为其中需要按 id 并的子数组字段 ----
+  'reading.bookMedia':         { kind: 'object', lists: ['reading', 'watching', 'planned', 'completed'] },
+  'reading.gongzhonghao':      { kind: 'object', lists: [] },
+  // sanlian 是第 5 个夷平受害者：defaultData 声明为对象 {lastUpdate, articles}，
+  // 云端观测到的 [] 是旧代码 loadAll 夷平后 pushAll 固化上去的损坏值，非原生形状。
+  'reading.sanlian':           { kind: 'object', lists: [] },
+  'se.period':                 { kind: 'object', lists: ['records'] },   // predictions 为推导数据，整体替换
+  'se.journal':                { kind: 'object', lists: ['entries', 'reminders'] },
+  'profile':                   { kind: 'object', lists: [] },
+  'weather':                   { kind: 'object', lists: [] },
+  'horoscope':                 { kind: 'object', lists: [] },
+  // ---- 兼容别名：防御可能存在的旧长名 collection_key（当前 COLLECTION_PATH 未使用）----
+  'selfExploration.period':    { kind: 'object', lists: ['records'] },
+  'selfExploration.journal':   { kind: 'object', lists: ['entries', 'reminders'] }
+};
+
+/* 对象集合合并：base 优先取本地正确对象，src 取远端；
+   lists 内的子字段走数组并集，其余字段整体替换。任一侧不是纯对象时安全降级，绝不返回 []。 */
+function mergeContainer(localObj, remoteObj, lists) {
+  lists = lists || [];
+  const isObj = v => v && typeof v === 'object' && !Array.isArray(v);
+  const base = isObj(localObj) ? localObj : (isObj(remoteObj) ? remoteObj : {});
+  const src  = isObj(remoteObj) ? remoteObj : base;
+  const out = Object.assign({}, base);
+  Object.keys(src).forEach(k => {
+    if (lists.indexOf(k) >= 0) {
+      out[k] = mergeArrayById(base[k], src[k], null); // key 传 null → 必走数组并集分支
+    } else {
+      out[k] = src[k];
+    }
+  });
+  return out;
+}
+
+/* 取一个「活数据」成员的最后活动时间（ms）。
+   本项目的数组成员上并没有统一的 updated_at（pushAll 的 updated_at 是写在**行**上而非成员上），
+   所以依次回退 updated_at → ts → 0。取不到时间的活数据视为「很旧」，
+   在与墓碑比较时会被删除事件淘汰 —— 这正是删除能跨设备传播的前提。 */
+function _itemTime(it) {
+  if (!it) return 0;
+  if (it.updated_at) {
+    const t = new Date(it.updated_at).getTime();
+    if (!isNaN(t)) return t;
+  }
+  if (typeof it.ts === 'number') return it.ts;
+  return 0;
+}
+
 /* 数组按 id 合并（用于集合类数据：收藏/书影/OOTD 等）。
+   - 形状感知：key 命中 COLLECTION_SHAPE 且 kind==='object' 时改走 mergeContainer，避免夷平
    - 无 id 的项按内容去重，保留并集（两台设备各加的不同项都会保留）
-   - 同 id 冲突时，取 updated_at 较新者；都没有时间戳则远端优先 */
-function mergeArrayById(localArr, remoteArr) {
+   - 同 id 冲突时按下面的「墓碑感知 LWW」取舍
+   - 墓碑（_deleted）本身**保留在结果里**：它是删除事件的载体，pushAll 要把它带上云，
+     其它设备 loadAll 时才拿得到删除信号。过滤墓碑是渲染层的事（Storage.livingList）。 */
+function mergeArrayById(localArr, remoteArr, key) {
+  const shape = key ? COLLECTION_SHAPE[key] : null;
+  if (shape && shape.kind === 'object') {
+    return mergeContainer(localArr, remoteArr, shape.lists);
+  }
   if (!Array.isArray(localArr)) return Array.isArray(remoteArr) ? remoteArr.slice() : [];
   if (!Array.isArray(remoteArr)) return localArr.slice();
   const keyOf = it => (it && it.id != null) ? ('id:' + it.id) : ('json:' + JSON.stringify(it));
@@ -424,6 +538,30 @@ function mergeArrayById(localArr, remoteArr) {
     const k = keyOf(it);
     const existing = map.get(k);
     if (!existing) { map.set(k, it); return; }
+
+    const inDel = !!(it && it._deleted);
+    const exDel = !!(existing && existing._deleted);
+
+    // 两边都是墓碑 → 取删除时间较新的那条（保留更完整的删除元信息）
+    if (inDel && exDel) {
+      if ((it._deletedAt || 0) > (existing._deletedAt || 0)) map.set(k, it);
+      return;
+    }
+
+    // 一边墓碑、一边活数据 → 比较「删除时间」与「活数据最后活动时间」，谁新谁赢。
+    // · 删除时间更新 → 删除传播：本机这条活数据被墓碑取代，渲染层随即隐藏它。
+    // · 活数据更新   → 撤销删除：说明删除之后又有过改动，活数据胜出（墓碑不覆盖更新的活数据）。
+    // 由于本项目成员普遍没有 updated_at/ts，活数据时间通常为 0，默认结果是**删除生效**，
+    // 这正是跨设备删除传播所需要的；而「重新添加」走的是新 id，不会落到这个分支里。
+    if (inDel !== exDel) {
+      const tomb = inDel ? it : existing;
+      const live = inDel ? existing : it;
+      const winner = (_itemTime(live) > (tomb._deletedAt || 0)) ? live : tomb;
+      map.set(k, winner);
+      return;
+    }
+
+    // 两边都是活数据 → 沿用原有 updated_at 取舍（较新者胜，都没时间戳则保留本地）
     const lt = existing.updated_at ? new Date(existing.updated_at).getTime() : 0;
     const rt = it.updated_at ? new Date(it.updated_at).getTime() : 0;
     if (rt > lt) map.set(k, it);
@@ -453,8 +591,9 @@ const COLLECTION_PATH = {
 };
 const COLLECTION_KEYS = Object.keys(COLLECTION_PATH);
 function isListCollection(key) {
-  // 这些在本地是数组；其余（profile/weather/horoscope）是单对象
-  return !['profile', 'weather', 'horoscope'].includes(key);
+  // 白名单判定（唯一可信源 COLLECTION_SHAPE）：只有显式声明为 array 的集合才按数组处理。
+  // 未知 key 一律按对象处理，宁可少并也绝不夷平。
+  return !!(COLLECTION_SHAPE[key] && COLLECTION_SHAPE[key].kind === 'array');
 }
 
 function getByPath(obj, path) {
@@ -479,6 +618,11 @@ function setByPath(obj, path, val) {
 function deepMerge(target, source) {
   if (!source || typeof source !== 'object') return target;
   if (!target || typeof target !== 'object') return JSON.parse(JSON.stringify(source));
+  // 形状冲突兜底：target 是被夷平的 []、source 是正确的云端对象时，原逻辑会把
+  // 'reading'/'watching' 等键当字符串属性挂到数组上，产出一个 JSON.stringify 后
+  // 仍是 "[]" 的怪物 —— 云端数据实际丢失，随后 pushAll 会把空值写回云端。
+  // 形状不一致时一律采用 source（远端优先，与下方同 id 冲突的取舍一致）。
+  if (Array.isArray(target) !== Array.isArray(source)) return JSON.parse(JSON.stringify(source));
   for (const k of Object.keys(source)) {
     const sv = source[k];
     if (sv && typeof sv === 'object' && !Array.isArray(sv) && target[k] && typeof target[k] === 'object') {

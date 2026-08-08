@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2E6F7E">
+<title>月夕生活台 · 离线</title>
+<style>
+  :root {
+    --primary: #2E6F7E;
+    --accent: #D4A847;
+    --text: #2B2B2B;
+    --muted: #7A7A7A;
+    --bg: #F7F4EE;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px calc(24px + env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) calc(24px + env(safe-area-inset-left));
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .card {
+    width: 100%;
+    max-width: 340px;
+    text-align: center;
+  }
+  .mark {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    border-radius: 18px;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    letter-spacing: 2px;
+    box-shadow: 0 6px 18px rgba(46, 111, 126, 0.24);
+  }
+  h1 {
+    margin: 0 0 6px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 1px;
+  }
+  .sub {
+    margin: 0 0 22px;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+  .divider {
+    width: 40px;
+    height: 2px;
+    margin: 0 auto 22px;
+    background: var(--accent);
+    border-radius: 2px;
+    opacity: 0.7;
+  }
+  p.msg {
+    margin: 0 0 24px;
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text);
+  }
+  button {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 12px 30px;
+    min-height: 44px;
+    border-radius: 22px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  button:active { opacity: 0.82; }
+  .tip {
+    margin: 16px 0 0;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="mark">月夕</div>
+    <h1>月夕生活台</h1>
+    <p class="sub">离线模式</p>
+    <div class="divider"></div>
+    <p class="msg">当前处于离线状态，部分内容暂不可用。恢复网络后下拉刷新即可继续使用。</p>
+    <button type="button" onclick="location.reload()">重新加载</button>
+    <p class="tip">已保存在本机的记录不会丢失，联网后会自动同步到云端。</p>
+  </div>
+</body>
+</html>
