@@ -1,76 +1,90 @@
 {
-  "updatedAt": "2026-08-15T14:57:30.679Z",
+  "updatedAt": "2026-08-15T23:48:25.100Z",
   "news": {
     "data": [
       {
-        "title": "莫言刷短剧拒绝“套路” 谈AI有体会",
-        "url": "https://www.chinanews.com.cn/cul/2026/08-15/10678432.shtml",
+        "title": "8月16日新闻早报",
+        "url": "https://www.chinanews.com.cn/iframe/2026/08-16/10678444.shtml",
         "date": "2026-08-15",
         "source": "中新网·要闻",
-        "summary": "中新社上海8月15日电 (记者 王笈)著名作家莫言时隔6年推出的全新小说集《人呐》，用短的篇幅写出深的人心。15日下午，他在2026上海书展的新书分享会上表示，“我这81篇短小说，人物是有性格的，故事是不重复的，情节既合理又奇特；如果改编成短剧，肯定比现在的那些‘爽剧’更有文学性、更能让人思考。”"
+        "summary": ""
       },
       {
-        "title": "日本民众游行反对政客参拜靖国神社",
-        "url": "https://www.chinanews.com.cn/gj/2026/08-15/10678425.shtml",
+        "title": "以色列空袭黎巴嫩 造成11人死亡",
+        "url": "https://www.chinanews.com.cn/gj/2026/08-16/10678443.shtml",
         "date": "2026-08-15",
         "source": "中新网·要闻",
-        "summary": "中新社东京8月15日电 (记者 朱晨曦)百余名日本民众15日冒雨在东京举行抗议游行，反对政客向供奉有二战甲级战犯的靖国神社供奉祭祀费或参拜。"
+        "summary": "据黎巴嫩公共卫生部紧急行动中心当地时间15日下午发布的声明，当天以色列对纳巴提耶区代尔扎赫拉尼和安萨尔镇的空袭共造成11人死亡，另有19人受伤。"
       },
       {
-        "title": "印尼7.7级地震已致47人死亡 3名中国游客受轻伤",
-        "url": "https://www.chinanews.com.cn/gj/2026/08-15/10678422.shtml",
+        "title": "中国队在第38届国际信息学奥赛斩获3金1银",
+        "url": "https://www.chinanews.com.cn/sh/2026/08-16/10678442.shtml",
         "date": "2026-08-15",
         "source": "中新网·要闻",
-        "summary": "中新社雅加达8月15日电 (记者 李志全)印度尼西亚国家抗灾署15日通报，截至当地时间18时48分，弗洛勒斯岛附近海域7.7级地震已造成47人死亡。"
+        "summary": "第38届国际信息学奥林匹克竞赛(IOI 2026)15日在乌兹别克斯坦首都塔什干落下帷幕。中国代表队斩获3金1银，并取得团体第一名的优异成绩。"
       },
       {
-        "title": "毛乌素的雨，落在世界青年的肩头",
-        "url": "https://www.chinanews.com.cn/sh/2026/08-15/10678429.shtml",
+        "title": "职场新人入职签约要注意什么",
+        "url": "https://www.chinanews.com.cn/sh/2026/08-16/10678441.shtml",
         "date": "2026-08-15",
         "source": "中新网·要闻",
-        "summary": "毛乌素，蒙古语意为“坏水”。千百年来，这片沙地以干旱、贫瘠、荒凉闻名于世。"
+        "summary": "问：眼下，2026届高校毕业生正陆续从校园走向职场，一些必要的劳动保障知识是每个职场新人都要掌握的“护身符”。劳动合同怎么签？要警惕哪些陷阱？社保怎么缴纳更合适？"
+      },
+      {
+        "title": "厄瓜多尔总统诺沃亚抵达北京 开启访华行程",
+        "url": "https://www.chinanews.com.cn/gn/2026/08-16/10678440.shtml",
+        "date": "2026-08-15",
+        "source": "中新网·要闻",
+        "summary": "今天(16日)早晨，厄瓜多尔共和国总统丹尼尔·罗伊－希尔克里斯特·诺沃亚·阿辛抵达北京，开始为期8天的访华行程。此访是诺沃亚总统首次对中国进行国事访问。"
+      },
+      {
+        "title": "河南清潩河鄢陵县仓头村段溃口实现成功合龙",
+        "url": "https://www.chinanews.com.cn/sh/2026/08-16/10678439.shtml",
+        "date": "2026-08-15",
+        "source": "中新网·要闻",
+        "summary": "8月15日23时56分，河南清潩河鄢陵县仓头村段溃口实现成功合龙。"
+      },
+      {
+        "title": "《给阿嬷的情书》在台湾首映",
+        "url": "https://www.chinanews.com.cn/gn/2026/08-15/10678437.shtml",
+        "date": "2026-08-15",
+        "source": "中新网·国内",
+        "summary": "中新社台北8月15日电 (记者 朱贺)电影《给阿嬷的情书》15日、16日以“特别放映”单元亮相2026桃园电影节，系在台湾首映。15日下午放映前，等待入场的观众已排起长龙；观影结束，不少观众红着眼眶走出影厅。"
+      },
+      {
+        "title": "中国使馆：日政要参拜靖国神社严重挑战战后国际秩序",
+        "url": "https://www.chinanews.com.cn/gn/2026/08-15/10678435.shtml",
+        "date": "2026-08-15",
+        "source": "中新网·国内",
+        "summary": "中国驻日本大使馆发言人15日就日本首相高市早苗向靖国神社供奉祭祀费、部分内阁成员和国会议员参拜靖国神社答记者问时表示，日方有关行径严重挑战二战胜利成果和战后国际秩序。中方对此表示强烈愤慨、严厉谴责，已向日方提出严正交涉、强烈抗议。"
+      },
+      {
+        "title": "2026海峡两岸（福州）青少年科技教育交流会在福州开幕",
+        "url": "https://www.chinanews.com.cn/gn/2026/08-15/10678434.shtml",
+        "date": "2026-08-15",
+        "source": "中新网·国内",
+        "summary": "中新社福州8月15日电 (叶秋云)2026海峡两岸(福州)青少年科技教育交流会15日在福州开幕。"
+      },
+      {
+        "title": "洪秀柱：大海是连接两岸同胞的天然纽带",
+        "url": "https://www.chinanews.com.cn/gn/2026/08-15/10678433.shtml",
+        "date": "2026-08-15",
+        "source": "中新网·国内",
+        "summary": "中新社广东阳江8月15日电 (记者 孙秋霞)中国国民党前主席、中华青雁和平教育基金会董事长洪秀柱15日在广东阳江表示，大海从来不是阻隔，而是连接两岸同胞的天然纽带。"
       },
       {
         "title": "2026海峡两岸（南昌）青年棒垒球交流活动开幕",
         "url": "https://www.chinanews.com.cn/gn/2026/08-15/10678423.shtml",
         "date": "2026-08-15",
-        "source": "中新网·要闻",
+        "source": "中新网·国内",
         "summary": "中新社南昌8月15日电 (朱莹 吴思瑜)2026海峡两岸(南昌)青年棒垒球交流活动15日在江西南昌启幕，赣台两地近130名运动员参赛。"
       },
       {
-        "title": "中国官方发布推动生态环境损害赔偿制度改革进程十大案例",
-        "url": "https://www.chinanews.com.cn/gn/2026/08-15/10678424.shtml",
+        "title": "毛乌素的雨，落在世界青年的肩头",
+        "url": "https://www.chinanews.com.cn/sh/2026/08-15/10678429.shtml",
         "date": "2026-08-15",
-        "source": "中新网·要闻",
-        "summary": "中新社北京8月15日电 (记者 阮煜琳)今年8月15日是中国第四个全国生态日，也是《中华人民共和国生态环境法典》施行之日。当日，中国生态环境部与最高人民法院、最高人民检察院联合发布“推动生态环境损害赔偿制度改革进程的十大案例”。"
-      },
-      {
-        "title": "2026两岸青年企业家菁英论坛暨两岸青年研学交流活动在江苏昆山举办",
-        "url": "https://www.chinanews.com.cn/gn/2026/08-15/10678421.shtml",
-        "date": "2026-08-15",
-        "source": "中新网·国内",
-        "summary": "中新社江苏昆山8月15日电 (记者 钟升)2026两岸青年企业家菁英论坛暨两岸青年研学交流活动15日在江苏省昆山市开幕。此次活动由两岸企业家峰会主办，主题是“青创成就梦想 AI赋能未来”，约450名两岸青年企业家代表、青年学生等参加活动。"
-      },
-      {
-        "title": "台气象部门：台湾东部海域发生5.2级地震",
-        "url": "https://www.chinanews.com.cn/gn/2026/08-15/10678415.shtml",
-        "date": "2026-08-15",
-        "source": "中新网·国内",
-        "summary": "中新社台北8月15日电 据台湾气象部门消息，台湾东部海域15日19时30分发生5.2级地震。宜兰、花莲及新北等多地有明显震感。"
-      },
-      {
-        "title": "中国生态日主场活动展示绿色发展新图景",
-        "url": "https://www.chinanews.com.cn/gn/2026/08-15/10678414.shtml",
-        "date": "2026-08-15",
-        "source": "中新网·国内",
-        "summary": "中新社内蒙古呼伦贝尔8月15日电 (记者 张玮)沙漠变身巨型发电场，光伏板在戈壁滩铺展成“蓝色海洋”，风力发电机林立于草原山巅……2026年全国生态日主场活动15日在内蒙古自治区呼伦贝尔市举办，现场展示了中国依托风、光、水等自然资源，赋能绿色能源发展的图景。"
-      },
-      {
-        "title": "台湾民间举行纪念活动缅怀抗日先贤",
-        "url": "https://www.chinanews.com.cn/gn/2026/08-15/10678413.shtml",
-        "date": "2026-08-15",
-        "source": "中新网·国内",
-        "summary": "中新社台北8月15日电 (记者 朱贺)今年8月15日是日本宣布无条件投降81周年。连日来，台北、台中等地举行纪念活动，缅怀牺牲先贤，呼吁两岸同胞铭记历史，携手开创和平未来。"
+        "source": "中新网·社会",
+        "summary": "毛乌素，蒙古语意为“坏水”。千百年来，这片沙地以干旱、贫瘠、荒凉闻名于世。"
       },
       {
         "title": "文旅观察：年轻人夜间“拼蟹”怎么成了旅游新风尚？",
@@ -87,25 +101,18 @@
         "summary": "中新网拉萨8月15日电 (费贤浩)近日，林芝消防救援机动支队将实训课堂搬进高原复杂险地，聚焦以水灭火、地震救援、山岳绳索救援三大实战课题，夯实高海拔全域机动救援核心能力。"
       },
       {
-        "title": "从理论到实践 传统药香制作技艺传承面向大众开班授课",
-        "url": "https://www.chinanews.com.cn/sh/2026/08-15/10678385.shtml",
+        "title": "日本民众游行反对政客参拜靖国神社",
+        "url": "https://www.chinanews.com.cn/gj/2026/08-15/10678425.shtml",
         "date": "2026-08-15",
-        "source": "中新网·社会",
-        "summary": "中新网北京8月15日电 (记者 应妮)在北京大观园蘅芜苑内，一缕源自古籍与自然的草木清香正悠然弥散，串联起古典文学、非遗技艺与现代生活。位于这里的红楼药香体验馆，以《红楼梦》“蘅芷清芬”香草意境为底色，是一处专门传播国家级非物质文化遗产传统香制作技艺(药香制作技艺)的特色空间。"
+        "source": "中新网·国际",
+        "summary": "中新社东京8月15日电 (记者 朱晨曦)百余名日本民众15日冒雨在东京举行抗议游行，反对政客向供奉有二战甲级战犯的靖国神社供奉祭祀费或参拜。"
       },
       {
-        "title": "云南百岁老兵忆峥嵘 一堂特殊党课赓续抗战精神",
-        "url": "https://www.chinanews.com.cn/sh/2026/08-15/10678384.shtml",
+        "title": "印尼7.7级地震已致47人死亡 3名中国游客受轻伤",
+        "url": "https://www.chinanews.com.cn/gj/2026/08-15/10678422.shtml",
         "date": "2026-08-15",
-        "source": "中新网·社会",
-        "summary": "中新网昆明8月15日电 (罗婕 黄兴鸿)“我一直忘不了81年前的今天，昆明市锣鼓鞭炮声震天，全民庆祝抗战胜利。”15日，云南百岁抗战老兵杨毓骧现身一堂特殊的主题党课，回望峥嵘岁月。"
-      },
-      {
-        "title": "福建沙县：两百萌童开笔破蒙，古街飘起“文化宴”",
-        "url": "https://www.chinanews.com.cn/sh/2026/08-15/10678382.shtml",
-        "date": "2026-08-15",
-        "source": "中新网·社会",
-        "summary": "中新网福建沙县8月15日电 (吴伟 张凌欣)起立正衣冠、行拜师礼，开笔破蒙写“人”字，齐声诵读《三字经》……8月15日，七夕传统节日前夕，一场以“传承文脉启迪未来”为主题的七夕蒙学亲子嘉年华，在福建省三明市沙县区拉开帷幕。"
+        "source": "中新网·国际",
+        "summary": "中新社雅加达8月15日电 (记者 李志全)印度尼西亚国家抗灾署15日通报，截至当地时间18时48分，弗洛勒斯岛附近海域7.7级地震已造成47人死亡。"
       },
       {
         "title": "调查显示：柬埔寨青年对中柬人文交流认知大幅正向提升",
@@ -129,13 +136,6 @@
         "summary": "中新社北京8月15日电 (记者 孙自法)中国地震局15日向媒体发布震情信息说，根据地震专家分析，印度尼西亚弗洛勒斯岛附近海域当天凌晨的7.7级地震，是发生在澳大利亚板块与巽他板块交汇区域的逆冲型破裂，该区域构造体系复杂、板块汇聚作用强烈。"
       },
       {
-        "title": "伊朗称已与阿曼就霍尔木兹海峡通行方案达成协议",
-        "url": "https://www.chinanews.com.cn/gj/2026/08-15/10678388.shtml",
-        "date": "2026-08-15",
-        "source": "中新网·国际",
-        "summary": "当地时间8月15日，伊朗外交部发言人巴加埃表示，尽管美国从中阻挠，伊朗和阿曼之间的会谈仍在积极推进，双方已就霍尔木兹海峡航道通行方案达成协议。(总台记者 王政)"
-      },
-      {
         "title": "嘱托为笔 绘天地国色",
         "url": "https://m.baidu.com/s?word=%E5%98%B1%E6%89%98%E4%B8%BA%E7%AC%94+%E7%BB%98%E5%A4%A9%E5%9C%B0%E5%9B%BD%E8%89%B2&sa=fyb_news",
         "date": "2026-08-15",
@@ -150,8 +150,8 @@
         "summary": ""
       },
       {
-        "title": "旺旺发文感谢网友支招",
-        "url": "https://m.baidu.com/s?word=%E6%97%BA%E6%97%BA%E5%8F%91%E6%96%87%E6%84%9F%E8%B0%A2%E7%BD%91%E5%8F%8B%E6%94%AF%E6%8B%9B&sa=fyb_news",
+        "title": "山东梁山把二手车卖到了110个国家",
+        "url": "https://m.baidu.com/s?word=%E5%B1%B1%E4%B8%9C%E6%A2%81%E5%B1%B1%E6%8A%8A%E4%BA%8C%E6%89%8B%E8%BD%A6%E5%8D%96%E5%88%B0%E4%BA%86110%E4%B8%AA%E5%9B%BD%E5%AE%B6&sa=fyb_news",
         "date": "2026-08-15",
         "source": "百度热搜",
         "summary": ""
@@ -164,21 +164,21 @@
         "summary": ""
       },
       {
-        "title": "一个49人的上市公司等待沈腾“救援”",
-        "url": "https://m.baidu.com/s?word=%E4%B8%80%E4%B8%AA49%E4%BA%BA%E7%9A%84%E4%B8%8A%E5%B8%82%E5%85%AC%E5%8F%B8%E7%AD%89%E5%BE%85%E6%B2%88%E8%85%BE%E2%80%9C%E6%95%91%E6%8F%B4%E2%80%9D&sa=fyb_news",
+        "title": "今年已有多人被蝉鸣“震聋”",
+        "url": "https://m.baidu.com/s?word=%E4%BB%8A%E5%B9%B4%E5%B7%B2%E6%9C%89%E5%A4%9A%E4%BA%BA%E8%A2%AB%E8%9D%89%E9%B8%A3%E2%80%9C%E9%9C%87%E8%81%8B%E2%80%9D&sa=fyb_news",
         "date": "2026-08-15",
         "source": "百度热搜",
         "summary": ""
       },
       {
-        "title": "榜一大哥打赏千万求交往 被拒后起诉",
-        "url": "https://m.baidu.com/s?word=%E6%A6%9C%E4%B8%80%E5%A4%A7%E5%93%A5%E6%89%93%E8%B5%8F%E5%8D%83%E4%B8%87%E6%B1%82%E4%BA%A4%E5%BE%80+%E8%A2%AB%E6%8B%92%E5%90%8E%E8%B5%B7%E8%AF%89&sa=fyb_news",
+        "title": "王传君终于原谅《爱情公寓》了",
+        "url": "https://m.baidu.com/s?word=%E7%8E%8B%E4%BC%A0%E5%90%9B%E7%BB%88%E4%BA%8E%E5%8E%9F%E8%B0%85%E3%80%8A%E7%88%B1%E6%83%85%E5%85%AC%E5%AF%93%E3%80%8B%E4%BA%86&sa=fyb_news",
         "date": "2026-08-15",
         "source": "百度热搜",
         "summary": ""
       }
     ],
-    "updatedAt": "2026-08-15T14:57:30.679Z",
+    "updatedAt": "2026-08-15T23:48:25.100Z",
     "stale": false
   },
   "ai": {
@@ -254,7 +254,7 @@
         "summary": "布林亲自下场督战"
       }
     ],
-    "updatedAt": "2026-08-15T14:57:30.679Z",
+    "updatedAt": "2026-08-15T23:48:25.100Z",
     "stale": false
   },
   "stock": {
@@ -308,7 +308,7 @@
         "up": true
       }
     ],
-    "updatedAt": "2026-08-15T14:57:30.679Z",
+    "updatedAt": "2026-08-15T23:48:25.100Z",
     "stale": false
   },
   "podcastHot": {
@@ -369,26 +369,26 @@
         "summary": "霓达播台NidaMedia · 犯罪纪实/休闲 · Apple 播客中国区排名第 5"
       },
       {
-        "id": "ap-1731784296",
-        "rank": 6,
-        "title": "天真不天真",
-        "podcaster": "杨天真本真",
-        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/c8/bf/ca/c8bfca7f-a52c-67e1-6d93-fb31fb559324/mza_5986718045801936242.jpg/100x100bb.png",
-        "genre": "休闲",
-        "date": "Sat, 15 Au",
-        "url": "https://podcasts.apple.com/cn/podcast/%E5%A4%A9%E7%9C%9F%E4%B8%8D%E5%A4%A9%E7%9C%9F/id1731784296",
-        "summary": "杨天真本真 · 休闲 · Apple 播客中国区排名第 6"
-      },
-      {
         "id": "ap-1559695855",
-        "rank": 7,
+        "rank": 6,
         "title": "知行小酒馆",
         "podcaster": "有知有行",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/b3/96/fc/b396fcc5-6e2b-d34e-8d3d-c849c43b6215/mza_4090324763067558601.jpeg/100x100bb.png",
         "genre": "商务 / 教育",
         "date": "Sat, 15 Au",
         "url": "https://podcasts.apple.com/cn/podcast/%E7%9F%A5%E8%A1%8C%E5%B0%8F%E9%85%92%E9%A6%86/id1559695855",
-        "summary": "有知有行 · 商务/教育 · Apple 播客中国区排名第 7"
+        "summary": "有知有行 · 商务/教育 · Apple 播客中国区排名第 6"
+      },
+      {
+        "id": "ap-1731784296",
+        "rank": 7,
+        "title": "天真不天真",
+        "podcaster": "杨天真本真",
+        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/c8/bf/ca/c8bfca7f-a52c-67e1-6d93-fb31fb559324/mza_5986718045801936242.jpg/100x100bb.png",
+        "genre": "休闲",
+        "date": "Sat, 15 Au",
+        "url": "https://podcasts.apple.com/cn/podcast/%E5%A4%A9%E7%9C%9F%E4%B8%8D%E5%A4%A9%E7%9C%9F/id1731784296",
+        "summary": "杨天真本真 · 休闲 · Apple 播客中国区排名第 7"
       },
       {
         "id": "ap-1771401634",
@@ -402,42 +402,42 @@
         "summary": "谭立人 · 休闲 · Apple 播客中国区排名第 8"
       },
       {
-        "id": "ap-751574016",
-        "rank": 9,
-        "title": "All Ears English Podcast",
-        "podcaster": "Lindsay McMahon and Michelle Kaplan",
-        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/cb/a1/13/cba113a7-999d-3c3d-a594-900adb69624e/mza_7992161192502469150.jpg/100x100bb.png",
-        "genre": "教育 / 商务",
-        "date": "Sat, 15 Au",
-        "url": "https://podcasts.apple.com/cn/podcast/all-ears-english-podcast/id751574016",
-        "summary": "Lindsay McMahon and Michelle Kaplan · 教育/商务 · Apple 播客中国区排名第 9"
-      },
-      {
         "id": "ap-1603580035",
-        "rank": 10,
+        "rank": 9,
         "title": "肥话连篇",
         "podcaster": "肥杰",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/12/08/74/1208744d-b065-1164-632b-82c97af39412/mza_14598067193335283885.jpeg/100x100bb.png",
         "genre": "喜剧 / 休闲",
         "date": "Sat, 15 Au",
         "url": "https://podcasts.apple.com/cn/podcast/%E8%82%A5%E8%AF%9D%E8%BF%9E%E7%AF%87/id1603580035",
-        "summary": "肥杰 · 喜剧/休闲 · Apple 播客中国区排名第 10"
+        "summary": "肥杰 · 喜剧/休闲 · Apple 播客中国区排名第 9"
+      },
+      {
+        "id": "ap-751574016",
+        "rank": 10,
+        "title": "All Ears English Podcast",
+        "podcaster": "Lindsay McMahon and Michelle Kaplan",
+        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/cb/a1/13/cba113a7-999d-3c3d-a594-900adb69624e/mza_7992161192502469150.jpg/100x100bb.png",
+        "genre": "教育 / 商务",
+        "date": "Sat, 15 Au",
+        "url": "https://podcasts.apple.com/cn/podcast/all-ears-english-podcast/id751574016",
+        "summary": "Lindsay McMahon and Michelle Kaplan · 教育/商务 · Apple 播客中国区排名第 10"
       }
     ],
-    "updatedAt": "2026-08-15T14:57:30.679Z",
+    "updatedAt": "2026-08-15T23:48:25.100Z",
     "stale": false
   },
   "podcastFollow": {
     "data": [
       {
         "id": "pf-1512932915",
-        "title": "No.296 确立你人生的最高指导价值观，在AI时代偷偷开挂",
+        "title": "No.297 - 负面情绪不用藏，转化这份黑暗能量！",
         "podcaster": "来都来了_",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/8c/db/ef/8cdbefc6-dd75-66c0-7385-13232998b722/mza_9007561728173822607.jpeg/100x100bb.jpg",
         "duration": "",
-        "date": "2026-08-08",
-        "summary": "“价值观”看似抽象，但它其实才是你人生越走越远的重要秘密。因为它是你陷入迷茫，不知道下一步选择方向时的人生最高指导纲领。经常有听友提问，说现阶段很迷茫。但其实现在这个被AI冲击得飞速变化的时代，迷茫是咱们每个人都在面临的事情。是完成社会给你设定的目标了，心里冒出的那个声音：“然后呢？”是和家人、伴侣…",
-        "url": "https://www.ximalaya.com/sound/1005243185"
+        "date": "2026-08-15",
+        "summary": "“负面情绪”、“阴暗面”，这些词听起来特别不阳光，但是如果换一个思路，把它们看成是“待转化的黑暗能量”，会怎么样？我们总以为，一个足够坦荡、拥有生命力的人，应该没有太多阴影。但成熟后才理解：其实每个人心里都会住着嫉妒、后悔、不甘、比较……这些东西有时让我们抓耳挠腮，有时让我们坐立不安。但难道这些生而…",
+        "url": "https://www.ximalaya.com/sound/1006585049"
       },
       {
         "id": "pf-1487143507",
@@ -480,7 +480,7 @@
         "url": "https://www.ximalaya.com/sound/1006384632"
       }
     ],
-    "updatedAt": "2026-08-15T14:57:30.679Z",
+    "updatedAt": "2026-08-15T23:48:25.100Z",
     "stale": false
   },
   "sanlian": {
@@ -559,7 +559,7 @@
       }
     ],
     "updatedAt": "2026-08-15T14:57:30.679Z",
-    "stale": false
+    "stale": true
   },
   "subscriptions": {
     "data": {
@@ -574,6 +574,15 @@
             "summary": "那是三年前，2023年5月的中旬，《人物》杂志的两位朋友张寒和李斐然约我一道，去顺义看我哥的小花园。院子里有一棵大榆树，枝繁叶茂，我们就",
             "subject": "落在我身上的雨",
             "rating": "力荐"
+          },
+          {
+            "title": "宋初政治研究｜书评丨史料辨析与北宋前期政治史研究再出发",
+            "url": "https://book.douban.com/review/17766260/",
+            "date": "2026-08-14",
+            "source": "豆瓣·书评精选",
+            "summary": "",
+            "subject": "宋初政治研究",
+            "rating": "推荐"
           },
           {
             "title": "了不起的概率思维｜后记",
@@ -594,15 +603,6 @@
             "rating": "力荐"
           },
           {
-            "title": "空响炮（修订版）｜2026年修订版序：自己的话",
-            "url": "https://book.douban.com/review/17755547/",
-            "date": "2026-08-10",
-            "source": "豆瓣·书评精选",
-            "summary": "文/王",
-            "subject": "空响炮（修订版）",
-            "rating": "力荐"
-          },
-          {
             "title": "胡利娅姨妈和作家｜我在童年里长大",
             "url": "https://book.douban.com/review/17750876/",
             "date": "2026-08-08",
@@ -612,6 +612,15 @@
             "rating": "推荐"
           },
           {
+            "title": "空响炮（修订版）｜2026年修订版序：自己的话",
+            "url": "https://book.douban.com/review/17755547/",
+            "date": "2026-08-10",
+            "source": "豆瓣·书评精选",
+            "summary": "文/王",
+            "subject": "空响炮（修订版）",
+            "rating": "力荐"
+          },
+          {
             "title": "中国人的家风｜比鸡娃更重要的，是成为有精神文明底蕴的好祖先",
             "url": "https://book.douban.com/review/17762489/",
             "date": "2026-08-13",
@@ -619,15 +628,6 @@
             "summary": "",
             "subject": "中国人的家风",
             "rating": "还行"
-          },
-          {
-            "title": "2026年推理佳作选｜北山猛邦的世界末日——《淹海上的屠杀骑士》导读（无泄底）",
-            "url": "https://book.douban.com/review/17751791/",
-            "date": "2026-08-08",
-            "source": "豆瓣·书评精选",
-            "summary": "《2026年推理佳作选》终于出版了，目前陆陆续续通过快递或是线下渠道到达了读者的手中。这次选集由木海老师发起，采取公开征稿的方式收集稿件，起初考虑过是电子出版还是纸质出版，最后得到王皎娇老师的帮助，在黑狗文库终得付梓。 在这个选集中，有相当大比例的",
-            "subject": "2026年推理佳作选",
-            "rating": ""
           },
           {
             "title": "名侦探大乱斗：光之卷｜名侦探大乱斗之“寻我”：前所未见的幻想性日常之谜",
@@ -720,27 +720,27 @@
         ]
       }
     },
-    "updatedAt": "2026-08-15T14:57:30.679Z",
+    "updatedAt": "2026-08-15T23:48:25.100Z",
     "stale": false
   },
   "inspiration": {
     "data": [
       {
-        "title": "日本战败投降81周年",
+        "title": "中超成都蓉城3:2浙江队",
         "source": "抖音热搜",
-        "heat": "1175万",
-        "url": "https://www.douyin.com/search/%E6%97%A5%E6%9C%AC%E6%88%98%E8%B4%A5%E6%8A%95%E9%99%8D81%E5%91%A8%E5%B9%B4"
+        "heat": "1159万",
+        "url": "https://www.douyin.com/search/%E4%B8%AD%E8%B6%85%E6%88%90%E9%83%BD%E8%93%89%E5%9F%8E3%3A2%E6%B5%99%E6%B1%9F%E9%98%9F"
       },
       {
-        "title": "苏超南通1:0镇江",
+        "title": "豆包进化到能学我唱歌了",
         "source": "抖音热搜",
-        "heat": "1133万",
-        "url": "https://www.douyin.com/search/%E8%8B%8F%E8%B6%85%E5%8D%97%E9%80%9A1%3A0%E9%95%87%E6%B1%9F"
+        "heat": "1158万",
+        "url": "https://www.douyin.com/search/%E8%B1%86%E5%8C%85%E8%BF%9B%E5%8C%96%E5%88%B0%E8%83%BD%E5%AD%A6%E6%88%91%E5%94%B1%E6%AD%8C%E4%BA%86"
       },
       {
         "title": "新一代通信网空天地海全覆盖",
         "source": "抖音热搜",
-        "heat": "1123万",
+        "heat": "1127万",
         "url": "https://www.douyin.com/search/%E6%96%B0%E4%B8%80%E4%BB%A3%E9%80%9A%E4%BF%A1%E7%BD%91%E7%A9%BA%E5%A4%A9%E5%9C%B0%E6%B5%B7%E5%85%A8%E8%A6%86%E7%9B%96"
       },
       {
@@ -750,28 +750,28 @@
         "url": "https://www.douyin.com/search/%E6%B2%B3%E5%8D%97%E8%B4%BE%E9%B2%81%E6%B2%B3%E5%B7%9D%E6%B1%87%E5%8C%BA%E6%AE%B5%E6%BA%83%E5%8F%A3%E5%AE%8C%E6%88%90%E5%90%88%E9%BE%99"
       },
       {
-        "title": "七夕约会怎么穿",
+        "title": "中方回应高市向靖国神社供奉祭祀费",
         "source": "抖音热搜",
         "heat": "1051万",
-        "url": "https://www.douyin.com/search/%E4%B8%83%E5%A4%95%E7%BA%A6%E4%BC%9A%E6%80%8E%E4%B9%88%E7%A9%BF"
+        "url": "https://www.douyin.com/search/%E4%B8%AD%E6%96%B9%E5%9B%9E%E5%BA%94%E9%AB%98%E5%B8%82%E5%90%91%E9%9D%96%E5%9B%BD%E7%A5%9E%E7%A4%BE%E4%BE%9B%E5%A5%89%E7%A5%AD%E7%A5%80%E8%B4%B9"
+      },
+      {
+        "title": "苏超南通1:0镇江",
+        "source": "抖音热搜",
+        "heat": "923万",
+        "url": "https://www.douyin.com/search/%E8%8B%8F%E8%B6%85%E5%8D%97%E9%80%9A1%3A0%E9%95%87%E6%B1%9F"
+      },
+      {
+        "title": "60岁AI动画赛道新人",
+        "source": "抖音热搜",
+        "heat": "922万",
+        "url": "https://www.douyin.com/search/60%E5%B2%81AI%E5%8A%A8%E7%94%BB%E8%B5%9B%E9%81%93%E6%96%B0%E4%BA%BA"
       },
       {
         "title": "苏超南京0:1扬州",
         "source": "抖音热搜",
-        "heat": "1048万",
+        "heat": "916万",
         "url": "https://www.douyin.com/search/%E8%8B%8F%E8%B6%85%E5%8D%97%E4%BA%AC0%3A1%E6%89%AC%E5%B7%9E"
-      },
-      {
-        "title": "童年动画三巨头集体在抖音写信",
-        "source": "抖音热搜",
-        "heat": "930万",
-        "url": "https://www.douyin.com/search/%E7%AB%A5%E5%B9%B4%E5%8A%A8%E7%94%BB%E4%B8%89%E5%B7%A8%E5%A4%B4%E9%9B%86%E4%BD%93%E5%9C%A8%E6%8A%96%E9%9F%B3%E5%86%99%E4%BF%A1"
-      },
-      {
-        "title": "豆包进化到能学我唱歌了",
-        "source": "抖音热搜",
-        "heat": "920万",
-        "url": "https://www.douyin.com/search/%E8%B1%86%E5%8C%85%E8%BF%9B%E5%8C%96%E5%88%B0%E8%83%BD%E5%AD%A6%E6%88%91%E5%94%B1%E6%AD%8C%E4%BA%86"
       },
       {
         "title": "嘱托为笔 绘天地国色",
@@ -786,10 +786,10 @@
         "url": "https://m.baidu.com/s?word=%E7%BA%AA%E5%BF%B5%E6%B1%9F%E6%B3%BD%E6%B0%91%E5%90%8C%E5%BF%97%E8%AF%9E%E8%BE%B0100%E5%91%A8%E5%B9%B4%E5%A4%A7%E4%BC%9A&sa=fyb_news"
       },
       {
-        "title": "旺旺发文感谢网友支招",
+        "title": "山东梁山把二手车卖到了110个国家",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E6%97%BA%E6%97%BA%E5%8F%91%E6%96%87%E6%84%9F%E8%B0%A2%E7%BD%91%E5%8F%8B%E6%94%AF%E6%8B%9B&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E5%B1%B1%E4%B8%9C%E6%A2%81%E5%B1%B1%E6%8A%8A%E4%BA%8C%E6%89%8B%E8%BD%A6%E5%8D%96%E5%88%B0%E4%BA%86110%E4%B8%AA%E5%9B%BD%E5%AE%B6&sa=fyb_news"
       },
       {
         "title": "今年外国人最爱逛哪里",
@@ -798,55 +798,55 @@
         "url": "https://m.baidu.com/s?word=%E4%BB%8A%E5%B9%B4%E5%A4%96%E5%9B%BD%E4%BA%BA%E6%9C%80%E7%88%B1%E9%80%9B%E5%93%AA%E9%87%8C&sa=fyb_news"
       },
       {
-        "title": "一个49人的上市公司等待沈腾“救援”",
+        "title": "今年已有多人被蝉鸣“震聋”",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E4%B8%80%E4%B8%AA49%E4%BA%BA%E7%9A%84%E4%B8%8A%E5%B8%82%E5%85%AC%E5%8F%B8%E7%AD%89%E5%BE%85%E6%B2%88%E8%85%BE%E2%80%9C%E6%95%91%E6%8F%B4%E2%80%9D&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E4%BB%8A%E5%B9%B4%E5%B7%B2%E6%9C%89%E5%A4%9A%E4%BA%BA%E8%A2%AB%E8%9D%89%E9%B8%A3%E2%80%9C%E9%9C%87%E8%81%8B%E2%80%9D&sa=fyb_news"
       },
       {
-        "title": "榜一大哥打赏千万求交往 被拒后起诉",
+        "title": "王传君终于原谅《爱情公寓》了",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E6%A6%9C%E4%B8%80%E5%A4%A7%E5%93%A5%E6%89%93%E8%B5%8F%E5%8D%83%E4%B8%87%E6%B1%82%E4%BA%A4%E5%BE%80+%E8%A2%AB%E6%8B%92%E5%90%8E%E8%B5%B7%E8%AF%89&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E7%8E%8B%E4%BC%A0%E5%90%9B%E7%BB%88%E4%BA%8E%E5%8E%9F%E8%B0%85%E3%80%8A%E7%88%B1%E6%83%85%E5%85%AC%E5%AF%93%E3%80%8B%E4%BA%86&sa=fyb_news"
       },
       {
         "title": "纪念江泽民同志诞辰100周年大会将举行",
         "source": "头条热榜",
-        "heat": "1649万",
-        "url": "https://www.toutiao.com/trending/7674226875460059142/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227674226875460059142%22%2C%22hot_board_impr_id%22%3A%2220260815225728E65BB441F63DC559F92F%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%BA%AA%E5%BF%B5%E6%B1%9F%E6%B3%BD%E6%B0%91%E5%90%8C%E5%BF%97%E8%AF%9E%E8%BE%B0100%E5%91%A8%E5%B9%B4%E5%A4%A7%E4%BC%9A%E5%B0%86%E4%B8%BE%E8%A1%8C%22%7D&rank=&style_id=40132&topic_id=7674226875460059142"
+        "heat": "1863万",
+        "url": "https://www.toutiao.com/trending/7674226875460059142/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227674226875460059142%22%2C%22hot_board_impr_id%22%3A%22202608160748191596A52EA7D20B3B4672%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%BA%AA%E5%BF%B5%E6%B1%9F%E6%B3%BD%E6%B0%91%E5%90%8C%E5%BF%97%E8%AF%9E%E8%BE%B0100%E5%91%A8%E5%B9%B4%E5%A4%A7%E4%BC%9A%E5%B0%86%E4%B8%BE%E8%A1%8C%22%7D&rank=&style_id=40132&topic_id=7674226875460059142"
       },
       {
-        "title": "河南贾鲁河堤防117米溃口成功合龙",
+        "title": "陈熠0-4张本美和 止步女单八强",
         "source": "头条热榜",
-        "heat": "1493万",
-        "url": "https://www.toutiao.com/trending/7673089074458689572/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227673089074458689572%22%2C%22hot_board_impr_id%22%3A%2220260815225728E65BB441F63DC559F92F%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%B2%B3%E5%8D%97%E8%B4%BE%E9%B2%81%E6%B2%B3%E5%A0%A4%E9%98%B2117%E7%B1%B3%E6%BA%83%E5%8F%A3%E6%88%90%E5%8A%9F%E5%90%88%E9%BE%99%22%7D&rank=&style_id=40132&topic_id=7673089074458689572"
+        "heat": "1686万",
+        "url": "https://www.toutiao.com/trending/7673340343484071946/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227673340343484071946%22%2C%22hot_board_impr_id%22%3A%22202608160748191596A52EA7D20B3B4672%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%99%88%E7%86%A00-4%E5%BC%A0%E6%9C%AC%E7%BE%8E%E5%92%8C+%E6%AD%A2%E6%AD%A5%E5%A5%B3%E5%8D%95%E5%85%AB%E5%BC%BA%22%7D&rank=&style_id=40132&topic_id=7673340343484071946"
       },
       {
         "title": "绿水青山间的生态答卷",
         "source": "头条热榜",
-        "heat": "1350万",
+        "heat": "1526万",
         "url": "https://www.toutiao.com/article/7674144685551649290"
       },
       {
-        "title": "山东梁山把二手车卖到了110个国家",
+        "title": "附近店家流泪称舍不得胖东来老店关闭",
         "source": "头条热榜",
-        "heat": "1222万",
-        "url": "https://www.toutiao.com/trending/7674055275451580452/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227674055275451580452%22%2C%22hot_board_impr_id%22%3A%2220260815225728E65BB441F63DC559F92F%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%B1%B1%E4%B8%9C%E6%A2%81%E5%B1%B1%E6%8A%8A%E4%BA%8C%E6%89%8B%E8%BD%A6%E5%8D%96%E5%88%B0%E4%BA%86110%E4%B8%AA%E5%9B%BD%E5%AE%B6%22%7D&rank=&style_id=40132&topic_id=7674055275451580452"
+        "heat": "1380万",
+        "url": "https://www.toutiao.com/trending/7673662843396571142/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227673662843396571142%22%2C%22hot_board_impr_id%22%3A%22202608160748191596A52EA7D20B3B4672%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%99%84%E8%BF%91%E5%BA%97%E5%AE%B6%E6%B5%81%E6%B3%AA%E7%A7%B0%E8%88%8D%E4%B8%8D%E5%BE%97%E8%83%96%E4%B8%9C%E6%9D%A5%E8%80%81%E5%BA%97%E5%85%B3%E9%97%AD%22%7D&rank=&style_id=40132&topic_id=7673662843396571142"
       },
       {
-        "title": "河南收藏家手中藏着日本投降鲜活记忆",
+        "title": "河南贾鲁河堤防117米溃口成功合龙",
         "source": "头条热榜",
-        "heat": "1106万",
-        "url": "https://www.toutiao.com/trending/7674082072781357107/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227674082072781357107%22%2C%22hot_board_impr_id%22%3A%2220260815225728E65BB441F63DC559F92F%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%B2%B3%E5%8D%97%E6%94%B6%E8%97%8F%E5%AE%B6%E6%89%8B%E4%B8%AD%E8%97%8F%E7%9D%80%E6%97%A5%E6%9C%AC%E6%8A%95%E9%99%8D%E9%B2%9C%E6%B4%BB%E8%AE%B0%E5%BF%86%22%7D&rank=&style_id=40132&topic_id=7674082072781357107"
+        "heat": "1249万",
+        "url": "https://www.toutiao.com/trending/7673089074458689572/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227673089074458689572%22%2C%22hot_board_impr_id%22%3A%22202608160748191596A52EA7D20B3B4672%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%B2%B3%E5%8D%97%E8%B4%BE%E9%B2%81%E6%B2%B3%E5%A0%A4%E9%98%B2117%E7%B1%B3%E6%BA%83%E5%8F%A3%E6%88%90%E5%8A%9F%E5%90%88%E9%BE%99%22%7D&rank=&style_id=40132&topic_id=7673089074458689572"
       },
       {
         "title": "28岁男子和43岁女子领证结婚",
         "source": "头条热榜",
-        "heat": "1000万",
-        "url": "https://www.toutiao.com/trending/7674151636219068466/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227674151636219068466%22%2C%22hot_board_impr_id%22%3A%2220260815225728E65BB441F63DC559F92F%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%2228%E5%B2%81%E7%94%B7%E5%AD%90%E5%92%8C43%E5%B2%81%E5%A5%B3%E5%AD%90%E9%A2%86%E8%AF%81%E7%BB%93%E5%A9%9A%22%7D&rank=&style_id=40132&topic_id=7674151636219068466"
+        "heat": "1130万",
+        "url": "https://www.toutiao.com/trending/7674151636219068466/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227674151636219068466%22%2C%22hot_board_impr_id%22%3A%22202608160748191596A52EA7D20B3B4672%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%2228%E5%B2%81%E7%94%B7%E5%AD%90%E5%92%8C43%E5%B2%81%E5%A5%B3%E5%AD%90%E9%A2%86%E8%AF%81%E7%BB%93%E5%A9%9A%22%7D&rank=&style_id=40132&topic_id=7674151636219068466"
       }
     ],
-    "updatedAt": "2026-08-15T14:57:30.679Z",
+    "updatedAt": "2026-08-15T23:48:25.100Z",
     "stale": false
   },
   "releases": {
@@ -861,6 +861,17 @@
         "rating": "力荐",
         "type": "book",
         "desc": "那是三年前，2023年5月的中旬，《人物》杂志的两位朋友张寒和李斐然约我一道，去顺义看我哥的小花园。院子里有一棵大榆树，枝繁叶茂，我们就"
+      },
+      {
+        "title": "宋初政治研究｜书评丨史料辨析与北宋前期政治史研究再出发",
+        "url": "https://book.douban.com/review/17766260/",
+        "date": "2026-08-14",
+        "source": "豆瓣·书评",
+        "summary": "",
+        "subject": "宋初政治研究",
+        "rating": "推荐",
+        "type": "book",
+        "desc": ""
       },
       {
         "title": "了不起的概率思维｜后记",
@@ -885,17 +896,6 @@
         "desc": "一些碎碎念。"
       },
       {
-        "title": "空响炮（修订版）｜2026年修订版序：自己的话",
-        "url": "https://book.douban.com/review/17755547/",
-        "date": "2026-08-10",
-        "source": "豆瓣·书评",
-        "summary": "文/王",
-        "subject": "空响炮（修订版）",
-        "rating": "力荐",
-        "type": "book",
-        "desc": "文/王"
-      },
-      {
         "title": "胡利娅姨妈和作家｜我在童年里长大",
         "url": "https://book.douban.com/review/17750876/",
         "date": "2026-08-08",
@@ -907,6 +907,17 @@
         "desc": "小说"
       },
       {
+        "title": "空响炮（修订版）｜2026年修订版序：自己的话",
+        "url": "https://book.douban.com/review/17755547/",
+        "date": "2026-08-10",
+        "source": "豆瓣·书评",
+        "summary": "文/王",
+        "subject": "空响炮（修订版）",
+        "rating": "力荐",
+        "type": "book",
+        "desc": "文/王"
+      },
+      {
         "title": "中国人的家风｜比鸡娃更重要的，是成为有精神文明底蕴的好祖先",
         "url": "https://book.douban.com/review/17762489/",
         "date": "2026-08-13",
@@ -916,17 +927,6 @@
         "rating": "还行",
         "type": "book",
         "desc": ""
-      },
-      {
-        "title": "2026年推理佳作选｜北山猛邦的世界末日——《淹海上的屠杀骑士》导读（无泄底）",
-        "url": "https://book.douban.com/review/17751791/",
-        "date": "2026-08-08",
-        "source": "豆瓣·书评",
-        "summary": "《2026年推理佳作选》终于出版了，目前陆陆续续通过快递或是线下渠道到达了读者的手中。这次选集由木海老师发起，采取公开征稿的方式收集稿件，起初考虑过是电子出版还是纸质出版，最后得到王皎娇老师的帮助，在黑狗文库终得付梓。 在这个选集中，有相当大比例的",
-        "subject": "2026年推理佳作选",
-        "rating": "",
-        "type": "book",
-        "desc": "《2026年推理佳作选》终于出版了，目前陆陆续续通过快递或是线下渠道到达了读者的手中。这次选集由木海老师发起，采取公开征稿的方式收集稿件，起初考虑过是电子出版还是纸质出版，最后得到王皎娇老师的帮助，在黑狗文库终得付梓。 在这个选集中，有相当大比例的"
       },
       {
         "title": "名侦探大乱斗：光之卷｜名侦探大乱斗之“寻我”：前所未见的幻想性日常之谜",
@@ -1006,7 +1006,7 @@
         "desc": ""
       }
     ],
-    "updatedAt": "2026-08-15T14:57:30.679Z",
+    "updatedAt": "2026-08-15T23:48:25.100Z",
     "stale": false
   },
   "photography": {
@@ -1019,193 +1019,193 @@
       "name": "news:中新网·要闻",
       "ok": true,
       "count": 30,
-      "ms": 730
+      "ms": 704
     },
     {
       "name": "ai:量子位",
       "ok": true,
       "count": 10,
-      "ms": 1796
-    },
-    {
-      "name": "stock:腾讯行情",
-      "ok": true,
-      "count": 6,
-      "ms": 1905
+      "ms": 1313
     },
     {
       "name": "photography:r/portraits",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2167
+      "ms": 1897
     },
     {
       "name": "photography:r/landscapephotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2189
+      "ms": 1901
     },
     {
       "name": "photography:r/streetphotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2190
+      "ms": 1903
     },
     {
       "name": "photography:r/photography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2200
+      "ms": 1907
     },
     {
       "name": "photography:r/FilmPhotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2214
+      "ms": 1907
     },
     {
       "name": "photography:r/foodphotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2227
+      "ms": 1912
+    },
+    {
+      "name": "stock:腾讯行情",
+      "ok": true,
+      "count": 6,
+      "ms": 1934
     },
     {
       "name": "news:中新网·国内",
       "ok": true,
       "count": 30,
-      "ms": 2000
+      "ms": 1305
     },
     {
       "name": "news:中新网·社会",
       "ok": true,
       "count": 30,
-      "ms": 268
-    },
-    {
-      "name": "podcast:Apple中国热榜",
-      "ok": true,
-      "count": 10,
-      "ms": 3009
+      "ms": 16
     },
     {
       "name": "news:中新网·国际",
       "ok": true,
       "count": 30,
-      "ms": 256
+      "ms": 16
     },
     {
-      "name": "news:知乎日报",
-      "ok": false,
-      "error": "fetch failed",
-      "ms": 215
-    },
-    {
-      "name": "ai:36氪",
-      "ok": false,
-      "error": "空结果",
-      "ms": 1764
+      "name": "podcast:Apple中国热榜",
+      "ok": true,
+      "count": 10,
+      "ms": 2341
     },
     {
       "name": "inspiration:抖音热搜",
       "ok": true,
       "count": 50,
-      "ms": 3570
+      "ms": 2510
     },
     {
-      "name": "podcast:关注·来都来了",
-      "ok": true,
-      "count": 1,
-      "ms": 3827
+      "name": "news:知乎日报",
+      "ok": false,
+      "error": "fetch failed",
+      "ms": 637
     },
     {
-      "name": "sanlian:三联生活周刊",
-      "ok": true,
-      "count": 9,
-      "ms": 4440
-    },
-    {
-      "name": "releases:豆瓣·书评",
-      "ok": true,
-      "count": 20,
-      "ms": 4964
-    },
-    {
-      "name": "podcast:关注·不合时宜",
-      "ok": true,
-      "count": 1,
-      "ms": 1683
-    },
-    {
-      "name": "inspiration:百度热搜",
-      "ok": true,
-      "count": 51,
-      "ms": 2217
-    },
-    {
-      "name": "news:百度热搜",
-      "ok": true,
-      "count": 51,
-      "ms": 2386
+      "name": "ai:36氪",
+      "ok": false,
+      "error": "空结果",
+      "ms": 1815
     },
     {
       "name": "sub:思想文化·豆瓣·书评精选",
       "ok": true,
       "count": 20,
-      "ms": 5809
+      "ms": 3146
+    },
+    {
+      "name": "podcast:关注·来都来了",
+      "ok": true,
+      "count": 1,
+      "ms": 3323
     },
     {
       "name": "sub:心理成长·知乎日报",
       "ok": false,
       "error": "fetch failed",
-      "ms": 276
+      "ms": 599
     },
     {
       "name": "sub:生活方式·中新网·生活",
       "ok": true,
       "count": 21,
-      "ms": 262
-    },
-    {
-      "name": "releases:豆瓣·影评",
-      "ok": true,
-      "count": 19,
-      "ms": 1582
+      "ms": 221
     },
     {
       "name": "sub:生活方式·中新网·财经",
       "ok": true,
       "count": 30,
-      "ms": 261
+      "ms": 17
+    },
+    {
+      "name": "podcast:关注·不合时宜",
+      "ok": true,
+      "count": 1,
+      "ms": 1154
+    },
+    {
+      "name": "inspiration:百度热搜",
+      "ok": true,
+      "count": 51,
+      "ms": 2151
+    },
+    {
+      "name": "news:百度热搜",
+      "ok": true,
+      "count": 51,
+      "ms": 2052
     },
     {
       "name": "inspiration:头条热榜",
       "ok": true,
       "count": 50,
-      "ms": 1082
+      "ms": 605
     },
     {
-      "name": "podcast:关注·文化有限",
+      "name": "releases:豆瓣·书评",
       "ok": true,
-      "count": 1,
-      "ms": 1463
-    },
-    {
-      "name": "podcast:关注·忽左忽右",
-      "ok": true,
-      "count": 1,
-      "ms": 313
+      "count": 20,
+      "ms": 5305
     },
     {
       "name": "inspiration:B站排行",
       "ok": true,
       "count": 100,
-      "ms": 937
+      "ms": 651
+    },
+    {
+      "name": "releases:豆瓣·影评",
+      "ok": true,
+      "count": 19,
+      "ms": 1169
+    },
+    {
+      "name": "podcast:关注·文化有限",
+      "ok": true,
+      "count": 1,
+      "ms": 2337
+    },
+    {
+      "name": "podcast:关注·忽左忽右",
+      "ok": true,
+      "count": 1,
+      "ms": 228
     },
     {
       "name": "podcast:关注·东腔西调",
       "ok": true,
       "count": 1,
-      "ms": 1563
+      "ms": 1416
+    },
+    {
+      "name": "sanlian:三联生活周刊",
+      "ok": false,
+      "error": "fetch failed",
+      "ms": 10492
     }
   ]
 }
