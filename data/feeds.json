@@ -1,48 +1,55 @@
 {
-  "updatedAt": "2026-10-02T19:15:45.953Z",
+  "updatedAt": "2026-10-03T01:52:26.166Z",
   "news": {
     "data": [
       {
-        "title": "（爱知·名古屋亚运会）综合消息：中国“金花”包揽网球女单冠亚军 中国女足无缘领奖台",
-        "url": "https://www.chinanews.com.cn/ty/2026/10-03/10707339.shtml",
-        "date": "2026-10-02",
+        "title": "贵州云南湖南广西广东等地有较强降水 中东部地区有大风降温天气",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-03/10707352.shtml",
+        "date": "2026-10-03",
         "source": "中新网·要闻",
-        "summary": "中新社日本名古屋10月2日电 爱知·名古屋亚运会2日共决出51枚金牌。网球赛场，王曦雨2:0战胜张帅夺得女单冠军，中国队包揽金银牌并实现六连冠。女足铜牌赛中，中国队0:1不敌韩国队，位列第四，无缘领奖台。"
+        "summary": "中新网10月3日电 据中央气象台网站消息，预计3日至4日，南方地区多降雨，贵州、湖南、广西、广东等地部分地区有大到暴雨，关注对假期旅游、交通出行、秋收等的影响，防范可能引发的山洪、地质灾害。未来三天冷空气继续影响我国，中东部地区及东部、南部海区风力较大，关注大风降温天气对人体健康、交通出行、农牧业及沿海养殖、海上航行等…"
       },
       {
-        "title": "泰国洪灾形势有所缓解 政府要求防范新一轮降雨",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-02/10707338.shtml",
-        "date": "2026-10-02",
+        "title": "三兔共耳、石榴葡萄、四叶花——从纹样看敦煌美学",
+        "url": "https://www.chinanews.com.cn/cul/2026/10-03/10707374.shtml",
+        "date": "2026-10-03",
         "source": "中新网·要闻",
-        "summary": "中新社曼谷10月2日电 (梁峻祥 李映民)泰国总理府公共关系部2日发布消息说，总理阿努廷当天上午在国家防灾减灾指挥部会议后表示，各部门要做好应对10月5日起可能增强降雨的准备，尤其要关注泰国南部地区。"
+        "summary": "三兔共耳、石榴葡萄与四叶花——"
       },
       {
-        "title": "七国集团就推动主要炼油国家增产增加柴油供应达成一致",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-02/10707337.shtml",
-        "date": "2026-10-02",
+        "title": "抑郁焦虑发作？也许你得了特殊的颈椎病",
+        "url": "https://www.chinanews.com.cn/jk/2026/10-03/10707373.shtml",
+        "date": "2026-10-03",
         "source": "中新网·要闻",
-        "summary": "当地时间10月2日，七国集团领导人召开视频会议，应对油价飙升及能源供应压力，同意采取协调行动，稳定市场、缓解家庭和企业负担，并增强能源体系长期韧性。"
+        "summary": "心慌、胸闷、气短、头晕头胀、睡觉易惊醒、嗳气、犯恶心，甚至产生濒死感——当这些症状出现时，多数人去看病是去心内科、消化科、心理科……"
       },
       {
-        "title": "韩方提议韩朝就军事分界线分歧见面沟通",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-02/10707336.shtml",
-        "date": "2026-10-02",
+        "title": "词元经济离大众消费还有多远",
+        "url": "https://www.chinanews.com.cn/cj/2026/10-03/10707372.shtml",
+        "date": "2026-10-03",
         "source": "中新网·要闻",
-        "summary": "据韩国方面2日消息，韩国统一部长官郑东泳当天提议韩国和朝鲜见面沟通围绕军事分界线的分歧。"
+        "summary": "运营商词元(Token)套餐推出数月，市场反馈如何？今年5月，移动、联通、电信集中上线词元套餐，将人工智能(AI)算力打包成可订购、可计费的标准化产品，一时间引发市场广泛关注。但热度之下，真正形成持续付费习惯的用户规模仍然有限，多数消费者还停留在尝鲜体验或者持币观望的阶段，运营商词元套餐的规模化普及尚需时日。"
+      },
+      {
+        "title": "杭州有个机器人学校 首批30名“新生”已入学",
+        "url": "https://www.chinanews.com.cn/gn/2026/10-03/10707371.shtml",
+        "date": "2026-10-03",
+        "source": "中新网·要闻",
+        "summary": "首批30名“新生”分科实训，持证上岗——"
+      },
+      {
+        "title": "国庆假期第二天广东4A级及以上景区接待游客451.7万人次",
+        "url": "https://www.chinanews.com.cn/cj/2026/10-03/10707361.shtml",
+        "date": "2026-10-03",
+        "source": "中新网·要闻",
+        "summary": "中新网广州10月3日电 (记者 程景伟)广东省文旅厅2日通报，据初步测算，2026年国庆假期第二天(10月2日)，全省4A级及以上景区接待游客451.7万人次，同比增长4.9%。"
       },
       {
         "title": "“跟着功夫游大陆”主题展亮相高雄旅展",
         "url": "https://www.chinanews.com.cn/gn/2026/10-02/10707332.shtml",
         "date": "2026-10-02",
-        "source": "中新网·要闻",
+        "source": "中新网·国内",
         "summary": "中新社高雄10月2日电 (记者 朱贺)“跟着功夫游大陆”主题展区亮相2日开幕的2026高雄冬季旅展。台湾青年李翊玄与八岁儿子李承峰带来武术表演，动作流畅，拳风呼啸，一招一式，刚柔并济，赢得掌声与喝彩。"
-      },
-      {
-        "title": "万亿级车轮经济跑出新动能",
-        "url": "https://www.chinanews.com.cn/cj/2026/10-02/10707331.shtml",
-        "date": "2026-10-02",
-        "source": "中新网·要闻",
-        "summary": "日均3亿人次在路上！"
       },
       {
         "title": "我国首个百兆瓦级 这个巨型“充电宝”成功并网",
@@ -73,119 +80,112 @@
         "summary": "10月2日，中方53108艇顺利返航，安全靠泊云南西双版纳景哈警务码头，标志着为期12天的第169次中老缅泰湄公河联合巡逻执法行动圆满结束。"
       },
       {
-        "title": "山海作田垄，八闽有群人——科技特派员群体的“兴农答卷”",
-        "url": "https://www.chinanews.com.cn/gn/2026/10-02/10707228.shtml",
-        "date": "2026-10-02",
-        "source": "中新网·国内",
-        "summary": "中新网福州10月2日电 (郑江洛)近期，“八闽楷模”福建省科技特派员群体先进事迹发布仪式在福州举行。多年来，福建科技特派员走出实验室、扎根田野乡间，把论文写在八闽大地上，将科研技术成果持续转化为富民兴农实效。"
-      },
-      {
-        "title": "2026年国庆假期首日琼州海峡客滚运输平稳运行",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-02/10707322.shtml",
-        "date": "2026-10-02",
+        "title": "千余名青少年齐聚鸡西 竞技篮球技艺",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-03/10707368.shtml",
+        "date": "2026-10-03",
         "source": "中新网·社会",
-        "summary": "中新网广州10月2日电 (记者 郭军)记者2日从交通运输部珠江航务管理局(简称“珠航局”)了解到，2026年国庆假期首日(10月1日)，琼州海峡客滚运输发送实航284班次，运送旅客112657人次、车辆28277辆次，相比2024年同期分别增长9.7%、增长21.4%、增长19.3%。新能源车运量增长较快，单日运输68…"
+        "summary": "中新网鸡西10月3日电(王妮娜 杨彬彬 刘琨)10月2日，2026央视体育青少年篮球冠军赛鸡西赛区在鸡西市体育会展中心开赛，来自辽宁、吉林、内蒙古等多地的119支队伍、1000余名青少年运动员同场竞技、以球会友。"
       },
       {
-        "title": "国庆假期首日 古都南京“热”力全开",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-02/10707321.shtml",
-        "date": "2026-10-02",
+        "title": "南方降雨先增强再减弱 我国多地气温将创新低",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-03/10707370.shtml",
+        "date": "2026-10-03",
         "source": "中新网·社会",
-        "summary": "中新网南京10月2日电 (张传明 唐娟)国庆假期首日，南京“热”力全开。途牛平台数据显示，南京成为国庆假期首日境内游热门目的地；去哪儿旅行数据显示，南京是国庆假期首日酒店入住热门城市。热度背后，是这座历史文化名城以文博、夜游、演艺、乡村、商业等多元场景，为游客奉上充满文化气息的文旅“盛宴”。"
+        "summary": "中国天气网讯 今天(10月3日)，南方大范围降水持续，部分地区雨势还将增强，有暴雨或大暴雨。明后天，南方降雨逐步减少、减弱。同时，北方的华北、东北地区自西向东将迎降水。受阴雨和冷空气影响，我国南北方多地气温还会创新低，凉意显著，公众请适时添衣。"
       },
       {
-        "title": "广东超70个镇街遭遇暴雨 全省最大降雨量达125毫米",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-02/10707298.shtml",
-        "date": "2026-10-02",
+        "title": "人这一辈子，一定要到山东乘一次“运河1号”！",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-03/10707359.shtml",
+        "date": "2026-10-03",
         "source": "中新网·社会",
-        "summary": "中新社广州10月2日电 (记者 王坚)在冷空气影响下，广东广州、深圳、江门、肇庆等地2日遭遇强降雨。当日白天，全省有71个镇街出现暴雨、大暴雨，全省最大降雨量达125毫米。"
+        "summary": "京杭大运河贯通南北，"
       },
       {
-        "title": "苏通大桥国庆假期首日流量达16.59万辆 创开通以来单日流量新高",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-02/10707263.shtml",
-        "date": "2026-10-02",
+        "title": "新能源车假日迎“充电大考” 如何应对？",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-03/10707356.shtml",
+        "date": "2026-10-03",
         "source": "中新网·社会",
-        "summary": "中新网南通10月2日电(记者 谷华)2日，据江苏南通市公安局交管支队消息，国庆假期首日，苏通长江公路大桥(以下简称：苏通大桥)全天总流量达16.59万辆，创下大桥开通以来单日流量历史新高。"
+        "summary": "国庆假期，新能源汽车出行热度持续攀升，日均出行车辆是日常出行的1.8倍。而充电需求也随之增大。在高速公路服务区排队充电，成了不少车主的烦心事。"
       },
       {
-        "title": "湖南祁阳“补丁田”变“聚宝田” 五指毛桃铺就富民路",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-02/10707284.shtml",
-        "date": "2026-10-02",
+        "title": "“闪身步”和“狗熊哆嗦毛”为什么这么火？",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-03/10707353.shtml",
+        "date": "2026-10-03",
         "source": "中新网·社会",
-        "summary": "中新网祁阳10月2日电(汪洋 何艳飞 陈依然)走进湖南祁阳市龚家坪镇，连片的山间垄田里，一株株五指毛桃枝叶青翠、迎风舒展。数十名村民头戴草帽，分散在田间除草、巡查苗情，一派繁忙的农耕景象。"
+        "summary": "文｜伍里川"
       },
       {
-        "title": "福建霞浦美食街上的“台湾味”：同一片海，同一抹鲜",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-02/10707283.shtml",
-        "date": "2026-10-02",
-        "source": "中新网·社会",
-        "summary": "中新社福建宁德10月2日电 (吴允杰)姜母鸭的麻油香、大肠包小肠的炭火气、土魠鱼羹的鲜味交织弥漫……于2日正在福建省宁德市霞浦县举办的2026霞浦渔歌美食交流活动上，跨海而来的“台湾味”成为一道靓丽风景线。"
+        "title": "澳大利亚发生汽车冲撞人群事件 致数人受伤",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-03/10707358.shtml",
+        "date": "2026-10-03",
+        "source": "中新网·国际",
+        "summary": "中新网10月3日电 据澳大利亚广播公司(ABC)报道，澳大利亚新南威尔士州救护车服务中心证实，当地时间3日，纽卡斯尔市发生一起汽车冲撞人群事件，导致数人受伤。"
       },
       {
-        "title": "印度一起交通事故导致至少7人死亡19人受伤",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-02/10707323.shtml",
+        "title": "特朗普：与伊朗的战事将“很快结束”",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-03/10707354.shtml",
+        "date": "2026-10-03",
+        "source": "中新网·国际",
+        "summary": "美国总统特朗普2日称，与伊朗的战事将“很快结束，伊朗永远不会拥有核武器”。"
+      },
+      {
+        "title": "马克龙：七国集团成员国将释放至多1亿桶战略石油储备",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-03/10707343.shtml",
         "date": "2026-10-02",
         "source": "中新网·国际",
-        "summary": "中新社北京10月2日电 新德里消息：当地时间10月2日凌晨，印度西部马哈拉施特拉邦发生一起交通事故，导致至少7人死亡、19人受伤。"
+        "summary": "中新社巴黎10月2日电 (记者 李洋)法国总统马克龙当地时间2日表示，七国集团成员国及其伙伴将立即启动在4个月内释放至多1亿桶战略石油储备。"
       },
       {
-        "title": "吉尔吉斯斯坦首颗卫星成功入轨",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-02/10707297.shtml",
+        "title": "美国9月非农就业增加2.9万 失业率4.2%",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-03/10707344.shtml",
         "date": "2026-10-02",
         "source": "中新网·国际",
-        "summary": "中新社阿斯塔纳10月2日电 比什凯克消息：吉尔吉斯斯坦总统府网站2日发布消息称，该国首颗卫星于当地时间1日在美国发射升空并成功入轨，将用于自然资源监测和灾害预警等领域。"
+        "summary": "中新社华盛顿10月2日电 (记者 陈孟统)美国劳工部2日发布数据显示，美国9月非农就业岗位增加2.9万个，失业率为4.2%，较8月上升0.1个百分点。"
       },
       {
-        "title": "金与正谴责韩方企图把朝鲜半岛局势再次拖入危险境地",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-02/10707296.shtml",
+        "title": "美国联邦航空管理局：波音737 MAX软件故障不构成安全威胁",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-03/10707345.shtml",
         "date": "2026-10-02",
         "source": "中新网·国际",
-        "summary": "中新社北京10月2日电 据朝中社2日报道，朝鲜劳动党中央委员会部长金与正当天就日前发生在朝韩非军事区的地雷爆炸事件发表谈话，谴责韩方企图把朝鲜半岛局势再次拖入危险境地。"
+        "summary": "中新社华盛顿10月2日电 (记者 沙晗汀)美国联邦航空管理局(FAA)当地时间2日表示，波音公司737 MAX部分机型出现的软件故障不构成安全威胁。"
+      },
+      {
+        "title": "今年9月欧元区通胀率升至3.8%创近三年新高",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-03/10707342.shtml",
+        "date": "2026-10-02",
+        "source": "中新网·国际",
+        "summary": "中新社布鲁塞尔10月2日电 (记者 德永健)欧盟统计局2日公布的数据显示，由于能源价格持续飙升，今年9月欧元区通胀率升至3.8%，创2023年9月以来新高。"
       },
       {
         "title": "迈步新征程 我们自信而笃行",
         "url": "https://m.baidu.com/s?word=%E8%BF%88%E6%AD%A5%E6%96%B0%E5%BE%81%E7%A8%8B+%E6%88%91%E4%BB%AC%E8%87%AA%E4%BF%A1%E8%80%8C%E7%AC%83%E8%A1%8C&sa=fyb_news",
-        "date": "2026-10-02",
+        "date": "2026-10-03",
         "source": "百度热搜",
         "summary": ""
       },
       {
-        "title": "全国各地为何都在“爆改地铁”",
-        "url": "https://m.baidu.com/s?word=%E5%85%A8%E5%9B%BD%E5%90%84%E5%9C%B0%E4%B8%BA%E4%BD%95%E9%83%BD%E5%9C%A8%E2%80%9C%E7%88%86%E6%94%B9%E5%9C%B0%E9%93%81%E2%80%9D&sa=fyb_news",
-        "date": "2026-10-02",
+        "title": "中国男足争亚运铜牌",
+        "url": "https://m.baidu.com/s?word=%E4%B8%AD%E5%9B%BD%E7%94%B7%E8%B6%B3%E4%BA%89%E4%BA%9A%E8%BF%90%E9%93%9C%E7%89%8C&sa=fyb_news",
+        "date": "2026-10-03",
         "source": "百度热搜",
         "summary": ""
       },
       {
-        "title": "亚运三金到手 归来仍是高中生",
-        "url": "https://m.baidu.com/s?word=%E4%BA%9A%E8%BF%90%E4%B8%89%E9%87%91%E5%88%B0%E6%89%8B+%E5%BD%92%E6%9D%A5%E4%BB%8D%E6%98%AF%E9%AB%98%E4%B8%AD%E7%94%9F&sa=fyb_news",
-        "date": "2026-10-02",
+        "title": "刺伤迪拜航空机长的副驾驶身份披露",
+        "url": "https://m.baidu.com/s?word=%E5%88%BA%E4%BC%A4%E8%BF%AA%E6%8B%9C%E8%88%AA%E7%A9%BA%E6%9C%BA%E9%95%BF%E7%9A%84%E5%89%AF%E9%A9%BE%E9%A9%B6%E8%BA%AB%E4%BB%BD%E6%8A%AB%E9%9C%B2&sa=fyb_news",
+        "date": "2026-10-03",
         "source": "百度热搜",
         "summary": ""
       },
       {
         "title": "万里边关 同升五星红旗",
         "url": "https://m.baidu.com/s?word=%E4%B8%87%E9%87%8C%E8%BE%B9%E5%85%B3+%E5%90%8C%E5%8D%87%E4%BA%94%E6%98%9F%E7%BA%A2%E6%97%97&sa=fyb_news",
-        "date": "2026-10-02",
-        "source": "百度热搜",
-        "summary": ""
-      },
-      {
-        "title": "男子偶遇烈士纪念碑 留下国旗后哽咽",
-        "url": "https://m.baidu.com/s?word=%E7%94%B7%E5%AD%90%E5%81%B6%E9%81%87%E7%83%88%E5%A3%AB%E7%BA%AA%E5%BF%B5%E7%A2%91+%E7%95%99%E4%B8%8B%E5%9B%BD%E6%97%97%E5%90%8E%E5%93%BD%E5%92%BD&sa=fyb_news",
-        "date": "2026-10-02",
-        "source": "百度热搜",
-        "summary": ""
-      },
-      {
-        "title": "Zara新品裙子上线就售罄：6000多一条",
-        "url": "https://m.baidu.com/s?word=Zara%E6%96%B0%E5%93%81%E8%A3%99%E5%AD%90%E4%B8%8A%E7%BA%BF%E5%B0%B1%E5%94%AE%E7%BD%84%EF%BC%9A6000%E5%A4%9A%E4%B8%80%E6%9D%A1&sa=fyb_news",
-        "date": "2026-10-02",
+        "date": "2026-10-03",
         "source": "百度热搜",
         "summary": ""
       }
     ],
-    "updatedAt": "2026-10-02T19:15:45.953Z",
+    "updatedAt": "2026-10-03T01:52:26.166Z",
     "stale": false
   },
   "ai": {
@@ -261,7 +261,7 @@
         "summary": "实测说GLM-5.3很强"
       }
     ],
-    "updatedAt": "2026-10-02T19:15:45.953Z",
+    "updatedAt": "2026-10-03T01:52:26.166Z",
     "stale": false
   },
   "stock": {
@@ -315,7 +315,7 @@
         "up": false
       }
     ],
-    "updatedAt": "2026-10-02T19:15:45.953Z",
+    "updatedAt": "2026-10-03T01:52:26.166Z",
     "stale": false
   },
   "podcastHot": {
@@ -327,7 +327,7 @@
         "podcaster": "GIADA",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/66/61/68/6661682f-e63e-e4ae-9a2b-24e0f469e691/mza_10195277240598994553.jpg/100x100bb.png",
         "genre": "艺术",
-        "date": "Fri, 2 Oct",
+        "date": "Sat, 3 Oct",
         "url": "https://podcasts.apple.com/cn/podcast/%E5%B2%A9%E4%B8%AD%E8%8A%B1%E8%BF%B0/id1582119137",
         "summary": "GIADA · 艺术 · Apple 播客中国区排名第 1"
       },
@@ -338,42 +338,42 @@
         "podcaster": "凹凸电波",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/30/24/93/302493e7-be1c-958c-366e-8d13c2fc698c/mza_10993420535667969042.jpg/100x100bb.png",
         "genre": "喜剧 / 健康与健身",
-        "date": "Fri, 2 Oct",
+        "date": "Sat, 3 Oct",
         "url": "https://podcasts.apple.com/cn/podcast/%E5%87%B9%E5%87%B8%E7%94%B5%E6%B3%A2/id1455784513",
         "summary": "凹凸电波 · 喜剧/健康与健身 · Apple 播客中国区排名第 2"
       },
       {
-        "id": "ap-1573189055",
-        "rank": 3,
-        "title": "声动早咖啡",
-        "podcaster": "声动活泼",
-        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/a9/7f/7a/a97f7a8f-4451-05bc-bacc-637773b1b06a/mza_16067595309054880476.png/100x100bb.png",
-        "genre": "商务",
-        "date": "Fri, 2 Oct",
-        "url": "https://podcasts.apple.com/cn/podcast/%E5%A3%B0%E5%8A%A8%E6%97%A9%E5%92%96%E5%95%A1/id1573189055",
-        "summary": "声动活泼 · 商务 · Apple 播客中国区排名第 3"
-      },
-      {
         "id": "ap-1498170617",
-        "rank": 4,
+        "rank": 3,
         "title": "自我进化论",
         "podcaster": "颜晓静Athena",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/7e/9f/2c/7e9f2c84-e756-b687-391e-83a27724645d/mza_1150423139010350989.jpg/100x100bb.png",
         "genre": "休闲 / 教育",
-        "date": "Fri, 2 Oct",
+        "date": "Sat, 3 Oct",
         "url": "https://podcasts.apple.com/cn/podcast/%E8%87%AA%E6%88%91%E8%BF%9B%E5%8C%96%E8%AE%BA/id1498170617",
-        "summary": "颜晓静Athena · 休闲/教育 · Apple 播客中国区排名第 4"
+        "summary": "颜晓静Athena · 休闲/教育 · Apple 播客中国区排名第 3"
       },
       {
         "id": "ap-1731784296",
-        "rank": 5,
+        "rank": 4,
         "title": "天真不天真",
         "podcaster": "杨天真本真",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/c8/bf/ca/c8bfca7f-a52c-67e1-6d93-fb31fb559324/mza_5986718045801936242.jpg/100x100bb.png",
         "genre": "休闲",
-        "date": "Fri, 2 Oct",
+        "date": "Sat, 3 Oct",
         "url": "https://podcasts.apple.com/cn/podcast/%E5%A4%A9%E7%9C%9F%E4%B8%8D%E5%A4%A9%E7%9C%9F/id1731784296",
-        "summary": "杨天真本真 · 休闲 · Apple 播客中国区排名第 5"
+        "summary": "杨天真本真 · 休闲 · Apple 播客中国区排名第 4"
+      },
+      {
+        "id": "ap-1573189055",
+        "rank": 5,
+        "title": "声动早咖啡",
+        "podcaster": "声动活泼",
+        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/a9/7f/7a/a97f7a8f-4451-05bc-bacc-637773b1b06a/mza_16067595309054880476.png/100x100bb.png",
+        "genre": "商务",
+        "date": "Sat, 3 Oct",
+        "url": "https://podcasts.apple.com/cn/podcast/%E5%A3%B0%E5%8A%A8%E6%97%A9%E5%92%96%E5%95%A1/id1573189055",
+        "summary": "声动活泼 · 商务 · Apple 播客中国区排名第 5"
       },
       {
         "id": "ap-751574016",
@@ -382,7 +382,7 @@
         "podcaster": "Lindsay McMahon and Michelle Kaplan",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/cb/a1/13/cba113a7-999d-3c3d-a594-900adb69624e/mza_7992161192502469150.jpg/100x100bb.png",
         "genre": "教育 / 商务",
-        "date": "Fri, 2 Oct",
+        "date": "Sat, 3 Oct",
         "url": "https://podcasts.apple.com/cn/podcast/all-ears-english-podcast/id751574016",
         "summary": "Lindsay McMahon and Michelle Kaplan · 教育/商务 · Apple 播客中国区排名第 6"
       },
@@ -393,7 +393,7 @@
         "podcaster": "霓达播台NidaMedia",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/31/20/de/3120de83-d957-83de-8224-092c98de7189/mza_18215723817537101746.png/100x100bb.png",
         "genre": "犯罪纪实 / 休闲",
-        "date": "Fri, 2 Oct",
+        "date": "Sat, 3 Oct",
         "url": "https://podcasts.apple.com/cn/podcast/%E9%9C%93%E8%BE%BE%E6%92%AD%E5%AE%A2/id1668626930",
         "summary": "霓达播台NidaMedia · 犯罪纪实/休闲 · Apple 播客中国区排名第 7"
       },
@@ -404,7 +404,7 @@
         "podcaster": "谭立人",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/79/b1/6c/79b16c71-d7c8-47d1-8f30-0e555cc88f0e/mza_12677056158333262421.jpg/100x100bb.png",
         "genre": "休闲",
-        "date": "Fri, 2 Oct",
+        "date": "Sat, 3 Oct",
         "url": "https://podcasts.apple.com/cn/podcast/%E8%B0%AD%E7%AB%8B%E4%BA%BA/id1771401634",
         "summary": "谭立人 · 休闲 · Apple 播客中国区排名第 8"
       },
@@ -415,7 +415,7 @@
         "podcaster": "小烘、王王",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0a/32/d1/0a32d1fa-1069-2ef2-79c0-700f6fb3bae1/mza_1910500795813289961.jpeg/100x100bb.png",
         "genre": "犯罪纪实",
-        "date": "Fri, 2 Oct",
+        "date": "Sat, 3 Oct",
         "url": "https://podcasts.apple.com/cn/podcast/%E9%87%8D%E9%87%8D%E7%94%B5%E6%B3%A2/id1770731694",
         "summary": "小烘、王王 · 犯罪纪实 · Apple 播客中国区排名第 9"
       },
@@ -426,12 +426,12 @@
         "podcaster": "携隐Melody",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/df/b4/e4/dfb4e432-0769-9506-09a9-f01fa4b7852d/mza_16915193939148219302.jpeg/100x100bb.png",
         "genre": "教育 / 社会与文化",
-        "date": "Fri, 2 Oct",
+        "date": "Sat, 3 Oct",
         "url": "https://podcasts.apple.com/cn/podcast/%E7%BA%B5%E6%A8%AA%E5%9B%9B%E6%B5%B7/id1671490972",
         "summary": "携隐Melody · 教育/社会与文化 · Apple 播客中国区排名第 10"
       }
     ],
-    "updatedAt": "2026-10-02T19:15:45.953Z",
+    "updatedAt": "2026-10-03T01:52:26.166Z",
     "stale": false
   },
   "podcastFollow": {
@@ -458,13 +458,13 @@
       },
       {
         "id": "pf-1482731836",
-        "title": "Vol.354 宛如泰坦尼克：冒充者综合征大爆发！献给才华平平但野心勃勃的人",
+        "title": "文化有限 最新一期",
         "podcaster": "文化有限",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/80/9d/72/809d724d-e1f2-bb68-3da7-cfb4f821ddf9/mza_869025148758774393.jpg/100x100bb.jpg",
         "duration": "",
-        "date": "2026-09-28",
-        "summary": "本期节目我们读《宛如泰坦尼克》，作者杰西卡·欣德曼。一个来自美国阿巴拉契亚山区、从小热爱小提琴、才华平平但野心勃勃的女孩杰西卡，为了在哥伦比亚大学交学费且活下去，她拼尽全力。打过工，卖过卵，干过电话诈骗，最后意外加入了一支“演出时麦克风从不打开、音乐全部来自幕后CD机”的巡演乐团，当了四年“冒牌职业…",
-        "url": "https://www.ximalaya.com/sound/1019832185"
+        "date": "2026-09-21",
+        "summary": "文化有限",
+        "url": "https://podcasts.apple.com/cn/podcast/%E6%96%87%E5%8C%96%E6%9C%89%E9%99%90/id1482731836?uo=4"
       },
       {
         "id": "pf-1493503146",
@@ -487,7 +487,7 @@
         "url": "https://www.ximalaya.com/sound/1019948132"
       }
     ],
-    "updatedAt": "2026-10-02T19:15:45.953Z",
+    "updatedAt": "2026-10-03T01:52:26.166Z",
     "stale": false
   },
   "sanlian": {
@@ -495,7 +495,7 @@
       {
         "id": "sl-81658",
         "title": "雅典人为何好诉讼？",
-        "date": "2026-10-02",
+        "date": "2026-10-03",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=81658&currentIdShow=y"
@@ -503,23 +503,15 @@
       {
         "id": "sl-271723",
         "title": "接近自己，就是快乐本身啊",
-        "date": "2026-10-02",
+        "date": "2026-10-03",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=271723&currentIdShow=y"
       },
       {
-        "id": "sl-122282",
-        "title": "古罗马皇帝头像：一名中年尚武男子的蜕变之路",
-        "date": "2026-10-02",
-        "source": "三联生活周刊",
-        "summary": "",
-        "url": "https://www.lifeweek.com.cn/news?currentId=122282&currentIdShow=y"
-      },
-      {
         "id": "sl-5254",
         "title": "在大学 这样成人",
-        "date": "2026-10-02",
+        "date": "2026-10-03",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=5254&currentIdShow=y"
@@ -527,7 +519,7 @@
       {
         "id": "sl-5249",
         "title": "贾科长在行动",
-        "date": "2026-10-02",
+        "date": "2026-10-03",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=5249&currentIdShow=y"
@@ -535,7 +527,7 @@
       {
         "id": "sl-4412",
         "title": "押沙龙·趣味世界史100讲",
-        "date": "2026-10-02",
+        "date": "2026-10-03",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=4412&currentIdShow=y"
@@ -543,7 +535,7 @@
       {
         "id": "sl-274140",
         "title": "连接者洪堡",
-        "date": "2026-10-02",
+        "date": "2026-10-03",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=274140&currentIdShow=y"
@@ -551,13 +543,13 @@
       {
         "id": "sl-274192",
         "title": "沈阳 吴忠 太原",
-        "date": "2026-10-02",
+        "date": "2026-10-03",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=274192&currentIdShow=y"
       }
     ],
-    "updatedAt": "2026-10-02T19:15:45.953Z",
+    "updatedAt": "2026-10-03T01:52:26.166Z",
     "stale": false
   },
   "subscriptions": {
@@ -575,15 +567,6 @@
             "rating": "力荐"
           },
           {
-            "title": "Sweet Poison｜《甜蜜毒药》民翻译本勘误+新版电子书分享（实时更新，欢迎捉虫）",
-            "url": "https://book.douban.com/review/17829641/",
-            "date": "2026-09-25",
-            "source": "豆瓣·书评精选",
-            "summary": "本书评",
-            "subject": "Sweet Poison",
-            "rating": "力荐"
-          },
-          {
             "title": "要有光｜纯恶意评价",
             "url": "https://book.douban.com/review/17837847/",
             "date": "2026-10-01",
@@ -591,6 +574,15 @@
             "summary": "“有心理疾病而休学的未成年人”这个题材，说是我最有发言权的一集不为过吧？（叠甲我高中休学两年半，明年高考，书里的大部分人物我都能在认识的人里找到处境十分近似的。其实如果你好奇休学青少年的心理状态可以直接看我主页",
             "subject": "要有光",
             "rating": "很差"
+          },
+          {
+            "title": "Sweet Poison｜《甜蜜毒药》民翻译本勘误+新版电子书分享（实时更新，欢迎捉虫）",
+            "url": "https://book.douban.com/review/17829641/",
+            "date": "2026-09-25",
+            "source": "豆瓣·书评精选",
+            "summary": "本书评",
+            "subject": "Sweet Poison",
+            "rating": "力荐"
           },
           {
             "title": "普通炎症｜后记",
@@ -629,12 +621,12 @@
             "rating": "推荐"
           },
           {
-            "title": "译校序——1804知识学二轮讲课已译校完毕并制作PDF (评论: Philosophische Bibliothek, Bd.284, Die Wissenschaftslehre, Zweiter Vortrag im Jahre 180…",
-            "url": "https://book.douban.com/review/17816365/",
-            "date": "2026-09-14",
+            "title": "娱乐映城｜香港是问题，迷影是方法，全球才是答案",
+            "url": "https://book.douban.com/review/17837570/",
+            "date": "2026-10-01",
             "source": "豆瓣·书评精选",
-            "summary": "",
-            "subject": "",
+            "summary": "文章亦发表于《中国电影报》",
+            "subject": "娱乐映城",
             "rating": "力荐"
           }
         ]
@@ -703,74 +695,74 @@
             "summary": "中秋、国庆假期"
           },
           {
-            "title": "万亿级车轮经济跑出新动能",
-            "url": "https://www.chinanews.com.cn/cj/2026/10-02/10707331.shtml",
-            "date": "2026-10-02",
+            "title": "词元经济离大众消费还有多远",
+            "url": "https://www.chinanews.com.cn/cj/2026/10-03/10707372.shtml",
+            "date": "2026-10-03",
             "source": "中新网·财经",
-            "summary": "日均3亿人次在路上！"
+            "summary": "运营商词元(Token)套餐推出数月，市场反馈如何？今年5月，移动、联通、电信集中上线词元套餐，将人工智能(AI)算力打包成可订购、可计费的标准化产品，一时间引发市场广泛关注。但热度之下，真正形成持续付费习惯的用户规模仍然有限，多数消费者还停留在尝鲜体验或者持币观望的阶段，运营商词元套餐的规模化普及尚需时日。"
           },
           {
-            "title": "中企海油工程中东区域三年累计签约超500亿元",
-            "url": "https://www.chinanews.com.cn/cj/2026/10-02/10707313.shtml",
-            "date": "2026-10-02",
+            "title": "国庆假期第二天广东4A级及以上景区接待游客451.7万人次",
+            "url": "https://www.chinanews.com.cn/cj/2026/10-03/10707361.shtml",
+            "date": "2026-10-03",
             "source": "中新网·财经",
-            "summary": "中新社天津10月2日电 (记者 周亚强)记者2日从总部位于天津的海洋石油工程股份有限公司(简称“海油工程”)获悉，随着卡塔尔MM EPIC2项目中标，该公司近三年在中东区域累计签约额突破500亿元人民币。"
+            "summary": "中新网广州10月3日电 (记者 程景伟)广东省文旅厅2日通报，据初步测算，2026年国庆假期第二天(10月2日)，全省4A级及以上景区接待游客451.7万人次，同比增长4.9%。"
           }
         ]
       }
     },
-    "updatedAt": "2026-10-02T19:15:45.953Z",
+    "updatedAt": "2026-10-03T01:52:26.166Z",
     "stale": false
   },
   "inspiration": {
     "data": [
       {
-        "title": "JDG1:2不敌T1",
+        "title": "EDG发文道歉",
         "source": "抖音热搜",
-        "heat": "1168万",
-        "url": "https://www.douyin.com/search/JDG1%3A2%E4%B8%8D%E6%95%8CT1"
-      },
-      {
-        "title": "国足0:5不敌巴勒斯坦",
-        "source": "抖音热搜",
-        "heat": "1131万",
-        "url": "https://www.douyin.com/search/%E5%9B%BD%E8%B6%B30%3A5%E4%B8%8D%E6%95%8C%E5%B7%B4%E5%8B%92%E6%96%AF%E5%9D%A6"
-      },
-      {
-        "title": "我国秋粮收获进度已过三成",
-        "source": "抖音热搜",
-        "heat": "1114万",
-        "url": "https://www.douyin.com/search/%E6%88%91%E5%9B%BD%E7%A7%8B%E7%B2%AE%E6%94%B6%E8%8E%B7%E8%BF%9B%E5%BA%A6%E5%B7%B2%E8%BF%87%E4%B8%89%E6%88%90"
+        "heat": "1210万",
+        "url": "https://www.douyin.com/search/EDG%E5%8F%91%E6%96%87%E9%81%93%E6%AD%89"
       },
       {
         "title": "全世界都知道中国人放假了",
         "source": "抖音热搜",
-        "heat": "1105万",
+        "heat": "1210万",
         "url": "https://www.douyin.com/search/%E5%85%A8%E4%B8%96%E7%95%8C%E9%83%BD%E7%9F%A5%E9%81%93%E4%B8%AD%E5%9B%BD%E4%BA%BA%E6%94%BE%E5%81%87%E4%BA%86"
       },
       {
-        "title": "来了云南才懂什么叫慢生活",
+        "title": "我国秋粮收获进度已过三成",
         "source": "抖音热搜",
-        "heat": "1004万",
-        "url": "https://www.douyin.com/search/%E6%9D%A5%E4%BA%86%E4%BA%91%E5%8D%97%E6%89%8D%E6%87%82%E4%BB%80%E4%B9%88%E5%8F%AB%E6%85%A2%E7%94%9F%E6%B4%BB"
+        "heat": "1179万",
+        "url": "https://www.douyin.com/search/%E6%88%91%E5%9B%BD%E7%A7%8B%E7%B2%AE%E6%94%B6%E8%8E%B7%E8%BF%9B%E5%BA%A6%E5%B7%B2%E8%BF%87%E4%B8%89%E6%88%90"
       },
       {
-        "title": "亚运健儿金牌献礼国庆",
+        "title": "中国游客生动诠释一呼百应",
         "source": "抖音热搜",
-        "heat": "993万",
-        "url": "https://www.douyin.com/search/%E4%BA%9A%E8%BF%90%E5%81%A5%E5%84%BF%E9%87%91%E7%89%8C%E7%8C%AE%E7%A4%BC%E5%9B%BD%E5%BA%86"
+        "heat": "1133万",
+        "url": "https://www.douyin.com/search/%E4%B8%AD%E5%9B%BD%E6%B8%B8%E5%AE%A2%E7%94%9F%E5%8A%A8%E8%AF%A0%E9%87%8A%E4%B8%80%E5%91%BC%E7%99%BE%E5%BA%94"
       },
       {
-        "title": "周五进入国庆爽玩模式",
+        "title": "一支舞庆祝国庆",
         "source": "抖音热搜",
-        "heat": "839万",
-        "url": "https://www.douyin.com/search/%E5%91%A8%E4%BA%94%E8%BF%9B%E5%85%A5%E5%9B%BD%E5%BA%86%E7%88%BD%E7%8E%A9%E6%A8%A1%E5%BC%8F"
+        "heat": "1060万",
+        "url": "https://www.douyin.com/search/%E4%B8%80%E6%94%AF%E8%88%9E%E5%BA%86%E7%A5%9D%E5%9B%BD%E5%BA%86"
       },
       {
-        "title": "2026KPL年度总决赛正式开赛",
+        "title": "中国功夫献礼祖国",
         "source": "抖音热搜",
-        "heat": "826万",
-        "url": "https://www.douyin.com/search/2026KPL%E5%B9%B4%E5%BA%A6%E6%80%BB%E5%86%B3%E8%B5%9B%E6%AD%A3%E5%BC%8F%E5%BC%80%E8%B5%9B"
+        "heat": "1047万",
+        "url": "https://www.douyin.com/search/%E4%B8%AD%E5%9B%BD%E5%8A%9F%E5%A4%AB%E7%8C%AE%E7%A4%BC%E7%A5%96%E5%9B%BD"
+      },
+      {
+        "title": "在拍一种很新的假期生活vlog",
+        "source": "抖音热搜",
+        "heat": "929万",
+        "url": "https://www.douyin.com/search/%E5%9C%A8%E6%8B%8D%E4%B8%80%E7%A7%8D%E5%BE%88%E6%96%B0%E7%9A%84%E5%81%87%E6%9C%9F%E7%94%9F%E6%B4%BBvlog"
+      },
+      {
+        "title": "一个人也可以看世界",
+        "source": "抖音热搜",
+        "heat": "918万",
+        "url": "https://www.douyin.com/search/%E4%B8%80%E4%B8%AA%E4%BA%BA%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%9C%8B%E4%B8%96%E7%95%8C"
       },
       {
         "title": "迈步新征程 我们自信而笃行",
@@ -779,16 +771,16 @@
         "url": "https://m.baidu.com/s?word=%E8%BF%88%E6%AD%A5%E6%96%B0%E5%BE%81%E7%A8%8B+%E6%88%91%E4%BB%AC%E8%87%AA%E4%BF%A1%E8%80%8C%E7%AC%83%E8%A1%8C&sa=fyb_news"
       },
       {
-        "title": "全国各地为何都在“爆改地铁”",
+        "title": "中国男足争亚运铜牌",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E5%85%A8%E5%9B%BD%E5%90%84%E5%9C%B0%E4%B8%BA%E4%BD%95%E9%83%BD%E5%9C%A8%E2%80%9C%E7%88%86%E6%94%B9%E5%9C%B0%E9%93%81%E2%80%9D&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E4%B8%AD%E5%9B%BD%E7%94%B7%E8%B6%B3%E4%BA%89%E4%BA%9A%E8%BF%90%E9%93%9C%E7%89%8C&sa=fyb_news"
       },
       {
-        "title": "亚运三金到手 归来仍是高中生",
+        "title": "刺伤迪拜航空机长的副驾驶身份披露",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E4%BA%9A%E8%BF%90%E4%B8%89%E9%87%91%E5%88%B0%E6%89%8B+%E5%BD%92%E6%9D%A5%E4%BB%8D%E6%98%AF%E9%AB%98%E4%B8%AD%E7%94%9F&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E5%88%BA%E4%BC%A4%E8%BF%AA%E6%8B%9C%E8%88%AA%E7%A9%BA%E6%9C%BA%E9%95%BF%E7%9A%84%E5%89%AF%E9%A9%BE%E9%A9%B6%E8%BA%AB%E4%BB%BD%E6%8A%AB%E9%9C%B2&sa=fyb_news"
       },
       {
         "title": "万里边关 同升五星红旗",
@@ -797,55 +789,55 @@
         "url": "https://m.baidu.com/s?word=%E4%B8%87%E9%87%8C%E8%BE%B9%E5%85%B3+%E5%90%8C%E5%8D%87%E4%BA%94%E6%98%9F%E7%BA%A2%E6%97%97&sa=fyb_news"
       },
       {
-        "title": "男子偶遇烈士纪念碑 留下国旗后哽咽",
+        "title": "“这是国际社会前所未闻的恶性事件”",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E7%94%B7%E5%AD%90%E5%81%B6%E9%81%87%E7%83%88%E5%A3%AB%E7%BA%AA%E5%BF%B5%E7%A2%91+%E7%95%99%E4%B8%8B%E5%9B%BD%E6%97%97%E5%90%8E%E5%93%BD%E5%92%BD&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E2%80%9C%E8%BF%99%E6%98%AF%E5%9B%BD%E9%99%85%E7%A4%BE%E4%BC%9A%E5%89%8D%E6%89%80%E6%9C%AA%E9%97%BB%E7%9A%84%E6%81%B6%E6%80%A7%E4%BA%8B%E4%BB%B6%E2%80%9D&sa=fyb_news"
       },
       {
-        "title": "Zara新品裙子上线就售罄：6000多一条",
+        "title": "韩国“梦之队”完败给中国队",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=Zara%E6%96%B0%E5%93%81%E8%A3%99%E5%AD%90%E4%B8%8A%E7%BA%BF%E5%B0%B1%E5%94%AE%E7%BD%84%EF%BC%9A6000%E5%A4%9A%E4%B8%80%E6%9D%A1&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E9%9F%A9%E5%9B%BD%E2%80%9C%E6%A2%A6%E4%B9%8B%E9%98%9F%E2%80%9D%E5%AE%8C%E8%B4%A5%E7%BB%99%E4%B8%AD%E5%9B%BD%E9%98%9F&sa=fyb_news"
       },
       {
-        "title": "国庆买金变了 年轻人冲向黄金柜台",
+        "title": "国足踢完5场热身赛已少4.37积分",
         "source": "头条热榜",
-        "heat": "849万",
-        "url": "https://www.toutiao.com/trending/7691634538414637102/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227691634538414637102%22%2C%22hot_board_impr_id%22%3A%2220261003031542450A256243BDCDB74FB5%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%9B%BD%E5%BA%86%E4%B9%B0%E9%87%91%E5%8F%98%E4%BA%86+%E5%B9%B4%E8%BD%BB%E4%BA%BA%E5%86%B2%E5%90%91%E9%BB%84%E9%87%91%E6%9F%9C%E5%8F%B0%22%7D&rank=&style_id=40132&topic_id=7691634538414637102"
+        "heat": "1640万",
+        "url": "https://www.toutiao.com/trending/7692215122277846579/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227692215122277846579%22%2C%22hot_board_impr_id%22%3A%22202610030952159818CBA8A9664B594822%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%9B%BD%E8%B6%B3%E8%B8%A2%E5%AE%8C5%E5%9C%BA%E7%83%AD%E8%BA%AB%E8%B5%9B%E5%B7%B2%E5%B0%914.37%E7%A7%AF%E5%88%86%22%7D&rank=&style_id=40132&topic_id=7692215122277846579"
       },
       {
-        "title": "博主：邵佳一的“理想主义”被碾成渣",
+        "title": "特朗普：与伊朗的战事将“很快结束”",
         "source": "头条热榜",
-        "heat": "769万",
-        "url": "https://www.toutiao.com/trending/7692082340234792458/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227692082340234792458%22%2C%22hot_board_impr_id%22%3A%2220261003031542450A256243BDCDB74FB5%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%8D%9A%E4%B8%BB%EF%BC%9A%E9%82%B5%E4%BD%B3%E4%B8%80%E7%9A%84%E2%80%9C%E7%90%86%E6%83%B3%E4%B8%BB%E4%B9%89%E2%80%9D%E8%A2%AB%E7%A2%BE%E6%88%90%E6%B8%A3%22%7D&rank=&style_id=40132&topic_id=7692082340234792458"
+        "heat": "1484万",
+        "url": "https://www.toutiao.com/trending/7692226568457817642/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%225%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227692226568457817642%22%2C%22hot_board_impr_id%22%3A%22202610030952159818CBA8A9664B594822%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%89%B9%E6%9C%97%E6%99%AE%EF%BC%9A%E4%B8%8E%E4%BC%8A%E6%9C%97%E7%9A%84%E6%88%98%E4%BA%8B%E5%B0%86%E2%80%9C%E5%BE%88%E5%BF%AB%E7%BB%93%E6%9D%9F%E2%80%9D%22%7D&rank=&style_id=40132&topic_id=7692226568457817642"
       },
       {
         "title": "一抹中国红 见证跨越时代的奔赴",
         "source": "头条热榜",
-        "heat": "695万",
+        "heat": "1343万",
         "url": "https://www.toutiao.com/article/7691885769425732138"
       },
       {
-        "title": "9月新势力车企销量冰火两重天",
+        "title": "邵佳一致歉：我接受一切批评",
         "source": "头条热榜",
-        "heat": "629万",
-        "url": "https://www.toutiao.com/trending/7692080156201979418/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227692080156201979418%22%2C%22hot_board_impr_id%22%3A%2220261003031542450A256243BDCDB74FB5%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%229%E6%9C%88%E6%96%B0%E5%8A%BF%E5%8A%9B%E8%BD%A6%E4%BC%81%E9%94%80%E9%87%8F%E5%86%B0%E7%81%AB%E4%B8%A4%E9%87%8D%E5%A4%A9%22%7D&rank=&style_id=40132&topic_id=7692080156201979418"
+        "heat": "1215万",
+        "url": "https://www.toutiao.com/trending/7692219766161018406/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227692219766161018406%22%2C%22hot_board_impr_id%22%3A%22202610030952159818CBA8A9664B594822%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%82%B5%E4%BD%B3%E4%B8%80%E8%87%B4%E6%AD%89%EF%BC%9A%E6%88%91%E6%8E%A5%E5%8F%97%E4%B8%80%E5%88%87%E6%89%B9%E8%AF%84%22%7D&rank=&style_id=40132&topic_id=7692219766161018406"
       },
       {
-        "title": "国足主帅回应0-5惨败",
+        "title": "获3金1银陈妤颉说回去要补高中课程",
         "source": "头条热榜",
-        "heat": "569万",
-        "url": "https://www.toutiao.com/trending/7691992858181779497/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227691992858181779497%22%2C%22hot_board_impr_id%22%3A%2220261003031542450A256243BDCDB74FB5%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%9B%BD%E8%B6%B3%E4%B8%BB%E5%B8%85%E5%9B%9E%E5%BA%940-5%E6%83%A8%E8%B4%A5%22%7D&rank=&style_id=40132&topic_id=7691992858181779497"
+        "heat": "1099万",
+        "url": "https://www.toutiao.com/trending/7691127028963229759/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227691127028963229759%22%2C%22hot_board_impr_id%22%3A%22202610030952159818CBA8A9664B594822%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%8E%B73%E9%87%911%E9%93%B6%E9%99%88%E5%A6%A4%E9%A2%89%E8%AF%B4%E5%9B%9E%E5%8E%BB%E8%A6%81%E8%A1%A5%E9%AB%98%E4%B8%AD%E8%AF%BE%E7%A8%8B%22%7D&rank=&style_id=40132&topic_id=7691127028963229759"
       },
       {
-        "title": "脑梗发作前有哪些信号",
+        "title": "2.4米防拆丝带能救女装吗",
         "source": "头条热榜",
-        "heat": "515万",
-        "url": "https://www.toutiao.com/trending/7691890868747534390/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227691890868747534390%22%2C%22hot_board_impr_id%22%3A%2220261003031542450A256243BDCDB74FB5%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%84%91%E6%A2%97%E5%8F%91%E4%BD%9C%E5%89%8D%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BF%A1%E5%8F%B7%22%7D&rank=&style_id=40132&topic_id=7691890868747534390"
+        "heat": "995万",
+        "url": "https://www.toutiao.com/trending/7692053694694559273/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227692053694694559273%22%2C%22hot_board_impr_id%22%3A%22202610030952159818CBA8A9664B594822%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%222.4%E7%B1%B3%E9%98%B2%E6%8B%86%E4%B8%9D%E5%B8%A6%E8%83%BD%E6%95%91%E5%A5%B3%E8%A3%85%E5%90%97%22%7D&rank=&style_id=40132&topic_id=7692053694694559273"
       }
     ],
-    "updatedAt": "2026-10-02T19:15:45.953Z",
+    "updatedAt": "2026-10-03T01:52:26.166Z",
     "stale": false
   },
   "releases": {
@@ -862,17 +854,6 @@
         "desc": "2011年我出版了第一本书《纸上王国》，收到版税后，第一次发现在银行卡里的积蓄超过了一万元。我激动打电话给母亲说了这个事情，母亲笑道：“那你"
       },
       {
-        "title": "Sweet Poison｜《甜蜜毒药》民翻译本勘误+新版电子书分享（实时更新，欢迎捉虫）",
-        "url": "https://book.douban.com/review/17829641/",
-        "date": "2026-09-25",
-        "source": "豆瓣·书评",
-        "summary": "本书评",
-        "subject": "Sweet Poison",
-        "rating": "力荐",
-        "type": "book",
-        "desc": "本书评"
-      },
-      {
         "title": "要有光｜纯恶意评价",
         "url": "https://book.douban.com/review/17837847/",
         "date": "2026-10-01",
@@ -882,6 +863,17 @@
         "rating": "很差",
         "type": "book",
         "desc": "“有心理疾病而休学的未成年人”这个题材，说是我最有发言权的一集不为过吧？（叠甲我高中休学两年半，明年高考，书里的大部分人物我都能在认识的人里找到处境十分近似的。其实如果你好奇休学青少年的心理状态可以直接看我主页"
+      },
+      {
+        "title": "Sweet Poison｜《甜蜜毒药》民翻译本勘误+新版电子书分享（实时更新，欢迎捉虫）",
+        "url": "https://book.douban.com/review/17829641/",
+        "date": "2026-09-25",
+        "source": "豆瓣·书评",
+        "summary": "本书评",
+        "subject": "Sweet Poison",
+        "rating": "力荐",
+        "type": "book",
+        "desc": "本书评"
       },
       {
         "title": "普通炎症｜后记",
@@ -928,15 +920,15 @@
         "desc": "在做《"
       },
       {
-        "title": "译校序——1804知识学二轮讲课已译校完毕并制作PDF (评论: Philosophische Bibliothek, Bd.284, Die Wissenschaftslehre, Zweiter Vortrag im Jahre 180…",
-        "url": "https://book.douban.com/review/17816365/",
-        "date": "2026-09-14",
+        "title": "娱乐映城｜香港是问题，迷影是方法，全球才是答案",
+        "url": "https://book.douban.com/review/17837570/",
+        "date": "2026-10-01",
         "source": "豆瓣·书评",
-        "summary": "",
-        "subject": "",
+        "summary": "文章亦发表于《中国电影报》",
+        "subject": "娱乐映城",
         "rating": "力荐",
         "type": "book",
-        "desc": ""
+        "desc": "文章亦发表于《中国电影报》"
       },
       {
         "title": "活色生香｜姐的人生后半场就是“再不疯狂就鼠了”",
@@ -950,17 +942,6 @@
         "desc": "很爽很"
       },
       {
-        "title": "秋天的故事｜从容地爱",
-        "url": "https://movie.douban.com/review/17838405/",
-        "date": "2026-10-01",
-        "source": "豆瓣·影评",
-        "summary": "",
-        "subject": "秋天的故事",
-        "rating": "力荐",
-        "type": "media",
-        "desc": ""
-      },
-      {
         "title": "活色生香｜《活色生香》：打着“中女”旗号，拍了一场男人中心的尴尬闹剧（ 删掉 我继续发 ）",
         "url": "https://movie.douban.com/review/17837124/",
         "date": "2026-10-01",
@@ -970,6 +951,17 @@
         "rating": "很差",
         "type": "media",
         "desc": "看得我"
+      },
+      {
+        "title": "秋天的故事｜从容地爱",
+        "url": "https://movie.douban.com/review/17838405/",
+        "date": "2026-10-01",
+        "source": "豆瓣·影评",
+        "summary": "",
+        "subject": "秋天的故事",
+        "rating": "力荐",
+        "type": "media",
+        "desc": ""
       },
       {
         "title": "神探之痕迹‎｜不出所料的发挥",
@@ -1005,7 +997,7 @@
         "desc": "原文来自电影手册官网，Claude opus 5.5 翻译，已调整系统指令"
       }
     ],
-    "updatedAt": "2026-10-02T19:15:45.953Z",
+    "updatedAt": "2026-10-03T01:52:26.166Z",
     "stale": false
   },
   "photography": {
@@ -1018,193 +1010,193 @@
       "name": "news:中新网·要闻",
       "ok": true,
       "count": 30,
-      "ms": 1116
+      "ms": 786
     },
     {
       "name": "stock:腾讯行情",
       "ok": true,
       "count": 6,
-      "ms": 1741
-    },
-    {
-      "name": "ai:量子位",
-      "ok": true,
-      "count": 10,
-      "ms": 2025
+      "ms": 2273
     },
     {
       "name": "photography:r/portraits",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2226
-    },
-    {
-      "name": "photography:r/landscapephotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 2255
+      "ms": 2615
     },
     {
       "name": "photography:r/streetphotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2281
+      "ms": 2616
     },
     {
-      "name": "photography:r/photography",
+      "name": "photography:r/landscapephotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2308
-    },
-    {
-      "name": "photography:r/FilmPhotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 2332
+      "ms": 2618
     },
     {
       "name": "photography:r/foodphotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2336
+      "ms": 2616
+    },
+    {
+      "name": "photography:r/photography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2620
+    },
+    {
+      "name": "photography:r/FilmPhotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2623
     },
     {
       "name": "news:中新网·国内",
       "ok": true,
       "count": 30,
-      "ms": 1514
-    },
-    {
-      "name": "sub:思想文化·豆瓣·书评精选",
-      "ok": true,
-      "count": 20,
-      "ms": 2729
+      "ms": 2127
     },
     {
       "name": "news:中新网·社会",
       "ok": true,
       "count": 30,
-      "ms": 224
-    },
-    {
-      "name": "podcast:Apple中国热榜",
-      "ok": true,
-      "count": 10,
-      "ms": 3014
-    },
-    {
-      "name": "inspiration:抖音热搜",
-      "ok": true,
-      "count": 50,
-      "ms": 3037
+      "ms": 5
     },
     {
       "name": "news:中新网·国际",
       "ok": true,
       "count": 30,
-      "ms": 243
-    },
-    {
-      "name": "sub:心理成长·知乎日报",
-      "ok": false,
-      "error": "fetch failed",
-      "ms": 337
+      "ms": 4
     },
     {
       "name": "news:知乎日报",
       "ok": false,
       "error": "fetch failed",
-      "ms": 64
+      "ms": 187
     },
     {
-      "name": "sub:生活方式·中新网·生活",
+      "name": "inspiration:抖音热搜",
       "ok": true,
-      "count": 13,
-      "ms": 225
+      "count": 50,
+      "ms": 3061
     },
     {
-      "name": "ai:36氪",
-      "ok": false,
-      "error": "空结果",
-      "ms": 1419
-    },
-    {
-      "name": "sub:生活方式·中新网·财经",
-      "ok": true,
-      "count": 30,
-      "ms": 243
-    },
-    {
-      "name": "releases:豆瓣·书评",
+      "name": "sub:思想文化·豆瓣·书评精选",
       "ok": true,
       "count": 20,
-      "ms": 3661
+      "ms": 3636
+    },
+    {
+      "name": "ai:量子位",
+      "ok": true,
+      "count": 10,
+      "ms": 3717
     },
     {
       "name": "podcast:关注·来都来了",
       "ok": true,
       "count": 1,
-      "ms": 4290
-    },
-    {
-      "name": "releases:豆瓣·影评",
-      "ok": true,
-      "count": 20,
-      "ms": 821
+      "ms": 3997
     },
     {
       "name": "sanlian:三联生活周刊",
       "ok": true,
-      "count": 8,
-      "ms": 4601
+      "count": 7,
+      "ms": 4120
     },
     {
-      "name": "inspiration:百度热搜",
+      "name": "releases:豆瓣·书评",
       "ok": true,
-      "count": 51,
-      "ms": 2863
+      "count": 20,
+      "ms": 4628
     },
     {
-      "name": "news:百度热搜",
+      "name": "podcast:Apple中国热榜",
       "ok": true,
-      "count": 51,
-      "ms": 2798
+      "count": 10,
+      "ms": 4749
+    },
+    {
+      "name": "sub:心理成长·知乎日报",
+      "ok": false,
+      "error": "fetch failed",
+      "ms": 1449
+    },
+    {
+      "name": "sub:生活方式·中新网·生活",
+      "ok": true,
+      "count": 13,
+      "ms": 4
+    },
+    {
+      "name": "sub:生活方式·中新网·财经",
+      "ok": true,
+      "count": 30,
+      "ms": 6
     },
     {
       "name": "podcast:关注·不合时宜",
       "ok": true,
       "count": 1,
-      "ms": 1978
+      "ms": 1264
+    },
+    {
+      "name": "releases:豆瓣·影评",
+      "ok": true,
+      "count": 20,
+      "ms": 897
+    },
+    {
+      "name": "news:百度热搜",
+      "ok": true,
+      "count": 51,
+      "ms": 2975
+    },
+    {
+      "name": "inspiration:百度热搜",
+      "ok": true,
+      "count": 51,
+      "ms": 2968
+    },
+    {
+      "name": "ai:36氪",
+      "ok": false,
+      "error": "空结果",
+      "ms": 2352
     },
     {
       "name": "inspiration:头条热榜",
       "ok": true,
       "count": 50,
-      "ms": 1235
+      "ms": 913
     },
     {
       "name": "inspiration:B站排行",
-      "ok": false,
-      "error": "空结果",
-      "ms": 481
+      "ok": true,
+      "count": 100,
+      "ms": 954
     },
     {
       "name": "podcast:关注·文化有限",
       "ok": true,
       "count": 1,
-      "ms": 1591
+      "ms": 10224
     },
     {
       "name": "podcast:关注·忽左忽右",
       "ok": true,
       "count": 1,
-      "ms": 370
+      "ms": 306
     },
     {
       "name": "podcast:关注·东腔西调",
       "ok": true,
       "count": 1,
-      "ms": 2325
+      "ms": 2046
     }
   ]
 }
