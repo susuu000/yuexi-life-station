@@ -1,195 +1,209 @@
 {
-  "updatedAt": "2026-10-07T02:15:40.784Z",
+  "updatedAt": "2026-10-07T11:01:57.240Z",
   "news": {
     "data": [
       {
-        "title": "中国网球公开赛：德约科维奇获男单冠军",
-        "url": "http://www.chinanews.com.cn/tp/hd2011/2026/10-07/1207157.shtml",
+        "title": "“十一”假期“收官日”客流破百万 国铁郑州局增开临客128列助旅客返程",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708770.shtml",
+        "date": "2026-10-07",
+        "source": "中新网·要闻",
+        "summary": "中新网郑州10月7日电 (刘鹏 赵晴晴)10月7日，国庆假期进入“收官日”，铁路客流迎来返程高峰。中国铁路郑州局集团有限公司(简称“国铁集团郑州局”)发布消息，当日预计发送旅客101.3万人次，计划开行旅客列车1512列，增开临客列车128列，以全力保障旅客返程需求。"
+      },
+      {
+        "title": "国庆假期上海离境退税销售额大幅增长",
+        "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708766.shtml",
+        "date": "2026-10-07",
+        "source": "中新网·要闻",
+        "summary": "中新网上海10月7日电 (记者 姜煜)记者7日从上海市商务委获悉，今年国庆假期(9月30日至10月6日)，上海离境退税销售额同比增长47%，即买即退销售额同比增长1.1倍。"
+      },
+      {
+        "title": "无座票只能站全程？火车票改签能免费吗？铁路部门解答",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708771.shtml",
+        "date": "2026-10-07",
+        "source": "中新网·要闻",
+        "summary": "假期出行，热门线路火车票紧俏，不少旅客只能买到无座票。无座票是不是只能全程站着？其实，无座票的全称是“无固定座位票”，上车后可以合法乘坐未被售出的空座。"
+      },
+      {
+        "title": "旅游平台：“双节”假期中国民众出行需求增长",
+        "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708765.shtml",
+        "date": "2026-10-07",
+        "source": "中新网·要闻",
+        "summary": "中新社北京10月7日电 (记者 刘亮)中国在线旅游平台7日公布的数据显示，今年中秋节至国庆节假期，中国民众出行需求整体增长，景区门票、酒店住宿等订单量攀升。"
+      },
+      {
+        "title": "山洪灾害气象预警：海南东南部局地发生山洪灾害可能性较大",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708763.shtml",
+        "date": "2026-10-07",
+        "source": "中新网·要闻",
+        "summary": "中新网10月7日电 据中央气象台网站消息，水利部和中国气象局10月7日18时联合发布黄色山洪灾害气象预警：预计，10月7日20时至8日20时，海南东南部等地部分地区可能发生山洪灾害(蓝色预警)，局地发生山洪灾害可能性较大(黄色预警)。其他地区也可能因局地短历时强降水引发山洪灾害，请各地注意做好实时监测、防汛预警和转移避…"
+      },
+      {
+        "title": "中国网球公开赛：张帅/西尼亚科娃晋级八强",
+        "url": "http://www.chinanews.com.cn/tp/hd2011/2026/10-07/1207187.shtml",
         "date": "2026-10-07",
         "source": "中新网·要闻",
         "summary": ""
       },
       {
-        "title": "重拳打击！缅北电诈团伙一度气焰嚣张 窝点距我口岸仅200米",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708604.shtml",
+        "title": "2026年诺贝尔化学奖揭晓",
+        "url": "https://www.chinanews.com.cn/gn/2026/10-07/10708751.shtml",
         "date": "2026-10-07",
-        "source": "中新网·要闻",
-        "summary": "由公安部和中央广播电视总台联合摄制的纪录片《缅北电诈覆灭纪实》于10月5日至7日，在央视综合频道18点档首播。纪录片全面展现了在党中央坚强领导下，我国公安机关会同有关部门开展打击缅北涉我犯罪专项工作，彻底铲除缅北“四大家族”等犯罪集团的艰苦历程和显著成就。"
+        "source": "中新网·国内",
+        "summary": "当地时间10月7日，瑞典皇家科学院决定将2026年诺贝尔化学奖授予2名科学家。"
       },
       {
-        "title": "一座光伏电站见证中哥绿色合作",
-        "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708602.shtml",
+        "title": "大国重器就位！世界最大容量“电力心脏”有多强",
+        "url": "https://www.chinanews.com.cn/gn/2026/10-07/10708746.shtml",
         "date": "2026-10-07",
-        "source": "中新网·要闻",
-        "summary": "清晨，阳光洒在一排排光伏板上，哥伦比亚电气工程师海梅·蒙塔尼奥来到光伏电站，开始一天的工作：检查逆变设备、查看运行数据、排查设备异常。两年多前，他对光伏电站还很陌生。如今，他已经能够独立完成多项运维工作。“中国同事教会我许多。”蒙塔尼奥说。"
+        "source": "中新网·国内",
+        "summary": "“十五五”时期，我国将投入超过5万亿元建设新型电网。新型电网怎么建？要攻克哪些技术难题？就在几天前，一台世界最大容量的柔性直流变压器在广州城市中心就位。"
       },
       {
-        "title": "扩大开放、连接全球、赋能产业、惠及民生的重要窗口（进博会观察）",
-        "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708601.shtml",
+        "title": "中国科研团队成功绘制水稻全生命周期时空细胞图谱",
+        "url": "https://www.chinanews.com.cn/gn/2026/10-07/10708738.shtml",
         "date": "2026-10-07",
-        "source": "中新网·要闻",
-        "summary": "11月5日至10日，第九届中国国际进口博览会(进博会)将在国家会展中心(上海)举行。作为世界上首个以进口为主题的国家级展会，此前8届进博会累计吸引超过180个国家和地区的2.7万家次企业参展，意向成交额超5800亿美元，不仅实现了“展品变商品”，更搭建了“展商变投资商”的桥梁，成为外资企业进入中国、扎根中国的重要门户。…"
+        "source": "中新网·国内",
+        "summary": "中新网三亚10月7日电 (张月和)记者从7日在三亚举行的南繁硅谷第一张生命底图——崖州湾“揭榜挂帅”联合攻关成果新闻发布会上了解到，来自崖州湾国家实验室、华大生命科学研究院等机构的12个科研团队分工协作，首次构建了覆盖水稻从种子萌发到开花结实全过程的三维时空细胞图谱，整合了基因组、细胞发育阶段与空间转录组信息，为在个体…"
       },
       {
-        "title": "千万别用这个姿势坐车！安全风险极大",
-        "url": "https://www.chinanews.com.cn/life/2026/10-07/10708600.shtml",
+        "title": "俄罗斯总统助理、海事委员会主席帕特鲁舍夫将访华",
+        "url": "https://www.chinanews.com.cn/gn/2026/10-07/10708712.shtml",
         "date": "2026-10-07",
-        "source": "中新网·要闻",
-        "summary": "今天(10月7日)"
+        "source": "中新网·国内",
+        "summary": "中新社北京10月7日电 中国外交部发言人7日宣布：俄罗斯总统助理、海事委员会主席帕特鲁舍夫将于10月8日至13日访问中国，中共中央政治局委员、中央外办主任王毅将与其会谈交流。(完)"
       },
       {
-        "title": "【这个城市有点潮】贵州遵义：重温峥嵘岁月的红色印记",
-        "url": "http://www.chinanews.com.cn/tp/hd2011/2026/10-07/1207140.shtml",
+        "title": "访中国海军遵义舰：迈向深蓝新长征",
+        "url": "https://www.chinanews.com.cn/gn/2026/10-07/10708713.shtml",
         "date": "2026-10-07",
-        "source": "中新网·要闻",
-        "summary": ""
-      },
-      {
-        "title": "外交部：希望欧方同中方相向而行，通过对话协商解决彼此关切",
-        "url": "https://www.chinanews.com.cn/gn/2026/10-06/10708541.shtml",
-        "date": "2026-10-06",
         "source": "中新网·国内",
-        "summary": "中新社北京10月6日电 中国外交部发言人郭嘉昆6日答记者问时表示，希望欧方同中方相向而行，通过对话协商解决彼此关切，共同维护全球产供链稳定畅通，推动中欧经贸关系健康稳定发展。"
+        "summary": "中新社海南三亚10月7日电 题：访中国海军遵义舰：迈向深蓝新长征"
       },
       {
-        "title": "外交部：反对借战事关联抹黑中国",
-        "url": "https://www.chinanews.com.cn/gn/2026/10-06/10708537.shtml",
-        "date": "2026-10-06",
-        "source": "中新网·国内",
-        "summary": "中新社北京10月6日电 中国外交部发言人郭嘉昆6日答记者问时表示，中方反对借战事关联抹黑中国。"
-      },
-      {
-        "title": "国铁广州局迎来返程小高峰 假期第六天预计送客逾283万人次",
-        "url": "https://www.chinanews.com.cn/gn/2026/10-06/10708532.shtml",
-        "date": "2026-10-06",
-        "source": "中新网·国内",
-        "summary": "中新网广州10月6日电 (郭军 彭国曦 张晓敏)进入国庆中秋假期第六天，国铁广州局迎来客流返程小高峰，当天预计发送旅客283.5万人次，较2025年同期增加61.7万人次，增幅27.8%。"
-      },
-      {
-        "title": "中方：坚决反对菲律宾损害中国主权和权益的任何行径",
-        "url": "https://www.chinanews.com.cn/gn/2026/10-06/10708535.shtml",
-        "date": "2026-10-06",
-        "source": "中新网·国内",
-        "summary": "中新社北京10月6日电 中国外交部发言人郭嘉昆6日答记者问时表示，中方坚决反对菲律宾损害中国主权和权益的任何行径，将继续采取必要措施，坚定捍卫自身在南海的领土主权和海洋权益。"
-      },
-      {
-        "title": "外交部回应台接收美战斗机：中方坚决反对美对台军售",
-        "url": "https://www.chinanews.com.cn/gn/2026/10-06/10708524.shtml",
-        "date": "2026-10-06",
-        "source": "中新网·国内",
-        "summary": "10月6日，外交部发言人郭嘉昆答记者问。"
-      },
-      {
-        "title": "中国军队正当合理！中方正告菲方立即停止侵权挑衅",
-        "url": "https://www.chinanews.com.cn/gn/2026/10-06/10708523.shtml",
-        "date": "2026-10-06",
-        "source": "中新网·国内",
-        "summary": "近日，菲方飞机和船只未经中方允许，擅自闯入中国管辖海空域。对此，外交部发言人回应。"
-      },
-      {
-        "title": "缅北电诈覆灭纪实丨第二集《犁庭扫穴》",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708598.shtml",
+        "title": "传统非遗绽放国庆假期 传承见人见物见生活",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708759.shtml",
         "date": "2026-10-07",
         "source": "中新网·社会",
-        "summary": "由公安部和中央广播电视总台联合摄制的纪录片《缅北电诈覆灭纪实》，10月6日晚播出第二集《犁庭扫穴》，聚焦中国司法机关打破地域阻隔、突破执法壁垒，跨国追凶的幕后故事。"
+        "summary": "中新网北京10月7日电 (记者 应妮)这个国庆假期，非遗正化身为可参与、可感知、可带走的活态文化体验，深藏于岁月中的老记忆、老民俗走出展馆、走进大众、融入生活。"
       },
       {
-        "title": "高铁坐过站怎么办？可以免费坐回去",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708596.shtml",
+        "title": "受降雪影响 新疆独库公路部分路段实施临时管制",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708761.shtml",
         "date": "2026-10-07",
         "source": "中新网·社会",
-        "summary": "央视网消息：假期出行高峰，旅客乘车途中难免会遇到一些小状况，比如一不留神，高铁坐过站了。遇到这种情况怎么办？"
+        "summary": "记者从新疆维吾尔自治区交通运输厅应急指挥与联网收费中心了解到，10月7日10时00分，G217线独库公路587公里至671公里(巴音沟至哈希勒根隧道出口)路段、G217线独库公路671公里至694公里(哈希勒根隧道至乔尔玛交叉口)路段，因降雪天气，道路不具备安全通行条件，实行双向交通管制，恢复时间待定。"
       },
       {
-        "title": "全国铁路今天预计发送旅客2415万人次",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708592.shtml",
+        "title": "成都：国庆假期解锁城市文旅新图景",
+        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708755.shtml",
         "date": "2026-10-07",
         "source": "中新网·社会",
-        "summary": "今天是国庆中秋假期的最后一天，昨天起铁路返程客流有明显增长，今天全国铁路预计发送旅客2415万人次。铁路中秋国庆假期运输自9月23日启动，到昨天已经发送旅客超2.5亿人次。"
+        "summary": "中新网成都10月7日电(记者 王鹏)“原本只是想来看看古街，没想到一路都有表演可以参与。”10月7日，在成都宽窄巷子游览的广西游客覃玉发现，传统街巷不再只是拍照打卡的背景，而成为可以停留、互动和消费的文化空间。"
       },
       {
-        "title": "网传“含姜片、喝姜水防晕车”靠谱吗？假期返程晕车必看→",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708589.shtml",
-        "date": "2026-10-07",
-        "source": "中新网·社会",
-        "summary": "国庆长途出行"
-      },
-      {
-        "title": "高铁向北 林海“生金”",
-        "url": "https://www.chinanews.com.cn/sh/2026/10-07/10708584.shtml",
-        "date": "2026-10-07",
-        "source": "中新网·社会",
-        "summary": "中新网黑龙江伊春10月7日电 题：高铁向北 林海“生金”"
-      },
-      {
-        "title": "驻冲绳美军最高负责人下令：对所有驻冲绳美军实施外出限制",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708593.shtml",
+        "title": "第11届圣保罗中国电影展将上映12部佳作",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708753.shtml",
         "date": "2026-10-07",
         "source": "中新网·国际",
-        "summary": "中新网10月7日电 综合日媒报道，一名驻冲绳美军士兵因涉嫌抢劫杀人被捕后，驻冲绳美军最高负责人、冲绳地区协调官沃森当地时间6日下令，对驻冲绳美军实施外出限制。"
+        "summary": "中新社圣保罗10月7日电 (记者 林春茵)当地时间6日晚，中国影片《三国第一部：争洛阳》在巴西圣保罗文化中心上映，第11届圣保罗中国电影展随之启幕。"
       },
       {
-        "title": "朝中社：金正恩向普京致生日贺电",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708574.shtml",
+        "title": "2026年诺贝尔化学奖揭晓：2位科学家获奖",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708757.shtml",
         "date": "2026-10-07",
         "source": "中新网·国际",
-        "summary": "中新网10月7日电 据朝中社7日报道，朝鲜最高领导人金正恩在俄罗斯总统普京10月7日生日之际致贺电，向他致以亲切的祝贺和问候。"
+        "summary": "中新网10月7日电(管娜)当地时间10月7日，瑞典皇家科学院决定将2026年诺贝尔化学奖授予2名科学家。奖项授予Henri B. Kagan和Kenso Soai，以表彰他们在不对称有机合成中的非线性效应和自催化方面的发现。"
       },
       {
-        "title": "世界银行下调柬埔寨2026年经济增长预期至3.5%",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708566.shtml",
-        "date": "2026-10-06",
+        "title": "韩国前总统尹锡悦涉嫌违反《政治资金法》案二审被判无罪",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708664.shtml",
+        "date": "2026-10-07",
         "source": "中新网·国际",
-        "summary": "中新社金边10月6日电 (杨强 张堰林)世界银行10月6日发布最新报告，将柬埔寨2026年经济增长预期下调至3.5%。从中期来看，该报告预测柬埔寨经济增长将在2027年反弹至4.0%，并在2028年达到5.0%。"
+        "summary": "韩国首尔高等法院7日下午对前总统尹锡悦涉嫌违反《政治资金法》案进行二审宣判，尹锡悦被判无罪。"
       },
       {
-        "title": "德国8月工业新订单环比大幅下降",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708565.shtml",
-        "date": "2026-10-06",
+        "title": "世界银行上调东亚和太平洋地区2026年经济增速预测",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708644.shtml",
+        "date": "2026-10-07",
         "source": "中新网·国际",
-        "summary": "中新社柏林10月6日电 (记者 马秀秀)德国联邦统计局6日公布的数据显示，经季节和日历调整后，德国8月工业新订单环比下降10.6%，创下今年年初以来最大降幅。"
+        "summary": "中新网马尼拉10月7日电 世界银行6日发布东亚和太平洋地区最新一期经济半年报，将2026年该地区经济增速预测上调至4.5%，较4月预测高0.3个百分点。"
       },
       {
-        "title": "德国选择党成员首次担任联邦州议会议长",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708564.shtml",
-        "date": "2026-10-06",
+        "title": "美报告披露最新对伊战损：损失81架军机，含12架F-15E战机",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708645.shtml",
+        "date": "2026-10-07",
         "source": "中新网·国际",
-        "summary": "中新社柏林10月6日电 德国萨克森-安哈尔特州(萨安州)新一届议会6日在州首府马格德堡举行首次会议。德国极右翼政党德国选择党议员托比亚斯·劳施当选为议会议长。这是德国首次由选择党成员担任联邦州议会议长。"
+        "summary": "中新网10月7日电 综合报道，美国国会研究服务部最新发布的报告显示，自2月28日美国和以色列对伊朗发起军事打击以来，共有81架美军飞机受损或被毁。"
       },
       {
-        "title": "政府军加大攻势 胡塞武装称实施“毁灭性”打击 也门冲突或陷入拉锯",
-        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708569.shtml",
-        "date": "2026-10-06",
+        "title": "也门政府军与胡塞武装就塔伊兹省战略要地展开争夺",
+        "url": "https://www.chinanews.com.cn/gj/2026/10-07/10708623.shtml",
+        "date": "2026-10-07",
         "source": "中新网·国际",
-        "summary": "近日，也门政府军与胡塞武装的交火进一步升级，沙特主导的多国联军也加大对胡塞武装的打击，冲突呈现出战线扩大、烈度上升的态势。胡塞武装6日表示，当天在也门南部拉赫季省对“沙特支持的武装人员集结地”发动数十次袭击，造成对方200多人伤亡，并称这一伤亡规模在近期交战中“前所未有”。6日夜间，也门首都萨那再次传出爆炸声，胡塞武装…"
+        "summary": "中新社北京10月7日电 综合消息：当地时间6日，围绕也门第三大城市塔伊兹的激烈战斗仍在持续。据也门政府控制的萨巴通讯社报道，政府军6日夺取了塔伊兹省瓦齐亚区曼苏拉山附近的战略要地。"
       },
       {
-        "title": "听总书记谈“奋斗”",
-        "url": "https://m.baidu.com/s?word=%E5%90%AC%E6%80%BB%E4%B9%A6%E8%AE%B0%E8%B0%88%E2%80%9C%E5%A5%8B%E6%96%97%E2%80%9D&sa=fyb_news",
+        "title": "总书记反复提及一位红军师长",
+        "url": "https://m.baidu.com/s?word=%E6%80%BB%E4%B9%A6%E8%AE%B0%E5%8F%8D%E5%A4%8D%E6%8F%90%E5%8F%8A%E4%B8%80%E4%BD%8D%E7%BA%A2%E5%86%9B%E5%B8%88%E9%95%BF&sa=fyb_news",
         "date": "2026-10-07",
         "source": "百度热搜",
         "summary": ""
       },
       {
-        "title": "孩子才放7天假 家长不该“天塌了”",
-        "url": "https://m.baidu.com/s?word=%E5%AD%A9%E5%AD%90%E6%89%8D%E6%94%BE7%E5%A4%A9%E5%81%87+%E5%AE%B6%E9%95%BF%E4%B8%8D%E8%AF%A5%E2%80%9C%E5%A4%A9%E5%A1%8C%E4%BA%86%E2%80%9D&sa=fyb_news",
+        "title": "王星失联前向女友求救发猫喂了没",
+        "url": "https://m.baidu.com/s?word=%E7%8E%8B%E6%98%9F%E5%A4%B1%E8%81%94%E5%89%8D%E5%90%91%E5%A5%B3%E5%8F%8B%E6%B1%82%E6%95%91%E5%8F%91%E7%8C%AB%E5%96%82%E4%BA%86%E6%B2%A1&sa=fyb_news",
         "date": "2026-10-07",
         "source": "百度热搜",
         "summary": ""
       },
       {
-        "title": "“只要在导弹射程内我肯定能消灭你”",
-        "url": "https://m.baidu.com/s?word=%E2%80%9C%E5%8F%AA%E8%A6%81%E5%9C%A8%E5%AF%BC%E5%BC%B9%E5%B0%84%E7%A8%8B%E5%86%85%E6%88%91%E8%82%AF%E5%AE%9A%E8%83%BD%E6%B6%88%E7%81%AD%E4%BD%A0%E2%80%9D&sa=fyb_news",
+        "title": "缅北地图密密麻麻全是电诈窝点",
+        "url": "https://m.baidu.com/s?word=%E7%BC%85%E5%8C%97%E5%9C%B0%E5%9B%BE%E5%AF%86%E5%AF%86%E9%BA%BB%E9%BA%BB%E5%85%A8%E6%98%AF%E7%94%B5%E8%AF%88%E7%AA%9D%E7%82%B9&sa=fyb_news",
+        "date": "2026-10-07",
+        "source": "百度热搜",
+        "summary": ""
+      },
+      {
+        "title": "大国工程重器进度条刷新",
+        "url": "https://m.baidu.com/s?word=%E5%A4%A7%E5%9B%BD%E5%B7%A5%E7%A8%8B%E9%87%8D%E5%99%A8%E8%BF%9B%E5%BA%A6%E6%9D%A1%E5%88%B7%E6%96%B0&sa=fyb_news",
+        "date": "2026-10-07",
+        "source": "百度热搜",
+        "summary": ""
+      },
+      {
+        "title": "从抢人到留客72小时 中部文旅拼了",
+        "url": "https://m.baidu.com/s?word=%E4%BB%8E%E6%8A%A2%E4%BA%BA%E5%88%B0%E7%95%99%E5%AE%A272%E5%B0%8F%E6%97%B6+%E4%B8%AD%E9%83%A8%E6%96%87%E6%97%85%E6%8B%BC%E4%BA%86&sa=fyb_news",
+        "date": "2026-10-07",
+        "source": "百度热搜",
+        "summary": ""
+      },
+      {
+        "title": "程序员为帮女友挂专家号写出抢号软件",
+        "url": "https://m.baidu.com/s?word=%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%BA%E5%B8%AE%E5%A5%B3%E5%8F%8B%E6%8C%82%E4%B8%93%E5%AE%B6%E5%8F%B7%E5%86%99%E5%87%BA%E6%8A%A2%E5%8F%B7%E8%BD%AF%E4%BB%B6&sa=fyb_news",
         "date": "2026-10-07",
         "source": "百度热搜",
         "summary": ""
       }
     ],
-    "updatedAt": "2026-10-07T02:15:40.784Z",
+    "updatedAt": "2026-10-07T11:01:57.240Z",
     "stale": false
   },
   "ai": {
     "data": [
+      {
+        "title": "晕…这年头还有说人话的AI不",
+        "url": "https://www.qbitai.com/2026/10/501796.html",
+        "date": "2026-10-07",
+        "source": "量子位",
+        "summary": ""
+      },
+      {
+        "title": "Meshy 跻身 a16z 消费级 AI 应用月收入 Top 50，为榜单唯一 AI 3D 公司",
+        "url": "https://www.qbitai.com/2026/10/501791.html",
+        "date": "2026-10-07",
+        "source": "量子位",
+        "summary": "在 a16z 首份消费级 AI 应用月收入榜单中，Meshy 位列第 31 名，与 OpenAI、Anthropic、Canva、Superhuman、Higgsfield 等共同上榜"
+      },
       {
         "title": "OpenAI一夜甩出722篇数学论文！黎曼霍奇BSD全上阵，数学家：读不过来",
         "url": "https://www.qbitai.com/2026/10/501749.html",
@@ -233,20 +247,6 @@
         "summary": "一种混搭的可能：英特尔继续供先进工艺，即前端用14A；后端再接台积电，来补工厂运营、良率、封装这些能力。"
       },
       {
-        "title": "最火AI岗位FDE：月薪5万，都干这些…",
-        "url": "https://www.qbitai.com/2026/10/501506.html",
-        "date": "2026-10-04",
-        "source": "量子位",
-        "summary": "什么是FDE？它会一直存在吗？"
-      },
-      {
-        "title": "GPT-6要“吃掉”3D公司？这家公司不到2年ARR翻百倍，破1亿美元",
-        "url": "https://www.qbitai.com/2026/10/501451.html",
-        "date": "2026-10-04",
-        "source": "量子位",
-        "summary": "专业3D模型反而更稀缺了"
-      },
-      {
         "title": "刚刚，诺贝尔物理奖一人独揽！",
         "url": "https://www.qbitai.com/2026/10/501746.html",
         "date": "2026-10-06",
@@ -261,7 +261,7 @@
         "summary": "从绿藻里的光开关，到控制神经元"
       }
     ],
-    "updatedAt": "2026-10-07T02:15:40.784Z",
+    "updatedAt": "2026-10-07T11:01:57.240Z",
     "stale": false
   },
   "stock": {
@@ -315,7 +315,7 @@
         "up": false
       }
     ],
-    "updatedAt": "2026-10-07T02:15:40.784Z",
+    "updatedAt": "2026-10-07T11:01:57.240Z",
     "stale": false
   },
   "podcastHot": {
@@ -487,7 +487,7 @@
         "url": "https://www.ximalaya.com/sound/1021009322"
       }
     ],
-    "updatedAt": "2026-10-07T02:15:40.784Z",
+    "updatedAt": "2026-10-07T11:01:57.240Z",
     "stale": false
   },
   "sanlian": {
@@ -549,7 +549,7 @@
         "url": "https://www.lifeweek.com.cn/news?currentId=274288&currentIdShow=y"
       }
     ],
-    "updatedAt": "2026-10-07T02:15:40.784Z",
+    "updatedAt": "2026-10-07T11:01:57.240Z",
     "stale": false
   },
   "subscriptions": {
@@ -639,6 +639,13 @@
         "label": "生活方式",
         "items": [
           {
+            "title": "国庆返程提醒：长途久坐时，留意身体这些信号→",
+            "url": "https://www.chinanews.com.cn/life/2026/10-07/10708687.shtml",
+            "date": "2026-10-07",
+            "source": "中新网·生活",
+            "summary": "国庆假期最后一天"
+          },
+          {
             "title": "千万别用这个姿势坐车！安全风险极大",
             "url": "https://www.chinanews.com.cn/life/2026/10-07/10708600.shtml",
             "date": "2026-10-07",
@@ -660,184 +667,177 @@
             "summary": "秋天这颗“长寿果”，竟是隐藏的“维生素C宝库”！健脾消食、止咳祛痰，但你千万别直接吃"
           },
           {
-            "title": "一座光伏电站见证中哥绿色合作",
-            "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708602.shtml",
+            "title": "国庆假期上海离境退税销售额大幅增长",
+            "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708766.shtml",
             "date": "2026-10-07",
             "source": "中新网·财经",
-            "summary": "清晨，阳光洒在一排排光伏板上，哥伦比亚电气工程师海梅·蒙塔尼奥来到光伏电站，开始一天的工作：检查逆变设备、查看运行数据、排查设备异常。两年多前，他对光伏电站还很陌生。如今，他已经能够独立完成多项运维工作。“中国同事教会我许多。”蒙塔尼奥说。"
+            "summary": "中新网上海10月7日电 (记者 姜煜)记者7日从上海市商务委获悉，今年国庆假期(9月30日至10月6日)，上海离境退税销售额同比增长47%，即买即退销售额同比增长1.1倍。"
           },
           {
-            "title": "扩大开放、连接全球、赋能产业、惠及民生的重要窗口（进博会观察）",
-            "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708601.shtml",
+            "title": "旅游平台：“双节”假期中国民众出行需求增长",
+            "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708765.shtml",
             "date": "2026-10-07",
             "source": "中新网·财经",
-            "summary": "11月5日至10日，第九届中国国际进口博览会(进博会)将在国家会展中心(上海)举行。作为世界上首个以进口为主题的国家级展会，此前8届进博会累计吸引超过180个国家和地区的2.7万家次企业参展，意向成交额超5800亿美元，不仅实现了“展品变商品”，更搭建了“展商变投资商”的桥梁，成为外资企业进入中国、扎根中国的重要门户。…"
+            "summary": "中新社北京10月7日电 (记者 刘亮)中国在线旅游平台7日公布的数据显示，今年中秋节至国庆节假期，中国民众出行需求整体增长，景区门票、酒店住宿等订单量攀升。"
           },
           {
-            "title": "一种很新的婚礼火了！超10亿元大生意→",
-            "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708580.shtml",
+            "title": "国庆假日经济从“拼客流”到“拼体验”",
+            "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708750.shtml",
             "date": "2026-10-07",
             "source": "中新网·财经",
-            "summary": "国庆假期，云南丽江古城、玉龙雪山等景点，迎来婚拍旅拍旺季。与传统酒店婚礼不同，越来越多年轻人选择“目的地婚礼”——把领证、仪式、旅拍、蜜月“打包”到同一座城市完成，为当地文旅产业注入新动能。"
+            "summary": "预计21.3亿人次跨区域流动，日均约3亿人在路上，单日峰值达到3.4亿。铁路单日发送旅客超2440万人次创历史新高，高速首日车流7100万辆次……今年国庆，假日经济再次呈现火热图景。"
           },
           {
-            "title": "安徽“千年矾都”工业遗产蝶变文旅新地标",
-            "url": "https://www.chinanews.com.cn/cj/2026/10-06/10708545.shtml",
-            "date": "2026-10-06",
+            "title": "中国国庆假期“兴趣游”受年轻人青睐",
+            "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708742.shtml",
+            "date": "2026-10-07",
             "source": "中新网·财经",
-            "summary": "中新社合肥10月6日电 题：安徽“千年矾都”工业遗产蝶变文旅新地标"
+            "summary": "中新社南昌10月7日电(记者 吴鹏泉)“国庆假期，店里体验订单持续爆满，每日仅DIY饼干项目就有30多份，不少顾客是外地年轻游客。”江西南昌一家手作体验馆店主陈惠欣7日对记者说，沉浸式手作体验成为不少年轻人旅行的新选择。"
           },
           {
-            "title": "中国商务部回应法德要求欧盟强化贸易防御等保护主义工具",
-            "url": "https://www.chinanews.com.cn/cj/2026/10-06/10708543.shtml",
-            "date": "2026-10-06",
+            "title": "山东青岛工业旅游升温 老厂房解锁文旅新消费",
+            "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708732.shtml",
+            "date": "2026-10-07",
             "source": "中新网·财经",
-            "summary": "中新社北京10月6日电 就法德要求欧盟强化贸易防御等保护主义工具，中国商务部新闻发言人6日表示，保护主义提升不了竞争力，“脱钩断链”只会损人不利己。"
+            "summary": "中新网青岛10月7日电 (王禹)国庆黄金周，青岛工业旅游市场热度攀升。百年酿造车间里沉浸式剧游轮番上演，老字号厂区科普园迎来研学热潮，老机车厂房变身高铁科技体验地……从传统工业遗存到文旅消费新场景，青岛工业旅游以互动体验、多业态融合的新形态，成为假期文旅消费的重要增长点。"
           },
           {
-            "title": "第37届上海旅游节闭幕 “一节两季”激发消费新活力",
-            "url": "https://www.chinanews.com.cn/cj/2026/10-06/10708531.shtml",
-            "date": "2026-10-06",
+            "title": "来中国体验“科技游”",
+            "url": "https://www.chinanews.com.cn/cj/2026/10-07/10708733.shtml",
+            "date": "2026-10-07",
             "source": "中新网·财经",
-            "summary": "中新网上海10月6日电 (记者 李佳佳)6日，以“走进美好与欢乐”为主题的第37届上海旅游节圆满落幕。自7月8日以来，本届上海旅游节持续升级暑期旅游季+经典活动季的“一节两季”办节模式，焕新推出340余项重点文旅活动，将夏秋两季有机衔接，激活消费新活力。"
-          },
-          {
-            "title": "商务部就法德要求欧盟强化贸易防御等保护主义工具答记者问",
-            "url": "https://www.chinanews.com.cn/cj/2026/10-06/10708519.shtml",
-            "date": "2026-10-06",
-            "source": "中新网·财经",
-            "summary": "中新网10月6日电 据商务部网站消息，商务部新闻发言人就法德要求欧盟强化贸易防御等保护主义工具答记者问。"
+            "summary": "随着入境游不断发展，海外游客的行程清单逐渐发生变化：不再仅仅打卡长城、故宫等经典地标，越来越多外国游客走进新能源超级工厂、观摩智能机器人展演、探访航天科普场景。沉浸式感受中国科创成果，近距离触摸产业发展脉动，成为入境游的新潮流。“科技游”正成为海外游客感受新时代中国发展活力的崭新名片。"
           }
         ]
       }
     },
-    "updatedAt": "2026-10-07T02:15:40.784Z",
+    "updatedAt": "2026-10-07T11:01:57.240Z",
     "stale": false
   },
   "inspiration": {
     "data": [
       {
-        "title": "中微子是什么",
+        "title": "国庆高速免费将在今日24时截止",
         "source": "抖音热搜",
-        "heat": "1202万",
-        "url": "https://www.douyin.com/search/%E4%B8%AD%E5%BE%AE%E5%AD%90%E6%98%AF%E4%BB%80%E4%B9%88"
+        "heat": "1243万",
+        "url": "https://www.douyin.com/search/%E5%9B%BD%E5%BA%86%E9%AB%98%E9%80%9F%E5%85%8D%E8%B4%B9%E5%B0%86%E5%9C%A8%E4%BB%8A%E6%97%A524%E6%97%B6%E6%88%AA%E6%AD%A2"
       },
       {
-        "title": "有告别才会有重逢",
+        "title": "中网梅尔滕斯生涯首胜高芙",
         "source": "抖音热搜",
-        "heat": "1177万",
-        "url": "https://www.douyin.com/search/%E6%9C%89%E5%91%8A%E5%88%AB%E6%89%8D%E4%BC%9A%E6%9C%89%E9%87%8D%E9%80%A2"
+        "heat": "1212万",
+        "url": "https://www.douyin.com/search/%E4%B8%AD%E7%BD%91%E6%A2%85%E5%B0%94%E6%BB%95%E6%96%AF%E7%94%9F%E6%B6%AF%E9%A6%96%E8%83%9C%E9%AB%98%E8%8A%99"
       },
       {
-        "title": "国庆文旅消费涌现新亮点",
+        "title": "打开六张网建设新空间",
         "source": "抖音热搜",
-        "heat": "1166万",
-        "url": "https://www.douyin.com/search/%E5%9B%BD%E5%BA%86%E6%96%87%E6%97%85%E6%B6%88%E8%B4%B9%E6%B6%8C%E7%8E%B0%E6%96%B0%E4%BA%AE%E7%82%B9"
+        "heat": "1148万",
+        "url": "https://www.douyin.com/search/%E6%89%93%E5%BC%80%E5%85%AD%E5%BC%A0%E7%BD%91%E5%BB%BA%E8%AE%BE%E6%96%B0%E7%A9%BA%E9%97%B4"
       },
       {
-        "title": "当你返程的那一刻你在想什么呢",
+        "title": "2026诺贝尔化学奖揭晓",
         "source": "抖音热搜",
-        "heat": "1139万",
-        "url": "https://www.douyin.com/search/%E5%BD%93%E4%BD%A0%E8%BF%94%E7%A8%8B%E7%9A%84%E9%82%A3%E4%B8%80%E5%88%BB%E4%BD%A0%E5%9C%A8%E6%83%B3%E4%BB%80%E4%B9%88%E5%91%A2"
+        "heat": "1108万",
+        "url": "https://www.douyin.com/search/2026%E8%AF%BA%E8%B4%9D%E5%B0%94%E5%8C%96%E5%AD%A6%E5%A5%96%E6%8F%AD%E6%99%93"
+      },
+      {
+        "title": "茶花开了该回家了翻唱",
+        "source": "抖音热搜",
+        "heat": "1053万",
+        "url": "https://www.douyin.com/search/%E8%8C%B6%E8%8A%B1%E5%BC%80%E4%BA%86%E8%AF%A5%E5%9B%9E%E5%AE%B6%E4%BA%86%E7%BF%BB%E5%94%B1"
       },
       {
         "title": "纵有万般不舍仍需返程",
         "source": "抖音热搜",
-        "heat": "1071万",
+        "heat": "1051万",
         "url": "https://www.douyin.com/search/%E7%BA%B5%E6%9C%89%E4%B8%87%E8%88%AC%E4%B8%8D%E8%88%8D%E4%BB%8D%E9%9C%80%E8%BF%94%E7%A8%8B"
       },
       {
-        "title": "出去看世界的成本远比你想象的低",
+        "title": "当你返程的那一刻你在想什么呢",
         "source": "抖音热搜",
-        "heat": "1055万",
-        "url": "https://www.douyin.com/search/%E5%87%BA%E5%8E%BB%E7%9C%8B%E4%B8%96%E7%95%8C%E7%9A%84%E6%88%90%E6%9C%AC%E8%BF%9C%E6%AF%94%E4%BD%A0%E6%83%B3%E8%B1%A1%E7%9A%84%E4%BD%8E"
+        "heat": "938万",
+        "url": "https://www.douyin.com/search/%E5%BD%93%E4%BD%A0%E8%BF%94%E7%A8%8B%E7%9A%84%E9%82%A3%E4%B8%80%E5%88%BB%E4%BD%A0%E5%9C%A8%E6%83%B3%E4%BB%80%E4%B9%88%E5%91%A2"
       },
       {
-        "title": "回忆才是旅游的闭环",
+        "title": "郑钦文将战黑马查拉耶娃",
         "source": "抖音热搜",
-        "heat": "943万",
-        "url": "https://www.douyin.com/search/%E5%9B%9E%E5%BF%86%E6%89%8D%E6%98%AF%E6%97%85%E6%B8%B8%E7%9A%84%E9%97%AD%E7%8E%AF"
+        "heat": "930万",
+        "url": "https://www.douyin.com/search/%E9%83%91%E9%92%A6%E6%96%87%E5%B0%86%E6%88%98%E9%BB%91%E9%A9%AC%E6%9F%A5%E6%8B%89%E8%80%B6%E5%A8%83"
       },
       {
-        "title": "下一个节点到来之前先别草草了事",
-        "source": "抖音热搜",
-        "heat": "935万",
-        "url": "https://www.douyin.com/search/%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E5%88%B0%E6%9D%A5%E4%B9%8B%E5%89%8D%E5%85%88%E5%88%AB%E8%8D%89%E8%8D%89%E4%BA%86%E4%BA%8B"
-      },
-      {
-        "title": "听总书记谈“奋斗”",
+        "title": "总书记反复提及一位红军师长",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E5%90%AC%E6%80%BB%E4%B9%A6%E8%AE%B0%E8%B0%88%E2%80%9C%E5%A5%8B%E6%96%97%E2%80%9D&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E6%80%BB%E4%B9%A6%E8%AE%B0%E5%8F%8D%E5%A4%8D%E6%8F%90%E5%8F%8A%E4%B8%80%E4%BD%8D%E7%BA%A2%E5%86%9B%E5%B8%88%E9%95%BF&sa=fyb_news"
       },
       {
-        "title": "孩子才放7天假 家长不该“天塌了”",
+        "title": "王星失联前向女友求救发猫喂了没",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E5%AD%A9%E5%AD%90%E6%89%8D%E6%94%BE7%E5%A4%A9%E5%81%87+%E5%AE%B6%E9%95%BF%E4%B8%8D%E8%AF%A5%E2%80%9C%E5%A4%A9%E5%A1%8C%E4%BA%86%E2%80%9D&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E7%8E%8B%E6%98%9F%E5%A4%B1%E8%81%94%E5%89%8D%E5%90%91%E5%A5%B3%E5%8F%8B%E6%B1%82%E6%95%91%E5%8F%91%E7%8C%AB%E5%96%82%E4%BA%86%E6%B2%A1&sa=fyb_news"
       },
       {
-        "title": "“只要在导弹射程内我肯定能消灭你”",
+        "title": "缅北地图密密麻麻全是电诈窝点",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E2%80%9C%E5%8F%AA%E8%A6%81%E5%9C%A8%E5%AF%BC%E5%BC%B9%E5%B0%84%E7%A8%8B%E5%86%85%E6%88%91%E8%82%AF%E5%AE%9A%E8%83%BD%E6%B6%88%E7%81%AD%E4%BD%A0%E2%80%9D&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E7%BC%85%E5%8C%97%E5%9C%B0%E5%9B%BE%E5%AF%86%E5%AF%86%E9%BA%BB%E9%BA%BB%E5%85%A8%E6%98%AF%E7%94%B5%E8%AF%88%E7%AA%9D%E7%82%B9&sa=fyb_news"
       },
       {
-        "title": "宝藏小城为何“藏”不住了",
+        "title": "大国工程重器进度条刷新",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E5%AE%9D%E8%97%8F%E5%B0%8F%E5%9F%8E%E4%B8%BA%E4%BD%95%E2%80%9C%E8%97%8F%E2%80%9D%E4%B8%8D%E4%BD%8F%E4%BA%86&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E5%A4%A7%E5%9B%BD%E5%B7%A5%E7%A8%8B%E9%87%8D%E5%99%A8%E8%BF%9B%E5%BA%A6%E6%9D%A1%E5%88%B7%E6%96%B0&sa=fyb_news"
       },
       {
-        "title": "华为也扛不住了 余承东：不得不涨价",
+        "title": "从抢人到留客72小时 中部文旅拼了",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E5%8D%8E%E4%B8%BA%E4%B9%9F%E6%89%9B%E4%B8%8D%E4%BD%8F%E4%BA%86+%E4%BD%99%E6%89%BF%E4%B8%9C%EF%BC%9A%E4%B8%8D%E5%BE%97%E4%B8%8D%E6%B6%A8%E4%BB%B7&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E4%BB%8E%E6%8A%A2%E4%BA%BA%E5%88%B0%E7%95%99%E5%AE%A272%E5%B0%8F%E6%97%B6+%E4%B8%AD%E9%83%A8%E6%96%87%E6%97%85%E6%8B%BC%E4%BA%86&sa=fyb_news"
       },
       {
-        "title": "7-11便利店退出印度",
+        "title": "程序员为帮女友挂专家号写出抢号软件",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=7-11%E4%BE%BF%E5%88%A9%E5%BA%97%E9%80%80%E5%87%BA%E5%8D%B0%E5%BA%A6&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%BA%E5%B8%AE%E5%A5%B3%E5%8F%8B%E6%8C%82%E4%B8%93%E5%AE%B6%E5%8F%B7%E5%86%99%E5%87%BA%E6%8A%A2%E5%8F%B7%E8%BD%AF%E4%BB%B6&sa=fyb_news"
       },
       {
-        "title": "缅北白家涉诈超290亿",
+        "title": "中国警方：缅北电诈死灰复燃也不怕",
         "source": "头条热榜",
-        "heat": "3647万",
-        "url": "https://www.toutiao.com/trending/7692694262311489067/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227692694262311489067%22%2C%22hot_board_impr_id%22%3A%222026100710153087AEB26457655D1A5A14%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%BC%85%E5%8C%97%E7%99%BD%E5%AE%B6%E6%B6%89%E8%AF%88%E8%B6%85290%E4%BA%BF%22%7D&rank=&style_id=40132&topic_id=7692694262311489067"
+        "heat": "2760万",
+        "url": "https://www.toutiao.com/trending/7692945943666249259/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227692945943666249259%22%2C%22hot_board_impr_id%22%3A%2220261007190145A2D063CDE12BB0BC8DE2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%B8%AD%E5%9B%BD%E8%AD%A6%E6%96%B9%EF%BC%9A%E7%BC%85%E5%8C%97%E7%94%B5%E8%AF%88%E6%AD%BB%E7%81%B0%E5%A4%8D%E7%87%83%E4%B9%9F%E4%B8%8D%E6%80%95%22%7D&rank=&style_id=40132&topic_id=7692945943666249259"
       },
       {
-        "title": "日媒发问中国游客去哪了",
+        "title": "吴奇隆 不赚钱也是这个立场",
         "source": "头条热榜",
-        "heat": "3300万",
-        "url": "https://www.toutiao.com/trending/7692668967239958554/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227692668967239958554%22%2C%22hot_board_impr_id%22%3A%222026100710153087AEB26457655D1A5A14%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%97%A5%E5%AA%92%E5%8F%91%E9%97%AE%E4%B8%AD%E5%9B%BD%E6%B8%B8%E5%AE%A2%E5%8E%BB%E5%93%AA%E4%BA%86%22%7D&rank=&style_id=40132&topic_id=7692668967239958554"
+        "heat": "2497万",
+        "url": "https://www.toutiao.com/trending/7693348769022459946/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227693348769022459946%22%2C%22hot_board_impr_id%22%3A%2220261007190145A2D063CDE12BB0BC8DE2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%90%B4%E5%A5%87%E9%9A%86+%E4%B8%8D%E8%B5%9A%E9%92%B1%E4%B9%9F%E6%98%AF%E8%BF%99%E4%B8%AA%E7%AB%8B%E5%9C%BA%22%7D&rank=&style_id=40132&topic_id=7693348769022459946"
       },
       {
-        "title": "第九届进博会将举行 有哪些新看点",
+        "title": "弘扬长征精神 走好新时代长征路",
         "source": "头条热榜",
-        "heat": "2986万",
-        "url": "https://www.toutiao.com/article/7693704942242038298"
+        "heat": "2260万",
+        "url": "https://www.toutiao.com/article/7693733966373503534"
       },
       {
-        "title": "缅北电诈主犯反问民警杀人要什么感受",
+        "title": "国内规模最大高速收费站迎返程大军",
         "source": "头条热榜",
-        "heat": "2702万",
-        "url": "https://www.toutiao.com/trending/7693598861029458483/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227693598861029458483%22%2C%22hot_board_impr_id%22%3A%222026100710153087AEB26457655D1A5A14%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%BC%85%E5%8C%97%E7%94%B5%E8%AF%88%E4%B8%BB%E7%8A%AF%E5%8F%8D%E9%97%AE%E6%B0%91%E8%AD%A6%E6%9D%80%E4%BA%BA%E8%A6%81%E4%BB%80%E4%B9%88%E6%84%9F%E5%8F%97%22%7D&rank=&style_id=40132&topic_id=7693598861029458483"
+        "heat": "2045万",
+        "url": "https://www.toutiao.com/trending/7693173856504741931/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%224%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227693173856504741931%22%2C%22hot_board_impr_id%22%3A%2220261007190145A2D063CDE12BB0BC8DE2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%9B%BD%E5%86%85%E8%A7%84%E6%A8%A1%E6%9C%80%E5%A4%A7%E9%AB%98%E9%80%9F%E6%94%B6%E8%B4%B9%E7%AB%99%E8%BF%8E%E8%BF%94%E7%A8%8B%E5%A4%A7%E5%86%9B%22%7D&rank=&style_id=40132&topic_id=7693173856504741931"
       },
       {
-        "title": "粤J2888T车主到郑州了",
+        "title": "《新闻联播》正在直播",
         "source": "头条热榜",
-        "heat": "2445万",
-        "url": "https://www.toutiao.com/trending/7693331118632468489/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%228%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227693331118632468489%22%2C%22hot_board_impr_id%22%3A%222026100710153087AEB26457655D1A5A14%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%B2%A4J2888T%E8%BD%A6%E4%B8%BB%E5%88%B0%E9%83%91%E5%B7%9E%E4%BA%86%22%7D&rank=&style_id=40132&topic_id=7693331118632468489"
+        "heat": "1850万",
+        "url": "https://webcast-open.douyin.com/open/media_live/330698468897"
       },
       {
-        "title": "新一轮油价调整时间定了",
+        "title": "诺贝尔化学奖揭晓",
         "source": "头条热榜",
-        "heat": "2212万",
-        "url": "https://www.toutiao.com/trending/7693613365381513755/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227693613365381513755%22%2C%22hot_board_impr_id%22%3A%222026100710153087AEB26457655D1A5A14%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%96%B0%E4%B8%80%E8%BD%AE%E6%B2%B9%E4%BB%B7%E8%B0%83%E6%95%B4%E6%97%B6%E9%97%B4%E5%AE%9A%E4%BA%86%22%7D&rank=&style_id=40132&topic_id=7693613365381513755"
+        "heat": "1674万",
+        "url": "https://www.toutiao.com/trending/7693114566049529883/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227693114566049529883%22%2C%22hot_board_impr_id%22%3A%2220261007190145A2D063CDE12BB0BC8DE2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%AF%BA%E8%B4%9D%E5%B0%94%E5%8C%96%E5%AD%A6%E5%A5%96%E6%8F%AD%E6%99%93%22%7D&rank=&style_id=40132&topic_id=7693114566049529883"
       }
     ],
-    "updatedAt": "2026-10-07T02:15:40.784Z",
+    "updatedAt": "2026-10-07T11:01:57.240Z",
     "stale": false
   },
   "releases": {
@@ -931,17 +931,6 @@
         "desc": "念小学的某一天，不知道吃了什么蘑菇，鬼迷心窍，突然觉得未来可以当个诗人。我很快为此做出重大努力，斥资购置了里尔克的《给青年诗人的信》。仿佛有了这本书，已经算半个诗人，心中难免壮怀激烈。然而这么多年过去，这本"
       },
       {
-        "title": "生化危机：爆发夜｜最美逆行者与他最后的逆行人生",
-        "url": "https://movie.douban.com/review/17845072/",
-        "date": "2026-10-06",
-        "source": "豆瓣·影评",
-        "summary": "四星/7.5",
-        "subject": "生化危机：爆发夜",
-        "rating": "推荐",
-        "type": "media",
-        "desc": "四星/7.5"
-      },
-      {
         "title": "生化危机：爆发夜｜看完只觉得好草台班子的研究和应急...",
         "url": "https://movie.douban.com/review/17842930/",
         "date": "2026-10-05",
@@ -953,15 +942,15 @@
         "desc": "看完本"
       },
       {
-        "title": "余红旧事｜烂尾！刘阳为何杀郝鹏？郝洁故事线断了？芊芊变多余的？槽点太多",
-        "url": "https://movie.douban.com/review/17843277/",
-        "date": "2026-10-05",
+        "title": "生化危机：爆发夜｜最美逆行者与他最后的逆行人生",
+        "url": "https://movie.douban.com/review/17845072/",
+        "date": "2026-10-06",
         "source": "豆瓣·影评",
-        "summary": "看完",
-        "subject": "余红旧事",
+        "summary": "四星/7.5",
+        "subject": "生化危机：爆发夜",
         "rating": "推荐",
         "type": "media",
-        "desc": "看完"
+        "desc": "四星/7.5"
       },
       {
         "title": "乱世佳人｜妳要毁了我",
@@ -973,6 +962,17 @@
         "rating": "力荐",
         "type": "media",
         "desc": ""
+      },
+      {
+        "title": "余红旧事｜烂尾！刘阳为何杀郝鹏？郝洁故事线断了？芊芊变多余的？槽点太多",
+        "url": "https://movie.douban.com/review/17843277/",
+        "date": "2026-10-05",
+        "source": "豆瓣·影评",
+        "summary": "看完",
+        "subject": "余红旧事",
+        "rating": "推荐",
+        "type": "media",
+        "desc": "看完"
       },
       {
         "title": "余红旧事｜点一曲东北民谣",
@@ -997,7 +997,7 @@
         "desc": ""
       }
     ],
-    "updatedAt": "2026-10-07T02:15:40.784Z",
+    "updatedAt": "2026-10-07T11:01:57.240Z",
     "stale": false
   },
   "photography": {
@@ -1010,193 +1010,193 @@
       "name": "news:中新网·要闻",
       "ok": true,
       "count": 30,
-      "ms": 666
-    },
-    {
-      "name": "ai:量子位",
-      "ok": true,
-      "count": 10,
-      "ms": 1491
-    },
-    {
-      "name": "stock:腾讯行情",
-      "ok": true,
-      "count": 6,
-      "ms": 1745
+      "ms": 649
     },
     {
       "name": "photography:r/portraits",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 1865
-    },
-    {
-      "name": "photography:r/streetphotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 1876
+      "ms": 999
     },
     {
       "name": "photography:r/landscapephotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 1878
+      "ms": 999
+    },
+    {
+      "name": "photography:r/streetphotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 1007
     },
     {
       "name": "photography:r/photography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 1886
-    },
-    {
-      "name": "photography:r/foodphotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 1898
+      "ms": 1007
     },
     {
       "name": "photography:r/FilmPhotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 1902
+      "ms": 1007
+    },
+    {
+      "name": "photography:r/foodphotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 1012
     },
     {
       "name": "news:中新网·国内",
       "ok": true,
       "count": 30,
-      "ms": 1424
+      "ms": 458
     },
     {
-      "name": "inspiration:抖音热搜",
+      "name": "stock:腾讯行情",
       "ok": true,
-      "count": 50,
-      "ms": 2183
+      "count": 6,
+      "ms": 1150
+    },
+    {
+      "name": "ai:量子位",
+      "ok": true,
+      "count": 10,
+      "ms": 1293
     },
     {
       "name": "news:中新网·社会",
       "ok": true,
       "count": 30,
-      "ms": 295
+      "ms": 492
     },
     {
       "name": "news:中新网·国际",
       "ok": true,
       "count": 30,
-      "ms": 52
+      "ms": 13
     },
     {
       "name": "news:知乎日报",
       "ok": false,
       "error": "fetch failed",
-      "ms": 297
+      "ms": 15
     },
     {
-      "name": "ai:36氪",
-      "ok": false,
-      "error": "空结果",
-      "ms": 1449
+      "name": "inspiration:抖音热搜",
+      "ok": true,
+      "count": 50,
+      "ms": 2035
     },
     {
       "name": "sub:思想文化·豆瓣·书评精选",
       "ok": true,
       "count": 20,
-      "ms": 3300
+      "ms": 2041
     },
     {
       "name": "sub:心理成长·知乎日报",
       "ok": false,
       "error": "fetch failed",
-      "ms": 26
+      "ms": 116
     },
     {
       "name": "sub:生活方式·中新网·生活",
       "ok": true,
-      "count": 3,
-      "ms": 66
+      "count": 4,
+      "ms": 13
     },
     {
       "name": "sub:生活方式·中新网·财经",
       "ok": true,
       "count": 30,
-      "ms": 51
-    },
-    {
-      "name": "podcast:关注·来都来了",
-      "ok": true,
-      "count": 1,
-      "ms": 3802
+      "ms": 12
     },
     {
       "name": "sanlian:三联生活周刊",
       "ok": true,
       "count": 7,
-      "ms": 3833
+      "ms": 2265
     },
     {
-      "name": "inspiration:百度热搜",
+      "name": "podcast:关注·来都来了",
       "ok": true,
-      "count": 51,
-      "ms": 1709
+      "count": 1,
+      "ms": 2439
     },
     {
       "name": "news:百度热搜",
       "ok": true,
       "count": 51,
-      "ms": 1251
+      "ms": 1364
+    },
+    {
+      "name": "inspiration:百度热搜",
+      "ok": true,
+      "count": 51,
+      "ms": 916
     },
     {
       "name": "releases:豆瓣·书评",
       "ok": true,
       "count": 20,
-      "ms": 3921
+      "ms": 3025
     },
     {
       "name": "podcast:关注·不合时宜",
       "ok": true,
       "count": 1,
-      "ms": 212
+      "ms": 1107
+    },
+    {
+      "name": "ai:36氪",
+      "ok": false,
+      "error": "空结果",
+      "ms": 2477
     },
     {
       "name": "inspiration:头条热榜",
       "ok": true,
       "count": 50,
-      "ms": 673
+      "ms": 937
     },
     {
       "name": "releases:豆瓣·影评",
       "ok": true,
       "count": 20,
-      "ms": 1016
+      "ms": 1126
     },
     {
       "name": "inspiration:B站排行",
       "ok": true,
       "count": 100,
-      "ms": 971
+      "ms": 639
     },
     {
       "name": "podcast:关注·文化有限",
       "ok": true,
       "count": 1,
-      "ms": 2332
+      "ms": 1676
     },
     {
       "name": "podcast:关注·忽左忽右",
       "ok": true,
       "count": 1,
-      "ms": 103
+      "ms": 378
     },
     {
       "name": "podcast:关注·东腔西调",
       "ok": true,
       "count": 1,
-      "ms": 3962
+      "ms": 1735
     },
     {
       "name": "podcast:Apple中国热榜",
       "ok": false,
       "error": "This operation was aborted",
-      "ms": 15002
+      "ms": 15001
     }
   ]
 }
