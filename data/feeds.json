@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-26T17:19:58.549Z",
+  "updatedAt": "2026-10-26T19:54:43.071Z",
   "news": {
     "data": [
       {
@@ -178,83 +178,83 @@
         "summary": ""
       }
     ],
-    "updatedAt": "2026-10-26T17:19:58.549Z",
+    "updatedAt": "2026-10-26T19:54:43.071Z",
     "stale": false
   },
   "ai": {
     "data": [
       {
-        "title": "刚刚，Anthropic公开335页招股书：史上最大IPO，史上最亏AI公司",
-        "url": "https://www.qbitai.com/2026/10/505551.html",
-        "date": "2026-10-26",
+        "title": "企业AI需要两个世界模型",
+        "url": "https://www.qbitai.com/2026/10/505032.html",
+        "date": "2026-10-23",
         "source": "量子位",
-        "summary": "地球最富兄妹俩堂堂来袭！7名联创仍紧握50.1%总投票权"
+        "summary": "特赞想让企业Agent真正懂业务"
       },
       {
-        "title": "AI时代，一个人能有多大能量？天禧AI × 观猹大会现场实测个人AI跨端协同新体验",
-        "url": "https://www.qbitai.com/2026/10/505539.html",
-        "date": "2026-10-26",
+        "title": "南京物理AI上大分！三位图灵奖得主发声，50个应用场景亮相",
+        "url": "https://www.qbitai.com/2026/10/504915.html",
+        "date": "2026-10-23",
         "source": "量子位",
-        "summary": "10月23日至25日，以“见证超能发生”为主题的“天禧AI × 观猹大会”在杭州茶叶博览会会议会展中心启幕。"
+        "summary": "让AI真正走进真实世界"
       },
       {
-        "title": "OpenAI开始断网训练最强模型：“安全起见”",
-        "url": "https://www.qbitai.com/2026/10/505529.html",
-        "date": "2026-10-26",
+        "title": "高德发布首个基于开放世界行为的全身基座模型λ0，推动机器人从“局部学习”迈向“全身动作对齐”",
+        "url": "https://www.qbitai.com/2026/10/504905.html",
+        "date": "2026-10-23",
         "source": "量子位",
-        "summary": "模型开始利用GPU缓存聊天？"
+        "summary": "阿里巴巴集团旗下高德正式发布首个基于开放世界行为的全身基座模型λ0"
       },
       {
-        "title": "A社联创演讲：AI奇点已来",
-        "url": "https://www.qbitai.com/2026/10/505521.html",
-        "date": "2026-10-26",
+        "title": "百度世界2026前瞻：10+重磅分论坛，全面解码AI时代的智能组织进化路径",
+        "url": "https://www.qbitai.com/2026/10/504901.html",
+        "date": "2026-10-23",
         "source": "量子位",
-        "summary": "所谓奇点，或许是AI跃过人类的那个点。"
+        "summary": "10月21日，百度官方公众号发文披露了百度世界2026分论坛的更多议程信息。"
       },
       {
-        "title": "从“言传身教”到“触类旁通”：AI既需要“名师指引”，也需要“自我修行”",
-        "url": "https://www.qbitai.com/2026/10/505443.html",
-        "date": "2026-10-26",
+        "title": "科大讯飞首发星辰TaaS平台，让Token真正成为千行百业的生产力",
+        "url": "https://www.qbitai.com/2026/10/505083.html",
+        "date": "2026-10-23",
         "source": "量子位",
-        "summary": "人工智能正在从人机“言传身教”走向自学“触类旁通”。"
+        "summary": "10月22日，2026科大讯飞全球1024开发者节在北京国家会议中心开幕"
       },
       {
-        "title": "长安汽车赵非：汽车将成为端侧物理AI规模最大的应用载体 | 2026世界智能网联汽车大会",
-        "url": "https://www.qbitai.com/2026/10/505436.html",
-        "date": "2026-10-26",
+        "title": "一张5090跑起34B实时世界模型，国产玩家拿下英伟达大奖！",
+        "url": "https://www.qbitai.com/2026/10/504931.html",
+        "date": "2026-10-23",
         "source": "量子位",
-        "summary": "10月21日，2026世界智能网联汽车大会在北京召开"
+        "summary": "房间秒变草原，抬手就能下雪"
       },
       {
-        "title": "趋境科技完成 B 轮融资，半年实现超十倍速增长，加速高品质 AI Token 规模化交付",
-        "url": "https://www.qbitai.com/2026/10/505429.html",
-        "date": "2026-10-26",
+        "title": "国产5B生图模型海外突然爆火，4天超百万下载",
+        "url": "https://www.qbitai.com/2026/10/504930.html",
+        "date": "2026-10-23",
         "source": "量子位",
-        "summary": "高品质 AI Token 成为行业新风向"
+        "summary": ""
       },
       {
-        "title": "NeoLab第一个商业模式：转售GPU",
-        "url": "https://www.qbitai.com/2026/10/505478.html",
-        "date": "2026-10-26",
+        "title": "iRTE2026：声网CEO赵斌提出五级对话能力框架，实时互动迈入对话 AGI 时代",
+        "url": "https://www.qbitai.com/2026/10/504913.html",
+        "date": "2026-10-23",
         "source": "量子位",
-        "summary": "从冲刺AGI到转售GPU。"
+        "summary": "10月23日，iRTE2026实时智能大会在北京举行。"
       },
       {
-        "title": "中国近50%的新云生意，竟被这家公司包揽！",
-        "url": "https://www.qbitai.com/2026/10/505454.html",
-        "date": "2026-10-26",
+        "title": "又一国产决策模型发布！准确率超过微软和Jev等决策模型",
+        "url": "https://www.qbitai.com/2026/10/504879.html",
+        "date": "2026-10-22",
         "source": "量子位",
-        "summary": "有点意外，但也不意外"
+        "summary": "10月22日，蚂蚁数科正式发布决策模型 LingDT-Decision-1.0。"
       },
       {
-        "title": "KV Cache砍掉99%，单卡吞吐飙6倍，港科CMU联手岩山科技开源新模型",
-        "url": "https://www.qbitai.com/2026/10/505407.html",
-        "date": "2026-10-26",
+        "title": "特斯拉利润腰斩，一夜跌没“通用汽车”！马斯克：FSD在中国也会遥遥领先",
+        "url": "https://www.qbitai.com/2026/10/504841.html",
+        "date": "2026-10-22",
         "source": "量子位",
-        "summary": "一张卡，512路长推理同时跑"
+        "summary": "FSD一年增长70万付费用户"
       }
     ],
-    "updatedAt": "2026-10-26T17:19:58.549Z",
+    "updatedAt": "2026-10-26T19:54:43.071Z",
     "stale": false
   },
   "stock": {
@@ -308,7 +308,7 @@
         "up": false
       }
     ],
-    "updatedAt": "2026-10-26T17:19:58.549Z",
+    "updatedAt": "2026-10-26T19:54:43.071Z",
     "stale": false
   },
   "podcastHot": {
@@ -347,26 +347,26 @@
         "summary": "凹凸电波 · 喜剧/健康与健身 · Apple 播客中国区排名第 3"
       },
       {
-        "id": "ap-1498170617",
-        "rank": 4,
-        "title": "自我进化论",
-        "podcaster": "颜晓静Athena",
-        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/7e/9f/2c/7e9f2c84-e756-b687-391e-83a27724645d/mza_1150423139010350989.jpg/100x100bb.png",
-        "genre": "休闲 / 教育",
-        "date": "Mon, 26 Oc",
-        "url": "https://podcasts.apple.com/cn/podcast/%E8%87%AA%E6%88%91%E8%BF%9B%E5%8C%96%E8%AE%BA/id1498170617",
-        "summary": "颜晓静Athena · 休闲/教育 · Apple 播客中国区排名第 4"
-      },
-      {
         "id": "ap-1668626930",
-        "rank": 5,
+        "rank": 4,
         "title": "霓达播客",
         "podcaster": "霓达播台NidaMedia",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/31/20/de/3120de83-d957-83de-8224-092c98de7189/mza_18215723817537101746.png/100x100bb.png",
         "genre": "犯罪纪实 / 休闲",
         "date": "Mon, 26 Oc",
         "url": "https://podcasts.apple.com/cn/podcast/%E9%9C%93%E8%BE%BE%E6%92%AD%E5%AE%A2/id1668626930",
-        "summary": "霓达播台NidaMedia · 犯罪纪实/休闲 · Apple 播客中国区排名第 5"
+        "summary": "霓达播台NidaMedia · 犯罪纪实/休闲 · Apple 播客中国区排名第 4"
+      },
+      {
+        "id": "ap-1498170617",
+        "rank": 5,
+        "title": "自我进化论",
+        "podcaster": "颜晓静Athena",
+        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/7e/9f/2c/7e9f2c84-e756-b687-391e-83a27724645d/mza_1150423139010350989.jpg/100x100bb.png",
+        "genre": "休闲 / 教育",
+        "date": "Mon, 26 Oc",
+        "url": "https://podcasts.apple.com/cn/podcast/%E8%87%AA%E6%88%91%E8%BF%9B%E5%8C%96%E8%AE%BA/id1498170617",
+        "summary": "颜晓静Athena · 休闲/教育 · Apple 播客中国区排名第 5"
       },
       {
         "id": "ap-1731784296",
@@ -413,19 +413,19 @@
         "summary": "谭立人 · 休闲 · Apple 播客中国区排名第 9"
       },
       {
-        "id": "ap-1676099257",
+        "id": "ap-1603580035",
         "rank": 10,
-        "title": "搞钱女孩",
-        "podcaster": "搞钱女孩小辉",
-        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/54/d2/5e/54d25e7d-fe19-dcf0-cb4b-85dce4ec10b0/mza_2102588857142453432.jpeg/100x100bb.png",
-        "genre": "社会与文化 / 商务",
+        "title": "肥话连篇",
+        "podcaster": "肥杰",
+        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/12/08/74/1208744d-b065-1164-632b-82c97af39412/mza_14598067193335283885.jpeg/100x100bb.png",
+        "genre": "喜剧 / 休闲",
         "date": "Mon, 26 Oc",
-        "url": "https://podcasts.apple.com/cn/podcast/%E6%90%9E%E9%92%B1%E5%A5%B3%E5%AD%A9/id1676099257",
-        "summary": "搞钱女孩小辉 · 社会与文化/商务 · Apple 播客中国区排名第 10"
+        "url": "https://podcasts.apple.com/cn/podcast/%E8%82%A5%E8%AF%9D%E8%BF%9E%E7%AF%87/id1603580035",
+        "summary": "肥杰 · 喜剧/休闲 · Apple 播客中国区排名第 10"
       }
     ],
-    "updatedAt": "2026-10-26T10:02:41.935Z",
-    "stale": true
+    "updatedAt": "2026-10-26T19:54:43.071Z",
+    "stale": false
   },
   "podcastFollow": {
     "data": [
@@ -480,7 +480,7 @@
         "url": "https://www.ximalaya.com/sound/1027000067"
       }
     ],
-    "updatedAt": "2026-10-26T17:19:58.549Z",
+    "updatedAt": "2026-10-26T19:54:43.071Z",
     "stale": false
   },
   "sanlian": {
@@ -534,7 +534,7 @@
         "url": "https://www.lifeweek.com.cn/news?currentId=274720&currentIdShow=y"
       }
     ],
-    "updatedAt": "2026-10-26T17:19:58.549Z",
+    "updatedAt": "2026-10-26T19:54:43.071Z",
     "stale": false
   },
   "subscriptions": {
@@ -561,12 +561,30 @@
             "rating": "推荐"
           },
           {
+            "title": "厌女｜为什么上野千鹤子《厌女》的学术价值不如《猪的产后护理》？",
+            "url": "https://book.douban.com/review/17872541/",
+            "date": "2026-10-25",
+            "source": "豆瓣·书评精选",
+            "summary": "……",
+            "subject": "厌女",
+            "rating": "很差"
+          },
+          {
             "title": "啸风山庄｜“文学不该是女人毕生的事业”，凭什么？",
             "url": "https://book.douban.com/review/17867862/",
             "date": "2026-10-23",
             "source": "豆瓣·书评精选",
             "summary": "1847年，小说Wuthering Heights（《呼啸山庄》）出版，作者署名“Ellis Bell”。",
             "subject": "啸风山庄",
+            "rating": "力荐"
+          },
+          {
+            "title": "哲学家的密室 下｜死亡与意义",
+            "url": "https://book.douban.com/review/17873588/",
+            "date": "2026-10-26",
+            "source": "豆瓣·书评精选",
+            "summary": "虫豸版，丢豆瓣备份一下）",
+            "subject": "哲学家的密室 下",
             "rating": "力荐"
           },
           {
@@ -588,15 +606,6 @@
             "rating": "力荐"
           },
           {
-            "title": "厌女｜为什么上野千鹤子《厌女》的学术价值不如《猪的产后护理》？",
-            "url": "https://book.douban.com/review/17872541/",
-            "date": "2026-10-25",
-            "source": "豆瓣·书评精选",
-            "summary": "……",
-            "subject": "厌女",
-            "rating": "很差"
-          },
-          {
             "title": "椭圆形午后｜他这个机器人什么都能想通",
             "url": "https://book.douban.com/review/17867816/",
             "date": "2026-10-23",
@@ -604,15 +613,6 @@
             "summary": "我被问了一个问题：有兴趣成为书里的谁？",
             "subject": "椭圆形午后",
             "rating": "力荐"
-          },
-          {
-            "title": "死屋手记｜《死屋手记》读后",
-            "url": "https://book.douban.com/review/17857847/",
-            "date": "2026-10-16",
-            "source": "豆瓣·书评精选",
-            "summary": "这一",
-            "subject": "死屋手记",
-            "rating": "还行"
           }
         ]
       },
@@ -696,7 +696,7 @@
         ]
       }
     },
-    "updatedAt": "2026-10-26T17:19:58.549Z",
+    "updatedAt": "2026-10-26T19:54:43.071Z",
     "stale": false
   },
   "inspiration": {
@@ -704,50 +704,50 @@
       {
         "title": "Kimi致歉并公布补偿方案",
         "source": "抖音热搜",
-        "heat": "1210万",
+        "heat": "1208万",
         "url": "https://www.douyin.com/search/Kimi%E8%87%B4%E6%AD%89%E5%B9%B6%E5%85%AC%E5%B8%83%E8%A1%A5%E5%81%BF%E6%96%B9%E6%A1%88"
       },
       {
-        "title": "内存价格出现倒挂",
+        "title": "BLG对战KC",
         "source": "抖音热搜",
-        "heat": "1184万",
-        "url": "https://www.douyin.com/search/%E5%86%85%E5%AD%98%E4%BB%B7%E6%A0%BC%E5%87%BA%E7%8E%B0%E5%80%92%E6%8C%82"
+        "heat": "1171万",
+        "url": "https://www.douyin.com/search/BLG%E5%AF%B9%E6%88%98KC"
       },
       {
         "title": "我国造船业持续领跑全球",
         "source": "抖音热搜",
-        "heat": "1162万",
+        "heat": "1157万",
         "url": "https://www.douyin.com/search/%E6%88%91%E5%9B%BD%E9%80%A0%E8%88%B9%E4%B8%9A%E6%8C%81%E7%BB%AD%E9%A2%86%E8%B7%91%E5%85%A8%E7%90%83"
+      },
+      {
+        "title": "内存价格出现倒挂",
+        "source": "抖音热搜",
+        "heat": "1140万",
+        "url": "https://www.douyin.com/search/%E5%86%85%E5%AD%98%E4%BB%B7%E6%A0%BC%E5%87%BA%E7%8E%B0%E5%80%92%E6%8C%82"
+      },
+      {
+        "title": "AL对战TLAW",
+        "source": "抖音热搜",
+        "heat": "1082万",
+        "url": "https://www.douyin.com/search/AL%E5%AF%B9%E6%88%98TLAW"
       },
       {
         "title": "这样的景区逛着不烧心",
         "source": "抖音热搜",
-        "heat": "1150万",
+        "heat": "1058万",
         "url": "https://www.douyin.com/search/%E8%BF%99%E6%A0%B7%E7%9A%84%E6%99%AF%E5%8C%BA%E9%80%9B%E7%9D%80%E4%B8%8D%E7%83%A7%E5%BF%83"
       },
       {
         "title": "想和你去看赛里木湖的冬日浪漫",
         "source": "抖音热搜",
-        "heat": "1084万",
+        "heat": "944万",
         "url": "https://www.douyin.com/search/%E6%83%B3%E5%92%8C%E4%BD%A0%E5%8E%BB%E7%9C%8B%E8%B5%9B%E9%87%8C%E6%9C%A8%E6%B9%96%E7%9A%84%E5%86%AC%E6%97%A5%E6%B5%AA%E6%BC%AB"
       },
       {
         "title": "全网最励志的三角梅出圈了",
         "source": "抖音热搜",
-        "heat": "1055万",
-        "url": "https://www.douyin.com/search/%E5%85%A8%E7%BD%91%E6%9C%80%E5%8A%B1%E5%BF%97%E7%9A%84%E4%B8%89%E8%A7%92%E6%A2%85%E5%87%BA%E5%9C%88%E4%BA%86"
-      },
-      {
-        "title": "五谷绘出万里长城雄姿",
-        "source": "抖音热搜",
-        "heat": "941万",
-        "url": "https://www.douyin.com/search/%E4%BA%94%E8%B0%B7%E7%BB%98%E5%87%BA%E4%B8%87%E9%87%8C%E9%95%BF%E5%9F%8E%E9%9B%84%E5%A7%BF"
-      },
-      {
-        "title": "AL对战TLAW",
-        "source": "抖音热搜",
         "heat": "939万",
-        "url": "https://www.douyin.com/search/AL%E5%AF%B9%E6%88%98TLAW"
+        "url": "https://www.douyin.com/search/%E5%85%A8%E7%BD%91%E6%9C%80%E5%8A%B1%E5%BF%97%E7%9A%84%E4%B8%89%E8%A7%92%E6%A2%85%E5%87%BA%E5%9C%88%E4%BA%86"
       },
       {
         "title": "在新征程上持之以恒推进全面从严治党",
@@ -788,41 +788,41 @@
       {
         "title": "王兴兴两次认错 宇树暴涨1100亿",
         "source": "头条热榜",
-        "heat": "1441万",
-        "url": "https://www.toutiao.com/trending/7700928117778419250/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227700928117778419250%22%2C%22hot_board_impr_id%22%3A%2220261027011945B03A66D075710FA2A189%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%8E%8B%E5%85%B4%E5%85%B4%E4%B8%A4%E6%AC%A1%E8%AE%A4%E9%94%99+%E5%AE%87%E6%A0%91%E6%9A%B4%E6%B6%A81100%E4%BA%BF%22%7D&rank=&style_id=40132&topic_id=7700928117778419250"
+        "heat": "1473万",
+        "url": "https://www.toutiao.com/trending/7700928117778419250/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227700928117778419250%22%2C%22hot_board_impr_id%22%3A%2220261027035430E6DFE1373B902253FD4A%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%8E%8B%E5%85%B4%E5%85%B4%E4%B8%A4%E6%AC%A1%E8%AE%A4%E9%94%99+%E5%AE%87%E6%A0%91%E6%9A%B4%E6%B6%A81100%E4%BA%BF%22%7D&rank=&style_id=40132&topic_id=7700928117778419250"
       },
       {
         "title": "用党的创新理论凝心铸魂",
         "source": "头条热榜",
-        "heat": "1304万",
+        "heat": "1333万",
         "url": "https://www.toutiao.com/article/7700565196494783011"
       },
       {
-        "title": "女子驾车过高架车顶被风筝线割破",
+        "title": "捐日军罪证15岁少年遭网暴",
         "source": "头条热榜",
-        "heat": "1180万",
-        "url": "https://www.toutiao.com/trending/7700591770706427967/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227700591770706427967%22%2C%22hot_board_impr_id%22%3A%2220261027011945B03A66D075710FA2A189%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%A5%B3%E5%AD%90%E9%A9%BE%E8%BD%A6%E8%BF%87%E9%AB%98%E6%9E%B6%E8%BD%A6%E9%A1%B6%E8%A2%AB%E9%A3%8E%E7%AD%9D%E7%BA%BF%E5%89%B2%E7%A0%B4%22%7D&rank=&style_id=40132&topic_id=7700591770706427967"
+        "heat": "1206万",
+        "url": "https://www.toutiao.com/trending/7699857573017616905/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2212%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227699857573017616905%22%2C%22hot_board_impr_id%22%3A%2220261027035430E6DFE1373B902253FD4A%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%8D%90%E6%97%A5%E5%86%9B%E7%BD%AA%E8%AF%8115%E5%B2%81%E5%B0%91%E5%B9%B4%E9%81%AD%E7%BD%91%E6%9A%B4%22%7D&rank=&style_id=40132&topic_id=7699857573017616905"
       },
       {
-        "title": "母女被未拴绳大狗逼到墙角 警方回应",
+        "title": "外交部：中方尊重巴西人民的选择",
         "source": "头条热榜",
-        "heat": "1067万",
-        "url": "https://www.toutiao.com/trending/7700191140837900315/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227700191140837900315%22%2C%22hot_board_impr_id%22%3A%2220261027011945B03A66D075710FA2A189%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%AF%8D%E5%A5%B3%E8%A2%AB%E6%9C%AA%E6%8B%B4%E7%BB%B3%E5%A4%A7%E7%8B%97%E9%80%BC%E5%88%B0%E5%A2%99%E8%A7%92+%E8%AD%A6%E6%96%B9%E5%9B%9E%E5%BA%94%22%7D&rank=&style_id=40132&topic_id=7700191140837900315"
+        "heat": "1091万",
+        "url": "https://www.toutiao.com/trending/7700875907183083561/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227700875907183083561%22%2C%22hot_board_impr_id%22%3A%2220261027035430E6DFE1373B902253FD4A%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%A4%96%E4%BA%A4%E9%83%A8%EF%BC%9A%E4%B8%AD%E6%96%B9%E5%B0%8A%E9%87%8D%E5%B7%B4%E8%A5%BF%E4%BA%BA%E6%B0%91%E7%9A%84%E9%80%89%E6%8B%A9%22%7D&rank=&style_id=40132&topic_id=7700875907183083561"
       },
       {
         "title": "被取消演出的大衣哥回家干农活了",
         "source": "头条热榜",
-        "heat": "966万",
-        "url": "https://www.toutiao.com/trending/7700428638356930579/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227700428638356930579%22%2C%22hot_board_impr_id%22%3A%2220261027011945B03A66D075710FA2A189%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%A2%AB%E5%8F%96%E6%B6%88%E6%BC%94%E5%87%BA%E7%9A%84%E5%A4%A7%E8%A1%A3%E5%93%A5%E5%9B%9E%E5%AE%B6%E5%B9%B2%E5%86%9C%E6%B4%BB%E4%BA%86%22%7D&rank=&style_id=40132&topic_id=7700428638356930579"
+        "heat": "987万",
+        "url": "https://www.toutiao.com/trending/7700428638356930579/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227700428638356930579%22%2C%22hot_board_impr_id%22%3A%2220261027035430E6DFE1373B902253FD4A%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%A2%AB%E5%8F%96%E6%B6%88%E6%BC%94%E5%87%BA%E7%9A%84%E5%A4%A7%E8%A1%A3%E5%93%A5%E5%9B%9E%E5%AE%B6%E5%B9%B2%E5%86%9C%E6%B4%BB%E4%BA%86%22%7D&rank=&style_id=40132&topic_id=7700428638356930579"
       },
       {
         "title": "《绝区零》先导演示丨挽昼",
         "source": "B站热门",
-        "heat": "566万播放",
+        "heat": "569万播放",
         "url": "https://www.bilibili.com/video/BV1U3n46GEzY"
       }
     ],
-    "updatedAt": "2026-10-26T17:19:58.549Z",
+    "updatedAt": "2026-10-26T19:54:43.071Z",
     "stale": false
   },
   "releases": {
@@ -850,6 +850,17 @@
         "desc": "2024年7月，我在豆瓣发了一条动态：“现在看文艺作品，常能看出某种美国创意写作课的痕迹……但，也很难表述非常具体的特点，就是一种感觉，一种氛围。举例的话，李翊云的书，电影Past Lives。”"
       },
       {
+        "title": "厌女｜为什么上野千鹤子《厌女》的学术价值不如《猪的产后护理》？",
+        "url": "https://book.douban.com/review/17872541/",
+        "date": "2026-10-25",
+        "source": "豆瓣·书评",
+        "summary": "……",
+        "subject": "厌女",
+        "rating": "很差",
+        "type": "book",
+        "desc": "……"
+      },
+      {
         "title": "啸风山庄｜“文学不该是女人毕生的事业”，凭什么？",
         "url": "https://book.douban.com/review/17867862/",
         "date": "2026-10-23",
@@ -859,6 +870,17 @@
         "rating": "力荐",
         "type": "book",
         "desc": "1847年，小说Wuthering Heights（《呼啸山庄》）出版，作者署名“Ellis Bell”。"
+      },
+      {
+        "title": "哲学家的密室 下｜死亡与意义",
+        "url": "https://book.douban.com/review/17873588/",
+        "date": "2026-10-26",
+        "source": "豆瓣·书评",
+        "summary": "虫豸版，丢豆瓣备份一下）",
+        "subject": "哲学家的密室 下",
+        "rating": "力荐",
+        "type": "book",
+        "desc": "虫豸版，丢豆瓣备份一下）"
       },
       {
         "title": "放学后的侦探队｜对五年级来说刚刚好",
@@ -883,17 +905,6 @@
         "desc": "总是这"
       },
       {
-        "title": "厌女｜为什么上野千鹤子《厌女》的学术价值不如《猪的产后护理》？",
-        "url": "https://book.douban.com/review/17872541/",
-        "date": "2026-10-25",
-        "source": "豆瓣·书评",
-        "summary": "……",
-        "subject": "厌女",
-        "rating": "很差",
-        "type": "book",
-        "desc": "……"
-      },
-      {
         "title": "椭圆形午后｜他这个机器人什么都能想通",
         "url": "https://book.douban.com/review/17867816/",
         "date": "2026-10-23",
@@ -903,17 +914,6 @@
         "rating": "力荐",
         "type": "book",
         "desc": "我被问了一个问题：有兴趣成为书里的谁？"
-      },
-      {
-        "title": "死屋手记｜《死屋手记》读后",
-        "url": "https://book.douban.com/review/17857847/",
-        "date": "2026-10-16",
-        "source": "豆瓣·书评",
-        "summary": "这一",
-        "subject": "死屋手记",
-        "rating": "还行",
-        "type": "book",
-        "desc": "这一"
       },
       {
         "title": "小城良方｜远超我预期的成片质量，小城真的是一剂良方",
@@ -982,7 +982,7 @@
         "desc": ""
       }
     ],
-    "updatedAt": "2026-10-26T17:19:58.549Z",
+    "updatedAt": "2026-10-26T19:54:43.071Z",
     "stale": false
   },
   "photography": {
@@ -995,193 +995,193 @@
       "name": "news:中新网·要闻",
       "ok": true,
       "count": 30,
-      "ms": 843
+      "ms": 1241
     },
     {
       "name": "ai:量子位",
       "ok": true,
       "count": 10,
-      "ms": 1739
-    },
-    {
-      "name": "photography:r/portraits",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 1877
-    },
-    {
-      "name": "photography:r/landscapephotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 1877
-    },
-    {
-      "name": "photography:r/FilmPhotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 1882
-    },
-    {
-      "name": "photography:r/photography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 1885
-    },
-    {
-      "name": "photography:r/foodphotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 1891
-    },
-    {
-      "name": "photography:r/streetphotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 1898
-    },
-    {
-      "name": "news:中新网·国内",
-      "ok": true,
-      "count": 30,
-      "ms": 1361
-    },
-    {
-      "name": "news:中新网·社会",
-      "ok": true,
-      "count": 30,
-      "ms": 5
+      "ms": 1717
     },
     {
       "name": "stock:腾讯行情",
       "ok": true,
       "count": 6,
-      "ms": 2400
+      "ms": 2018
+    },
+    {
+      "name": "photography:r/portraits",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2362
+    },
+    {
+      "name": "photography:r/streetphotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2407
+    },
+    {
+      "name": "photography:r/photography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2410
+    },
+    {
+      "name": "photography:r/landscapephotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2416
+    },
+    {
+      "name": "photography:r/FilmPhotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2419
+    },
+    {
+      "name": "photography:r/foodphotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2422
+    },
+    {
+      "name": "news:中新网·国内",
+      "ok": true,
+      "count": 30,
+      "ms": 1480
+    },
+    {
+      "name": "podcast:Apple中国热榜",
+      "ok": true,
+      "count": 10,
+      "ms": 2706
+    },
+    {
+      "name": "news:中新网·社会",
+      "ok": true,
+      "count": 30,
+      "ms": 205
     },
     {
       "name": "news:中新网·国际",
       "ok": true,
       "count": 30,
-      "ms": 253
-    },
-    {
-      "name": "news:知乎日报",
-      "ok": false,
-      "error": "fetch failed",
-      "ms": 330
+      "ms": 15
     },
     {
       "name": "inspiration:抖音热搜",
       "ok": true,
       "count": 50,
-      "ms": 3039
+      "ms": 2967
     },
     {
-      "name": "podcast:关注·来都来了",
-      "ok": true,
-      "count": 1,
-      "ms": 3320
-    },
-    {
-      "name": "ai:36氪",
+      "name": "news:知乎日报",
       "ok": false,
-      "error": "空结果",
-      "ms": 1619
-    },
-    {
-      "name": "sanlian:三联生活周刊",
-      "ok": true,
-      "count": 6,
-      "ms": 3636
+      "error": "fetch failed",
+      "ms": 145
     },
     {
       "name": "sub:思想文化·豆瓣·书评精选",
       "ok": true,
       "count": 20,
-      "ms": 3848
+      "ms": 3209
+    },
+    {
+      "name": "ai:36氪",
+      "ok": false,
+      "error": "空结果",
+      "ms": 1666
+    },
+    {
+      "name": "sanlian:三联生活周刊",
+      "ok": true,
+      "count": 6,
+      "ms": 3692
     },
     {
       "name": "releases:豆瓣·书评",
       "ok": true,
       "count": 20,
-      "ms": 4103
-    },
-    {
-      "name": "sub:心理成长·知乎日报",
-      "ok": false,
-      "error": "fetch failed",
-      "ms": 999
+      "ms": 3788
     },
     {
       "name": "releases:豆瓣·影评",
       "ok": true,
       "count": 20,
-      "ms": 949
+      "ms": 794
     },
     {
-      "name": "podcast:关注·不合时宜",
-      "ok": true,
-      "count": 1,
-      "ms": 1890
+      "name": "sub:心理成长·知乎日报",
+      "ok": false,
+      "error": "fetch failed",
+      "ms": 1747
     },
     {
       "name": "sub:生活方式·中新网·生活",
       "ok": true,
       "count": 10,
-      "ms": 546
-    },
-    {
-      "name": "inspiration:百度热搜",
-      "ok": true,
-      "count": 51,
-      "ms": 2574
-    },
-    {
-      "name": "news:百度热搜",
-      "ok": true,
-      "count": 51,
-      "ms": 2890
+      "ms": 206
     },
     {
       "name": "sub:生活方式·中新网·财经",
       "ok": true,
       "count": 30,
-      "ms": 247
+      "ms": 16
+    },
+    {
+      "name": "news:百度热搜",
+      "ok": true,
+      "count": 51,
+      "ms": 2639
+    },
+    {
+      "name": "inspiration:百度热搜",
+      "ok": true,
+      "count": 51,
+      "ms": 2709
     },
     {
       "name": "inspiration:头条热榜",
       "ok": true,
       "count": 50,
-      "ms": 817
-    },
-    {
-      "name": "podcast:关注·文化有限",
-      "ok": true,
-      "count": 1,
-      "ms": 1568
-    },
-    {
-      "name": "podcast:关注·忽左忽右",
-      "ok": true,
-      "count": 1,
-      "ms": 340
+      "ms": 588
     },
     {
       "name": "inspiration:B站排行",
       "ok": true,
       "count": 100,
-      "ms": 693
+      "ms": 766
     },
     {
-      "name": "podcast:Apple中国热榜",
-      "ok": false,
-      "error": "This operation was aborted",
-      "ms": 15001
+      "name": "podcast:关注·来都来了",
+      "ok": true,
+      "count": 1,
+      "ms": 13735
+    },
+    {
+      "name": "podcast:关注·不合时宜",
+      "ok": true,
+      "count": 1,
+      "ms": 933
+    },
+    {
+      "name": "podcast:关注·文化有限",
+      "ok": true,
+      "count": 1,
+      "ms": 1798
+    },
+    {
+      "name": "podcast:关注·忽左忽右",
+      "ok": true,
+      "count": 1,
+      "ms": 523
     },
     {
       "name": "podcast:关注·东腔西调",
       "ok": true,
       "count": 1,
-      "ms": 11661
+      "ms": 1334
     }
   ]
 }
