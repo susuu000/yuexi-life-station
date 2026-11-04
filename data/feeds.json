@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T18:36:43.189Z",
+  "updatedAt": "2026-11-04T20:48:36.691Z",
   "news": {
     "data": [
       {
@@ -185,7 +185,7 @@
         "summary": ""
       }
     ],
-    "updatedAt": "2026-11-04T18:36:43.189Z",
+    "updatedAt": "2026-11-04T20:48:36.691Z",
     "stale": false
   },
   "ai": {
@@ -261,7 +261,7 @@
         "summary": "两位CTO，关起门来吵架"
       }
     ],
-    "updatedAt": "2026-11-04T18:36:43.189Z",
+    "updatedAt": "2026-11-04T20:48:36.691Z",
     "stale": false
   },
   "stock": {
@@ -315,7 +315,7 @@
         "up": true
       }
     ],
-    "updatedAt": "2026-11-04T18:36:43.189Z",
+    "updatedAt": "2026-11-04T20:48:36.691Z",
     "stale": false
   },
   "podcastHot": {
@@ -487,39 +487,39 @@
         "url": "https://www.ximalaya.com/sound/1028714247"
       }
     ],
-    "updatedAt": "2026-11-04T18:36:43.189Z",
+    "updatedAt": "2026-11-04T20:48:36.691Z",
     "stale": false
   },
   "sanlian": {
     "data": [
       {
+        "id": "sl-273322",
+        "title": "如果AI什么都能写了，文学为什么还「活」着？",
+        "date": "2026-11-04",
+        "source": "三联生活周刊",
+        "summary": "",
+        "url": "https://www.lifeweek.com.cn/news?currentId=273322&currentIdShow=y"
+      },
+      {
+        "id": "sl-274835",
+        "title": "幸福者退让原则：退一步真的能海阔天空吗？",
+        "date": "2026-11-04",
+        "source": "三联生活周刊",
+        "summary": "",
+        "url": "https://www.lifeweek.com.cn/news?currentId=274835&currentIdShow=y"
+      },
+      {
         "id": "sl-256436",
         "title": "年轻女性：在友谊的阵痛中寻找自我",
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=256436&currentIdShow=y"
       },
       {
-        "id": "sl-274837",
-        "title": "等等！经济已经好起来了吗，怎么还没暖到我啊？",
-        "date": "2026-11-03",
-        "source": "三联生活周刊",
-        "summary": "",
-        "url": "https://www.lifeweek.com.cn/news?currentId=274837&currentIdShow=y"
-      },
-      {
-        "id": "sl-271554",
-        "title": "男人的更年期：没有“那一天”",
-        "date": "2026-11-03",
-        "source": "三联生活周刊",
-        "summary": "",
-        "url": "https://www.lifeweek.com.cn/news?currentId=271554&currentIdShow=y"
-      },
-      {
         "id": "sl-5266",
         "title": "怎么睡个好觉",
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=5266&currentIdShow=y"
@@ -527,7 +527,7 @@
       {
         "id": "sl-4975",
         "title": "韩昇·《资治通鉴》百讲",
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=4975&currentIdShow=y"
@@ -535,7 +535,7 @@
       {
         "id": "sl-4412",
         "title": "押沙龙·趣味世界史100讲",
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=4412&currentIdShow=y"
@@ -543,20 +543,29 @@
       {
         "id": "sl-1767",
         "title": "与孩子一起听的神话通识课",
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "source": "三联生活周刊",
         "summary": "",
         "url": "https://www.lifeweek.com.cn/news?currentId=1767&currentIdShow=y"
       }
     ],
-    "updatedAt": "2026-11-03T20:29:47.138Z",
-    "stale": true
+    "updatedAt": "2026-11-04T20:48:36.691Z",
+    "stale": false
   },
   "subscriptions": {
     "data": {
       "thinking": {
         "label": "思想文化",
         "items": [
+          {
+            "title": "大宋悬疑录｜有限度的巧合——专访小说家记无忌",
+            "url": "https://book.douban.com/review/17886784/",
+            "date": "2026-11-03",
+            "source": "豆瓣·书评精选",
+            "summary": "采访对象：小说家记无忌。历史悬疑小说《大宋悬疑录：貔貅刑》荣获谜芸馆、赤乌堂2024年度本土推理榜双TOP1的好成绩，并已授权越南文版、日文版；《大宋悬疑录 : 包拯",
+            "subject": "大宋悬疑录",
+            "rating": "力荐"
+          },
           {
             "title": "Jonathan Creek: The Fantom of the Acropolis｜《幻术大师十周年特别篇：卫城剧院魅影》剧本",
             "url": "https://book.douban.com/review/17881257/",
@@ -567,12 +576,21 @@
             "rating": "力荐"
           },
           {
-            "title": "大宋悬疑录｜有限度的巧合——专访小说家记无忌",
-            "url": "https://book.douban.com/review/17886784/",
-            "date": "2026-11-03",
+            "title": "2026年推理佳作选｜时隔半年的简评（补）",
+            "url": "https://book.douban.com/review/17888083/",
+            "date": "2026-11-04",
             "source": "豆瓣·书评精选",
-            "summary": "采访对象：小说家记无忌。历史悬疑小说《大宋悬疑录：貔貅刑》荣获谜芸馆、赤乌堂2024年度本土推理榜双TOP1的好成绩，并已授权越南文版、日文版；《大宋悬疑录 : 包拯",
-            "subject": "大宋悬疑录",
+            "summary": "一、《地球上最初的名侦探》/冷水砼",
+            "subject": "2026年推理佳作选",
+            "rating": "力荐"
+          },
+          {
+            "title": "春天存留｜春天存留在我们心中的渲染",
+            "url": "https://book.douban.com/review/17863774/",
+            "date": "2026-10-20",
+            "source": "豆瓣·书评精选",
+            "summary": "",
+            "subject": "春天存留",
             "rating": "力荐"
           },
           {
@@ -585,15 +603,6 @@
             "rating": "推荐"
           },
           {
-            "title": "春天存留｜春天存留在我们心中的渲染",
-            "url": "https://book.douban.com/review/17863774/",
-            "date": "2026-10-20",
-            "source": "豆瓣·书评精选",
-            "summary": "",
-            "subject": "春天存留",
-            "rating": "力荐"
-          },
-          {
             "title": "一个人的地球派对｜我们的朋友徐雯",
             "url": "https://book.douban.com/review/17880987/",
             "date": "2026-10-31",
@@ -603,21 +612,12 @@
             "rating": "力荐"
           },
           {
-            "title": "献给阿尔吉侬的花束｜进步报告",
-            "url": "https://book.douban.com/review/17883712/",
-            "date": "2026-11-02",
+            "title": "普通炎症｜向反对的过渡",
+            "url": "https://book.douban.com/review/17887240/",
+            "date": "2026-11-04",
             "source": "豆瓣·书评精选",
-            "summary": "亲爱的",
-            "subject": "献给阿尔吉侬的花束",
-            "rating": "力荐"
-          },
-          {
-            "title": "《孝经》与儒学两千年｜【转】乔秀岩：《〈孝经〉与儒学两千年》中文版序言",
-            "url": "https://book.douban.com/review/17876275/",
-            "date": "2026-10-28",
-            "source": "豆瓣·书评精选",
-            "summary": "【作者简介】乔秀岩，本名桥本秀美，1966年生于日本。东京大学中国哲学专业毕业，北京大学中文系古典文献专业博士。先后师从户川芳郎、倪其心、王文锦、尾崎",
-            "subject": "《孝经》与儒学两千年",
+            "summary": "一本",
+            "subject": "普通炎症",
             "rating": ""
           },
           {
@@ -711,7 +711,7 @@
         ]
       }
     },
-    "updatedAt": "2026-11-04T18:36:43.189Z",
+    "updatedAt": "2026-11-04T20:48:36.691Z",
     "stale": false
   },
   "inspiration": {
@@ -719,13 +719,13 @@
       {
         "title": "原来深秋是咕嘟的",
         "source": "抖音热搜",
-        "heat": "1159万",
+        "heat": "1110万",
         "url": "https://www.douyin.com/search/%E5%8E%9F%E6%9D%A5%E6%B7%B1%E7%A7%8B%E6%98%AF%E5%92%95%E5%98%9F%E7%9A%84"
       },
       {
         "title": "男生秋冬简约穿搭攻略",
         "source": "抖音热搜",
-        "heat": "1135万",
+        "heat": "1110万",
         "url": "https://www.douyin.com/search/%E7%94%B7%E7%94%9F%E7%A7%8B%E5%86%AC%E7%AE%80%E7%BA%A6%E7%A9%BF%E6%90%AD%E6%94%BB%E7%95%A5"
       },
       {
@@ -737,32 +737,32 @@
       {
         "title": "北京周末有明显雨雪天气",
         "source": "抖音热搜",
-        "heat": "1106万",
+        "heat": "1109万",
         "url": "https://www.douyin.com/search/%E5%8C%97%E4%BA%AC%E5%91%A8%E6%9C%AB%E6%9C%89%E6%98%8E%E6%98%BE%E9%9B%A8%E9%9B%AA%E5%A4%A9%E6%B0%94"
-      },
-      {
-        "title": "王艺迪0:3韩莹",
-        "source": "抖音热搜",
-        "heat": "1049万",
-        "url": "https://www.douyin.com/search/%E7%8E%8B%E8%89%BA%E8%BF%AA0%3A3%E9%9F%A9%E8%8E%B9"
       },
       {
         "title": "外交部：就中俄美元首会晤保持沟通",
         "source": "抖音热搜",
-        "heat": "1047万",
+        "heat": "1054万",
         "url": "https://www.douyin.com/search/%E5%A4%96%E4%BA%A4%E9%83%A8%EF%BC%9A%E5%B0%B1%E4%B8%AD%E4%BF%84%E7%BE%8E%E5%85%83%E9%A6%96%E4%BC%9A%E6%99%A4%E4%BF%9D%E6%8C%81%E6%B2%9F%E9%80%9A"
+      },
+      {
+        "title": "王艺迪0:3韩莹",
+        "source": "抖音热搜",
+        "heat": "1052万",
+        "url": "https://www.douyin.com/search/%E7%8E%8B%E8%89%BA%E8%BF%AA0%3A3%E9%9F%A9%E8%8E%B9"
       },
       {
         "title": "中印尼利刃2026联训在广州结训",
         "source": "抖音热搜",
-        "heat": "933万",
+        "heat": "929万",
         "url": "https://www.douyin.com/search/%E4%B8%AD%E5%8D%B0%E5%B0%BC%E5%88%A9%E5%88%832026%E8%81%94%E8%AE%AD%E5%9C%A8%E5%B9%BF%E5%B7%9E%E7%BB%93%E8%AE%AD"
       },
       {
-        "title": "特朗普称将停止对以色列援助",
+        "title": "大摆羽绒服不用当肥粽子",
         "source": "抖音热搜",
-        "heat": "916万",
-        "url": "https://www.douyin.com/search/%E7%89%B9%E6%9C%97%E6%99%AE%E7%A7%B0%E5%B0%86%E5%81%9C%E6%AD%A2%E5%AF%B9%E4%BB%A5%E8%89%B2%E5%88%97%E6%8F%B4%E5%8A%A9"
+        "heat": "925万",
+        "url": "https://www.douyin.com/search/%E5%A4%A7%E6%91%86%E7%BE%BD%E7%BB%92%E6%9C%8D%E4%B8%8D%E7%94%A8%E5%BD%93%E8%82%A5%E7%B2%BD%E5%AD%90"
       },
       {
         "title": "不断开创黄河保护治理工作新局面",
@@ -803,56 +803,45 @@
       {
         "title": "新疆军区数千名新兵夜间紧急拉动演练",
         "source": "头条热榜",
-        "heat": "2100万",
-        "url": "https://www.toutiao.com/trending/7704168520272855562/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704168520272855562%22%2C%22hot_board_impr_id%22%3A%2220261105023633EEAEAE5DF3EAB97F37F7%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%96%B0%E7%96%86%E5%86%9B%E5%8C%BA%E6%95%B0%E5%8D%83%E5%90%8D%E6%96%B0%E5%85%B5%E5%A4%9C%E9%97%B4%E7%B4%A7%E6%80%A5%E6%8B%89%E5%8A%A8%E6%BC%94%E7%BB%83%22%7D&rank=&style_id=40132&topic_id=7704168520272855562"
+        "heat": "2172万",
+        "url": "https://www.toutiao.com/trending/7704168520272855562/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704168520272855562%22%2C%22hot_board_impr_id%22%3A%2220261105044826C1AFA0A7BA0E1CC52B92%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%96%B0%E7%96%86%E5%86%9B%E5%8C%BA%E6%95%B0%E5%8D%83%E5%90%8D%E6%96%B0%E5%85%B5%E5%A4%9C%E9%97%B4%E7%B4%A7%E6%80%A5%E6%8B%89%E5%8A%A8%E6%BC%94%E7%BB%83%22%7D&rank=&style_id=40132&topic_id=7704168520272855562"
       },
       {
         "title": "高市早苗以怪异姿势面见日本天皇",
         "source": "头条热榜",
-        "heat": "1900万",
-        "url": "https://www.toutiao.com/trending/7703198021613731891/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227703198021613731891%22%2C%22hot_board_impr_id%22%3A%2220261105023633EEAEAE5DF3EAB97F37F7%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%AB%98%E5%B8%82%E6%97%A9%E8%8B%97%E4%BB%A5%E6%80%AA%E5%BC%82%E5%A7%BF%E5%8A%BF%E9%9D%A2%E8%A7%81%E6%97%A5%E6%9C%AC%E5%A4%A9%E7%9A%87%22%7D&rank=&style_id=40132&topic_id=7703198021613731891"
+        "heat": "1965万",
+        "url": "https://www.toutiao.com/trending/7703198021613731891/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227703198021613731891%22%2C%22hot_board_impr_id%22%3A%2220261105044826C1AFA0A7BA0E1CC52B92%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%AB%98%E5%B8%82%E6%97%A9%E8%8B%97%E4%BB%A5%E6%80%AA%E5%BC%82%E5%A7%BF%E5%8A%BF%E9%9D%A2%E8%A7%81%E6%97%A5%E6%9C%AC%E5%A4%A9%E7%9A%87%22%7D&rank=&style_id=40132&topic_id=7703198021613731891"
       },
       {
         "title": "新技术、新成果亮相互联网之光博览会",
         "source": "头条热榜",
-        "heat": "1719万",
+        "heat": "1778万",
         "url": "https://www.toutiao.com/article/7704247999190319670"
       },
       {
-        "title": "红军为什么必须过草地",
+        "title": "51岁阿姨参加健美比赛 体脂率12%",
         "source": "头条热榜",
-        "heat": "1556万",
-        "url": "https://www.toutiao.com/trending/7704183309756350518/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704183309756350518%22%2C%22hot_board_impr_id%22%3A%2220261105023633EEAEAE5DF3EAB97F37F7%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%BA%A2%E5%86%9B%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E8%BF%87%E8%8D%89%E5%9C%B0%22%7D&rank=&style_id=40132&topic_id=7704183309756350518"
+        "heat": "1609万",
+        "url": "https://www.toutiao.com/trending/7704283013869223945/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704283013869223945%22%2C%22hot_board_impr_id%22%3A%2220261105044826C1AFA0A7BA0E1CC52B92%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%2251%E5%B2%81%E9%98%BF%E5%A7%A8%E5%8F%82%E5%8A%A0%E5%81%A5%E7%BE%8E%E6%AF%94%E8%B5%9B+%E4%BD%93%E8%84%82%E7%8E%8712%25%22%7D&rank=&style_id=40132&topic_id=7704283013869223945"
       },
       {
         "title": "王毅把话说到不可容忍 菲方听懂了吗",
         "source": "头条热榜",
-        "heat": "1407万",
-        "url": "https://www.toutiao.com/trending/7699376583278218786/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227699376583278218786%22%2C%22hot_board_impr_id%22%3A%2220261105023633EEAEAE5DF3EAB97F37F7%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%8E%8B%E6%AF%85%E6%8A%8A%E8%AF%9D%E8%AF%B4%E5%88%B0%E4%B8%8D%E5%8F%AF%E5%AE%B9%E5%BF%8D+%E8%8F%B2%E6%96%B9%E5%90%AC%E6%87%82%E4%BA%86%E5%90%97%22%7D&rank=&style_id=40132&topic_id=7699376583278218786"
+        "heat": "1456万",
+        "url": "https://www.toutiao.com/trending/7699376583278218786/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227699376583278218786%22%2C%22hot_board_impr_id%22%3A%2220261105044826C1AFA0A7BA0E1CC52B92%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%8E%8B%E6%AF%85%E6%8A%8A%E8%AF%9D%E8%AF%B4%E5%88%B0%E4%B8%8D%E5%8F%AF%E5%AE%B9%E5%BF%8D+%E8%8F%B2%E6%96%B9%E5%90%AC%E6%87%82%E4%BA%86%E5%90%97%22%7D&rank=&style_id=40132&topic_id=7699376583278218786"
       },
       {
-        "title": "AI短剧《持械入宋》为何火了",
+        "title": "优质蛋白排行榜出炉",
         "source": "头条热榜",
-        "heat": "1274万",
-        "url": "https://www.toutiao.com/trending/7704243006215294507/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704243006215294507%22%2C%22hot_board_impr_id%22%3A%2220261105023633EEAEAE5DF3EAB97F37F7%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22AI%E7%9F%AD%E5%89%A7%E3%80%8A%E6%8C%81%E6%A2%B0%E5%85%A5%E5%AE%8B%E3%80%8B%E4%B8%BA%E4%BD%95%E7%81%AB%E4%BA%86%22%7D&rank=&style_id=40132&topic_id=7704243006215294507"
+        "heat": "1317万",
+        "url": "https://www.toutiao.com/trending/7703261218630909978/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227703261218630909978%22%2C%22hot_board_impr_id%22%3A%2220261105044826C1AFA0A7BA0E1CC52B92%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%BC%98%E8%B4%A8%E8%9B%8B%E7%99%BD%E6%8E%92%E8%A1%8C%E6%A6%9C%E5%87%BA%E7%82%89%22%7D&rank=&style_id=40132&topic_id=7703261218630909978"
       }
     ],
-    "updatedAt": "2026-11-04T18:36:43.189Z",
+    "updatedAt": "2026-11-04T20:48:36.691Z",
     "stale": false
   },
   "releases": {
     "data": [
-      {
-        "title": "Jonathan Creek: The Fantom of the Acropolis｜《幻术大师十周年特别篇：卫城剧院魅影》剧本",
-        "url": "https://book.douban.com/review/17881257/",
-        "date": "2026-10-31",
-        "source": "豆瓣·书评",
-        "summary": "翻译 / String Bell",
-        "subject": "Jonathan Creek: The Fantom of the Acropolis",
-        "rating": "力荐",
-        "type": "book",
-        "desc": "翻译 / String Bell"
-      },
       {
         "title": "大宋悬疑录｜有限度的巧合——专访小说家记无忌",
         "url": "https://book.douban.com/review/17886784/",
@@ -865,15 +854,26 @@
         "desc": "采访对象：小说家记无忌。历史悬疑小说《大宋悬疑录：貔貅刑》荣获谜芸馆、赤乌堂2024年度本土推理榜双TOP1的好成绩，并已授权越南文版、日文版；《大宋悬疑录 : 包拯"
       },
       {
-        "title": "Immediacy, Or, The Style of Too Late Capitalism｜“immediacy”幻象——循环经济、创意写作和重建结构的重要性",
-        "url": "https://book.douban.com/review/17868292/",
-        "date": "2026-10-23",
+        "title": "Jonathan Creek: The Fantom of the Acropolis｜《幻术大师十周年特别篇：卫城剧院魅影》剧本",
+        "url": "https://book.douban.com/review/17881257/",
+        "date": "2026-10-31",
         "source": "豆瓣·书评",
-        "summary": "2024年7月，我在豆瓣发了一条动态：“现在看文艺作品，常能看出某种美国创意写作课的痕迹……但，也很难表述非常具体的特点，就是一种感觉，一种氛围。举例的话，李翊云的书，电影Past Lives。”",
-        "subject": "Immediacy, Or, The Style of Too Late Capitalism",
-        "rating": "推荐",
+        "summary": "翻译 / String Bell",
+        "subject": "Jonathan Creek: The Fantom of the Acropolis",
+        "rating": "力荐",
         "type": "book",
-        "desc": "2024年7月，我在豆瓣发了一条动态：“现在看文艺作品，常能看出某种美国创意写作课的痕迹……但，也很难表述非常具体的特点，就是一种感觉，一种氛围。举例的话，李翊云的书，电影Past Lives。”"
+        "desc": "翻译 / String Bell"
+      },
+      {
+        "title": "2026年推理佳作选｜时隔半年的简评（补）",
+        "url": "https://book.douban.com/review/17888083/",
+        "date": "2026-11-04",
+        "source": "豆瓣·书评",
+        "summary": "一、《地球上最初的名侦探》/冷水砼",
+        "subject": "2026年推理佳作选",
+        "rating": "力荐",
+        "type": "book",
+        "desc": "一、《地球上最初的名侦探》/冷水砼"
       },
       {
         "title": "春天存留｜春天存留在我们心中的渲染",
@@ -887,6 +887,17 @@
         "desc": ""
       },
       {
+        "title": "Immediacy, Or, The Style of Too Late Capitalism｜“immediacy”幻象——循环经济、创意写作和重建结构的重要性",
+        "url": "https://book.douban.com/review/17868292/",
+        "date": "2026-10-23",
+        "source": "豆瓣·书评",
+        "summary": "2024年7月，我在豆瓣发了一条动态：“现在看文艺作品，常能看出某种美国创意写作课的痕迹……但，也很难表述非常具体的特点，就是一种感觉，一种氛围。举例的话，李翊云的书，电影Past Lives。”",
+        "subject": "Immediacy, Or, The Style of Too Late Capitalism",
+        "rating": "推荐",
+        "type": "book",
+        "desc": "2024年7月，我在豆瓣发了一条动态：“现在看文艺作品，常能看出某种美国创意写作课的痕迹……但，也很难表述非常具体的特点，就是一种感觉，一种氛围。举例的话，李翊云的书，电影Past Lives。”"
+      },
+      {
         "title": "一个人的地球派对｜我们的朋友徐雯",
         "url": "https://book.douban.com/review/17880987/",
         "date": "2026-10-31",
@@ -898,26 +909,15 @@
         "desc": ""
       },
       {
-        "title": "献给阿尔吉侬的花束｜进步报告",
-        "url": "https://book.douban.com/review/17883712/",
-        "date": "2026-11-02",
+        "title": "普通炎症｜向反对的过渡",
+        "url": "https://book.douban.com/review/17887240/",
+        "date": "2026-11-04",
         "source": "豆瓣·书评",
-        "summary": "亲爱的",
-        "subject": "献给阿尔吉侬的花束",
-        "rating": "力荐",
-        "type": "book",
-        "desc": "亲爱的"
-      },
-      {
-        "title": "《孝经》与儒学两千年｜【转】乔秀岩：《〈孝经〉与儒学两千年》中文版序言",
-        "url": "https://book.douban.com/review/17876275/",
-        "date": "2026-10-28",
-        "source": "豆瓣·书评",
-        "summary": "【作者简介】乔秀岩，本名桥本秀美，1966年生于日本。东京大学中国哲学专业毕业，北京大学中文系古典文献专业博士。先后师从户川芳郎、倪其心、王文锦、尾崎",
-        "subject": "《孝经》与儒学两千年",
+        "summary": "一本",
+        "subject": "普通炎症",
         "rating": "",
         "type": "book",
-        "desc": "【作者简介】乔秀岩，本名桥本秀美，1966年生于日本。东京大学中国哲学专业毕业，北京大学中文系古典文献专业博士。先后师从户川芳郎、倪其心、王文锦、尾崎"
+        "desc": "一本"
       },
       {
         "title": "落在我身上的雨｜陆庆屹：在父母身上，我看到了“地老天荒”的确切含义 | 专访",
@@ -997,7 +997,7 @@
         "desc": "不可否"
       }
     ],
-    "updatedAt": "2026-11-04T18:36:43.189Z",
+    "updatedAt": "2026-11-04T20:48:36.691Z",
     "stale": false
   },
   "photography": {
@@ -1007,196 +1007,196 @@
   },
   "report": [
     {
-      "name": "news:中新网·要闻",
-      "ok": true,
-      "count": 30,
-      "ms": 1156
-    },
-    {
-      "name": "stock:腾讯行情",
-      "ok": true,
-      "count": 6,
-      "ms": 2155
-    },
-    {
       "name": "ai:量子位",
       "ok": true,
       "count": 10,
-      "ms": 2222
+      "ms": 1661
     },
     {
       "name": "photography:r/portraits",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2389
+      "ms": 1853
     },
     {
-      "name": "photography:r/streetphotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 2396
+      "name": "news:中新网·要闻",
+      "ok": true,
+      "count": 30,
+      "ms": 1926
     },
     {
       "name": "photography:r/landscapephotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2401
+      "ms": 1865
+    },
+    {
+      "name": "photography:r/streetphotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 1866
     },
     {
       "name": "photography:r/photography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2400
+      "ms": 1878
     },
     {
       "name": "photography:r/FilmPhotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2402
+      "ms": 1879
     },
     {
       "name": "photography:r/foodphotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 2408
+      "ms": 1881
+    },
+    {
+      "name": "stock:腾讯行情",
+      "ok": true,
+      "count": 6,
+      "ms": 1947
     },
     {
       "name": "news:中新网·国内",
       "ok": true,
       "count": 30,
-      "ms": 1329
-    },
-    {
-      "name": "news:中新网·社会",
-      "ok": true,
-      "count": 30,
-      "ms": 7
-    },
-    {
-      "name": "news:中新网·国际",
-      "ok": true,
-      "count": 30,
-      "ms": 217
-    },
-    {
-      "name": "news:知乎日报",
-      "ok": false,
-      "error": "fetch failed",
-      "ms": 118
+      "ms": 391
     },
     {
       "name": "inspiration:抖音热搜",
       "ok": true,
       "count": 50,
-      "ms": 2842
+      "ms": 2461
     },
     {
-      "name": "sub:思想文化·豆瓣·书评精选",
+      "name": "news:中新网·社会",
       "ok": true,
-      "count": 20,
-      "ms": 2992
+      "count": 30,
+      "ms": 238
+    },
+    {
+      "name": "news:中新网·国际",
+      "ok": true,
+      "count": 30,
+      "ms": 46
+    },
+    {
+      "name": "news:知乎日报",
+      "ok": false,
+      "error": "fetch failed",
+      "ms": 148
     },
     {
       "name": "ai:36氪",
       "ok": false,
       "error": "空结果",
-      "ms": 1091
+      "ms": 1156
     },
     {
-      "name": "sub:心理成长·知乎日报",
-      "ok": false,
-      "error": "fetch failed",
-      "ms": 439
-    },
-    {
-      "name": "sub:生活方式·中新网·生活",
+      "name": "sub:思想文化·豆瓣·书评精选",
       "ok": true,
-      "count": 19,
-      "ms": 5
-    },
-    {
-      "name": "sub:生活方式·中新网·财经",
-      "ok": true,
-      "count": 30,
-      "ms": 5
-    },
-    {
-      "name": "inspiration:百度热搜",
-      "ok": true,
-      "count": 51,
-      "ms": 1389
-    },
-    {
-      "name": "news:百度热搜",
-      "ok": true,
-      "count": 51,
-      "ms": 1562
+      "count": 20,
+      "ms": 2910
     },
     {
       "name": "releases:豆瓣·书评",
       "ok": true,
       "count": 20,
-      "ms": 4457
+      "ms": 3100
+    },
+    {
+      "name": "sanlian:三联生活周刊",
+      "ok": true,
+      "count": 7,
+      "ms": 3191
     },
     {
       "name": "podcast:关注·来都来了",
       "ok": true,
       "count": 1,
-      "ms": 4780
-    },
-    {
-      "name": "inspiration:头条热榜",
-      "ok": true,
-      "count": 50,
-      "ms": 797
+      "ms": 3510
     },
     {
       "name": "releases:豆瓣·影评",
       "ok": true,
       "count": 20,
-      "ms": 894
+      "ms": 782
+    },
+    {
+      "name": "sub:心理成长·知乎日报",
+      "ok": false,
+      "error": "fetch failed",
+      "ms": 1113
+    },
+    {
+      "name": "sub:生活方式·中新网·生活",
+      "ok": true,
+      "count": 19,
+      "ms": 232
+    },
+    {
+      "name": "sub:生活方式·中新网·财经",
+      "ok": true,
+      "count": 30,
+      "ms": 46
     },
     {
       "name": "podcast:关注·不合时宜",
       "ok": true,
       "count": 1,
-      "ms": 1181
+      "ms": 851
+    },
+    {
+      "name": "inspiration:百度热搜",
+      "ok": true,
+      "count": 51,
+      "ms": 2168
+    },
+    {
+      "name": "news:百度热搜",
+      "ok": true,
+      "count": 51,
+      "ms": 1949
+    },
+    {
+      "name": "inspiration:头条热榜",
+      "ok": true,
+      "count": 50,
+      "ms": 749
     },
     {
       "name": "inspiration:B站排行",
       "ok": true,
       "count": 100,
-      "ms": 936
+      "ms": 983
     },
     {
       "name": "podcast:关注·文化有限",
       "ok": true,
       "count": 1,
-      "ms": 1841
+      "ms": 2071
     },
     {
       "name": "podcast:关注·忽左忽右",
       "ok": true,
       "count": 1,
-      "ms": 353
+      "ms": 156
     },
     {
       "name": "podcast:关注·东腔西调",
       "ok": true,
       "count": 1,
-      "ms": 1569
+      "ms": 2662
     },
     {
       "name": "podcast:Apple中国热榜",
       "ok": false,
       "error": "This operation was aborted",
       "ms": 15002
-    },
-    {
-      "name": "sanlian:三联生活周刊",
-      "ok": false,
-      "error": "This operation was aborted",
-      "ms": 15001
     }
   ]
 }
