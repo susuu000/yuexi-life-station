@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T17:55:45.335Z",
+  "updatedAt": "2026-11-06T20:25:58.113Z",
   "news": {
     "data": [
       {
@@ -185,32 +185,11 @@
         "summary": ""
       }
     ],
-    "updatedAt": "2026-11-06T17:55:45.335Z",
+    "updatedAt": "2026-11-06T20:25:58.113Z",
     "stale": false
   },
   "ai": {
     "data": [
-      {
-        "title": "为什么每个 Personal Agent 背后，都必须配备一台“云电脑”？",
-        "url": "https://www.qbitai.com/2026/11/508174.html",
-        "date": "2026-11-06",
-        "source": "量子位",
-        "summary": "PPIO 沙箱，把“云电脑”做成开箱即用的 API"
-      },
-      {
-        "title": "阶跃终端 STEPX Neo 智能体手机亮相进博会高通展台，软硬模一体打造智能体新体验",
-        "url": "https://www.qbitai.com/2026/11/508170.html",
-        "date": "2026-11-06",
-        "source": "量子位",
-        "summary": "阶跃终端旗下 STEPX Neo 智能体手机首次亮相"
-      },
-      {
-        "title": "阿里巴巴发布《2026 AI向善行动报告》 AI数据中心可持续发展成年度亮点",
-        "url": "https://www.qbitai.com/2026/11/508165.html",
-        "date": "2026-11-06",
-        "source": "量子位",
-        "summary": "11月5日，阿里巴巴发布《2026 AI向善行动报告》"
-      },
       {
         "title": "DeepSeek带火稀疏计算，国产芯片公司加速突围：这家公司又融近10亿",
         "url": "https://www.qbitai.com/2026/11/508155.html",
@@ -254,14 +233,35 @@
         "summary": "Seedance 2.5 单秒低至0.15元"
       },
       {
-        "title": "A\\三大内部模型曝光！领先Opus5.5三个月，RSI缩短80%实验时间",
-        "url": "https://www.qbitai.com/2026/11/508184.html",
+        "title": "腾讯 Hy4 调用激增已十倍扩容，Agent 能力开源模型第一",
+        "url": "https://www.qbitai.com/2026/11/507967.html",
         "date": "2026-11-06",
         "source": "量子位",
-        "summary": "Dario刚喊减速…"
+        "summary": "11月 5 日，腾讯宣布因 Hy4 调用激增，WorkBuddy 已进行十倍扩容"
+      },
+      {
+        "title": "孩子的人生大事，你要怎样的AI？海亮科服把AI生涯规划带给更多家庭",
+        "url": "https://www.qbitai.com/2026/11/507919.html",
+        "date": "2026-11-05",
+        "source": "量子位",
+        "summary": "基础规划免费！"
+      },
+      {
+        "title": "三条AI技术路线终将合流？智象创始人梅涛提出智能体化的世界模型",
+        "url": "https://www.qbitai.com/2026/11/507834.html",
+        "date": "2026-11-05",
+        "source": "量子位",
+        "summary": "走向“智能体化世界模型”。"
+      },
+      {
+        "title": "拼多多让年轻人造草莓工厂，170天后“答案”熟了",
+        "url": "https://www.qbitai.com/2026/11/507823.html",
+        "date": "2026-11-05",
+        "source": "量子位",
+        "summary": "拼多多把农创赛搬出了PPT。"
       }
     ],
-    "updatedAt": "2026-11-06T17:55:45.335Z",
+    "updatedAt": "2026-11-06T20:25:58.113Z",
     "stale": false
   },
   "stock": {
@@ -315,7 +315,7 @@
         "up": false
       }
     ],
-    "updatedAt": "2026-11-06T17:55:45.335Z",
+    "updatedAt": "2026-11-06T20:25:58.113Z",
     "stale": false
   },
   "podcastHot": {
@@ -365,37 +365,37 @@
         "summary": "GIADA · 艺术 · Apple 播客中国区排名第 4"
       },
       {
-        "id": "ap-1676099257",
-        "rank": 5,
-        "title": "搞钱女孩",
-        "podcaster": "搞钱女孩小辉",
-        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/54/d2/5e/54d25e7d-fe19-dcf0-cb4b-85dce4ec10b0/mza_2102588857142453432.jpeg/100x100bb.png",
-        "genre": "社会与文化 / 商务",
-        "date": "Fri, 6 Nov",
-        "url": "https://podcasts.apple.com/cn/podcast/%E6%90%9E%E9%92%B1%E5%A5%B3%E5%AD%A9/id1676099257",
-        "summary": "搞钱女孩小辉 · 社会与文化/商务 · Apple 播客中国区排名第 5"
-      },
-      {
         "id": "ap-1731784296",
-        "rank": 6,
+        "rank": 5,
         "title": "天真不天真",
         "podcaster": "杨天真本真",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/c8/bf/ca/c8bfca7f-a52c-67e1-6d93-fb31fb559324/mza_5986718045801936242.jpg/100x100bb.png",
         "genre": "休闲",
         "date": "Fri, 6 Nov",
         "url": "https://podcasts.apple.com/cn/podcast/%E5%A4%A9%E7%9C%9F%E4%B8%8D%E5%A4%A9%E7%9C%9F/id1731784296",
-        "summary": "杨天真本真 · 休闲 · Apple 播客中国区排名第 6"
+        "summary": "杨天真本真 · 休闲 · Apple 播客中国区排名第 5"
       },
       {
         "id": "ap-1696511339",
-        "rank": 7,
+        "rank": 6,
         "title": "三个火呛手",
         "podcaster": "思宇_XgEd",
         "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/1b/8f/80/1b8f8010-8750-9367-df51-151ee979e608/mza_15798526298199221184.png/100x100bb.png",
         "genre": "喜剧 / 休闲",
         "date": "Fri, 6 Nov",
         "url": "https://podcasts.apple.com/cn/podcast/%E4%B8%89%E4%B8%AA%E7%81%AB%E5%91%9B%E6%89%8B/id1696511339",
-        "summary": "思宇_XgEd · 喜剧/休闲 · Apple 播客中国区排名第 7"
+        "summary": "思宇_XgEd · 喜剧/休闲 · Apple 播客中国区排名第 6"
+      },
+      {
+        "id": "ap-1676099257",
+        "rank": 7,
+        "title": "搞钱女孩",
+        "podcaster": "搞钱女孩小辉",
+        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/54/d2/5e/54d25e7d-fe19-dcf0-cb4b-85dce4ec10b0/mza_2102588857142453432.jpeg/100x100bb.png",
+        "genre": "社会与文化 / 商务",
+        "date": "Fri, 6 Nov",
+        "url": "https://podcasts.apple.com/cn/podcast/%E6%90%9E%E9%92%B1%E5%A5%B3%E5%AD%A9/id1676099257",
+        "summary": "搞钱女孩小辉 · 社会与文化/商务 · Apple 播客中国区排名第 7"
       },
       {
         "id": "ap-1559695855",
@@ -420,19 +420,19 @@
         "summary": "颜晓静Athena · 休闲/教育 · Apple 播客中国区排名第 9"
       },
       {
-        "id": "ap-751574016",
+        "id": "ap-1603580035",
         "rank": 10,
-        "title": "All Ears English Podcast",
-        "podcaster": "Lindsay McMahon and Michelle Kaplan",
-        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/cb/a1/13/cba113a7-999d-3c3d-a594-900adb69624e/mza_7992161192502469150.jpg/100x100bb.png",
-        "genre": "教育 / 商务",
+        "title": "肥话连篇",
+        "podcaster": "肥杰",
+        "artwork": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/12/08/74/1208744d-b065-1164-632b-82c97af39412/mza_14598067193335283885.jpeg/100x100bb.png",
+        "genre": "喜剧 / 休闲",
         "date": "Fri, 6 Nov",
-        "url": "https://podcasts.apple.com/cn/podcast/all-ears-english-podcast/id751574016",
-        "summary": "Lindsay McMahon and Michelle Kaplan · 教育/商务 · Apple 播客中国区排名第 10"
+        "url": "https://podcasts.apple.com/cn/podcast/%E8%82%A5%E8%AF%9D%E8%BF%9E%E7%AF%87/id1603580035",
+        "summary": "肥杰 · 喜剧/休闲 · Apple 播客中国区排名第 10"
       }
     ],
-    "updatedAt": "2026-11-06T12:01:51.553Z",
-    "stale": true
+    "updatedAt": "2026-11-06T20:25:58.113Z",
+    "stale": false
   },
   "podcastFollow": {
     "data": [
@@ -487,7 +487,7 @@
         "url": "https://www.ximalaya.com/sound/1028714247"
       }
     ],
-    "updatedAt": "2026-11-06T17:55:45.335Z",
+    "updatedAt": "2026-11-06T20:25:58.113Z",
     "stale": false
   },
   "sanlian": {
@@ -566,13 +566,22 @@
       }
     ],
     "updatedAt": "2026-11-06T17:55:45.335Z",
-    "stale": false
+    "stale": true
   },
   "subscriptions": {
     "data": {
       "thinking": {
         "label": "思想文化",
         "items": [
+          {
+            "title": "理解人体结构I｜即使是弗兰肯斯坦，创造怪物也得先学解剖学",
+            "url": "https://book.douban.com/review/17890346/",
+            "date": "2026-11-06",
+            "source": "豆瓣·书评精选",
+            "summary": "在幻想世界里，身体似乎可以拥有无限的可能。",
+            "subject": "理解人体结构I",
+            "rating": "力荐"
+          },
           {
             "title": "Literary Criticism｜庸见词典——人文社科版",
             "url": "https://book.douban.com/review/17888527/",
@@ -601,6 +610,15 @@
             "rating": "力荐"
           },
           {
+            "title": "普通炎症｜向反对的过渡",
+            "url": "https://book.douban.com/review/17887240/",
+            "date": "2026-11-04",
+            "source": "豆瓣·书评精选",
+            "summary": "一本",
+            "subject": "普通炎症",
+            "rating": ""
+          },
+          {
             "title": "2026年推理佳作选｜时隔半年的简评（补）",
             "url": "https://book.douban.com/review/17888083/",
             "date": "2026-11-04",
@@ -610,40 +628,22 @@
             "rating": "力荐"
           },
           {
-            "title": "The Ideas in Things｜【机翻】导论：阅读“物”",
-            "url": "https://book.douban.com/review/17889059/",
-            "date": "2026-11-05",
-            "source": "豆瓣·书评精选",
-            "summary": "阅前说明：没空润色与校对，凑合着看吧。版权归作者与出品方所有，侵权即删。",
-            "subject": "The Ideas in Things",
-            "rating": "推荐"
-          },
-          {
-            "title": "Jonathan Creek: The Fantom of the Acropolis｜《幻术大师十周年特别篇：卫城剧院魅影》剧本",
-            "url": "https://book.douban.com/review/17881257/",
-            "date": "2026-10-31",
-            "source": "豆瓣·书评精选",
-            "summary": "翻译 / String Bell",
-            "subject": "Jonathan Creek: The Fantom of the Acropolis",
-            "rating": "力荐"
-          },
-          {
-            "title": "Immediacy, Or, The Style of Too Late Capitalism｜“immediacy”幻象——循环经济、创意写作和重建结构的重要性",
-            "url": "https://book.douban.com/review/17868292/",
-            "date": "2026-10-23",
-            "source": "豆瓣·书评精选",
-            "summary": "2024年7月，我在豆瓣发了一条动态：“现在看文艺作品，常能看出某种美国创意写作课的痕迹……但，也很难表述非常具体的特点，就是一种感觉，一种氛围。举例的话，李翊云的书，电影Past Lives。”",
-            "subject": "Immediacy, Or, The Style of Too Late Capitalism",
-            "rating": "推荐"
-          },
-          {
-            "title": "春天存留｜春天存留在我们心中的渲染",
-            "url": "https://book.douban.com/review/17863774/",
-            "date": "2026-10-20",
+            "title": "涉过意识之流｜女巫决定抄起她的扫帚飞走（或杜布拉夫卡生平与创作介绍）",
+            "url": "https://book.douban.com/review/17887203/",
+            "date": "2026-11-04",
             "source": "豆瓣·书评精选",
             "summary": "",
-            "subject": "春天存留",
+            "subject": "涉过意识之流",
             "rating": "力荐"
+          },
+          {
+            "title": "落在我身上的雨｜陆庆屹：在父母身上，我看到了“地老天荒”的确切含义 | 专访",
+            "url": "https://book.douban.com/review/17886087/",
+            "date": "2026-11-03",
+            "source": "豆瓣·书评精选",
+            "summary": "界面新闻记者 | 实习记者 席梦茹 界面新闻编辑 | 姜妍",
+            "subject": "落在我身上的雨",
+            "rating": ""
           }
         ]
       },
@@ -727,7 +727,7 @@
         ]
       }
     },
-    "updatedAt": "2026-11-06T17:55:45.335Z",
+    "updatedAt": "2026-11-06T20:25:58.113Z",
     "stale": false
   },
   "inspiration": {
@@ -735,49 +735,49 @@
       {
         "title": "国防部回应攻击-21在四川舰起降",
         "source": "抖音热搜",
-        "heat": "1109万",
+        "heat": "1184万",
         "url": "https://www.douyin.com/search/%E5%9B%BD%E9%98%B2%E9%83%A8%E5%9B%9E%E5%BA%94%E6%94%BB%E5%87%BB-21%E5%9C%A8%E5%9B%9B%E5%B7%9D%E8%88%B0%E8%B5%B7%E9%99%8D"
       },
       {
         "title": "我的不烧心旅行地藏不住了",
         "source": "抖音热搜",
-        "heat": "1105万",
+        "heat": "1117万",
         "url": "https://www.douyin.com/search/%E6%88%91%E7%9A%84%E4%B8%8D%E7%83%A7%E5%BF%83%E6%97%85%E8%A1%8C%E5%9C%B0%E8%97%8F%E4%B8%8D%E4%BD%8F%E4%BA%86"
       },
       {
         "title": "2026世界市长对话宁波",
         "source": "抖音热搜",
-        "heat": "1103万",
+        "heat": "1108万",
         "url": "https://www.douyin.com/search/2026%E4%B8%96%E7%95%8C%E5%B8%82%E9%95%BF%E5%AF%B9%E8%AF%9D%E5%AE%81%E6%B3%A2"
       },
       {
         "title": "立冬和饺子最配了",
         "source": "抖音热搜",
-        "heat": "1103万",
+        "heat": "1104万",
         "url": "https://www.douyin.com/search/%E7%AB%8B%E5%86%AC%E5%92%8C%E9%A5%BA%E5%AD%90%E6%9C%80%E9%85%8D%E4%BA%86"
       },
       {
         "title": "你怎么舍得让有趣的知识流走",
         "source": "抖音热搜",
-        "heat": "1047万",
+        "heat": "1049万",
         "url": "https://www.douyin.com/search/%E4%BD%A0%E6%80%8E%E4%B9%88%E8%88%8D%E5%BE%97%E8%AE%A9%E6%9C%89%E8%B6%A3%E7%9A%84%E7%9F%A5%E8%AF%86%E6%B5%81%E8%B5%B0"
       },
       {
         "title": "多地目击巨型火流星划过",
         "source": "抖音热搜",
-        "heat": "1046万",
+        "heat": "1043万",
         "url": "https://www.douyin.com/search/%E5%A4%9A%E5%9C%B0%E7%9B%AE%E5%87%BB%E5%B7%A8%E5%9E%8B%E7%81%AB%E6%B5%81%E6%98%9F%E5%88%92%E8%BF%87"
       },
       {
         "title": "又到穿费尔岛的季节了",
         "source": "抖音热搜",
-        "heat": "930万",
+        "heat": "932万",
         "url": "https://www.douyin.com/search/%E5%8F%88%E5%88%B0%E7%A9%BF%E8%B4%B9%E5%B0%94%E5%B2%9B%E7%9A%84%E5%AD%A3%E8%8A%82%E4%BA%86"
       },
       {
         "title": "好闺闺都要吃的入冬九件套",
         "source": "抖音热搜",
-        "heat": "925万",
+        "heat": "927万",
         "url": "https://www.douyin.com/search/%E5%A5%BD%E9%97%BA%E9%97%BA%E9%83%BD%E8%A6%81%E5%90%83%E7%9A%84%E5%85%A5%E5%86%AC%E4%B9%9D%E4%BB%B6%E5%A5%97"
       },
       {
@@ -819,45 +819,56 @@
       {
         "title": "女子带娃仅点6元豆芽连吃7碗米饭",
         "source": "头条热榜",
-        "heat": "1304万",
-        "url": "https://www.toutiao.com/trending/7704842467703570953/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2212%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704842467703570953%22%2C%22hot_board_impr_id%22%3A%22202611070155340858C057C308A16310B6%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%A5%B3%E5%AD%90%E5%B8%A6%E5%A8%83%E4%BB%85%E7%82%B96%E5%85%83%E8%B1%86%E8%8A%BD%E8%BF%9E%E5%90%837%E7%A2%97%E7%B1%B3%E9%A5%AD%22%7D&rank=&style_id=40132&topic_id=7704842467703570953"
+        "heat": "1333万",
+        "url": "https://www.toutiao.com/trending/7704842467703570953/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2212%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704842467703570953%22%2C%22hot_board_impr_id%22%3A%222026110704255193E6B00AE3FE29B7C210%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%A5%B3%E5%AD%90%E5%B8%A6%E5%A8%83%E4%BB%85%E7%82%B96%E5%85%83%E8%B1%86%E8%8A%BD%E8%BF%9E%E5%90%837%E7%A2%97%E7%B1%B3%E9%A5%AD%22%7D&rank=&style_id=40132&topic_id=7704842467703570953"
       },
       {
         "title": "上海原市长龚正等12名正部履新职",
         "source": "头条热榜",
-        "heat": "1180万",
-        "url": "https://www.toutiao.com/trending/7704959725117210662/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704959725117210662%22%2C%22hot_board_impr_id%22%3A%22202611070155340858C057C308A16310B6%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%B8%8A%E6%B5%B7%E5%8E%9F%E5%B8%82%E9%95%BF%E9%BE%9A%E6%AD%A3%E7%AD%8912%E5%90%8D%E6%AD%A3%E9%83%A8%E5%B1%A5%E6%96%B0%E8%81%8C%22%7D&rank=&style_id=40132&topic_id=7704959725117210662"
+        "heat": "1206万",
+        "url": "https://www.toutiao.com/trending/7704959725117210662/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704959725117210662%22%2C%22hot_board_impr_id%22%3A%222026110704255193E6B00AE3FE29B7C210%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%B8%8A%E6%B5%B7%E5%8E%9F%E5%B8%82%E9%95%BF%E9%BE%9A%E6%AD%A3%E7%AD%8912%E5%90%8D%E6%AD%A3%E9%83%A8%E5%B1%A5%E6%96%B0%E8%81%8C%22%7D&rank=&style_id=40132&topic_id=7704959725117210662"
       },
       {
         "title": "一组数据感受中国经济强劲脉动",
         "source": "头条热榜",
-        "heat": "1067万",
+        "heat": "1091万",
         "url": "https://www.toutiao.com/article/7704952446535090738"
       },
       {
         "title": "存款利率拐点来了？有储户存500万",
         "source": "头条热榜",
-        "heat": "966万",
-        "url": "https://www.toutiao.com/trending/7704890136399511606/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704890136399511606%22%2C%22hot_board_impr_id%22%3A%22202611070155340858C057C308A16310B6%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%AD%98%E6%AC%BE%E5%88%A9%E7%8E%87%E6%8B%90%E7%82%B9%E6%9D%A5%E4%BA%86%EF%BC%9F%E6%9C%89%E5%82%A8%E6%88%B7%E5%AD%98500%E4%B8%87%22%7D&rank=&style_id=40132&topic_id=7704890136399511606"
+        "heat": "987万",
+        "url": "https://www.toutiao.com/trending/7704890136399511606/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704890136399511606%22%2C%22hot_board_impr_id%22%3A%222026110704255193E6B00AE3FE29B7C210%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%AD%98%E6%AC%BE%E5%88%A9%E7%8E%87%E6%8B%90%E7%82%B9%E6%9D%A5%E4%BA%86%EF%BC%9F%E6%9C%89%E5%82%A8%E6%88%B7%E5%AD%98500%E4%B8%87%22%7D&rank=&style_id=40132&topic_id=7704890136399511606"
       },
       {
         "title": "李乐成被免去工信部部长职务",
         "source": "头条热榜",
-        "heat": "874万",
-        "url": "https://www.toutiao.com/trending/7705011144318026249/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705011144318026249%22%2C%22hot_board_impr_id%22%3A%22202611070155340858C057C308A16310B6%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%9D%8E%E4%B9%90%E6%88%90%E8%A2%AB%E5%85%8D%E5%8E%BB%E5%B7%A5%E4%BF%A1%E9%83%A8%E9%83%A8%E9%95%BF%E8%81%8C%E5%8A%A1%22%7D&rank=&style_id=40132&topic_id=7705011144318026249"
+        "heat": "893万",
+        "url": "https://www.toutiao.com/trending/7705011144318026249/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705011144318026249%22%2C%22hot_board_impr_id%22%3A%222026110704255193E6B00AE3FE29B7C210%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%9D%8E%E4%B9%90%E6%88%90%E8%A2%AB%E5%85%8D%E5%8E%BB%E5%B7%A5%E4%BF%A1%E9%83%A8%E9%83%A8%E9%95%BF%E8%81%8C%E5%8A%A1%22%7D&rank=&style_id=40132&topic_id=7705011144318026249"
       },
       {
-        "title": "男子心梗前给豆包打电话救了自己",
+        "title": "啤酒对血糖伤害有多大",
         "source": "头条热榜",
-        "heat": "791万",
-        "url": "https://www.toutiao.com/trending/7704832496403496996/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704832496403496996%22%2C%22hot_board_impr_id%22%3A%22202611070155340858C057C308A16310B6%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%94%B7%E5%AD%90%E5%BF%83%E6%A2%97%E5%89%8D%E7%BB%99%E8%B1%86%E5%8C%85%E6%89%93%E7%94%B5%E8%AF%9D%E6%95%91%E4%BA%86%E8%87%AA%E5%B7%B1%22%7D&rank=&style_id=40132&topic_id=7704832496403496996"
+        "heat": "808万",
+        "url": "https://www.toutiao.com/trending/7704726369309082138/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704726369309082138%22%2C%22hot_board_impr_id%22%3A%222026110704255193E6B00AE3FE29B7C210%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%95%A4%E9%85%92%E5%AF%B9%E8%A1%80%E7%B3%96%E4%BC%A4%E5%AE%B3%E6%9C%89%E5%A4%9A%E5%A4%A7%22%7D&rank=&style_id=40132&topic_id=7704726369309082138"
       }
     ],
-    "updatedAt": "2026-11-06T17:55:45.335Z",
+    "updatedAt": "2026-11-06T20:25:58.113Z",
     "stale": false
   },
   "releases": {
     "data": [
+      {
+        "title": "理解人体结构I｜即使是弗兰肯斯坦，创造怪物也得先学解剖学",
+        "url": "https://book.douban.com/review/17890346/",
+        "date": "2026-11-06",
+        "source": "豆瓣·书评",
+        "summary": "在幻想世界里，身体似乎可以拥有无限的可能。",
+        "subject": "理解人体结构I",
+        "rating": "力荐",
+        "type": "book",
+        "desc": "在幻想世界里，身体似乎可以拥有无限的可能。"
+      },
       {
         "title": "Literary Criticism｜庸见词典——人文社科版",
         "url": "https://book.douban.com/review/17888527/",
@@ -892,6 +903,17 @@
         "desc": "本文为刀锋时间公号授权转载。原文链接："
       },
       {
+        "title": "普通炎症｜向反对的过渡",
+        "url": "https://book.douban.com/review/17887240/",
+        "date": "2026-11-04",
+        "source": "豆瓣·书评",
+        "summary": "一本",
+        "subject": "普通炎症",
+        "rating": "",
+        "type": "book",
+        "desc": "一本"
+      },
+      {
         "title": "2026年推理佳作选｜时隔半年的简评（补）",
         "url": "https://book.douban.com/review/17888083/",
         "date": "2026-11-04",
@@ -903,48 +925,26 @@
         "desc": "一、《地球上最初的名侦探》/冷水砼"
       },
       {
-        "title": "The Ideas in Things｜【机翻】导论：阅读“物”",
-        "url": "https://book.douban.com/review/17889059/",
-        "date": "2026-11-05",
-        "source": "豆瓣·书评",
-        "summary": "阅前说明：没空润色与校对，凑合着看吧。版权归作者与出品方所有，侵权即删。",
-        "subject": "The Ideas in Things",
-        "rating": "推荐",
-        "type": "book",
-        "desc": "阅前说明：没空润色与校对，凑合着看吧。版权归作者与出品方所有，侵权即删。"
-      },
-      {
-        "title": "Jonathan Creek: The Fantom of the Acropolis｜《幻术大师十周年特别篇：卫城剧院魅影》剧本",
-        "url": "https://book.douban.com/review/17881257/",
-        "date": "2026-10-31",
-        "source": "豆瓣·书评",
-        "summary": "翻译 / String Bell",
-        "subject": "Jonathan Creek: The Fantom of the Acropolis",
-        "rating": "力荐",
-        "type": "book",
-        "desc": "翻译 / String Bell"
-      },
-      {
-        "title": "Immediacy, Or, The Style of Too Late Capitalism｜“immediacy”幻象——循环经济、创意写作和重建结构的重要性",
-        "url": "https://book.douban.com/review/17868292/",
-        "date": "2026-10-23",
-        "source": "豆瓣·书评",
-        "summary": "2024年7月，我在豆瓣发了一条动态：“现在看文艺作品，常能看出某种美国创意写作课的痕迹……但，也很难表述非常具体的特点，就是一种感觉，一种氛围。举例的话，李翊云的书，电影Past Lives。”",
-        "subject": "Immediacy, Or, The Style of Too Late Capitalism",
-        "rating": "推荐",
-        "type": "book",
-        "desc": "2024年7月，我在豆瓣发了一条动态：“现在看文艺作品，常能看出某种美国创意写作课的痕迹……但，也很难表述非常具体的特点，就是一种感觉，一种氛围。举例的话，李翊云的书，电影Past Lives。”"
-      },
-      {
-        "title": "春天存留｜春天存留在我们心中的渲染",
-        "url": "https://book.douban.com/review/17863774/",
-        "date": "2026-10-20",
+        "title": "涉过意识之流｜女巫决定抄起她的扫帚飞走（或杜布拉夫卡生平与创作介绍）",
+        "url": "https://book.douban.com/review/17887203/",
+        "date": "2026-11-04",
         "source": "豆瓣·书评",
         "summary": "",
-        "subject": "春天存留",
+        "subject": "涉过意识之流",
         "rating": "力荐",
         "type": "book",
         "desc": ""
+      },
+      {
+        "title": "落在我身上的雨｜陆庆屹：在父母身上，我看到了“地老天荒”的确切含义 | 专访",
+        "url": "https://book.douban.com/review/17886087/",
+        "date": "2026-11-03",
+        "source": "豆瓣·书评",
+        "summary": "界面新闻记者 | 实习记者 席梦茹 界面新闻编辑 | 姜妍",
+        "subject": "落在我身上的雨",
+        "rating": "",
+        "type": "book",
+        "desc": "界面新闻记者 | 实习记者 席梦茹 界面新闻编辑 | 姜妍"
       },
       {
         "title": "小城良方｜看到开分了，觉得有点低，贡献一下",
@@ -1013,7 +1013,7 @@
         "desc": ""
       }
     ],
-    "updatedAt": "2026-11-06T17:55:45.335Z",
+    "updatedAt": "2026-11-06T20:25:58.113Z",
     "stale": false
   },
   "photography": {
@@ -1026,109 +1026,115 @@
       "name": "news:中新网·要闻",
       "ok": true,
       "count": 30,
-      "ms": 1259
+      "ms": 1048
     },
     {
       "name": "ai:量子位",
       "ok": true,
       "count": 10,
-      "ms": 1621
+      "ms": 1336
     },
     {
       "name": "stock:腾讯行情",
       "ok": true,
       "count": 6,
-      "ms": 1855
+      "ms": 1354
     },
     {
       "name": "photography:r/portraits",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 1925
+      "ms": 1626
     },
     {
       "name": "photography:r/landscapephotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 1940
+      "ms": 1631
     },
     {
       "name": "photography:r/streetphotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 1944
+      "ms": 1635
     },
     {
       "name": "photography:r/photography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 1957
+      "ms": 1641
     },
     {
       "name": "photography:r/FilmPhotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 1963
+      "ms": 1643
     },
     {
       "name": "photography:r/foodphotography",
       "ok": false,
       "error": "HTTP 403",
-      "ms": 1964
+      "ms": 1645
     },
     {
       "name": "news:中新网·国内",
       "ok": true,
       "count": 30,
-      "ms": 999
-    },
-    {
-      "name": "inspiration:抖音热搜",
-      "ok": true,
-      "count": 50,
-      "ms": 2289
+      "ms": 869
     },
     {
       "name": "news:中新网·社会",
       "ok": true,
       "count": 30,
-      "ms": 254
+      "ms": 57
     },
     {
       "name": "news:中新网·国际",
       "ok": true,
       "count": 30,
-      "ms": 56
+      "ms": 57
+    },
+    {
+      "name": "inspiration:抖音热搜",
+      "ok": true,
+      "count": 50,
+      "ms": 2122
     },
     {
       "name": "news:知乎日报",
       "ok": false,
       "error": "fetch failed",
-      "ms": 127
+      "ms": 145
     },
     {
       "name": "sub:思想文化·豆瓣·书评精选",
       "ok": true,
       "count": 20,
-      "ms": 2801
+      "ms": 2321
     },
     {
       "name": "sub:心理成长·知乎日报",
       "ok": false,
       "error": "fetch failed",
-      "ms": 54
+      "ms": 242
     },
     {
       "name": "ai:36氪",
       "ok": false,
       "error": "空结果",
-      "ms": 1281
+      "ms": 1238
+    },
+    {
+      "name": "podcast:关注·来都来了",
+      "ok": true,
+      "count": 1,
+      "ms": 2652
     },
     {
       "name": "sub:生活方式·中新网·生活",
       "ok": true,
       "count": 16,
-      "ms": 53
+      "ms": 261
     },
     {
       "name": "sub:生活方式·中新网·财经",
@@ -1137,82 +1143,76 @@
       "ms": 57
     },
     {
-      "name": "podcast:关注·来都来了",
-      "ok": true,
-      "count": 1,
-      "ms": 3207
-    },
-    {
       "name": "releases:豆瓣·书评",
       "ok": true,
       "count": 20,
-      "ms": 3284
+      "ms": 3019
     },
     {
       "name": "inspiration:百度热搜",
       "ok": true,
       "count": 51,
-      "ms": 1213
+      "ms": 1031
     },
     {
       "name": "news:百度热搜",
       "ok": true,
       "count": 51,
-      "ms": 874
+      "ms": 1112
     },
     {
-      "name": "sanlian:三联生活周刊",
+      "name": "podcast:Apple中国热榜",
       "ok": true,
-      "count": 9,
-      "ms": 3602
+      "count": 10,
+      "ms": 3312
     },
     {
       "name": "podcast:关注·不合时宜",
       "ok": true,
       "count": 1,
-      "ms": 825
+      "ms": 918
     },
     {
       "name": "inspiration:头条热榜",
       "ok": true,
       "count": 50,
-      "ms": 720
+      "ms": 481
     },
     {
       "name": "releases:豆瓣·影评",
       "ok": true,
       "count": 20,
-      "ms": 975
+      "ms": 871
     },
     {
       "name": "inspiration:B站排行",
-      "ok": false,
-      "error": "空结果",
-      "ms": 293
+      "ok": true,
+      "count": 100,
+      "ms": 791
     },
     {
       "name": "podcast:关注·文化有限",
       "ok": true,
       "count": 1,
-      "ms": 1826
+      "ms": 1428
     },
     {
       "name": "podcast:关注·忽左忽右",
       "ok": true,
       "count": 1,
-      "ms": 366
+      "ms": 344
     },
     {
       "name": "podcast:关注·东腔西调",
       "ok": true,
       "count": 1,
-      "ms": 2479
+      "ms": 1370
     },
     {
-      "name": "podcast:Apple中国热榜",
+      "name": "sanlian:三联生活周刊",
       "ok": false,
-      "error": "This operation was aborted",
-      "ms": 15001
+      "error": "fetch failed",
+      "ms": 10492
     }
   ]
 }
