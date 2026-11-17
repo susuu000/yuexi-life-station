@@ -69,7 +69,7 @@ function parseRSS(xml, sourceName = '', opts = {}) {
   const blocks = xml.match(/<(item|entry)[\s>][\s\S]*?<\/\1>/g) || [];
   for (const block of blocks) {
     const pick = (tag) => {
-      const m = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`, 'i'));
+      const m = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\/${tag}>`, 'i'));
       if (!m) return '';
       return decodeEntities(m[1].replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').replace(/<[^>]+>/g, '').trim());
     };
@@ -414,14 +414,25 @@ function cleanDouban(items) {
 /**
  * 订阅精选（原「公众号精选」位）
  *
- * 说明：微信公众号没有官方 RSS，社区镜像（wechat2rss / RSSHub 公共实例）
- * 实测已全部失效（404 / 超时），因此本板块改为聚合「可公开访问」的优质中文源，
- * 并在前端提供自定义 RSS 订阅入口，用户可粘贴自建的公众号 RSS 地址。
+ * 说明：微信公众号没有官方 RSS。经实测，wechat2rss.xlab.app 免费服务提供 395 个
+ * 公众号的直出 RSS（2026-11 实测可用，平均收录时延 ≤24h），已为用户接入其中
+ * 4 个美学/感知力调性的号（落日间 / 先生制造 / 海边的西赛罗 / 莫言读书会）。
+ * 其余分组仍聚合可公开访问的优质中文源作为兜底。
  */
+// wechat2rss 免费号 feed（经 2026-11 实测，全部返回标准 RSS）
+const W2R = 'https://wechat2rss.xlab.app/feed/';
+const WECHAT_FEEDS = [
+  ['落日间',      W2R + '9c4b3d62a24fdf1863421984ad23e0c63e317614.xml'],
+  ['先生制造',    W2R + '313326d41db4f54b1cc09e7c986a5ac4e5f88ca0.xml'],
+  ['海边的西赛罗', W2R + '5e25483b324ae2d39510555465b12a2b2dfa4000.xml'],
+  ['莫言读书会',  W2R + '6324f2c5d7c2413541a11589b64d7fcb63417ff7.xml']
+];
+
 async function fetchSubscriptions() {
   const groups = {};
 
   const defs = [
+    ['aesthetic', '美学感知', WECHAT_FEEDS.map(([name, url]) => [name, url, 'wechat']), { maxAgeDays: 365, perSource: 8, maxTotal: 32 }],
     ['thinking', '思想文化', [['豆瓣·书评精选', 'https://www.douban.com/feed/review/book', 'douban']]],
     ['psychology', '心理成长', [['知乎日报', null, 'zhihu']]],
     ['lifestyle', '生活方式', [
@@ -430,17 +441,18 @@ async function fetchSubscriptions() {
     ]]
   ];
 
-  for (const [key, label, sources] of defs) {
+  for (const [key, label, sources, opts] of defs) {
     const items = [];
     for (const [name, url, kind] of sources) {
       const r = await task(`sub:${label}·${name}`, async () => {
         if (kind === 'zhihu') return await zhihuDaily();
-        const list = freshOnly(await getRSS(url, name, { rawSummary: kind === 'douban' }));
+        // 公众号源里可能存在停更号（如落日间），放宽新鲜度阈值保留存档内容
+        const list = freshOnly(await getRSS(url, name, { rawSummary: kind === 'douban' }), opts?.maxAgeDays);
         return kind === 'douban' ? cleanDouban(list) : list;
       });
-      if (r) items.push(...r.slice(0, 8));
+      if (r) items.push(...r.slice(0, opts?.perSource || 8));
     }
-    groups[key] = { label, items: dedupe(items).slice(0, 10) };
+    groups[key] = { label, items: dedupe(items).slice(0, opts?.maxTotal || 10) };
   }
   return groups;
 }
