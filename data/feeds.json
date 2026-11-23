@@ -1,47 +1,68 @@
 {
-  "updatedAt": "2026-11-23T14:30:36.784Z",
+  "updatedAt": "2026-11-23T22:35:41.708Z",
   "news": {
     "data": [
+      {
+        "title": "英伟达恢复黄仁勋总裁、CEO及董事职务",
+        "url": "https://www.chinanews.com.cn/gj/2026/11-24/10736726.shtml",
+        "date": "2026-11-23",
+        "source": "中新网·要闻",
+        "summary": "中新社旧金山11月23日电 英伟达公司23日宣布，即日起恢复黄仁勋的公司总裁、首席执行官(CEO)及董事职务。"
+      },
+      {
+        "title": "“月租”酒店划不划算？先分清“安居”与“旅居”",
+        "url": "https://www.chinanews.com.cn/cj/2026/11-24/10736725.shtml",
+        "date": "2026-11-23",
+        "source": "中新网·要闻",
+        "summary": "酒店包月当租房，正在成为一种新的生活方式。上海一位租客和酒店谈定每晚300元，工作日入住、周末回远郊的家，一个月房费约3600元、最高4800元，两份早餐、保洁、停车全包；而在同地段租一间20平方米的“老破小”，房租加水电、停车等杂费每月要5500元左右。两相比较，住酒店反而省了近2000元。与此同时，头部酒店集团集体…"
+      },
+      {
+        "title": "英国曼彻斯特演唱会现不明物质 逾1.2万人被紧急疏散",
+        "url": "https://www.chinanews.com.cn/gj/2026/11-23/10736724.shtml",
+        "date": "2026-11-23",
+        "source": "中新网·要闻",
+        "summary": "中新社伦敦11月23日电 (记者 欧阳开宇)当地时间11月22日晚间，英国曼彻斯特Co-op Live体育馆举办演唱会期间出现不明物质，现场超过1.2万名观众被紧急疏散，警方将此列为重大事件展开调查。"
+      },
+      {
+        "title": "菲律宾南部官员住宅遭火箭弹袭击 数百居民再度撤离",
+        "url": "https://www.chinanews.com.cn/gj/2026/11-23/10736723.shtml",
+        "date": "2026-11-23",
+        "source": "中新网·要闻",
+        "summary": "中新社马尼拉11月23日电 (记者 周璟)据菲律宾媒体23日消息，菲南部棉兰老岛日前发生一起武装袭击事件，当地一名政府官员的住宅遭火箭弹袭击，周边数百名居民被迫撤离。"
+      },
+      {
+        "title": "走进民企看发展丨德康农牧董事长王德根：用科技创新解决农民养殖痛点",
+        "url": "http://www.chinanews.com.cn/cj/shipin/2026/11-23/news1075814.shtml",
+        "date": "2026-11-23",
+        "source": "中新网·要闻",
+        "summary": "四川德康农牧食品集团股份有限公司董事长王德根在接受采访时表示，作为农牧行业链主企业，我们要把科技创新、防疫体系和食品安全全产业链的各个控制环节系统性地建设好、建强，真正让产业实现持续发展、农民持续增收，企业实现良好效益，形成稳定、长期发力的基础体系。(左雨晴 陈庆洋)"
+      },
+      {
+        "title": "特朗普再次发文：“祝贺英伟达作出了一个在我看来绝对出色的决定”",
+        "url": "https://www.chinanews.com.cn/gj/2026/11-23/10736721.shtml",
+        "date": "2026-11-23",
+        "source": "中新网·要闻",
+        "summary": "中新网11月23日电 当地时间11月23日，美国总统特朗普再次在社交媒体发文，祝贺英伟达作出恢复黄仁勋职务的决定。"
+      },
+      {
+        "title": "外交部：中国不搞地缘争夺，不搞势力范围",
+        "url": "https://www.chinanews.com.cn/gn/2026/11-23/10736714.shtml",
+        "date": "2026-11-23",
+        "source": "中新网·国内",
+        "summary": "中新社北京11月23日电 (记者 黄钰钦)针对中俄美元首会晤若机制化是否会削弱现有多边机制，中国外交部发言人郭嘉昆23日在例行记者会上应询指出，中国不搞地缘争夺，不搞势力范围，而是在相互尊重、平等相待的基础上，同各国开展友好交往。"
+      },
       {
         "title": "国务院台办与中国进出口银行签署合作协议",
         "url": "https://www.chinanews.com.cn/gn/2026/11-23/10736705.shtml",
         "date": "2026-11-23",
-        "source": "中新网·要闻",
+        "source": "中新网·国内",
         "summary": "中新社北京11月23日电 (记者 张杨彬 刘子衿)国务院台湾事务办公室与中国进出口银行23日在北京签署《“十五五”时期促进两岸融合发展金融合作协议》。"
-      },
-      {
-        "title": "尼泊尔“菏泽牡丹园”揭牌",
-        "url": "https://www.chinanews.com.cn/gj/2026/11-23/10736702.shtml",
-        "date": "2026-11-23",
-        "source": "中新网·要闻",
-        "summary": "中新社加德满都11月23日电 (记者 崔楠)“菏泽牡丹园”23日在尼泊尔杜利克尔市揭牌。来自中国山东省菏泽市的首批100株牡丹已移栽至园内。"
-      },
-      {
-        "title": "横琴独牙传奇中式九球公开赛开幕 832名选手参赛",
-        "url": "https://www.chinanews.com.cn/ty/2026/11-23/10736704.shtml",
-        "date": "2026-11-23",
-        "source": "中新网·要闻",
-        "summary": "中新网11月23日电 据赛事主办方消息，横琴独牙传奇中式九球公开赛11月21日晚在广东横琴粤澳深度合作区开幕，吸引来自全球26个国家和地区的832名台球健儿参赛。"
-      },
-      {
-        "title": "黄仁勋重新出任英伟达CEO",
-        "url": "https://www.chinanews.com.cn/gj/2026/11-23/10736703.shtml",
-        "date": "2026-11-23",
-        "source": "中新网·要闻",
-        "summary": "中新网11月23日电 据英伟达官网当地时间11月23日消息，黄仁勋重新出任英伟达CEO。"
-      },
-      {
-        "title": "浙江织密校园安全网 配备6668名公安法治副校长",
-        "url": "https://www.chinanews.com.cn/sh/2026/11-23/10736701.shtml",
-        "date": "2026-11-23",
-        "source": "中新网·要闻",
-        "summary": "中新网杭州11月23日电 (钱晨菲)23日，在浙江深化共治警务建设新闻发布会上，浙江省公安厅党委副书记、常务副厅长罗杰介绍，目前该省配备6668名公安法治副校长加强“护校安园”，并会同教育部门深化“校警驿站”建设，提供政务服务86.5万人次。"
       },
       {
         "title": "政策性金融解台企发展之“渴” 台商期待借力拓展海外市场",
         "url": "https://www.chinanews.com.cn/gn/2026/11-23/10736698.shtml",
         "date": "2026-11-23",
-        "source": "中新网·要闻",
+        "source": "中新网·国内",
         "summary": "中新社北京11月23日电 (记者 张杨彬 刘子衿)“这个额度是我们当初没有料想到的。”重庆新格有色金属有限公司董事长黄耀滨23日在一场签约仪式上谈起今年初的一笔5000万元(人民币，下同)融资。那是这位台商第一次与中国进出口银行“打交道”。"
       },
       {
@@ -66,18 +87,11 @@
         "summary": "中新网杭州11月23日电 (钱晨菲)民众遇到噪音扰民等问题，有时难以判断该找哪个部门；游客在景区消费遇到纠纷，也可能面临反复转办……随着社会治理场景日益多元，如何打破部门之间的职责边界，让民众诉求得到及时回应，成为基层治理的重要课题。"
       },
       {
-        "title": "西安光机所在太赫兹数字全息成像领域取得系列进展",
-        "url": "https://www.chinanews.com.cn/gn/2026/11-23/10736674.shtml",
+        "title": "浙江织密校园安全网 配备6668名公安法治副校长",
+        "url": "https://www.chinanews.com.cn/sh/2026/11-23/10736701.shtml",
         "date": "2026-11-23",
-        "source": "中新网·国内",
-        "summary": "中新网西安11月23日电 (记者 阿琳娜)记者23日从西安光机所获悉，西安光机所刘红军研究员团队在太赫兹数字全息成像领域取得系列进展。研究围绕探测视场受限、遮挡引起的信息退化两类关键问题，将光场传播规律与人工智能重建相结合，在有限探测资源条件下实现视场拓展与遮挡目标的高保真恢复，为太赫兹成像向大目标、复杂检测场景拓展提…"
-      },
-      {
-        "title": "刑事法律援助全球会议在北京开幕 王小洪出席并致辞",
-        "url": "https://www.chinanews.com.cn/gn/2026/11-23/10736676.shtml",
-        "date": "2026-11-23",
-        "source": "中新网·国内",
-        "summary": "中新社北京11月23日电 (记者 谢雁冰)刑事法律援助全球会议23日在北京开幕，中国国务委员、公安部部长王小洪出席并致辞。"
+        "source": "中新网·社会",
+        "summary": "中新网杭州11月23日电 (钱晨菲)23日，在浙江深化共治警务建设新闻发布会上，浙江省公安厅党委副书记、常务副厅长罗杰介绍，目前该省配备6668名公安法治副校长加强“护校安园”，并会同教育部门深化“校警驿站”建设，提供政务服务86.5万人次。"
       },
       {
         "title": "第20届红十字国际人道法模拟法庭竞赛落幕 中国海洋大学夺冠",
@@ -115,32 +129,18 @@
         "summary": "中新网北京11月23日电 (记者 陈杭)以“从创新突破到可信证据——新技术时代的监管科学”为主题的2026北京药品监管科学创新大会22日在北京举行，围绕监管科学创新与医药研发实践深度融合开展交流研讨。"
       },
       {
-        "title": "今年10月欧盟油价同比增长近三成",
-        "url": "https://www.chinanews.com.cn/gj/2026/11-23/10736648.shtml",
+        "title": "黄仁勋回应重返英伟达",
+        "url": "https://www.chinanews.com.cn/gj/2026/11-23/10736709.shtml",
         "date": "2026-11-23",
         "source": "中新网·国际",
-        "summary": "中新网布鲁塞尔11月23日电 (记者 德永健)欧盟统计局23日公布的数据显示，今年10月欧盟油价继续保持高位，燃油和润滑油价格同比增长近三成。"
+        "summary": "中新网北京11月23日电 北京时间23日，英伟达通过其网站发布公告称，自即日起，恢复黄仁勋的总裁兼首席执行官职务，并成为董事会成员。"
       },
       {
-        "title": "北大马来西亚校友“阳光医行”义诊走进社区",
-        "url": "https://www.chinanews.com.cn/gj/2026/11-23/10736608.shtml",
+        "title": "马斯克回应黄仁勋重任英伟达CEO",
+        "url": "https://www.chinanews.com.cn/gj/2026/11-23/10736719.shtml",
         "date": "2026-11-23",
         "source": "中新网·国际",
-        "summary": "中新网吉隆坡11月23日电 (记者 刘育英)由北京大学马来西亚校友会组织、中国驻马来西亚大使馆及马中友好协会等支持的第四届“阳光医行，关爱社会”义诊活动22日走进马来西亚雪兰莪州的一个马来社区。"
-      },
-      {
-        "title": "韩国总统李在明提名多名长官人选",
-        "url": "https://www.chinanews.com.cn/gj/2026/11-23/10736606.shtml",
-        "date": "2026-11-23",
-        "source": "中新网·国际",
-        "summary": "中新网首尔11月23日电 (记者 金旭)韩国总统府青瓦台当地时间23日宣布，韩国总统李在明当天提名国家情报院院长和外交部、统一部长官等5个职位人选。"
-      },
-      {
-        "title": "韩国综合股价指数下跌逾3%",
-        "url": "https://www.chinanews.com.cn/gj/2026/11-23/10736556.shtml",
-        "date": "2026-11-23",
-        "source": "中新网·国际",
-        "summary": "中新网首尔11月23日电 (金旭 林珺)韩国综合股价指数(KOSPI)当地时间23日下跌超过3%，收盘跌至4700点附近，创下2026年1月13日以来的最低水平。"
+        "summary": "中新网11月23日电 当地时间11月23日，在英伟达宣布恢复黄仁勋担任公司总裁兼首席执行官后，美国企业家马斯克在社交媒体X上连续发布帖文，写道：“事情已经办妥”(It is done)和“错误已经得到纠正”(The mistake has been corrected)。"
       },
       {
         "title": "亚太经合组织深圳会议蕴含深刻启迪",
@@ -150,15 +150,15 @@
         "summary": ""
       },
       {
-        "title": "央视网评“遇事就举报”",
-        "url": "https://m.baidu.com/s?word=%E5%A4%AE%E8%A7%86%E7%BD%91%E8%AF%84%E2%80%9C%E9%81%87%E4%BA%8B%E5%B0%B1%E4%B8%BE%E6%8A%A5%E2%80%9D&sa=fyb_news",
+        "title": "胖东来一店将关闭 羽绒服亮成本价",
+        "url": "https://m.baidu.com/s?word=%E8%83%96%E4%B8%9C%E6%9D%A5%E4%B8%80%E5%BA%97%E5%B0%86%E5%85%B3%E9%97%AD+%E7%BE%BD%E7%BB%92%E6%9C%8D%E4%BA%AE%E6%88%90%E6%9C%AC%E4%BB%B7&sa=fyb_news",
         "date": "2026-11-23",
         "source": "百度热搜",
         "summary": ""
       },
       {
-        "title": "中国消费者开始精致“过日子”",
-        "url": "https://m.baidu.com/s?word=%E4%B8%AD%E5%9B%BD%E6%B6%88%E8%B4%B9%E8%80%85%E5%BC%80%E5%A7%8B%E7%B2%BE%E8%87%B4%E2%80%9C%E8%BF%87%E6%97%A5%E5%AD%90%E2%80%9D&sa=fyb_news",
+        "title": "英伟达董事会恢复黄仁勋CEO职务",
+        "url": "https://m.baidu.com/s?word=%E8%8B%B1%E4%BC%9F%E8%BE%BE%E8%91%A3%E4%BA%8B%E4%BC%9A%E6%81%A2%E5%A4%8D%E9%BB%84%E4%BB%81%E5%8B%8BCEO%E8%81%8C%E5%8A%A1&sa=fyb_news",
         "date": "2026-11-23",
         "source": "百度热搜",
         "summary": ""
@@ -171,21 +171,21 @@
         "summary": ""
       },
       {
-        "title": "安睡裤广告吐槽月经气味大被罚45万",
-        "url": "https://m.baidu.com/s?word=%E5%AE%89%E7%9D%A1%E8%A3%A4%E5%B9%BF%E5%91%8A%E5%90%90%E6%A7%BD%E6%9C%88%E7%BB%8F%E6%B0%94%E5%91%B3%E5%A4%A7%E8%A2%AB%E7%BD%9A45%E4%B8%87&sa=fyb_news",
+        "title": "特朗普手持在深圳照片向众人展示",
+        "url": "https://m.baidu.com/s?word=%E7%89%B9%E6%9C%97%E6%99%AE%E6%89%8B%E6%8C%81%E5%9C%A8%E6%B7%B1%E5%9C%B3%E7%85%A7%E7%89%87%E5%90%91%E4%BC%97%E4%BA%BA%E5%B1%95%E7%A4%BA&sa=fyb_news",
         "date": "2026-11-23",
         "source": "百度热搜",
         "summary": ""
       },
       {
-        "title": "女子嫌对面楼老旧自费7.3万刷漆",
-        "url": "https://m.baidu.com/s?word=%E5%A5%B3%E5%AD%90%E5%AB%8C%E5%AF%B9%E9%9D%A2%E6%A5%BC%E8%80%81%E6%97%A7%E8%87%AA%E8%B4%B97.3%E4%B8%87%E5%88%B7%E6%BC%86&sa=fyb_news",
+        "title": "蔡磊发文悼念廖建文",
+        "url": "https://m.baidu.com/s?word=%E8%94%A1%E7%A3%8A%E5%8F%91%E6%96%87%E6%82%BC%E5%BF%B5%E5%BB%96%E5%BB%BA%E6%96%87&sa=fyb_news",
         "date": "2026-11-23",
         "source": "百度热搜",
         "summary": ""
       }
     ],
-    "updatedAt": "2026-11-23T14:30:36.784Z",
+    "updatedAt": "2026-11-23T22:35:41.708Z",
     "stale": false
   },
   "ai": {
@@ -261,7 +261,7 @@
         "summary": "用葡萄糖发电控制血糖。"
       }
     ],
-    "updatedAt": "2026-11-23T14:30:36.784Z",
+    "updatedAt": "2026-11-23T22:35:41.708Z",
     "stale": false
   },
   "stock": {
@@ -315,7 +315,7 @@
         "up": true
       }
     ],
-    "updatedAt": "2026-11-23T14:30:36.784Z",
+    "updatedAt": "2026-11-23T22:35:41.708Z",
     "stale": false
   },
   "podcastHot": {
@@ -487,18 +487,18 @@
         "url": "https://www.ximalaya.com/sound/1034911124"
       }
     ],
-    "updatedAt": "2026-11-23T14:30:36.784Z",
+    "updatedAt": "2026-11-23T22:35:41.708Z",
     "stale": false
   },
   "sanlian": {
     "data": [
       {
-        "id": "sl-269794",
-        "title": "房龙：这本书不写给基督徒，写给年轻人",
+        "id": "sl-275214",
+        "title": "东汉党锢之祸：当对抗失去理智，后果只剩灾难",
         "date": "2026-11-23",
         "source": "三联生活周刊",
         "summary": "",
-        "url": "https://www.lifeweek.com.cn/news?currentId=269794&currentIdShow=y"
+        "url": "https://www.lifeweek.com.cn/news?currentId=275214&currentIdShow=y"
       },
       {
         "id": "sl-5293",
@@ -517,14 +517,6 @@
         "url": "https://www.lifeweek.com.cn/news?currentId=4412&currentIdShow=y"
       },
       {
-        "id": "sl-1523",
-        "title": "韩昇·《史记》百讲",
-        "date": "2026-11-23",
-        "source": "三联生活周刊",
-        "summary": "",
-        "url": "https://www.lifeweek.com.cn/news?currentId=1523&currentIdShow=y"
-      },
-      {
         "id": "sl-1767",
         "title": "与孩子一起听的神话通识课",
         "date": "2026-11-23",
@@ -533,7 +525,7 @@
         "url": "https://www.lifeweek.com.cn/news?currentId=1767&currentIdShow=y"
       }
     ],
-    "updatedAt": "2026-11-23T14:30:36.784Z",
+    "updatedAt": "2026-11-23T22:35:41.708Z",
     "stale": false
   },
   "subscriptions": {
@@ -715,15 +707,6 @@
         "label": "思想文化",
         "items": [
           {
-            "title": "献给虚无的供物｜关于简中版《献给虚无的供物》的问题——文本雷同，错字，病句与错译",
-            "url": "https://book.douban.com/review/17909014/",
-            "date": "2026-11-18",
-            "source": "豆瓣·书评精选",
-            "summary": "《献给虚无的供物》是我最喜欢的推理小说之一。我个人大约是在十年前读完了本作的简中版本，当时还在上高中的我反复阅读本作多次，其中有本作文体和观念确实出色的原因",
-            "subject": "献给虚无的供物",
-            "rating": "力荐"
-          },
-          {
             "title": "中国菜市场｜脱离群众的假知识分子的胡言乱语",
             "url": "https://book.douban.com/review/17914141/",
             "date": "2026-11-21",
@@ -731,6 +714,15 @@
             "summary": "",
             "subject": "中国菜市场",
             "rating": "很差"
+          },
+          {
+            "title": "献给虚无的供物｜关于简中版《献给虚无的供物》的问题——文本雷同，错字，病句与错译",
+            "url": "https://book.douban.com/review/17909014/",
+            "date": "2026-11-18",
+            "source": "豆瓣·书评精选",
+            "summary": "《献给虚无的供物》是我最喜欢的推理小说之一。我个人大约是在十年前读完了本作的简中版本，当时还在上高中的我反复阅读本作多次，其中有本作文体和观念确实出色的原因",
+            "subject": "献给虚无的供物",
+            "rating": "力荐"
           },
           {
             "title": "你的来信是我的历险｜译后记",
@@ -742,15 +734,6 @@
             "rating": "力荐"
           },
           {
-            "title": "超越时间之影 (评论: Grenzprobleme der Phänomenologie. Analysen des Unbewusstseins und der Instinkte. Metaphysik. Späte Ethik (Te…",
-            "url": "https://book.douban.com/review/17915697/",
-            "date": "2026-11-22",
-            "source": "豆瓣·书评精选",
-            "summary": "我到鲁",
-            "subject": "",
-            "rating": ""
-          },
-          {
             "title": "月相书｜后记：你记得今晚的月相吗？",
             "url": "https://book.douban.com/review/17916152/",
             "date": "2026-11-22",
@@ -758,6 +741,15 @@
             "summary": "",
             "subject": "月相书",
             "rating": "力荐"
+          },
+          {
+            "title": "超越时间之影 (评论: Grenzprobleme der Phänomenologie. Analysen des Unbewusstseins und der Instinkte. Metaphysik. Späte Ethik (Te…",
+            "url": "https://book.douban.com/review/17915697/",
+            "date": "2026-11-22",
+            "source": "豆瓣·书评精选",
+            "summary": "我到鲁",
+            "subject": "",
+            "rating": ""
           },
           {
             "title": "地火奔突｜《地火奔突》后记",
@@ -778,13 +770,13 @@
             "rating": "力荐"
           },
           {
-            "title": "卡拉马佐夫兄弟｜《卡拉马佐夫兄弟》读后",
-            "url": "https://book.douban.com/review/17895645/",
-            "date": "2026-11-10",
+            "title": "托斯卡纳书店时光｜书店每日售出女作书籍清单",
+            "url": "https://book.douban.com/review/17917015/",
+            "date": "2026-11-22",
             "source": "豆瓣·书评精选",
-            "summary": "关于佐",
-            "subject": "卡拉马佐夫兄弟",
-            "rating": "力荐"
+            "summary": "我划线GPT",
+            "subject": "托斯卡纳书店时光",
+            "rating": ""
           }
         ]
       },
@@ -852,73 +844,73 @@
             "summary": "过去，国内冬季车厘子量少而价高。但在南半球的智利，每到11月、12月盛夏来临，就到了车厘子丰收的时节。暗红油亮的车厘子堆成小山，折合人民币不过十几块钱一公斤。如今，智利的车厘子已走进中国市场，成为国内消费者触手可及的水果选项。"
           },
           {
-            "title": "西藏最大铁路货运枢纽拉萨西站首次完成道岔更换",
-            "url": "https://www.chinanews.com.cn/cj/2026/11-23/10736694.shtml",
+            "title": "“月租”酒店划不划算？先分清“安居”与“旅居”",
+            "url": "https://www.chinanews.com.cn/cj/2026/11-24/10736725.shtml",
             "date": "2026-11-23",
             "source": "中新网·财经",
-            "summary": "中新网拉萨11月23日电(马生明)11月22日凌晨2时50分，青藏铁路拉萨西站站场上，随着最后一组道岔各项参数试验合格，22组道岔更换施工圆满完成。此次施工历时近半个月，利用12个“天窗”作业时段完成，这是青藏铁路全线开通20年来，拉萨西站首次成组集中更换道岔。"
+            "summary": "酒店包月当租房，正在成为一种新的生活方式。上海一位租客和酒店谈定每晚300元，工作日入住、周末回远郊的家，一个月房费约3600元、最高4800元，两份早餐、保洁、停车全包；而在同地段租一间20平方米的“老破小”，房租加水电、停车等杂费每月要5500元左右。两相比较，住酒店反而省了近2000元。与此同时，头部酒店集团集体…"
           },
           {
-            "title": "10月中国全社会用电量同比增长1.6%",
-            "url": "https://www.chinanews.com.cn/cj/2026/11-23/10736695.shtml",
+            "title": "业内人士：AI智能体正成为高端手机出海竞争的新变量",
+            "url": "https://www.chinanews.com.cn/cj/2026/11-23/10736712.shtml",
             "date": "2026-11-23",
             "source": "中新网·财经",
-            "summary": "中新社北京11月23日电 (记者 王梦瑶)中国国家能源局23日发布的数据显示，10月中国全社会用电量8709亿千瓦时，同比增长1.6%，较9月回升0.4个百分点。"
+            "summary": "中新网11月23日电(左雨晴) AI智能体手机正在成为中国厂商出海竞争的新变量。"
           }
         ]
       }
     },
-    "updatedAt": "2026-11-23T14:30:36.784Z",
+    "updatedAt": "2026-11-23T22:35:41.708Z",
     "stale": false
   },
   "inspiration": {
     "data": [
       {
-        "title": "英伟达恢复黄仁勋CEO职务",
+        "title": "甲亢哥百米能跑赢博尔特吗",
         "source": "抖音热搜",
-        "heat": "1210万",
-        "url": "https://www.douyin.com/search/%E8%8B%B1%E4%BC%9F%E8%BE%BE%E6%81%A2%E5%A4%8D%E9%BB%84%E4%BB%81%E5%8B%8BCEO%E8%81%8C%E5%8A%A1"
+        "heat": "1212万",
+        "url": "https://www.douyin.com/search/%E7%94%B2%E4%BA%A2%E5%93%A5%E7%99%BE%E7%B1%B3%E8%83%BD%E8%B7%91%E8%B5%A2%E5%8D%9A%E5%B0%94%E7%89%B9%E5%90%97"
       },
       {
-        "title": "严肃进入舒服过冬模式",
+        "title": "CFM沙漠灰真的下雪了",
         "source": "抖音热搜",
-        "heat": "1171万",
-        "url": "https://www.douyin.com/search/%E4%B8%A5%E8%82%83%E8%BF%9B%E5%85%A5%E8%88%92%E6%9C%8D%E8%BF%87%E5%86%AC%E6%A8%A1%E5%BC%8F"
+        "heat": "1211万",
+        "url": "https://www.douyin.com/search/CFM%E6%B2%99%E6%BC%A0%E7%81%B0%E7%9C%9F%E7%9A%84%E4%B8%8B%E9%9B%AA%E4%BA%86"
       },
       {
         "title": "雪假撬动冰雪经济点燃消费引擎",
         "source": "抖音热搜",
-        "heat": "1109万",
+        "heat": "1115万",
         "url": "https://www.douyin.com/search/%E9%9B%AA%E5%81%87%E6%92%AC%E5%8A%A8%E5%86%B0%E9%9B%AA%E7%BB%8F%E6%B5%8E%E7%82%B9%E7%87%83%E6%B6%88%E8%B4%B9%E5%BC%95%E6%93%8E"
       },
       {
-        "title": "黄仁勋：很荣幸回到英伟达",
+        "title": "严肃进入舒服过冬模式",
         "source": "抖音热搜",
-        "heat": "1095万",
-        "url": "https://www.douyin.com/search/%E9%BB%84%E4%BB%81%E5%8B%8B%EF%BC%9A%E5%BE%88%E8%8D%A3%E5%B9%B8%E5%9B%9E%E5%88%B0%E8%8B%B1%E4%BC%9F%E8%BE%BE"
+        "heat": "1107万",
+        "url": "https://www.douyin.com/search/%E4%B8%A5%E8%82%83%E8%BF%9B%E5%85%A5%E8%88%92%E6%9C%8D%E8%BF%87%E5%86%AC%E6%A8%A1%E5%BC%8F"
+      },
+      {
+        "title": "英伟达盘前大涨30%",
+        "source": "抖音热搜",
+        "heat": "1011万",
+        "url": "https://www.douyin.com/search/%E8%8B%B1%E4%BC%9F%E8%BE%BE%E7%9B%98%E5%89%8D%E5%A4%A7%E6%B6%A830%25"
       },
       {
         "title": "万吨大驱将首次面向公众开放",
         "source": "抖音热搜",
-        "heat": "994万",
+        "heat": "997万",
         "url": "https://www.douyin.com/search/%E4%B8%87%E5%90%A8%E5%A4%A7%E9%A9%B1%E5%B0%86%E9%A6%96%E6%AC%A1%E9%9D%A2%E5%90%91%E5%85%AC%E4%BC%97%E5%BC%80%E6%94%BE"
       },
       {
-        "title": "长江商学院原副院长廖建文离世",
+        "title": "教育部就教材管理条例征求意见",
         "source": "抖音热搜",
-        "heat": "943万",
-        "url": "https://www.douyin.com/search/%E9%95%BF%E6%B1%9F%E5%95%86%E5%AD%A6%E9%99%A2%E5%8E%9F%E5%89%AF%E9%99%A2%E9%95%BF%E5%BB%96%E5%BB%BA%E6%96%87%E7%A6%BB%E4%B8%96"
-      },
-      {
-        "title": "2027国考今起可打印准考证",
-        "source": "抖音热搜",
-        "heat": "831万",
-        "url": "https://www.douyin.com/search/2027%E5%9B%BD%E8%80%83%E4%BB%8A%E8%B5%B7%E5%8F%AF%E6%89%93%E5%8D%B0%E5%87%86%E8%80%83%E8%AF%81"
+        "heat": "874万",
+        "url": "https://www.douyin.com/search/%E6%95%99%E8%82%B2%E9%83%A8%E5%B0%B1%E6%95%99%E6%9D%90%E7%AE%A1%E7%90%86%E6%9D%A1%E4%BE%8B%E5%BE%81%E6%B1%82%E6%84%8F%E8%A7%81"
       },
       {
         "title": "“一老一小”服务实施方案公布",
         "source": "抖音热搜",
-        "heat": "812万",
+        "heat": "857万",
         "url": "https://www.douyin.com/search/%E2%80%9C%E4%B8%80%E8%80%81%E4%B8%80%E5%B0%8F%E2%80%9D%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%96%BD%E6%96%B9%E6%A1%88%E5%85%AC%E5%B8%83"
       },
       {
@@ -928,16 +920,16 @@
         "url": "https://m.baidu.com/s?word=%E4%BA%9A%E5%A4%AA%E7%BB%8F%E5%90%88%E7%BB%84%E7%BB%87%E6%B7%B1%E5%9C%B3%E4%BC%9A%E8%AE%AE%E8%95%B4%E5%90%AB%E6%B7%B1%E5%88%BB%E5%90%AF%E8%BF%AA&sa=fyb_news"
       },
       {
+        "title": "胖东来一店将关闭 羽绒服亮成本价",
+        "source": "百度热搜",
+        "heat": "",
+        "url": "https://m.baidu.com/s?word=%E8%83%96%E4%B8%9C%E6%9D%A5%E4%B8%80%E5%BA%97%E5%B0%86%E5%85%B3%E9%97%AD+%E7%BE%BD%E7%BB%92%E6%9C%8D%E4%BA%AE%E6%88%90%E6%9C%AC%E4%BB%B7&sa=fyb_news"
+      },
+      {
         "title": "英伟达董事会恢复黄仁勋CEO职务",
         "source": "百度热搜",
         "heat": "",
         "url": "https://m.baidu.com/s?word=%E8%8B%B1%E4%BC%9F%E8%BE%BE%E8%91%A3%E4%BA%8B%E4%BC%9A%E6%81%A2%E5%A4%8D%E9%BB%84%E4%BB%81%E5%8B%8BCEO%E8%81%8C%E5%8A%A1&sa=fyb_news"
-      },
-      {
-        "title": "英伟达美股盘前暴涨",
-        "source": "百度热搜",
-        "heat": "",
-        "url": "https://m.baidu.com/s?word=%E8%8B%B1%E4%BC%9F%E8%BE%BE%E7%BE%8E%E8%82%A1%E7%9B%98%E5%89%8D%E6%9A%B4%E6%B6%A8&sa=fyb_news"
       },
       {
         "title": "探秘中国高铁的强大“内核”",
@@ -946,59 +938,147 @@
         "url": "https://m.baidu.com/s?word=%E6%8E%A2%E7%A7%98%E4%B8%AD%E5%9B%BD%E9%AB%98%E9%93%81%E7%9A%84%E5%BC%BA%E5%A4%A7%E2%80%9C%E5%86%85%E6%A0%B8%E2%80%9D&sa=fyb_news"
       },
       {
-        "title": "黄仁勋：很荣幸重返英伟达",
+        "title": "特朗普手持在深圳照片向众人展示",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E9%BB%84%E4%BB%81%E5%8B%8B%EF%BC%9A%E5%BE%88%E8%8D%A3%E5%B9%B8%E9%87%8D%E8%BF%94%E8%8B%B1%E4%BC%9F%E8%BE%BE&sa=fyb_news"
+        "url": "https://m.baidu.com/s?word=%E7%89%B9%E6%9C%97%E6%99%AE%E6%89%8B%E6%8C%81%E5%9C%A8%E6%B7%B1%E5%9C%B3%E7%85%A7%E7%89%87%E5%90%91%E4%BC%97%E4%BA%BA%E5%B1%95%E7%A4%BA&sa=fyb_news"
       },
       {
-        "title": "中国消费者开始精致“过日子”",
+        "title": "蔡磊发文悼念廖建文",
         "source": "百度热搜",
         "heat": "",
-        "url": "https://m.baidu.com/s?word=%E4%B8%AD%E5%9B%BD%E6%B6%88%E8%B4%B9%E8%80%85%E5%BC%80%E5%A7%8B%E7%B2%BE%E8%87%B4%E2%80%9C%E8%BF%87%E6%97%A5%E5%AD%90%E2%80%9D&sa=fyb_news"
-      },
-      {
-        "title": "黄仁勋重新出任英伟达CEO",
-        "source": "头条热榜",
-        "heat": "707万",
-        "url": "https://www.toutiao.com/trending/7710466018023456810/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227710466018023456810%22%2C%22hot_board_impr_id%22%3A%2220261123223020040739E9C5C78D62C064%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%BB%84%E4%BB%81%E5%8B%8B%E9%87%8D%E6%96%B0%E5%87%BA%E4%BB%BB%E8%8B%B1%E4%BC%9F%E8%BE%BECEO%22%7D&rank=&style_id=40132&topic_id=7710466018023456810"
-      },
-      {
-        "title": "英伟达美股盘前涨超30%",
-        "source": "头条热榜",
-        "heat": "640万",
-        "url": "https://www.toutiao.com/trending/7711363238796987955/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%225%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227711363238796987955%22%2C%22hot_board_impr_id%22%3A%2220261123223020040739E9C5C78D62C064%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%8B%B1%E4%BC%9F%E8%BE%BE%E7%BE%8E%E8%82%A1%E7%9B%98%E5%89%8D%E6%B6%A8%E8%B6%8530%25%22%7D&rank=&style_id=40132&topic_id=7711363238796987955"
-      },
-      {
-        "title": "亚太共赴开放创新合作之约",
-        "source": "头条热榜",
-        "heat": "579万",
-        "url": "https://www.toutiao.com/article/7711134868674986536"
-      },
-      {
-        "title": "俄对乌发动大规模报复",
-        "source": "头条热榜",
-        "heat": "524万",
-        "url": "https://www.toutiao.com/trending/7710641692205908022/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227710641692205908022%22%2C%22hot_board_impr_id%22%3A%2220261123223020040739E9C5C78D62C064%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%BF%84%E5%AF%B9%E4%B9%8C%E5%8F%91%E5%8A%A8%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%8A%A5%E5%A4%8D%22%7D&rank=&style_id=40132&topic_id=7710641692205908022"
+        "url": "https://m.baidu.com/s?word=%E8%94%A1%E7%A3%8A%E5%8F%91%E6%96%87%E6%82%BC%E5%BF%B5%E5%BB%96%E5%BB%BA%E6%96%87&sa=fyb_news"
       },
       {
         "title": "中方就以总理等被发逮捕令表态",
         "source": "头条热榜",
-        "heat": "429万",
-        "url": "https://www.toutiao.com/trending/7711108332878151722/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227711108332878151722%22%2C%22hot_board_impr_id%22%3A%2220261123223020040739E9C5C78D62C064%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%B8%AD%E6%96%B9%E5%B0%B1%E4%BB%A5%E6%80%BB%E7%90%86%E7%AD%89%E8%A2%AB%E5%8F%91%E9%80%AE%E6%8D%95%E4%BB%A4%E8%A1%A8%E6%80%81%22%7D&rank=&style_id=40132&topic_id=7711108332878151722"
+        "heat": "2009万",
+        "url": "https://www.toutiao.com/trending/7711108332878151722/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227711108332878151722%22%2C%22hot_board_impr_id%22%3A%2220261124063532A650E4D956D987D5C480%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%B8%AD%E6%96%B9%E5%B0%B1%E4%BB%A5%E6%80%BB%E7%90%86%E7%AD%89%E8%A2%AB%E5%8F%91%E9%80%AE%E6%8D%95%E4%BB%A4%E8%A1%A8%E6%80%81%22%7D&rank=&style_id=40132&topic_id=7711108332878151722"
       },
       {
-        "title": "当我用AI续写爱情公寓4关谷悠悠婚礼【AI全民制作人】",
-        "source": "B站热门",
-        "heat": "629万播放",
-        "url": "https://www.bilibili.com/video/BV1atse6EEfx"
+        "title": "黄仁勋：很荣幸回到英伟达",
+        "source": "头条热榜",
+        "heat": "1817万",
+        "url": "https://www.toutiao.com/trending/7711369945560387135/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%225%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227711369945560387135%22%2C%22hot_board_impr_id%22%3A%2220261124063532A650E4D956D987D5C480%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E9%BB%84%E4%BB%81%E5%8B%8B%EF%BC%9A%E5%BE%88%E8%8D%A3%E5%B9%B8%E5%9B%9E%E5%88%B0%E8%8B%B1%E4%BC%9F%E8%BE%BE%22%7D&rank=&style_id=40132&topic_id=7711369945560387135"
+      },
+      {
+        "title": "亚太共赴开放创新合作之约",
+        "source": "头条热榜",
+        "heat": "1645万",
+        "url": "https://www.toutiao.com/article/7711134868674986536"
+      },
+      {
+        "title": "特朗普把抵达深圳照片打印出来了",
+        "source": "头条热榜",
+        "heat": "1488万",
+        "url": "https://www.toutiao.com/trending/7710791493300129343/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227710791493300129343%22%2C%22hot_board_impr_id%22%3A%2220261124063532A650E4D956D987D5C480%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%89%B9%E6%9C%97%E6%99%AE%E6%8A%8A%E6%8A%B5%E8%BE%BE%E6%B7%B1%E5%9C%B3%E7%85%A7%E7%89%87%E6%89%93%E5%8D%B0%E5%87%BA%E6%9D%A5%E4%BA%86%22%7D&rank=&style_id=40132&topic_id=7710791493300129343"
+      },
+      {
+        "title": "大学生失联2天后校内发现其遗体",
+        "source": "头条热榜",
+        "heat": "1346万",
+        "url": "https://www.toutiao.com/trending/7711339154768265754/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227711339154768265754%22%2C%22hot_board_impr_id%22%3A%2220261124063532A650E4D956D987D5C480%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%A4%B1%E8%81%942%E5%A4%A9%E5%90%8E%E6%A0%A1%E5%86%85%E5%8F%91%E7%8E%B0%E5%85%B6%E9%81%97%E4%BD%93%22%7D&rank=&style_id=40132&topic_id=7711339154768265754"
+      },
+      {
+        "title": "数年炸鸡无人识 一句treetree全网知",
+        "source": "头条热榜",
+        "heat": "1218万",
+        "url": "https://www.toutiao.com/trending/7710276814740111401/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227710276814740111401%22%2C%22hot_board_impr_id%22%3A%2220261124063532A650E4D956D987D5C480%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%95%B0%E5%B9%B4%E7%82%B8%E9%B8%A1%E6%97%A0%E4%BA%BA%E8%AF%86+%E4%B8%80%E5%8F%A5treetree%E5%85%A8%E7%BD%91%E7%9F%A5%22%7D&rank=&style_id=40132&topic_id=7710276814740111401"
       }
     ],
-    "updatedAt": "2026-11-23T14:30:36.784Z",
+    "updatedAt": "2026-11-23T22:35:41.708Z",
     "stale": false
   },
   "releases": {
     "data": [
+      {
+        "title": "中国菜市场｜脱离群众的假知识分子的胡言乱语",
+        "url": "https://book.douban.com/review/17914141/",
+        "date": "2026-11-21",
+        "source": "豆瓣·书评",
+        "summary": "",
+        "subject": "中国菜市场",
+        "rating": "很差",
+        "type": "book",
+        "desc": ""
+      },
+      {
+        "title": "献给虚无的供物｜关于简中版《献给虚无的供物》的问题——文本雷同，错字，病句与错译",
+        "url": "https://book.douban.com/review/17909014/",
+        "date": "2026-11-18",
+        "source": "豆瓣·书评",
+        "summary": "《献给虚无的供物》是我最喜欢的推理小说之一。我个人大约是在十年前读完了本作的简中版本，当时还在上高中的我反复阅读本作多次，其中有本作文体和观念确实出色的原因",
+        "subject": "献给虚无的供物",
+        "rating": "力荐",
+        "type": "book",
+        "desc": "《献给虚无的供物》是我最喜欢的推理小说之一。我个人大约是在十年前读完了本作的简中版本，当时还在上高中的我反复阅读本作多次，其中有本作文体和观念确实出色的原因"
+      },
+      {
+        "title": "你的来信是我的历险｜译后记",
+        "url": "https://book.douban.com/review/17905111/",
+        "date": "2026-11-16",
+        "source": "豆瓣·书评",
+        "summary": "译后记",
+        "subject": "你的来信是我的历险",
+        "rating": "力荐",
+        "type": "book",
+        "desc": "译后记"
+      },
+      {
+        "title": "月相书｜后记：你记得今晚的月相吗？",
+        "url": "https://book.douban.com/review/17916152/",
+        "date": "2026-11-22",
+        "source": "豆瓣·书评",
+        "summary": "",
+        "subject": "月相书",
+        "rating": "力荐",
+        "type": "book",
+        "desc": ""
+      },
+      {
+        "title": "超越时间之影 (评论: Grenzprobleme der Phänomenologie. Analysen des Unbewusstseins und der Instinkte. Metaphysik. Späte Ethik (Te…",
+        "url": "https://book.douban.com/review/17915697/",
+        "date": "2026-11-22",
+        "source": "豆瓣·书评",
+        "summary": "我到鲁",
+        "subject": "",
+        "rating": "",
+        "type": "book",
+        "desc": "我到鲁"
+      },
+      {
+        "title": "地火奔突｜《地火奔突》后记",
+        "url": "https://book.douban.com/review/17906648/",
+        "date": "2026-11-17",
+        "source": "豆瓣·书评",
+        "summary": "后 记",
+        "subject": "地火奔突",
+        "rating": "力荐",
+        "type": "book",
+        "desc": "后 记"
+      },
+      {
+        "title": "理解人体结构I｜即使是弗兰肯斯坦，创造怪物也得先学解剖学",
+        "url": "https://book.douban.com/review/17890346/",
+        "date": "2026-11-06",
+        "source": "豆瓣·书评",
+        "summary": "在幻想世界里，身体似乎可以拥有无限的可能。",
+        "subject": "理解人体结构I",
+        "rating": "力荐",
+        "type": "book",
+        "desc": "在幻想世界里，身体似乎可以拥有无限的可能。"
+      },
+      {
+        "title": "托斯卡纳书店时光｜书店每日售出女作书籍清单",
+        "url": "https://book.douban.com/review/17917015/",
+        "date": "2026-11-22",
+        "source": "豆瓣·书评",
+        "summary": "我划线GPT",
+        "subject": "托斯卡纳书店时光",
+        "rating": "",
+        "type": "book",
+        "desc": "我划线GPT"
+      },
       {
         "title": "两京十五日｜八大营销公司难为无米之炊",
         "url": "https://movie.douban.com/review/17917600/",
@@ -1064,31 +1144,9 @@
         "rating": "力荐",
         "type": "media",
         "desc": "二刷完"
-      },
-      {
-        "title": "花束般的恋爱｜鄙视小麦，同情小麦，成为小麦。",
-        "url": "https://movie.douban.com/review/17912462/",
-        "date": "2026-11-20",
-        "source": "豆瓣·影评",
-        "summary": "今天抽",
-        "subject": "花束般的恋爱",
-        "rating": "力荐",
-        "type": "media",
-        "desc": "今天抽"
-      },
-      {
-        "title": "小城良方｜小城良方里的烟火味",
-        "url": "https://movie.douban.com/review/17912927/",
-        "date": "2026-11-20",
-        "source": "豆瓣·影评",
-        "summary": "于烟火",
-        "subject": "小城良方",
-        "rating": "力荐",
-        "type": "media",
-        "desc": "于烟火"
       }
     ],
-    "updatedAt": "2026-11-23T14:30:36.784Z",
+    "updatedAt": "2026-11-23T22:35:41.708Z",
     "stale": false
   },
   "photography": {
@@ -1101,217 +1159,217 @@
       "name": "news:中新网·要闻",
       "ok": true,
       "count": 30,
-      "ms": 3524
-    },
-    {
-      "name": "ai:量子位",
-      "ok": true,
-      "count": 10,
-      "ms": 4130
-    },
-    {
-      "name": "photography:r/portraits",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 4499
-    },
-    {
-      "name": "photography:r/landscapephotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 4504
-    },
-    {
-      "name": "photography:r/streetphotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 4516
-    },
-    {
-      "name": "photography:r/photography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 4522
-    },
-    {
-      "name": "photography:r/FilmPhotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 4523
-    },
-    {
-      "name": "photography:r/foodphotography",
-      "ok": false,
-      "error": "HTTP 403",
-      "ms": 4535
-    },
-    {
-      "name": "news:中新网·国内",
-      "ok": true,
-      "count": 30,
-      "ms": 1091
-    },
-    {
-      "name": "news:中新网·社会",
-      "ok": true,
-      "count": 30,
-      "ms": 14
+      "ms": 870
     },
     {
       "name": "sub:美学感知·落日间",
       "ok": true,
       "count": 1,
-      "ms": 4579
-    },
-    {
-      "name": "news:中新网·国际",
-      "ok": true,
-      "count": 30,
-      "ms": 12
+      "ms": 1286
     },
     {
       "name": "sub:美学感知·先生制造",
       "ok": true,
       "count": 20,
-      "ms": 195
+      "ms": 95
     },
     {
       "name": "sub:美学感知·海边的西赛罗",
       "ok": true,
       "count": 20,
-      "ms": 134
-    },
-    {
-      "name": "stock:腾讯行情",
-      "ok": true,
-      "count": 6,
-      "ms": 5072
+      "ms": 100
     },
     {
       "name": "sub:美学感知·莫言读书会",
       "ok": true,
       "count": 20,
-      "ms": 209
+      "ms": 96
     },
     {
-      "name": "news:知乎日报",
+      "name": "stock:腾讯行情",
+      "ok": true,
+      "count": 6,
+      "ms": 1895
+    },
+    {
+      "name": "photography:r/portraits",
       "ok": false,
-      "error": "fetch failed",
-      "ms": 663
+      "error": "HTTP 403",
+      "ms": 2102
+    },
+    {
+      "name": "photography:r/landscapephotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2104
+    },
+    {
+      "name": "photography:r/photography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2109
+    },
+    {
+      "name": "photography:r/FilmPhotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2109
+    },
+    {
+      "name": "photography:r/foodphotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2112
+    },
+    {
+      "name": "news:中新网·国内",
+      "ok": true,
+      "count": 30,
+      "ms": 1314
+    },
+    {
+      "name": "photography:r/streetphotography",
+      "ok": false,
+      "error": "HTTP 403",
+      "ms": 2117
+    },
+    {
+      "name": "ai:量子位",
+      "ok": true,
+      "count": 10,
+      "ms": 2245
+    },
+    {
+      "name": "news:中新网·社会",
+      "ok": true,
+      "count": 30,
+      "ms": 239
+    },
+    {
+      "name": "news:中新网·国际",
+      "ok": true,
+      "count": 30,
+      "ms": 6
     },
     {
       "name": "inspiration:抖音热搜",
       "ok": true,
       "count": 50,
-      "ms": 5924
+      "ms": 2402
     },
     {
-      "name": "sanlian:三联生活周刊",
-      "ok": true,
-      "count": 5,
-      "ms": 6052
+      "name": "news:知乎日报",
+      "ok": false,
+      "error": "fetch failed",
+      "ms": 127
     },
     {
       "name": "podcast:关注·来都来了",
       "ok": true,
       "count": 1,
-      "ms": 6264
+      "ms": 3116
     },
     {
       "name": "ai:36氪",
       "ok": false,
       "error": "空结果",
-      "ms": 2768
+      "ms": 962
     },
     {
-      "name": "news:百度热搜",
+      "name": "sanlian:三联生活周刊",
       "ok": true,
-      "count": 51,
-      "ms": 1792
-    },
-    {
-      "name": "inspiration:百度热搜",
-      "ok": true,
-      "count": 51,
-      "ms": 1124
-    },
-    {
-      "name": "podcast:关注·不合时宜",
-      "ok": true,
-      "count": 1,
-      "ms": 827
-    },
-    {
-      "name": "inspiration:头条热榜",
-      "ok": true,
-      "count": 50,
-      "ms": 1101
-    },
-    {
-      "name": "inspiration:B站排行",
-      "ok": true,
-      "count": 100,
-      "ms": 817
-    },
-    {
-      "name": "podcast:关注·文化有限",
-      "ok": true,
-      "count": 1,
-      "ms": 1971
-    },
-    {
-      "name": "podcast:关注·忽左忽右",
-      "ok": true,
-      "count": 1,
-      "ms": 296
-    },
-    {
-      "name": "podcast:关注·东腔西调",
-      "ok": true,
-      "count": 1,
-      "ms": 1121
-    },
-    {
-      "name": "podcast:Apple中国热榜",
-      "ok": false,
-      "error": "This operation was aborted",
-      "ms": 15001
+      "count": 4,
+      "ms": 3545
     },
     {
       "name": "releases:豆瓣·书评",
-      "ok": false,
-      "error": "This operation was aborted",
-      "ms": 15001
+      "ok": true,
+      "count": 20,
+      "ms": 4181
     },
     {
       "name": "sub:思想文化·豆瓣·书评精选",
       "ok": true,
       "count": 20,
-      "ms": 14932
+      "ms": 2656
     },
     {
       "name": "sub:心理成长·知乎日报",
       "ok": false,
       "error": "fetch failed",
-      "ms": 84
+      "ms": 459
     },
     {
       "name": "sub:生活方式·中新网·生活",
       "ok": true,
       "count": 12,
-      "ms": 36
+      "ms": 240
     },
     {
       "name": "sub:生活方式·中新网·财经",
       "ok": true,
       "count": 30,
-      "ms": 30
+      "ms": 4
     },
     {
       "name": "releases:豆瓣·影评",
       "ok": true,
       "count": 20,
-      "ms": 8591
+      "ms": 792
+    },
+    {
+      "name": "podcast:关注·不合时宜",
+      "ok": true,
+      "count": 1,
+      "ms": 2040
+    },
+    {
+      "name": "news:百度热搜",
+      "ok": true,
+      "count": 51,
+      "ms": 3119
+    },
+    {
+      "name": "inspiration:百度热搜",
+      "ok": true,
+      "count": 51,
+      "ms": 3219
+    },
+    {
+      "name": "inspiration:头条热榜",
+      "ok": true,
+      "count": 50,
+      "ms": 718
+    },
+    {
+      "name": "podcast:关注·文化有限",
+      "ok": true,
+      "count": 1,
+      "ms": 1735
+    },
+    {
+      "name": "podcast:关注·忽左忽右",
+      "ok": true,
+      "count": 1,
+      "ms": 71
+    },
+    {
+      "name": "inspiration:B站排行",
+      "ok": true,
+      "count": 100,
+      "ms": 852
+    },
+    {
+      "name": "podcast:关注·东腔西调",
+      "ok": true,
+      "count": 1,
+      "ms": 1414
+    },
+    {
+      "name": "podcast:Apple中国热榜",
+      "ok": false,
+      "error": "This operation was aborted",
+      "ms": 15002
     }
   ]
 }
